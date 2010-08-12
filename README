@@ -1,0 +1,11 @@
+
+To set up a home directory
+
+(1) Generate a public SSH key for the account/host and add the key to
+    github: http://help.github.com/mac-key-setup/
+
+(2) Clone the github home direcory:
+
+   git clone git@github.com:clarkgrubb/home.git
+
+(3) move the files from ~/home to ~

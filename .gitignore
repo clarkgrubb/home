@@ -1,6 +1,7 @@
 *
 !.bash_profile
 !.gitignore
+!README
 !.emacs.d
 !.emacs.d/*
 !.emacs.d/*/*
