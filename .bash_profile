@@ -9,16 +9,16 @@ fi
 
 export COMMON_PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/sbin:/usr/X11/bin:~/bin
 export EDITOR='emacs -q'
-export OS=`uname -s`
-if [[ $OS == '^CYGWIN' ]]
-then export OS='Cygwin'
+export OS_TYPE=`uname -s`
+if [[ $OS_TYPE =~ ^CYGWIN ]]
+then export OS_TYPE='Cygwin'
 fi
-PS1="$OS:\w $ "
+PS1="$OS_TYPE:\w $ "
 
 #
 # Macintosh personalizations
 #
-if [[ $OS == 'Darwin' ]]
+if [[ $OS_TYPE == 'Darwin' ]]
 then
 
     export OS_PATH=/opt/local/lib/postgresql81/bin:~/Source/android-sdk-mac_86/tools
@@ -36,7 +36,7 @@ then
 #
 # Linux personalizations
 #
-elif [[ $OS == 'Linux' ]]
+elif [[ $OS_TYPE == 'Linux' ]]
 then
 
     export OS_PATH=/usr/local/mercury-0.13.1/bin:/home/clarkgrubb/Source/io/build/_build/binaries
@@ -46,16 +46,16 @@ then
 #
 # Windows personalizations
 #
-elif [[ $OS == 'Cygwin' ]]
+elif [[ $OS_TYPE == 'Cygwin' ]]
 then
 
     export OS_PATH=~/bin
-    export PATH=$PATH
+    export PATH=$PATH:$OS_PATH
     export HOSTNAME=`hostname`
 
 else
 
-    echo "unrecognized OS:" $OS
+    echo "unrecognized OS:" $OS_TYPE
 
 fi
 
