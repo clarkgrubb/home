@@ -82,6 +82,8 @@
 (require 'inf-caml)
 (require 'column-marker)
 (defun mark-column-80 () (interactive) (column-marker-1 80))
+(require 'edit-server)
+(edit-server-start)
 (global-set-key "\C-c8" 'mark-column-80)
 (global-set-key "\C-cb" 'revert-buffer)
 (global-set-key "\C-cd" 'dired)
