@@ -99,6 +99,17 @@
 (setq load-path (cons "~clark/.emacs.d/ocaml/" load-path))
 (autoload 'camldebug "camldebug" (interactive) "Debug caml mode")
 
+;; cgrubb: set default-directory
+;;
+(let ((os-user (if (getenv "USER")
+                   (getenv "USER")
+                 (getenv "USERNAME"))))
+  (mapcar (lambda (x) (let ((dir (concat x os-user)))
+                        (if (file-exists-p dir)
+                            (setq default-directory dir)
+                          nil)))
+          '("/home/" "/Users/" "C:/Users/")))
+
 ;; used by starter-kit-ruby
 (require 'tramp-cmds)
 
