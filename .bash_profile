@@ -7,7 +7,7 @@ if [ -f ~/.bashrc ]; then
         . ~/.bashrc
 fi
 
-export COMMON_PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/sbin:/usr/X11/bin:~/bin
+export COMMON_PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 export EDITOR='emacs -q'
 export OS_TYPE=`uname -s`
 if [[ $OS_TYPE =~ ^CYGWIN ]]
