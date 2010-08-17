@@ -49,8 +49,9 @@ then
 elif [[ $OS_TYPE == 'Cygwin' ]]
 then
 
-    export OS_PATH=~/bin:'/Program Files (x86)'/Git/bin
-    export PATH=$OS_PATH:$PATH
+    export OS_PATH_PRIORITY=~/bin
+    export OS_PATH='/Program Files (x86)'/Git/bin
+    export PATH=$OS_PATH_PRIORITY:$PATH:$OS_PATH
     export HOSTNAME=`hostname`
 
 else
