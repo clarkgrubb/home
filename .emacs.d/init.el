@@ -98,6 +98,8 @@
   "Major mode for editing Caml code." t)
 (setq load-path (cons "~clark/.emacs.d/ocaml/" load-path))
 (autoload 'camldebug "camldebug" (interactive) "Debug caml mode")
+(set-cursor-color "red")
+(blink-cursor-mode)
 
 ;; cgrubb: set default-directory
 ;;
