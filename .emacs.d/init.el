@@ -78,12 +78,14 @@
 
 ;; cgrubb
 ;;
-(require 'php-mode)
-(require 'inf-caml)
 (require 'column-marker)
-(defun mark-column-80 () (interactive) (column-marker-1 80))
 (require 'edit-server)
+(require 'inf-caml)
+(require 'php-mode)
+(require 'undo-tree)
+(global-undo-tree-mode)
 (edit-server-start)
+(defun mark-column-80 () (interactive) (column-marker-1 80))
 (global-set-key "\C-c8" 'mark-column-80)
 (global-set-key "\C-cb" 'revert-buffer)
 (global-set-key "\C-cd" 'dired)
