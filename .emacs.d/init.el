@@ -80,7 +80,8 @@
 ;;
 (require 'column-marker)
 (require 'edit-server)
-(require 'inf-caml)
+;; generates warnings
+;; (require 'inf-caml)
 (require 'php-mode)
 (require 'undo-tree)
 (global-undo-tree-mode)
@@ -117,10 +118,24 @@
 ;; used by starter-kit-ruby
 (require 'tramp-cmds)
 
+(add-hook 'html-mode-hook 'turn-off-auto-fill)
+
 ;; SLIME
 (add-to-list 'load-path "~/.emacs.d/slime/")
 (setq inferior-lisp-program "/usr/local/bin/sbcl --noinform")
 (require 'slime)
 (slime-setup)
+(setq slime-lisp-implementations
+      '((sbcl ("/usr/local/bin/sbcl" "--sbcl-nolineedit"))
+        (clisp ("/opt/local/bin/clisp"))
+        (abcl ("/usr/local/bin/abcl"))))
+(defmacro defslime-start (name mapping)
+  `(defun ,name ()
+     (interactive)
+     (let ((slime-default-lisp ,mapping))
+       (slime))))
+(defslime-start abcl 'abcl)
+(defslime-start clisp 'clisp)
+(defslime-start sbcl 'sbcl)
 
 ;;; init.el ends here
