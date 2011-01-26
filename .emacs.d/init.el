@@ -92,6 +92,10 @@
 (global-set-key "\C-cd" 'dired)
 (global-set-key "\C-cg" 'goto-line)
 (global-set-key "\C-cr" 'query-replace)
+;; for windows
+(global-set-key "\C-cc" 'clipboard-yank)
+(global-set-key "\C-cv" 'clipboard-kill-ring-save)
+
 (global-set-key (kbd "M-RET") 'ns-toggle-fullscreen)
 (setq ido-use-url-at-point nil)
 (setq ido-use-filename-at-point nil)
@@ -137,5 +141,17 @@
 (defslime-start abcl 'abcl)
 (defslime-start clisp 'clisp)
 (defslime-start sbcl 'sbcl)
+
+;; MobileOrg
+;; Set to the location of your Org files on your local system
+(add-to-list 'load-path (concat dotfiles-dir "/org/lisp"))
+(add-to-list 'load-path (concat dotfiles-dir "/org/contrib/lisp"))
+
+
+(setq org-directory "~/Org")
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull "~/Org/flagged.org")
+;; Set to <your Dropbox root directory>/MobileOrg.
+(setq org-mobile-directory "~/Dropbox/MobileOrg")
 
 ;;; init.el ends here
