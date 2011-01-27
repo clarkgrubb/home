@@ -33,6 +33,10 @@ then
         man -t "${1}" | open -f -a /Applications/Skim.app
     }
 
+    itunes () {
+        osascript -e 'tell application "iTunes"' -e "${1} ${2}" -e "end tell" 2> /dev/null
+    }
+
 #
 # Linux personalizations
 #
