@@ -33,6 +33,13 @@ then
         man -t "${1}" | open -f -a /Applications/Skim.app
     }
 
+    # Gives you these commands at the shell prompt:
+    #
+    #   itunes pause
+    #   itunes play
+    #   itunes previous track
+    #   itunes next track
+    #
     itunes () {
         osascript -e 'tell application "iTunes"' -e "${1} ${2}" -e "end tell" 2> /dev/null
     }
