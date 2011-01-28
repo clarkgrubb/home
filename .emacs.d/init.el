@@ -78,6 +78,13 @@
 
 ;; cgrubb
 ;;
+
+;; hard-coded path: Mac only
+(defun dired-emacs-lisp ()
+  "Open the Emacs Lisp directory in dired."
+  (interactive)
+   (dired "/Applications/Emacs.app/Contents/Resources/lisp"))
+
 (require 'column-marker)
 (require 'edit-server)
 ;; generates warnings
@@ -93,6 +100,7 @@
 (global-set-key "\C-cc" 'clipboard-yank)
 (global-set-key "\C-cd" 'dired)
 (global-set-key "\C-cg" 'goto-line)
+(global-set-key "\C-cl" 'dired-emacs-lisp)
 (global-set-key "\C-cr" 'query-replace)
 ;; for windows
 (global-set-key "\C-cv" 'clipboard-kill-ring-save)

@@ -33,15 +33,36 @@ then
         man -t "${1}" | open -f -a /Applications/Skim.app
     }
 
-    # Gives you these commands at the shell prompt:
+    # Provides these commands:
     #
     #   itunes pause
     #   itunes play
     #   itunes previous track
     #   itunes next track
     #
+    itunes-debug () {
+        osascript -e 'tell application "iTunes"' -e "${*}" -e "end tell"
+    }
     itunes () {
-        osascript -e 'tell application "iTunes"' -e "${1} ${2}" -e "end tell" 2> /dev/null
+        itunes-debug ${*} 2> /dev/null
+    }
+
+
+    # Provides these commands:
+    #   
+    #   pandora playpause
+    #   pandora next track
+    #   pandora thumbs up
+    #   pandora thumbs down
+    #   pandora get name of current track
+    #   pandora get artist of current track
+    #   pandora get name of current station
+    # 
+    pandora-debug () {
+        osascript -e 'tell application "PandoraBoy"' -e "${*}" -e "end tell"
+    }
+    pandora () {
+        pandora-debug ${*} 2> /dev/null
     }
 
 #
