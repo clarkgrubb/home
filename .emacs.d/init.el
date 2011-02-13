@@ -167,6 +167,4 @@
   (if (file-exists-p library-file)
       (load library-file)))
 
-(load-if-exists "/opt/local/share/emacs/site-lisp/w3m/w3m-load.el")
-
 ;;; init.el ends here
