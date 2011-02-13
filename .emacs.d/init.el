@@ -163,4 +163,10 @@
 ;; Set to <your Dropbox root directory>/MobileOrg.
 (setq org-mobile-directory "~/Dropbox/MobileOrg")
 
+(defun load-if-exists (library-file)
+  (if (file-exists-p library-file)
+      (load library-file)))
+
+(load-if-exists "/opt/local/share/emacs/site-lisp/w3m/w3m-load.el")
+
 ;;; init.el ends here
