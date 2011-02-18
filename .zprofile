@@ -1,15 +1,9 @@
 # The purpose of this file is to set the PATH, EDITOR, prompt (PS1), and aliases.
 # It is intended to work under Mac (Darwin), Linux, and Windows (Cygwin).
-# It sources ~/.bashrc because Cygwin creates a .bashrc file in the user directory
-# on installation.  Only personalize this file, not .bashrc.
-
-if [ -f ~/.bashrc ]; then
-        . ~/.bashrc
-fi
 
 export EDITOR='emacs -q'
 export OS_TYPE=`uname -s`
-if [[ $OS_TYPE =~ ^CYGWIN ]]
+if [[ $OS_TYPE[0,6] == CYGWIN ]]
 then export OS_TYPE='Cygwin'
 fi
 
@@ -68,6 +62,7 @@ then
 #
 elif [[ $OS_TYPE == 'Linux' ]]
 then
+
 
 
 #
