@@ -11,7 +11,7 @@ if [[ $OS_TYPE == 'Darwin' ]]
 then
 
     export HOSTNAME=`hostname -s`
-    export OS_PATH=/opt/local/lib/postgresql81/bin:~/Source/android-sdk-mac_86/tools
+    export OS_PATH=/usr/local/mysql/bin
     export PATH=$OS_PATH:$COMMON_PATH
 
 elif [[ $OS_TYPE == 'Linux' ]]
