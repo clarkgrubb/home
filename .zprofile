@@ -7,6 +7,10 @@ if [[ $OS_TYPE[0,6] == CYGWIN ]]
 then export OS_TYPE='Cygwin'
 fi
 
+export HISTSIZE=2000
+export HISTFILE=~/.zsh_history
+export SAVEHIST=2000
+
 #
 # Macintosh personalizations
 #
