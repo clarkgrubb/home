@@ -21,13 +21,15 @@ then
     export OS_PATH=/home/clarkgrubb/Source/io/build/_build/binaries
     export PATH=$OS_PATH:$COMMON_PATH
  
-elif [[ $OS_TYPE == 'Cygwin' ]]
+elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
 then
 
     export HOSTNAME=`hostname`
     export OS_PATH_PRIORITY=~/bin
-    export OS_PATH='/Program Files (x86)'/Git/bin
+    export OS_PATH='/cygdrive/c/Program Files (x86)'/Git/bin
     export PATH=$OS_PATH_PRIORITY:$COMMON_PATH:$OS_PATH
+
+    cd $HOME
 
 else
 

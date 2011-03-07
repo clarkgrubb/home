@@ -72,9 +72,8 @@ then
 #
 # Windows personalizations
 #
-elif [[ $OS_TYPE == 'Cygwin' ]]
+elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
 then
-
 
 else
 
