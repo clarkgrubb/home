@@ -29,6 +29,9 @@ then
     export OS_PATH='/cygdrive/c/Program Files (x86)'/Git/bin
     export PATH=$OS_PATH_PRIORITY:$COMMON_PATH:$OS_PATH
 
+    alias powershell=C:/Windows/SysWOW64/WindowsPowerShell/v1.0/powershell.exe
+    alias cmd=C:/Windows/System32/cmd.exe
+
     cd $HOME
 
 else
