@@ -18,7 +18,7 @@ if [[ $OS_TYPE == 'Darwin' ]]
 then
 
     trash () {
-        mv -n ${*} /Users/clark/Trash
+        mv -n ${*} /Users/$USER/Trash
     }
 
     pman () {
