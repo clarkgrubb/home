@@ -18,7 +18,7 @@ elif [[ $OS_TYPE == 'Linux' ]]
 then
 
     export HOSTNAME=`hostname -s`
-    export OS_PATH=/home/clarkgrubb/Source/io/build/_build/binaries
+    export OS_PATH=
     export PATH=$OS_PATH:$COMMON_PATH
  
 elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
