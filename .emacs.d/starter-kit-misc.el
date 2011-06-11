@@ -7,9 +7,9 @@
   (tooltip-mode -1)
   (blink-cursor-mode -1))
 
-(add-hook 'before-make-frame-hook 'turn-off-tool-bar)
+(aOAdd-hook 'before-make-frame-hook 'turn-off-tool-bar)
 
-(mouse-wheel-mode t)
+;;(mouse-wheel-mode t)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
