@@ -1,6 +1,9 @@
 *
 !.bash_profile
 !.gitignore
+!.sbclrc
+!.abclrc
+!.clisprc.lisp
 !README
 !.emacs.d
 !.emacs.d/*
