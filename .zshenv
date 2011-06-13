@@ -1,3 +1,4 @@
+#
 
 export COMMON_PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 export OS_TYPE=`uname -s`
