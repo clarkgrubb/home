@@ -170,6 +170,7 @@
 ;; python flymake support if pyflakes is in the search
 ;; path
 (when (load "flymake" t)
+  (require 'flymake-cursor)
   (defun flymake-pyflakes-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
                        'flymake-create-temp-inplace))
