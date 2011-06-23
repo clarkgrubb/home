@@ -98,12 +98,14 @@
 (global-set-key "\C-cb" 'revert-buffer)
 ;; for windows
 (global-set-key "\C-cc" 'clipboard-kill-ring-save)
+(global-set-key "\C-cf" 'find-file)
 (global-set-key "\C-cd" 'dired)
 (global-set-key "\C-cg" 'goto-line)
 (global-set-key "\C-cl" 'dired-emacs-lisp)
 (global-set-key "\C-cr" 'query-replace)
 ;; for windows
 (global-set-key "\C-cv" 'clipboard-yank)
+(global-set-key "\C-cw" 'write-file)
 
 (global-set-key (kbd "M-RET") 'ns-toggle-fullscreen)
 (setq ido-use-url-at-point nil)
