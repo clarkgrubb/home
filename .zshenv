@@ -27,7 +27,7 @@ then
 
     export HOSTNAME=`hostname`
     export OS_PATH_PRIORITY=~/bin
-    export OS_PATH='/cygdrive/c/Program Files (x86)'/Git/bin
+    export OS_PATH='/cygdrive/c/Program Files (x86)'/Git/bin:'/cygdrive/c/Windows/SUA/bin':'/cygdrive/c/Program Files/ghc-7.0.4/bin'
     export PATH=$OS_PATH_PRIORITY:$COMMON_PATH:$OS_PATH
 
     alias powershell=C:/Windows/SysWOW64/WindowsPowerShell/v1.0/powershell.exe
