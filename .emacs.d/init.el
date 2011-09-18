@@ -76,4 +76,14 @@
   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
 (if (file-exists-p user-specific-config) (load user-specific-config))
 
+;; cgrubb hack
+(global-set-key "\C-cb" 'revert-buffer)
+(global-set-key "\C-cc" 'clipboard-kill-ring-save)
+(global-set-key "\C-cf" 'find-file)
+(global-set-key "\C-cd" 'dired)
+(global-set-key "\C-cg" 'goto-line)
+(global-set-key "\C-cr" 'query-replace)
+(global-set-key "\C-cv" 'clipboard-yank)
+(global-set-key "\C-cw" 'write-file)
+
 ;;; init.el ends here
