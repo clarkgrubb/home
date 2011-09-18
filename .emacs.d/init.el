@@ -77,6 +77,7 @@
 (if (file-exists-p user-specific-config) (load user-specific-config))
 
 ;; cgrubb hack
+(add-to-list 'load-path (concat dotfiles-dir "/lib"))
 (require 'edit-server)
 (edit-server-start)
 (global-set-key "\C-cb" 'revert-buffer)
