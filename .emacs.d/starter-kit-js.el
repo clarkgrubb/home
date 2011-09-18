@@ -36,7 +36,8 @@
           (0 (progn (compose-region (match-beginning 1)
                                     (match-end 1) "ƒ")
                     nil))))))
-(add-hook 'esk-js-mode-hook 'pretty-functions)
+;;cgrubb hack
+;;(add-hook 'esk-js-mode-hook 'pretty-functions)
 
 (if (< (string-to-number emacs-version) 23.2)
     (esk-configure-javascript "espresso")
