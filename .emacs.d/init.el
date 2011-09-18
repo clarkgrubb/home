@@ -77,6 +77,8 @@
 (if (file-exists-p user-specific-config) (load user-specific-config))
 
 ;; cgrubb hack
+(require 'edit-server)
+(edit-server-start)
 (global-set-key "\C-cb" 'revert-buffer)
 (global-set-key "\C-cc" 'clipboard-kill-ring-save)
 (global-set-key "\C-cf" 'find-file)
