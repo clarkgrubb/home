@@ -1,0 +1,61 @@
+#!/usr/bin/env ruby
+
+class Integer
+  
+  def smallest_prime_factor
+    (2..Math.sqrt(self).floor).each do |i|
+      if self % i == 0
+        return i
+      end
+    end
+    self
+  end
+  
+  def prime_factors
+    return [] if self == 1
+    pf = []
+    q = self
+    loop do
+      p = q.smallest_prime_factor
+      pf << p
+      if p == q
+        return pf
+      end
+      q /= p
+    end
+  end
+
+end
+
+MAX_INT = 18500000000000000000
+
+USAGE =<<USAGE
+Usage: factor [NUMBER]...
+  or:  factor OPTION
+Print the prime factors of each specified integer NUMBER.  If none
+are specified on the command line, read them from standard input.
+
+      --help     display this help and exit
+      --version  output version information and exit
+USAGE
+
+ARGV.each do |arg|
+  if '--help' == arg
+    print USAGE
+    exit 0
+  end
+  if '--version' == arg
+    raise 'implement me'
+  end
+  if /^\d+$/.match(arg)
+    i = arg.to_i
+    if i > MAX_INT
+      $stderr.puts "factor: `#{i}' is too large"
+      exit 1
+    end
+    puts "#{i}: #{i.prime_factors.sort.join(' ')}"
+  else
+    puts "factor: `#{arg}' is not a valid positive integer"
+    exit 1
+  end
+end

@@ -1,5 +1,7 @@
 *
 !install.sh
+!universal-unix
+!universal-unix/*
 !.bash_profile
 !.gitignore
 !.sbclrc

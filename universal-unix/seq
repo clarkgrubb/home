@@ -1,0 +1,149 @@
+#!/usr/bin/env ruby
+
+# fairly permissive
+FLOAT_REGEX = /^-?[\d\.]+$/
+INT_REGEX = /^-?[\d]+(\.0*)?$/
+
+def to_numeric(s)
+  INT_REGEX.match(s) ? s.to_i : s.to_f
+    
+end
+
+USAGE =<<USAGE
+Usage: seq [OPTION]... LAST
+  or:  seq [OPTION]... FIRST LAST
+  or:  seq [OPTION]... FIRST INCREMENT LAST
+Print numbers from FIRST to LAST, in steps of INCREMENT.
+
+  -f, --format=FORMAT      use printf style floating-point FORMAT
+  -s, --separator=STRING   use STRING to separate numbers (default: \n)
+  -w, --equal-width        equalize width by padding with leading zeroes
+      --help     display this help and exit
+      --version  output version information and exit
+
+If FIRST or INCREMENT is omitted, it defaults to 1.  That is, an
+omitted INCREMENT defaults to 1 even when LAST is smaller than FIRST.
+FIRST, INCREMENT, and LAST are interpreted as floating point values.
+INCREMENT is usually positive if FIRST is smaller than LAST, and
+INCREMENT is usually negative if FIRST is greater than LAST.
+FORMAT must be suitable for printing one argument of type `double';
+it defaults to %.PRECf if FIRST, INCREMENT, and LAST are all fixed point
+decimal numbers with maximum precision PREC, and to %g otherwise.
+USAGE
+
+format = nil
+separator = "\n"
+equal_width = false
+
+while ARGV.size > 0 do
+  case ARGV[0]
+  when /^--help$/
+    puts USAGE
+    exit 0
+  when /^--version$/
+    raise "implement me"
+  when /^-f(\S+)$/
+    format = $1
+  when /^--format=(\S+)$/
+    format = $1
+  when /^-s(.*)$/
+    separator = $1
+  when /^--separator=(.*)$/
+    separator = $2
+  when /^-w$/
+    equal_width = true
+  when /^--equal-width$/
+    equal_width = true
+  when FLOAT_REGEX
+    break
+  else
+    $stderr.puts <<"EOF"
+seq: invalid option -- '#{ARGV[0]}'
+Try `seq --help' for more information.
+EOF
+    exit 1
+  end
+  ARGV.shift
+end
+
+if format and !/\%/.match(format)
+  $stderr.puts "seq: format `#{format}' has no % directive"
+  exit 1
+end
+
+ARGV.each do |arg|
+  if !FLOAT_REGEX.match(arg)
+    $stderr.puts <<"EOF"
+seq: invalid floating point argument: #{arg}"
+Try `seq --help' for more information.
+EOF
+    exit 1
+  end
+end
+
+case ARGV.size
+when 0
+  $stderr.puts <<EOF
+seq: missing operand
+Try `seq --help' for more information.
+EOF
+  exit 1  
+when 1
+  initial = 1
+  step = 1
+  final = to_numeric(ARGV[0])
+when 2
+  initial = to_numeric(ARGV[0])
+  final = to_numeric(ARGV[1])
+  step = 1
+when 3
+  initial = to_numeric(ARGV[0])
+  step = to_numeric(ARGV[1])
+  final = to_numeric(ARGV[2])
+else
+  $stderr.puts <<"EOF"
+  seq: extra operand `#{ARGV[3]}'
+Try `seq --help' for more information.
+EOF
+  exit 1
+end
+
+if equal_width
+  if format
+    $stderr.puts <<"EOF"
+seq: format string may not be specified when printing equal width strings
+Try `seq --help' for more information.
+EOF
+    exit 1
+  end
+  max_integral_size = 0
+  max_fractional_size = 0
+  [ initial, step, final ].each do |num|
+    integral_size, fractional_size = num.abs.to_s.split('.').map { |o| o.size }
+    max_integral_size = [integral_size || 0, max_integral_size].max
+    max_fractional_size = [fractional_size || 0, max_fractional_size].max
+  end
+  equal_width_lambda = lambda do |num|
+    sign = num < 0 ? '-' : ''
+    integer, fraction = num.abs.divmod(1)
+    if max_fractional_size > 0 
+      integer_part = "%0#{max_integral_size}d" % integer
+      decimal_part = ("%.#{max_fractional_size}f" % fraction).sub(/^-?0*(?=\.)/,'')
+      sign + integer_part + decimal_part
+    else
+      sign + "%0{max_integral_size}d" % integer
+    end
+  end
+end
+
+if (final - initial) * step >= 0
+  Range.new(initial, final).step(step).each do |i|
+    if equal_width
+      print equal_width_lambda.call(i)
+    else
+      print ( format ? format % i : i )
+    end
+    print separator
+  end
+end
+
