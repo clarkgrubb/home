@@ -89,4 +89,26 @@
 (global-set-key "\C-cv" 'clipboard-yank)
 (global-set-key "\C-cw" 'write-file)
 
+;; SLIME
+;;
+;;  create symlinks in /usr/local/bin to the interpreter locations
+;;
+(add-to-list 'load-path "~/.emacs.d/slime/")
+(setq inferior-lisp-program "/usr/local/bin/sbcl --noinform")
+(require 'slime)
+(slime-setup)
+(setq slime-lisp-implementations
+      '((sbcl ("/usr/local/bin/sbcl" "--sbcl-nolineedit"))
+        (clisp ("/usr/local/bin/clisp"))
+        (abcl ("/usr/local/bin/abcl"))))
+(defmacro defslime-start (name mapping)
+  `(defun ,name ()
+     (interactive)
+     (let ((slime-default-lisp ,mapping))
+       (slime))))
+(defslime-start abcl 'abcl)
+(defslime-start clisp 'clisp)
+(defslime-start sbcl 'sbcl)
+
+
 ;;; init.el ends here
