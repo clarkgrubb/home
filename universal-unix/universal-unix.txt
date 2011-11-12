@@ -137,6 +137,7 @@ mailx
 make
 man
 manpath
+markdown
 mesg
 mkdir
 mkfifo
@@ -156,6 +157,7 @@ nl
 nm
 nohup
 nroff
+numpy
 ocaml
 ocamlc
 ocamlopt
@@ -189,6 +191,7 @@ rmdir
 rsync
 ruby
 runghc
+saxon
 sbcl
 scp
 screen
