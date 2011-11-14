@@ -1,0 +1,2 @@
+#!/bin/sh
+PYTHONSTARTUP=`dirname $0`/numpyrc python
