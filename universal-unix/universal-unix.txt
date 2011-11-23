@@ -137,6 +137,7 @@ mailx
 make
 man
 manpath
+markdown
 mesg
 mkdir
 mkfifo
@@ -156,6 +157,7 @@ nl
 nm
 nohup
 nroff
+numpy
 ocaml
 ocamlc
 ocamlopt
@@ -179,16 +181,20 @@ pwd
 python
 racket
 ranlib
+rbenv
 rcsdiff
 readlink
 renice
+reset
 rev
 rlog
 rm
 rmdir
 rsync
 ruby
+ruby-build
 runghc
+saxon
 sbcl
 scp
 screen
@@ -239,6 +245,7 @@ tr
 troff
 true
 truncate
+tset
 tsort
 tty
 umount
@@ -259,6 +266,7 @@ vi
 view
 vim
 vimdiff
+virtualenv
 w
 wait
 wall
