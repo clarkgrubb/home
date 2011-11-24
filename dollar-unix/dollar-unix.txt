@@ -158,6 +158,7 @@ nm
 nohup
 nroff
 numpy
+objdump
 ocaml
 ocamlc
 ocamlopt
