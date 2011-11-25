@@ -1,7 +1,9 @@
 *
 !install.sh
-!universal-unix
-!universal-unix/*
+!dollar-unix
+!dollar-unix/*
+!wikidot
+!wikidot/*
 !.bash_profile
 !.gitignore
 !.sbclrc
