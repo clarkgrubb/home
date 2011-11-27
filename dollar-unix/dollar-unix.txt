@@ -113,6 +113,8 @@ ipcs
 irb
 ispell
 join
+js
+jsawk
 kill
 ksh
 ld
@@ -178,6 +180,7 @@ printenv
 printf
 ps
 ptx
+pv
 pwd
 python
 racket
