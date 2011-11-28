@@ -91,21 +91,30 @@ def reorder(table, columns)
   end
 end
 
+def sort(table)
+  table.sort { |o1,o2| o1[1] <=> o2[1] }
+end
+
 def usage
-  $stderr.puts "table.rb --columns=COL1,COL2,... < INPUT"
+  $stderr.puts "table.rb --sort --columns=COL1,COL2,... < INPUT"
   exit -1
 end
 
 if $0 == __FILE__
 
   opts = GetoptLong.new(
-                        [ '--columns', "-c", GetoptLong::REQUIRED_ARGUMENT ]
+                        [ '--columns', "-c", GetoptLong::REQUIRED_ARGUMENT ],
+                        [ '--sort', "-s", GetoptLong::NO_ARGUMENT ]
                         )
   
   columns = []
+  sort_table = false
   opts.each do |opt,arg|
-    if opt == '--columns'
+    case opt
+    when '--columns'
       columns = arg.split(',',-1).map { |s| s.to_i }
+    when '--sort'
+      sort_table = true
     end
   end
   
@@ -113,6 +122,10 @@ if $0 == __FILE__
   usage if columns.any? { |col| col.to_i < 1 }
   
   table = parse($stdin)
+
+  if sort_table
+    table = sort(table)
+  end
   
   generate($stdout, reorder(table, columns))
 
