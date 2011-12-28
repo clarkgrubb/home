@@ -1,4 +1,5 @@
 [
+ant
 apropos
 ar
 as
@@ -8,6 +9,7 @@ atrm
 atq
 autoconf
 awk
+base64
 basename
 bash
 batch
@@ -112,9 +114,12 @@ ipcrm
 ipcs
 irb
 ispell
+jar
+java
+javac
+jdb
 join
 js
-jsawk
 kill
 ksh
 ld
@@ -148,6 +153,7 @@ mktemp
 more
 mount
 mv
+mvn
 nano
 nc
 ncal
@@ -200,6 +206,7 @@ ruby-build
 runghc
 saxon
 sbcl
+sc
 scp
 screen
 script
