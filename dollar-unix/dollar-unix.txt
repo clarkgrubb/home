@@ -145,6 +145,7 @@ make
 man
 manpath
 markdown
+maxima
 mesg
 mkdir
 mkfifo
