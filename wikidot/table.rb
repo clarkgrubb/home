@@ -87,7 +87,7 @@ def reorder(table, columns)
   columns << 0
   
   table.map do |row|
-    columns.map { |i| row[i] }
+    columns.map { |i| row[i].nil? ? " " : row[i] }
   end
 end
 
