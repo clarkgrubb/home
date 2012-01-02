@@ -173,6 +173,7 @@ ocaml
 ocamlc
 ocamlopt
 ocamlrun
+octave
 od
 openssl
 passwd
@@ -191,6 +192,7 @@ ptx
 pv
 pwd
 python
+r
 racket
 ranlib
 rbenv
