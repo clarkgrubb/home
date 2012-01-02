@@ -145,6 +145,7 @@ make
 man
 manpath
 markdown
+math
 maxima
 mesg
 mkdir
