@@ -3,6 +3,7 @@ ant
 apropos
 ar
 as
+asciidoc
 aspell
 at
 atrm
