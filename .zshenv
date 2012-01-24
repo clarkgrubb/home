@@ -6,6 +6,12 @@ if [[ $OS_TYPE[0,6] == CYGWIN ]]
 then export OS_TYPE='Cygwin'
 fi
 
+export EDITOR='emacs -q'
+
+export HISTSIZE=2000
+export HISTFILE=~/.zsh_history
+export SAVEHIST=2000
+
 PS1="$OS_TYPE:%~ $ "
 
 if [[ $OS_TYPE == 'Darwin' ]]

@@ -1,15 +1,13 @@
 # The purpose of this file is to set the PATH, EDITOR, prompt (PS1), and aliases.
 # It is intended to work under Mac (Darwin), Linux, and Windows (Cygwin).
 
-export EDITOR='emacs -q'
 export OS_TYPE=`uname -s`
 if [[ $OS_TYPE[0,6] == CYGWIN ]]
 then export OS_TYPE='Cygwin'
 fi
 
-export HISTSIZE=2000
-export HISTFILE=~/.zsh_history
-export SAVEHIST=2000
+alias e='emacs -q'
+alias r='command r'
 
 #
 # Macintosh personalizations
@@ -23,10 +21,6 @@ then
 
     pman () {
         man -t "${1}" | open -f -a /Applications/Preview.app
-    }
-
-    sman () {
-        man -t "${1}" | open -f -a /Applications/Skim.app
     }
 
     # Provides these commands:
@@ -66,8 +60,6 @@ then
 #
 elif [[ $OS_TYPE == 'Linux' ]]
 then
-
-
 
 #
 # Windows personalizations
