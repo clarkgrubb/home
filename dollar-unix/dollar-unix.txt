@@ -131,6 +131,7 @@ link
 ln
 locale
 localedef
+locate
 login
 logname
 ls
@@ -275,6 +276,7 @@ unlzma
 unxz
 unzip
 unzipsfx
+updatedb
 uptime
 users
 uudecode
