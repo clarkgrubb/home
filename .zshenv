@@ -7,12 +7,22 @@ then export OS_TYPE='Cygwin'
 fi
 
 export EDITOR='emacs -q'
-
 export HISTSIZE=2000
 export HISTFILE=~/.zsh_history
 export SAVEHIST=2000
 
-PS1="$OS_TYPE:%~ $ "
+# Needed to put version control info
+# in the prompt 
+#
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' actionformats '%s:%b|%a '
+zstyle ':vcs_info:*' formats '%s:%b '
+precmd () { vcs_info }
+
+# Set prompt
+#
+setopt PROMPT_SUBST
+PS1="%F{red}$OS_TYPE%f:%F{blue}%3~ %F{green}\${vcs_info_msg_0_}%f\$ "
 
 if [[ $OS_TYPE == 'Darwin' ]]
 then
