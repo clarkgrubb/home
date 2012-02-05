@@ -20,7 +20,7 @@ then
     }
 
     pman () {
-        man -t "${1}" | open -f -a /Applications/Preview.app
+        man -t "$@" | open -f -a /Applications/Preview.app
     }
 
     # Provides these commands:
