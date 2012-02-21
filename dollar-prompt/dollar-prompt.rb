@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-utilities_file = File.dirname(__FILE__) + '/dollar-unix.txt'
+utilities_file = File.dirname(__FILE__) + '/dollar-prompt.txt'
 
 puts
 puts "SEARCH PATH:"
