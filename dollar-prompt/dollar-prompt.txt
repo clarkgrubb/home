@@ -210,7 +210,6 @@ rsync
 ruby
 ruby-build
 runghc
-saxon
 sbcl
 sc
 scp
