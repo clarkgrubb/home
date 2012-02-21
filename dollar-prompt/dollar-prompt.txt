@@ -178,6 +178,7 @@ ocamlrun
 octave
 od
 openssl
+otool
 passwd
 paste
 patch
@@ -326,4 +327,3 @@ zless
 zmore
 znew
 zsh
- 
