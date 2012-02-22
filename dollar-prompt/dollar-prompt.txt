@@ -27,6 +27,7 @@ bzip2
 bzip2recover
 bzless
 bzmore
+bzr
 c++filt
 cal
 calendar
