@@ -27,7 +27,7 @@ row = []
 
   if i % 16 == 0
     print_row(row)
-    row = [i.to_s(16)]
+    row = ['U+' + i.to_s(16)]
   end
 
   if HTML_ENTITY
