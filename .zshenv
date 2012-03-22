@@ -30,6 +30,7 @@ then
     export HOSTNAME=`hostname -s`
     export OS_PATH=/usr/local/mysql/bin
     export PATH=$OS_PATH:$COMMON_PATH
+    export JAVA_HOME=/Library/Java/Home
 
 elif [[ $OS_TYPE == 'Linux' ]]
 then
@@ -37,6 +38,9 @@ then
     export HOSTNAME=`hostname -s`
     export OS_PATH=
     export PATH=$OS_PATH:$COMMON_PATH
+    if [ -e /usr/lib/jvm/java-6-openjdk ]; then
+        export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
+    fi
  
 elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
 then
