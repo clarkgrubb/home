@@ -22,7 +22,7 @@ precmd () { vcs_info }
 # Set prompt
 #
 setopt PROMPT_SUBST
-PS1="%F{red}$OS_TYPE%f %F{blue}%3~ %F{green}\${vcs_info_msg_0_}%f\$ "
+PS1="%F{red}$OS_TYPE%f %F{blue}%3~ %F{green}\${vcs_info_msg_0_}%f%(?,:%),:() \$ "
 
 if [[ $OS_TYPE == 'Darwin' ]]
 then
