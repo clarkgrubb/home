@@ -94,6 +94,7 @@ gettext
 gforth
 ghc
 git
+gp
 gprof
 grep
 groff
