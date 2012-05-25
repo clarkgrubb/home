@@ -301,6 +301,7 @@ whoami
 write
 xargs
 xmllint
+xtail
 xxd
 xz
 xzcat
