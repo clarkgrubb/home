@@ -1,5 +1,5 @@
-# The purpose of this file is to set the PATH, EDITOR, prompt (PS1), and aliases.
-# It is intended to work under Mac (Darwin), Linux, and Windows (Cygwin).
+# Aliases and Shell Function Definitions
+#
 
 export OS_TYPE=`uname -s`
 if [[ $OS_TYPE[0,6] == CYGWIN ]]
@@ -37,24 +37,6 @@ then
         itunes-debug ${*} 2> /dev/null
     }
 
-
-    # Provides these commands:
-    #   
-    #   pandora playpause
-    #   pandora next track
-    #   pandora thumbs up
-    #   pandora thumbs down
-    #   pandora get name of current track
-    #   pandora get artist of current track
-    #   pandora get name of current station
-    # 
-    pandora-debug () {
-        osascript -e 'tell application "PandoraBoy"' -e "${*}" -e "end tell"
-    }
-    pandora () {
-        pandora-debug ${*} 2> /dev/null
-    }
-
 #
 # Linux personalizations
 #
@@ -66,6 +48,9 @@ then
 #
 elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
 then
+
+    alias powershell=C:/Windows/SysWOW64/WindowsPowerShell/v1.0/powershell.exe
+    alias cmd=C:/Windows/System32/cmd.exe
 
 else
 

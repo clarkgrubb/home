@@ -1,9 +1,11 @@
+# Environment Variables
 #
 
-export COMMON_PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
+export COMMON_PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 export OS_TYPE=`uname -s`
 if [[ $OS_TYPE[0,6] == CYGWIN ]]
-then export OS_TYPE='Cygwin'
+then
+    export OS_TYPE='Cygwin'
 fi
 
 export EDITOR='emacs -q'
@@ -28,19 +30,23 @@ if [[ $OS_TYPE == 'Darwin' ]]
 then
 
     export HOSTNAME=`hostname -s`
-    export OS_PATH=/usr/local/mysql/bin
-    export PATH=$OS_PATH:$COMMON_PATH
+    export PATH=$COMMON_PATH
     export JAVA_HOME=/Library/Java/Home
 
 elif [[ $OS_TYPE == 'Linux' ]]
 then
 
     export HOSTNAME=`hostname -s`
-    export OS_PATH=
-    export PATH=$OS_PATH:$COMMON_PATH
-    if [ -e /usr/lib/jvm/java-6-openjdk ]; then
-        export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
-    fi
+    export PATH=$COMMON_PATH
+    
+    readonly jvm_dir=/usr/lib/jvm
+    for jdk in java-6-openjdk java-6-sun
+    do
+        if [ -e ${jvm_dir}/${jdk} ]
+        then
+            export JAVA_HOME=${jvm_dir}/${jdk}
+        fi
+    done
  
 elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
 then
@@ -49,9 +55,6 @@ then
     export OS_PATH_PRIORITY=~/bin
     export OS_PATH='/cygdrive/c/Program Files (x86)'/Git/bin:'/cygdrive/c/Windows/SUA/bin':'/cygdrive/c/Program Files/ghc-7.0.4/bin'
     export PATH=$OS_PATH_PRIORITY:$COMMON_PATH:$OS_PATH
-
-    alias powershell=C:/Windows/SysWOW64/WindowsPowerShell/v1.0/powershell.exe
-    alias cmd=C:/Windows/System32/cmd.exe
 
     cd $HOME
 
