@@ -1,0 +1,7 @@
+How to get SLIME:
+
+  cvs -d :pserver:anonymous:anonymous@common-lisp.net:/project/slime/cvsroot co slime
+
+How to get edit-server.el
+
+  wget https://raw.github.com/stsquad/emacs_chrome/master/servers/edit-server.el
