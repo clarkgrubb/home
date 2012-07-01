@@ -47,9 +47,9 @@ def parse(f)
 
   table = []
   columns = []
-  
+
   f.each do |line|
-    
+
     a = bar_split(line)
 
     if columns.empty?

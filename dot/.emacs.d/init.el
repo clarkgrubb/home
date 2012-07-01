@@ -1,16 +1,11 @@
-;; Turn off menu bar, tool bar, and scroll bar
+;; Turn off menu bar, tool bar, scroll bar, splash screen
 ;;
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-
-;; Causes Emacs to start in a lisp evaluation buffer
-;; when no file name is provided on the command line
-;; instead of the splash screen.
-;;
 (setq inhibit-splash-screen t)
 
-;; ~/.emacs.d/lib is a place to put emacs libraries
+;; Add ~/.emacs.d/lib to library path
 ;;
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
