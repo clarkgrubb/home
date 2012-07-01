@@ -29,39 +29,41 @@
 (setq-default save-place t)
 
 ;; Use part of full path instead of suffixes <1>, <2>, ...
-;; to distinguish buffers visiting files with the
+;; to distinguish buffers when visiting files with the
 ;; same basename.
 ;;
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-;; Maintains a list of recently visited files.  They are
-;; in the variable 'recentf-list.  Try these commands:
+;; Binds C-x C-f with ido-find-file.
 ;;
-;; M-: (length recentf-list)
-;; M-: recent-list
-;;
-(require 'recentf)
-(recentf-mode 1)
-
-;;
+;; When searching, will use prefix matches in
+;; preference to flex-matching.  A flex-match
+;; is any in which the typed characters are
+;; found in the target in the same sequence.
 ;;
 (require 'ido)
 (ido-mode t)
 (setq ido-enable-prefix nil
-      ido-enable-flex-matching t
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
-      ido-max-prospects 10)
+      ido-enable-flex-matching t)
 
+;; Rebinds C-x C-i from 'indent-rigidly to 'ido-menu
 ;;
+;; 'ido-menu can be used to navigate the top level
+;; definitions of source code.
 ;;
-(require 'imenu)
+(require 'ido-imenu)
+(global-set-key (kbd "C-x C-i") 'ido-imenu)
 
 ;; Used with Chrome "Edit with Emacs" extension
 ;;
 (require 'edit-server)
 (edit-server-start)
+
+;; Put twiddle files in ~/.emacs.d/backups
+;; 
+(setq backup-directory-alist `(("." . ,(expand-file-name
+					(concat dotfiles-dir "backups")))))
 
 ;; For running SBCL inside Emacs
 ;;
@@ -78,21 +80,10 @@
        (slime))))
 (defslime-start sbcl 'sbcl)
 
-;; Show trailing whitespace
-;;
 ;; FIXME: source code only
 ;;
 (setq-default show-trailing-whitespace t)
-
-;; Show matching parens
-;;
-;; FIXME: source code only
-;;
 (show-paren-mode 1)
-
-;; FIXME: 80 column visual indicator
-;; FIXME: source code only
-;;
 
 ;; Personal Key Bindings
 ;;
@@ -100,6 +91,3 @@
 (global-set-key "\C-cd" 'dired)
 (global-set-key "\C-cg" 'goto-line)
 (global-set-key "\C-cr" 'query-replace)
-
-
-

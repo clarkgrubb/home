@@ -58,7 +58,7 @@ def parse(f)
       columns[-1] += a.shift
       columns.concat(a)
     end
-    
+
     if !CONTINUATION_REGEX.match(columns.last)
       columns[-1].chomp!
       table << columns
@@ -78,14 +78,14 @@ def generate(f, table)
 
   table.each do |columns|
     f.puts columns.join('||')
-  end  
+  end
 end
 
 def reorder(table, columns)
 
   columns.unshift(0)
   columns << 0
-  
+
   table.map do |row|
     columns.map { |i| row[i].nil? ? " " : row[i] }
   end
@@ -106,7 +106,7 @@ if $0 == __FILE__
                         [ '--columns', "-c", GetoptLong::REQUIRED_ARGUMENT ],
                         [ '--sort', "-s", GetoptLong::NO_ARGUMENT ]
                         )
-  
+
   columns = []
   sort_table = false
   opts.each do |opt,arg|
@@ -117,17 +117,18 @@ if $0 == __FILE__
       sort_table = true
     end
   end
-  
+
   usage if columns.empty?
   usage if columns.any? { |col| col.to_i < 1 }
-  
+
   table = parse($stdin)
 
   if sort_table
     table = sort(table)
   end
-  
+
   generate($stdout, reorder(table, columns))
 
 end
-  
+
+
