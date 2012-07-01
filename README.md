@@ -1,4 +1,4 @@
 
 To install dot files:
 
-  $ dot/install.sh ~
+    $ make
