@@ -43,6 +43,14 @@ def bar_split(line)
   a
 end
 
+def header_row?(row)
+  row.select { |col| not col.empty? }.size == 1
+end
+
+def header_column(row)
+  row.select { |col| not col.empty? }.first
+end
+
 def parse(f)
 
   table = []
@@ -87,7 +95,13 @@ def reorder(table, columns)
   columns << 0
 
   table.map do |row|
-    columns.map { |i| row[i].nil? ? " " : row[i] }
+    if header_row?(row)
+      header = columns.map { |i| "" }
+      header[-2] = header_column(row)
+      header
+    else
+      columns.map { |i| (i > 0 and (row[i].nil? or row[i].empty?)) ? " " : row[i] }
+    end
   end
 end
 
