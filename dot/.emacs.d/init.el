@@ -56,7 +56,7 @@
 (edit-server-start)
 
 ;; Put twiddle files in ~/.emacs.d/backups
-;; 
+;;
 (setq backup-directory-alist `(("." . ,(expand-file-name
 					(concat dotfiles-dir "backups")))))
 
@@ -75,6 +75,18 @@
        (slime))))
 (defslime-start sbcl 'sbcl)
 
+;; Display line and column number in mode line as
+;;
+;;     (LINE,COL)
+;;
+(column-number-mode t)
+
+;; These are disabled by default.
+;;
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'capitalize-region 'disabled nil)
+
 ;; FIXME: source code only
 ;;
 (setq-default show-trailing-whitespace t)
@@ -83,6 +95,4 @@
 ;; Personal Key Bindings
 ;;
 (global-set-key "\C-cb" 'revert-buffer)
-(global-set-key "\C-cd" 'dired)
-(global-set-key "\C-cg" 'goto-line)
 (global-set-key "\C-cr" 'query-replace)
