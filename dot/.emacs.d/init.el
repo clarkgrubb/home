@@ -81,7 +81,9 @@
 ;;
 (column-number-mode t)
 
-;; These are disabled by default.
+;; Enable functions which are disabled by
+;; default.  Keybindings for first two
+;; are C-x C-u and C-x C-l
 ;;
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
