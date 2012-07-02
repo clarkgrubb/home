@@ -5,3 +5,9 @@ How to get SLIME:
 How to get edit-server.el
 
   wget https://raw.github.com/stsquad/emacs_chrome/master/servers/edit-server.el
+
+To get php-mode.el
+
+  wget http://php-mode.svn.sourceforge.net/svnroot/php-mode/tags/php-mode-1.5.0/php-mode.el
+
+  
