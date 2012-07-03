@@ -89,10 +89,26 @@
 (put 'downcase-region 'disabled nil)
 (put 'capitalize-region 'disabled nil)
 
-;; FIXME: source code only
+;; Highlight matching parens
 ;;
-(setq-default show-trailing-whitespace t)
 (show-paren-mode 1)
+
+;; Hightlights the row the point is
+;; on in green.
+;;
+(hl-line-mode)
+
+;; Hightlights these things:
+;;
+;;   tabs
+;;   trailing whitespace on lines
+;;   blank lines at the end of the file
+;;   long lines
+;;
+(require 'whitespace)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
+
 
 ;; Personal Key Bindings
 ;;

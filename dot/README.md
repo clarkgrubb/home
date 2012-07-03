@@ -1,4 +1,3 @@
-
 # OVERVIEW
 
 Home directory dot files for all machines I work on are
@@ -25,9 +24,8 @@ package-install which is standard with Emacs 24.
 
 # TODO
 
-* indicate 80+ lines (prog-mode)
-* indicate extra newlines at end of file (prog-mode)
 * create lambda and attach to prog-mode-hook
 * move backup files out of .emacs.d
 * don't install .emacs.d on CYGWIN
 * C-x C-s not bound to edit-server-done when called from Chrome
+* make cperl-mode the default for perl files instead of perl-mode
