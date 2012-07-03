@@ -11,7 +11,7 @@
                     (or (buffer-file-name) load-file-name)))
 (add-to-list 'load-path (concat dotfiles-dir "lib"))
 
-;; Common Lisp extensions
+;; Add Common Lisp extensions
 ;;
 ;;  http://www.gnu.org/software/emacs/manual/html_mono/cl.html
 ;;
@@ -30,7 +30,7 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-;; Binds C-x C-f with ido-find-file.
+;; Bind C-x C-f to ido-find-file.
 ;;
 ;; When searching, will use prefix matches in
 ;; preference to flex-matching.  A flex-match
@@ -42,7 +42,7 @@
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t)
 
-;; Rebinds C-x C-i from 'indent-rigidly to 'ido-menu
+;; Rebind C-x C-i from 'indent-rigidly to 'ido-menu
 ;;
 ;; 'ido-menu can be used to navigate the top level
 ;; definitions of source code.
@@ -50,7 +50,7 @@
 (require 'ido-imenu)
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
 
-;; Used with Chrome "Edit with Emacs" extension
+;; For use with Chrome "Edit with Emacs" extension
 ;;
 (require 'edit-server)
 (edit-server-start)
@@ -93,12 +93,11 @@
 ;;
 (show-paren-mode 1)
 
-;; Hightlights the row the point is
-;; on in green.
+;; Highlight the row the point is on in green.
 ;;
 (hl-line-mode)
 
-;; Hightlights these things:
+;; Highlight these:
 ;;
 ;;   tabs
 ;;   trailing whitespace on lines
@@ -110,7 +109,7 @@
 (global-whitespace-mode t)
 
 
-;; Personal Key Bindings
+;; Add personal key bindings
 ;;
 (global-set-key "\C-cb" 'revert-buffer)
 (global-set-key "\C-cr" 'query-replace)
