@@ -93,10 +93,6 @@
 ;;
 (show-paren-mode 1)
 
-;; Highlight the row the point is on in green.
-;;
-(hl-line-mode)
-
 ;; Highlight these:
 ;;
 ;;   tabs
@@ -107,6 +103,10 @@
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
+
+;; Highlight the row the point is on in green.
+;;
+(global-hl-line-mode)
 
 
 ;; Add personal key bindings
