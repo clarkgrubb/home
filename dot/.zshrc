@@ -15,18 +15,13 @@ alias r='command r'
 if [[ $OS_TYPE == 'Darwin' ]]
 then
 
-    trash () {
+    trash() {
         mv -n ${*} /Users/$USER/Trash
     }
 
-    pman () {
+    pman() {
         man -t "$@" | open -f -a /Applications/Preview.app
     }
-
-    # Provides these commands:
-    #
-
-    #
 
     _itunes() {
         osascript -e 'tell application "iTunes"' -e ${*} -e "end tell"
@@ -58,7 +53,7 @@ USAGE:
 EOF
     }
 
-    itunes () {
+    itunes() {
 
         # iTunes playlist
         #
