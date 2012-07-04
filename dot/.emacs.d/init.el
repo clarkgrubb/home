@@ -104,9 +104,13 @@
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (global-whitespace-mode t)
 
+;; Replace tabs with spaces.
+;;
+(setq-default indent-tabs-mode nil)
+
 ;; Highlight the row the point is on in green.
 ;;
-(global-hl-line-mode)
+(global-hl-line-mode t)
 
 
 ;; Add personal key bindings
