@@ -58,22 +58,7 @@
 ;; Put twiddle files in ~/.emacs.d/backups
 ;;
 (setq backup-directory-alist `(("." . ,(expand-file-name
-					(concat dotfiles-dir "backups")))))
-
-;; For running SBCL inside Emacs
-;;
-(add-to-list 'load-path "~/.emacs.d/lib/slime/")
-(setq inferior-lisp-program "/usr/local/bin/sbcl --noinform")
-(require 'slime)
-(slime-setup)
-(setq slime-lisp-implementations
-      '((sbcl ("/usr/local/bin/sbcl" "--sbcl-nolineedit"))))
-(defmacro defslime-start (name mapping)
-  `(defun ,name ()
-     (interactive)
-     (let ((slime-default-lisp ,mapping))
-       (slime))))
-(defslime-start sbcl 'sbcl)
+                                        (concat dotfiles-dir "backups")))))
 
 ;; Display line and column number in mode line as
 ;;
@@ -89,11 +74,7 @@
 (put 'downcase-region 'disabled nil)
 (put 'capitalize-region 'disabled nil)
 
-;; Highlight matching parens
-;;
-(show-paren-mode 1)
-
-;; Highlight these:
+;; Highlight these in prog mode:
 ;;
 ;;   tabs
 ;;   trailing whitespace on lines
@@ -102,16 +83,11 @@
 ;;
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
-(global-whitespace-mode t)
+(add-hook 'prog-mode-hook (lambda () (whitespace-mode t)))
 
 ;; Replace tabs with spaces.
 ;;
 (setq-default indent-tabs-mode nil)
-
-;; Highlight the row the point is on in green.
-;;
-(global-hl-line-mode t)
-
 
 ;; Add personal key bindings
 ;;
