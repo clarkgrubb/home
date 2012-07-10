@@ -24,6 +24,12 @@ then
         man -t "$@" | open -f -a /Applications/Preview.app
     }
 
+    # Looking at pictures and movies with Quick Look.
+    #
+    peek() {
+        qlmanage -p $1
+    }
+
     # Defines function 'itunes'
     #
     . ~/.zsh_itunes
