@@ -3,10 +3,10 @@
 
 export OS_TYPE=`uname -s`
 if [[ $OS_TYPE[0,6] == CYGWIN ]]
-then export OS_TYPE='Cygwin'
+then
+    export OS_TYPE='Cygwin'
 fi
 
-alias e='emacs -q'
 alias r='command r'
 
 #
@@ -14,10 +14,6 @@ alias r='command r'
 #
 if [[ $OS_TYPE == 'Darwin' ]]
 then
-
-    trash() {
-        mv -n ${*} /Users/$USER/Trash
-    }
 
     pman() {
         man -t "$@" | open -f -a /Applications/Preview.app
