@@ -5,11 +5,15 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (setq inhibit-splash-screen t)
 
+;; Make names for ~ and ~/.emacs.d
+;;
+(setq home-dir (getenv "HOME"))
+(setq emacs-dir (file-name-directory
+                 (or (buffer-file-name) load-file-name)))
+
 ;; Add ~/.emacs.d/lib to library path
 ;;
-(setq dotfiles-dir (file-name-directory
-                    (or (buffer-file-name) load-file-name)))
-(add-to-list 'load-path (concat dotfiles-dir "lib"))
+(add-to-list 'load-path (concat emacs-dir "lib"))
 
 ;; Add Common Lisp extensions
 ;;
@@ -60,7 +64,7 @@
 ;; Put twiddle files in ~/.emacs.d/backups
 ;;
 (setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat dotfiles-dir "backups")))))
+                                        (concat home-dir ".emacs-backups")))))
 
 ;; Display line and column number in mode line as
 ;;
