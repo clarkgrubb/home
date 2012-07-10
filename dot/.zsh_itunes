@@ -17,6 +17,10 @@ _itunes_playlist() {
 
 _itunes_help() {
     cat <<EOF
+TO LAUNCH ITUNES AND PLAY $ITUNES_PLAYLIST:
+
+  itunes
+
 USAGE:
 
   itunes list
@@ -27,6 +31,7 @@ USAGE:
   itunes next
   itunes prev
   itunes 'play track "Disco Lies"'
+  itunes quit
 
 EOF
 }
@@ -53,6 +58,6 @@ itunes() {
         esac
     fi
 
-    _itunes 'play playlist "'$ITUNES_PLAYLIST'"'
+    #_itunes 'play playlist "'$ITUNES_PLAYLIST'"'
     _itunes $arg
 }
