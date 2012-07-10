@@ -5,6 +5,24 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (setq inhibit-splash-screen t)
 
+;; Set font.  This doesn't seem portable, tho.
+;;
+(create-fontset-from-fontset-spec
+ (concat "-apple-andale mono-medium-r-normal--13-*-*-*-*-*-fontset-mac, "
+         "ascii:-apple-andale mono-medium-r-normal--13-*-*-*-m-*-mac-roman, "
+         "latin-iso8859-1:"
+         "-apple-andale mono-medium-r-normal--13-*-*-*-m-*-mac-roman, "
+         "mule-unicode-0100-24ff:"
+         "-apple-andale mono-medium-r-normal--13-*-*-*-m-*-mac-roman"))
+
+(set-frame-font
+ "-apple-andale mono-medium-r-normal--13-*-*-*-*-*-fontset-mac"
+ 'keep)
+
+(add-to-list
+ 'default-frame-alist
+ '(font . "-apple-andale mono-medium-r-normal--13-*-*-*-*-*-fontset-mac"))
+
 ;; Make names for ~ and ~/.emacs.d
 ;;
 (setq home-dir (getenv "HOME"))
