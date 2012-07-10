@@ -7,6 +7,9 @@ then
     export OS_TYPE='Cygwin'
 fi
 
+# Instead of running the last command
+# launch R statistics environment.
+#
 alias r='command r'
 
 #
@@ -15,6 +18,8 @@ alias r='command r'
 if [[ $OS_TYPE == 'Darwin' ]]
 then
 
+    # For reading man pages with Preview.app.
+    #
     pman() {
         man -t "$@" | open -f -a /Applications/Preview.app
     }
