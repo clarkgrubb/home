@@ -7,7 +7,7 @@ _itunes() {
 }
 
 _itunes_playlist() {
-    itunes_scpt=~/Dropbox/AppleScript/iTunesPlaylist.scpt
+    itunes_scpt=~/.applescript/iTunesPlaylist.scpt
     file=/tmp/$$.$1.txt
 
     osascript $itunes_scpt $1 $file
@@ -21,7 +21,7 @@ USAGE:
 
   itunes list
   itunes shuffle
-  itunes noshuf
+  itunes noshuffle
   itunes pause
   itunes play
   itunes next
@@ -33,29 +33,26 @@ EOF
 
 itunes() {
 
-    # iTunes playlist
-    #
-    list=KGRB
 
     arg=${*}
 
     if [ $# -eq 0 ]
     then
-        arg='play playlist "'${list}'"'
+        arg='play playlist "'$ITUNES_PLAYLIST'"'
     elif [ $# -eq 1 ]
     then
         case $1 in
-            list) _itunes_playlist $list ; return ;;
+            list) _itunes_playlist $ITUNES_PLAYLIST ; return ;;
             help) _itunes_help ; return ;;
             stop) arg='pause' ;;
             next) arg='next track' ;;
             prev) arg='previous track' ;;
             previous) arg='previous track' ;;
-            shuffle) arg='set shuffle of user playlist "'$list'" to true' ;;
-            noshuf) arg='set shuffle of user playlist "'$list'" to false' ;;
+            shuffle) arg='set shuffle of user playlist "'$ITUNES_PLAYLIST'" to true' ;;
+            noshuffle) arg='set shuffle of user playlist "'$ITUNES_PLAYLIST'" to false' ;;
         esac
     fi
 
-    _itunes 'play playlist "'${list}'"'
+    _itunes 'play playlist "'$ITUNES_PLAYLIST'"'
     _itunes $arg
 }

@@ -14,7 +14,7 @@ export HISTFILE=~/.zsh_history
 export SAVEHIST=2000
 
 # Needed to put version control info
-# in the prompt 
+# in the prompt
 #
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' actionformats '%s:%b|%a '
@@ -32,13 +32,14 @@ then
     export HOSTNAME=`hostname -s`
     export PATH=$COMMON_PATH
     export JAVA_HOME=/Library/Java/Home
+    export ITUNES_PLAYLIST=KGRB
 
 elif [[ $OS_TYPE == 'Linux' ]]
 then
 
     export HOSTNAME=`hostname -s`
     export PATH=$COMMON_PATH
-    
+
     readonly jvm_dir=/usr/lib/jvm
     for jdk in java-6-openjdk java-6-sun
     do
@@ -47,7 +48,7 @@ then
             export JAVA_HOME=${jvm_dir}/${jdk}
         fi
     done
- 
+
 elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
 then
 
@@ -63,5 +64,3 @@ else
     echo "unrecognized OS:" $OS_TYPE
 
 fi
-
-
