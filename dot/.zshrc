@@ -24,7 +24,7 @@ then
         man -t "$@" | open -f -a /Applications/Preview.app
     }
 
-    # Looking at pictures and movies with Quick Look.
+    # Look at pictures, movies, HTML, PDFs with Quick Look.
     #
     peek() {
         qlmanage -p $1
