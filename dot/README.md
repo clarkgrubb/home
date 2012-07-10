@@ -25,8 +25,9 @@ package-install which is standard with Emacs 24.
 # TODO
 
 * checkin in AppleScript and install when on Darwin
+* itunes shuffle doesn't work? (not playing the playlist)
+* add back command line pandora
 * create lambda and attach to prog-mode-hook
 * move backup files out of .emacs.d
 * don't install .emacs.d on CYGWIN
-* C-x C-s not bound to edit-server-done when called from Chrome
 * make cperl-mode the default for perl files instead of perl-mode

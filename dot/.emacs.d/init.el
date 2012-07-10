@@ -52,6 +52,8 @@
 
 ;; For use with Chrome "Edit with Emacs" extension
 ;;
+;; Use C-c C-c to send buffer  back to Chrome and quit.
+;;
 (require 'edit-server)
 (edit-server-start)
 
