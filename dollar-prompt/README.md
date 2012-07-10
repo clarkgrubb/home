@@ -1,17 +1,10 @@
 
-* implement these in ruby
+## OVERVIEW ##
 
-  (DONE) factor
-  ptx
-  pwdx
-  (DONE) seq
-  shuf
-  strace
-  tac
+The file dollar-prompt.txt is a list common commands found
+at the "dollar prompt".  The script dollar-prompt.rb will search
+the current PATH and list the commands that are missing.
 
-* seq: unit test
-* (DONE) seq: -w flag
-* (DONE) script which finds all the commands which are missing
-* script which knows OS (uname) and package manager and
-  installs missing utilities
-* installer script (sh: install ruby, git, checkout repo)
+Implementation for a few of the commands are provided.
+
+
