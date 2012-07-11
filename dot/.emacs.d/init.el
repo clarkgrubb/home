@@ -107,6 +107,7 @@
 ;;
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
+(setq whitespace-line-column 79)
 (add-hook 'prog-mode-hook (lambda () (whitespace-mode t)))
 
 ;; Replace tabs with spaces.
