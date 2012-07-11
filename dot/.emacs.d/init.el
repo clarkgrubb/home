@@ -82,7 +82,7 @@
 ;; Put twiddle files in ~/.emacs.d/backups
 ;;
 (setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat home-dir ".emacs-backups")))))
+                                        (concat home-dir "/.emacs-backups")))))
 
 ;; Display line and column number in mode line as
 ;;
