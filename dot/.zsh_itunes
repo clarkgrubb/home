@@ -10,8 +10,15 @@ _itunes_playlist() {
     itunes_scpt=~/.applescript/iTunesPlaylist.scpt
     file=/tmp/$$.$1.txt
 
+    export LC_ALL=C
+
     osascript $itunes_scpt $1 $file
-    cat $file
+    if [ $2 = artists ]
+    then
+        awk 'BEGIN { FS = " ::: " } { print($2, ":::", $1) }' < $file | sort -f
+    else
+        sort -f $file
+    fi
     rm $file
 }
 
@@ -24,6 +31,7 @@ TO LAUNCH ITUNES AND PLAY $ITUNES_PLAYLIST:
 USAGE:
 
   itunes list
+  itunes artists
   itunes shuffle
   itunes noshuffle
   itunes pause
@@ -48,6 +56,7 @@ itunes() {
     then
         case $1 in
             list) _itunes_playlist $ITUNES_PLAYLIST ; return ;;
+            artists) _itunes_playlist $ITUNES_PLAYLIST artists ; return ;;
             help) _itunes_help ; return ;;
             stop) arg='pause' ;;
             next) arg='next track' ;;
