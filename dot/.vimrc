@@ -1,7 +1,17 @@
-"  This file is an expurgated version of:
+" This file is an expurgated version of:
 "
 "    http://algorithm.com.au/code/vimacs/download/
 "
+
+" What doesn't work:
+" 
+"    C-/            [but C-_ and C-x C-u do]
+"    C-x -C-s
+"    M-<num>
+"    C-u <num> 
+"    C-x (, C-x ), C-x e  [macros]
+"    C-q            [mapped to C-v but doesn't seem to work]
+"    M-r
 
 if version < 600
   echoerr 'Emacs key bindings require Vim 6 to run :('
