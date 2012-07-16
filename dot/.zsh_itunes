@@ -46,6 +46,11 @@ EOF
 
 itunes() {
 
+    if [ -z $ITUNES_PLAYLIST ]
+    then
+        echo 'ITUNES_PLAYLIST not set'
+        return 1
+    fi
 
     arg=${*}
 
