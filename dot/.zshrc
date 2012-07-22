@@ -12,6 +12,10 @@ fi
 #
 alias r='command r'
 
+# Don't launch X Windows to run Emacs.
+#
+alias emacs='emacs -nw'
+
 #
 # Macintosh personalizations
 #
