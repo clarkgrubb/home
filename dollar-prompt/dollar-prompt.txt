@@ -169,7 +169,9 @@ ngettext
 nice
 nl
 nm
+node
 nohup
+npm
 nroff
 numpy
 objdump
