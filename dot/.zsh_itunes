@@ -22,28 +22,15 @@ _itunes_playlist() {
     rm $file
 }
 
-_itunes_current_track() {
-    track_scpt=~/.applescript/CurrentTrack.scpt
-    file=/tmp/$$.current_track.txt
+_itunes_output_scpt() {
+    file=/tmp/$$.$(basename $1).txt
 
     export LC_ALL=C
 
-    osascript $track_scpt $file
+    osascript $1 $file
     cat $file
     rm $file
 }
-
-_itunes_current_playlist() {
-    current_playlist_scpt=~/.applescript/CurrentPlayList.scpt
-    file=/tmp/$$.current_playlist.txt
-
-    export LC_ALL=C
-
-    osascript $current_playlist_scpt $file
-    cat $file
-    rm $file
-}
-
 
 _itunes_help() {
     cat <<EOF
@@ -72,6 +59,10 @@ EOF
 
 itunes() {
 
+    local scptdir=~/.applescript
+    local current_track_scpt=$scptdir/CurrentTrack.scpt
+    local current_playlist_scpt=$scptdir/CurrentPlaylist.scpt
+
     if [ -z $ITUNES_PLAYLIST ]
     then
         echo 'ITUNES_PLAYLIST not set'
@@ -87,8 +78,8 @@ itunes() {
     then
         case $1 in
             list) _itunes_playlist $ITUNES_PLAYLIST ; return ;;
-            current_track) _itunes_current_track ; return ;;
-            current_playlist) _itunes_current_playlist ; return ;;
+            current_track) _itunes_output_scpt $current_track_scpt ; return ;;
+            current_playlist) _itunes_output_scpt $current_playlist_scpt ; return ;;
             artists) _itunes_playlist $ITUNES_PLAYLIST artists ; return ;;
             help) _itunes_help ; return ;;
             stop) arg='pause' ;;
