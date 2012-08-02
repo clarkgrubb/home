@@ -67,6 +67,7 @@ ed
 egrep
 emacs
 emacsclient
+enscript
 env
 eqn
 erb
