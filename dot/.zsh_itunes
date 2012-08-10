@@ -13,7 +13,7 @@ _itunes_playlist() {
     export LC_ALL=C
 
     osascript $playlist_scpt $1 $file
-    if [ $2 = artists ]
+    if [ "$2" = artists ]
     then
         awk 'BEGIN { FS = " ::: " } { print($2, ":::", $1) }' < $file | sort -f
     else
