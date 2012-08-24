@@ -28,12 +28,6 @@ then
         man -t "$@" | open -f -a /Applications/Preview.app
     }
 
-    # Look at pictures, movies, HTML, PDFs with Quick Look.
-    #
-    peek() {
-        qlmanage -p $1
-    }
-
     # Defines function 'itunes'
     #
     . ~/.zsh_itunes
