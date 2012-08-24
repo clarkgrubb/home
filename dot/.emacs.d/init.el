@@ -5,7 +5,7 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (setq inhibit-splash-screen t)
 
-;; Set font.
+;; Set font on Mac
 ;;
 (when (eq system-type 'darwin)
   (create-fontset-from-fontset-spec
@@ -17,8 +17,7 @@
            "-apple-consolas-medium-r-normal--12-*-*-*-m-*-mac-roman"))
   (set-frame-font
    "-apple-consolas-medium-r-normal--12-*-*-*-*-*-fontset-mac"
-   'keep)
-)
+   'keep))
 
 ;; Make names for ~ and ~/.emacs.d
 ;;
@@ -49,7 +48,8 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-;; Bind C-x C-f to ido-find-file
+;; Bind C-x b   to ido-switch-buffer
+;;      C-x C-f to ido-find-file
 ;;      C-x C-i to ido-insert-file
 ;;      C-x C-w to ido-write-file
 ;;
