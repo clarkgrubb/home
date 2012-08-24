@@ -105,7 +105,7 @@
 ;;
 (setq-default indent-tabs-mode nil)
 
-;; More programming language mdoes.
+;; More programming language modes.
 ;;
 (autoload 'php-mode "php-mode" "PHP Mode." t)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
