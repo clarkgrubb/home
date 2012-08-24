@@ -63,14 +63,6 @@
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t)
 
-;; Rebind C-x C-i from 'indent-rigidly to 'ido-menu
-;;
-;; 'ido-menu can be used to navigate the top level
-;; definitions of source code.
-;;
-(require 'ido-imenu)
-(global-set-key (kbd "C-x C-i") 'ido-imenu)
-
 ;; For use with Chrome "Edit with Emacs" extension
 ;;
 ;; Use C-c C-c to send buffer  back to Chrome and quit.
@@ -121,7 +113,15 @@
 (autoload 'lua-mode "lua-mode" "Lua Mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
 
-;; Add personal key bindings
+;; Bind C-c i  to 'ido-menu
+;;
+;; 'ido-menu can be used to navigate the top level
+;; definitions of source code.
+;;
+(require 'ido-imenu)
+(global-set-key "\C-ci" 'ido-imenu)
+
+;; More personal key bindings
 ;;
 (global-set-key "\C-cb" 'revert-buffer)
 (global-set-key "\C-cr" 'query-replace)
