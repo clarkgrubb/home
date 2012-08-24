@@ -24,6 +24,4 @@ package-install which is standard with Emacs 24.
 
 # TODO
 
-* add back command line pandora
-* itunes command which shows info about current track
 * make cperl-mode the default for perl files instead of perl-mode
