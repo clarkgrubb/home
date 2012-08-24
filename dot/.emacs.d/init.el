@@ -7,10 +7,18 @@
 
 ;; Set font.
 ;;
-(when (eq system-type "darwin")
-  (set-face-font 'default "*-consolas-medium-r-normal--12-*-*-m-*-*-*"))
-
-;;  (set-face-attribute 'default nil :family "consolas" :height 120))
+(when (eq system-type 'darwin)
+  (create-fontset-from-fontset-spec
+   (concat "-apple-consolas-medium-r-normal--12-*-*-*-*-*-fontset-mac, "
+           "ascii:-apple-consolas-medium-r-normal--12-*-*-*-m-*-mac-roman, "
+           "latin-iso8859-1:"
+           "-apple-consolas-medium-r-normal--12-*-*-*-m-*-mac-roman, "
+           "mule-unicode-0100-24ff:"
+           "-apple-consolas-medium-r-normal--12-*-*-*-m-*-mac-roman"))
+  (set-frame-font
+   "-apple-consolas-medium-r-normal--12-*-*-*-*-*-fontset-mac"
+   'keep)
+)
 
 ;; Make names for ~ and ~/.emacs.d
 ;;
@@ -41,7 +49,9 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-;; Bind C-x C-f to ido-find-file.
+;; Bind C-x C-f to ido-find-file
+;;      C-x C-i to ido-insert-file
+;;      C-x C-w to ido-write-file
 ;;
 ;; When searching, will use prefix matches in
 ;; preference to flex-matching.  A flex-match
@@ -110,7 +120,6 @@
 
 (autoload 'lua-mode "lua-mode" "Lua Mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
-
 
 ;; Add personal key bindings
 ;;
