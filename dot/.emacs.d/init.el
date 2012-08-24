@@ -8,8 +8,9 @@
 ;; Set font.
 ;;
 (when (eq system-type "darwin")
-  (set-face-attribute 'default nil :family "Consolas")
-  (set-face-attribute 'default nil :height 120))
+  (set-face-font 'default "*-consolas-medium-r-normal--12-*-*-m-*-*-*"))
+
+;;  (set-face-attribute 'default nil :family "consolas" :height 120))
 
 ;; Make names for ~ and ~/.emacs.d
 ;;
@@ -101,6 +102,15 @@
 ;; Replace tabs with spaces.
 ;;
 (setq-default indent-tabs-mode nil)
+
+;; More programming language mdoes.
+;;
+(autoload 'php-mode "php-mode" "PHP Mode." t)
+(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+
+(autoload 'lua-mode "lua-mode" "Lua Mode." t)
+(add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
+
 
 ;; Add personal key bindings
 ;;
