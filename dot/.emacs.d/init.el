@@ -9,14 +9,14 @@
 ;;
 (when (eq system-type 'darwin)
   (create-fontset-from-fontset-spec
-   (concat "-apple-consolas-medium-r-normal--12-*-*-*-*-*-fontset-mac, "
-           "ascii:-apple-consolas-medium-r-normal--12-*-*-*-m-*-mac-roman, "
+   (concat "-apple-consolas-medium-r-normal--11-*-*-*-*-*-fontset-mac, "
+           "ascii:-apple-consolas-medium-r-normal--11-*-*-*-m-*-mac-roman, "
            "latin-iso8859-1:"
-           "-apple-consolas-medium-r-normal--12-*-*-*-m-*-mac-roman, "
+           "-apple-consolas-medium-r-normal--11-*-*-*-m-*-mac-roman, "
            "mule-unicode-0100-24ff:"
-           "-apple-consolas-medium-r-normal--12-*-*-*-m-*-mac-roman"))
+           "-apple-consolas-medium-r-normal--11-*-*-*-m-*-mac-roman"))
   (set-frame-font
-   "-apple-consolas-medium-r-normal--12-*-*-*-*-*-fontset-mac"
+   "-apple-consolas-medium-r-normal--11-*-*-*-*-*-fontset-mac"
    'keep))
 
 ;; Make names for ~ and ~/.emacs.d
@@ -70,7 +70,7 @@
 (require 'edit-server)
 (edit-server-start)
 
-;; Put twiddle files in ~/.emacs.d/backups
+;; Put twiddle files in ~/.emacs-backups
 ;;
 (setq backup-directory-alist `(("." . ,(expand-file-name
                                         (concat home-dir "/.emacs-backups")))))
