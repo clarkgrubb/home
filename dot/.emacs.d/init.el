@@ -60,8 +60,7 @@
 ;;
 (require 'ido)
 (ido-mode t)
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t)
+(setq ido-enable-flex-matching t)
 
 ;; For use with Chrome "Edit with Emacs" extension
 ;;
