@@ -294,6 +294,7 @@ vim
 vimdiff
 virtualenv
 w
+w3m
 wait
 wall
 wc
