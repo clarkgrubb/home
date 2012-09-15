@@ -10,4 +10,7 @@ To get php-mode.el
 
   wget http://php-mode.svn.sourceforge.net/svnroot/php-mode/tags/php-mode-1.5.0/php-mode.el
 
+To get erlang.el
+
+  wget http://www.erlang.org/download/contrib/erlang.el
   

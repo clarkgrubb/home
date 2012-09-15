@@ -7,7 +7,7 @@
 
 ;; Set font on Mac
 ;;
-(setq mac-font-size "13")
+(setq mac-font-size "12")
 
 (when (eq system-type 'darwin)
   (create-fontset-from-fontset-spec
@@ -124,6 +124,9 @@
 
 (autoload 'lua-mode "lua-mode" "Lua Mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
+
+(autoload 'erlang-mode "erlang" "Erlang Mode." t)
+(add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
 
 ;; Bind C-c i  to 'ido-menu
 ;;
