@@ -198,6 +198,7 @@ preconv
 printenv
 printf
 ps
+pssh
 ptx
 pv
 pwd
