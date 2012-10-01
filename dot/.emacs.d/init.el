@@ -75,6 +75,14 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t)
 
+;; Make M-x ispell use aspell
+;;
+(dolist (path '("/usr/bin/aspell" "/usr/local/bin/aspell"))
+  (if (file-exists-p path)
+      (progn
+        (setq ispell-program-name path)
+        (return))))
+
 ;; For use with Chrome "Edit with Emacs" extension
 ;;
 ;; Use C-c C-c to send buffer  back to Chrome and quit.
