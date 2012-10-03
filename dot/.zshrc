@@ -16,6 +16,12 @@ alias r='command r'
 #
 alias emacs='emacs -nw'
 
+# Makes git tab completion faster
+#
+__git_files () {
+    _wanted files expl 'local files' _files
+}
+
 #
 # Macintosh personalizations
 #
