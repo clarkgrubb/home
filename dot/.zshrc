@@ -38,6 +38,13 @@ then
     #
     . ~/.zsh_itunes
 
+    # Used to set the tab name in
+    # Terminal.app
+    #
+    function tabname() {
+        echo -n "\033]0;$*\007"
+    }
+
 #
 # Linux personalizations
 #
