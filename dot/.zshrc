@@ -22,6 +22,13 @@ __git_files () {
     _wanted files expl 'local files' _files
 }
 
+# Used to set the tab name in
+# Terminal.app
+#
+function tabname() {
+    echo -n "\033]0;$*\007"
+}
+
 #
 # Macintosh personalizations
 #
@@ -38,18 +45,13 @@ then
     #
     . ~/.zsh_itunes
 
-    # Used to set the tab name in
-    # Terminal.app
-    #
-    function tabname() {
-        echo -n "\033]0;$*\007"
-    }
 
 #
 # Linux personalizations
 #
 elif [[ $OS_TYPE == 'Linux' ]]
 then
+
 
 #
 # Windows personalizations
