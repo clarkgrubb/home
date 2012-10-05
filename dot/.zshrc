@@ -14,7 +14,12 @@ alias r='command r'
 
 # Don't launch X Windows to run Emacs.
 #
-alias emacs='emacs -nw'
+# Put the OS and Editor in tab.
+#
+# Unfortunately this does not revert the
+# tab name when exiting Emacs.
+#
+alias emacs='tabname $OS_TYPE:Emacs && emacs -nw'
 
 # Makes git tab completion faster
 #
