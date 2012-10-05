@@ -19,7 +19,7 @@ alias r='command r'
 # Unfortunately this does not revert the
 # tab name when exiting Emacs.
 #
-alias emacs='tabname $OS_TYPE:Emacs && emacs -nw'
+alias emacs='tabname $OS_TYPE \(Emacs\) && emacs -nw'
 
 # Makes git tab completion faster
 #
