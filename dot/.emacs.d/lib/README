@@ -13,4 +13,7 @@ To get php-mode.el
 To get erlang.el
 
   wget http://www.erlang.org/download/contrib/erlang.el
-  
+
+To get markdown-mode.el
+
+  wget http://jblevins.org/projects/markdown-mode/markdown-mode.el

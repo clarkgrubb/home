@@ -136,6 +136,8 @@
 (autoload 'erlang-mode "erlang" "Erlang Mode." t)
 (add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
 
+(autoload 'markdown-mode "markdown-mode" "Markdown Mode." t)
+
 ;; Bind C-c i  to 'ido-menu
 ;;
 ;; 'ido-menu can be used to navigate the top level
