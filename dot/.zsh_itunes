@@ -50,7 +50,7 @@ USAGE:
   itunes play
   itunes next
   itunes prev
-  itunes 'play track "Disco Lies"'
+  itunes 'play track "Disco Lies" of playlist "KGRB"'
   itunes 'play playlist "KGRB"'
   itunes quit
 
