@@ -62,6 +62,7 @@
 (setq uniquify-buffer-name-style 'forward)
 
 ;; Bind C-x b   to ido-switch-buffer
+;;      C-x C-b to ibuffer (instead of list-buffers)
 ;;      C-x C-f to ido-find-file
 ;;      C-x C-i to ido-insert-file
 ;;      C-x C-w to ido-write-file
@@ -74,6 +75,7 @@
 (require 'ido)
 (ido-mode t)
 (setq ido-enable-flex-matching t)
+(global-set-key "\C-x\C-b" 'ibuffer)
 
 ;; Make M-x ispell use aspell
 ;;
@@ -149,4 +151,5 @@
 ;; More personal key bindings
 ;;
 (global-set-key "\C-cb" 'revert-buffer)
+(global-set-key "\C-cd" 'ido-dired)
 (global-set-key "\C-cr" 'query-replace)
