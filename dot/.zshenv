@@ -53,9 +53,8 @@ elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
 then
 
     export HOSTNAME=`hostname`
-    export OS_PATH_PRIORITY=~/bin
-    export OS_PATH='/cygdrive/c/Program Files (x86)'/Git/bin:'/cygdrive/c/Windows/SUA/bin':'/cygdrive/c/Program Files/ghc-7.0.4/bin'
-    export PATH=$OS_PATH_PRIORITY:$COMMON_PATH:$OS_PATH
+    export OS_PATH='/cygdrive/c/Program Files/ghc-7.0.4/bin'
+    export PATH=$PATH:$COMMON_PATH:$OS_PATH
 
     cd $HOME
 
