@@ -17,3 +17,7 @@ To get erlang.el
 To get markdown-mode.el
 
   wget http://jblevins.org/projects/markdown-mode/markdown-mode.el
+
+To get latex.el
+
+  wget https://raw.github.com/clarkgrubb/latex-input/master/latex.el

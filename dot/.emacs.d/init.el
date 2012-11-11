@@ -148,6 +148,11 @@
 (require 'ido-imenu)
 (global-set-key "\C-ci" 'ido-imenu)
 
+;; Makes the latex input method available.  Use C-\
+;; to turn it on.
+;;
+(require 'latex)
+
 ;; More personal key bindings
 ;;
 (global-set-key "\C-cb" 'revert-buffer)
