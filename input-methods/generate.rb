@@ -13,6 +13,8 @@ LATEX_FILES = %w(
   latex_to_unicode_applekeys.txt
   latex_to_unicode_mathfont.txt
   latex_to_unicode_not.txt
+  latex_to_unicode_subscripts.txt
+  latex_to_unicode_superscripts.txt
 )
 
 LATEX_TO_UNICODE_FILES = LATEX_FILES.map { |lf| File.join(DATA_DIR, lf) }
