@@ -29,7 +29,7 @@ def load_config():
     return config
 
 
-def page_content(page, output_stream):
+def page_content(page):
 
     config = load_config()
     access_key = config.get(SECTION_API, KEY_READONLY_ACCESS_KEY)
@@ -38,14 +38,14 @@ def page_content(page, output_stream):
     sp = xmlrpclib.ServerProxy(uri)
     p = sp.pages.get_one({'site': SITE,
                           'page': page})
-    output_stream.write(p['content'])
+    print(p['content'])
 
 
 if __name__ == '__main__':
 
     if len(sys.argv) == 2:
         page = sys.argv[1]
-        page_content(page, sys.stdout)
+        page_content(page)
 
     else:
         raise Exception('USAGE: page_content.py PAGE')
