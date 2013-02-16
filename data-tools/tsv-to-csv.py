@@ -21,7 +21,6 @@ def tsv_to_csv(input_stream,
         csv_writer.writerow(row)
 
 
-
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
