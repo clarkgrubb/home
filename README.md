@@ -1,4 +1,4 @@
 
-To install dot files:
+To install dot-files:
 
     $ make

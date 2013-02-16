@@ -140,6 +140,8 @@
 
 (autoload 'markdown-mode "markdown-mode" "Markdown Mode." t)
 
+(defalias 'perl-mode 'cperl-mode)
+
 ;; Makes the latex input method available.  Use C-\
 ;; to turn it on.
 ;;

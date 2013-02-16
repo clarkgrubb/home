@@ -1,9 +1,0 @@
-#!/bin/sh
-NUMPYRC=$(mktemp /tmp/numpyrcXXXX)
-cat > $NUMPYRC <<EOF
-import math, os, re, sys
-import numpy as np
-import scipy as sp
-import pandas as pd
-EOF
-PYTHONSTARTUP=$NUMPYRC python

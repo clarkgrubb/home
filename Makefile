@@ -1,3 +1,2 @@
-
 install:
-	make -C dot
+	make -C dot-files

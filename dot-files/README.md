@@ -22,6 +22,3 @@ the first script Emacs reads, and additional libraries in
 Libraries in .emacs.d/lib could potentially be installed using
 package-install which is standard with Emacs 24.
 
-# TODO
-
-* make cperl-mode the default for perl files instead of perl-mode
