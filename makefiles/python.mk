@@ -15,6 +15,7 @@ clean:
 	find . -name '*.pyc' | xargs rm
 	find . -name '*.[0-9]' | xargs rm
 	find . -name '*.html' | xargs rm
+	rm TAGS
 
 html: $(HTML_TARGETS)
 
@@ -29,6 +30,12 @@ build:
 
 cov:
 	@echo implement cov
+
+pep8:
+	@echo implement pep8
+
+pylint:
+	@echo implement pylint
 
 # asciidoc must be installed to make man pages.  The source must
 # be in a file of the format foo.1.txt
