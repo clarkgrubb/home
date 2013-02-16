@@ -6,4 +6,6 @@
 * csv-to-tsv.py: replace -r (optional argument for replace string)
 * csv-to-tsv.py: -z squeeze (error if replace string is more than one char)
 * man pages
-* tsv-to-csv.py: ability to set delimiter and quotechar
+* wikidot-table-to-tsv, tsv-to-wikidot-table?
+* html-table-to-tsv, tsv-to-html-table?
+* install
