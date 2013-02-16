@@ -100,13 +100,54 @@ def reorder(table, columns)
       header[-2] = header_column(row)
       header
     else
-      columns.map { |i| (i > 0 and (row[i].nil? or row[i].empty?)) ? " " : row[i] }
+      columns.map do |i|
+        if i > 0 and (row[i].nil? or row[i].empty?)
+          " "
+        else
+          row[i]
+        end
+      end
     end
   end
 end
 
 def sort(table)
   table.sort { |o1,o2| o1[1] <=> o2[1] }
+end
+
+def print_statistics(table)
+
+  header_row_cnt = 0
+  non_header_row_cnt = 0
+
+  nonempty_column_cnts = Hash.new { |h, k| h[k] = 0 }
+  empty_column_cnts = Hash.new { |h, k| h[k] = 0 }
+
+  table.each do |row|
+    if header_row?(row)
+      header_row_cnt += 1
+    elsif /^[~\s]*$/.match(row[1])
+      # not a content row so skip
+    else
+      non_header_row_cnt += 1
+      row.each_with_index do |col, coli|
+        if /^\s*$/.match(col)
+          empty_column_cnts[coli] += 1
+        else
+          nonempty_column_cnts[coli] += 1
+        end
+      end
+    end
+  end
+
+  puts "header rows: #{header_row_cnt} non-header rows: #{non_header_row_cnt}"
+  nonempty_column_cnts.keys.sort.each do |coli|
+    nonempty_cnt = nonempty_column_cnts[coli]
+    pct = "%.2f" % (100.0 * nonempty_cnt / (nonempty_cnt + empty_column_cnts[coli]))
+    puts "nonempty columns in column #{coli} #{nonempty_column_cnts[coli]} (#{pct}%)"
+  end
+
+
 end
 
 def usage
@@ -118,24 +159,33 @@ if $0 == __FILE__
 
   opts = GetoptLong.new(
                         [ '--columns', "-c", GetoptLong::REQUIRED_ARGUMENT ],
-                        [ '--sort', "-s", GetoptLong::NO_ARGUMENT ]
+                        [ '--sort', "-s", GetoptLong::NO_ARGUMENT ],
+                        [ '--statistics', "-t", GetoptLong::NO_ARGUMENT ]
                         )
 
   columns = []
   sort_table = false
+  statistics = false
   opts.each do |opt,arg|
     case opt
     when '--columns'
       columns = arg.split(',',-1).map { |s| s.to_i }
     when '--sort'
       sort_table = true
+    when '--statistics'
+      statistics = true
     end
   end
 
-  usage if columns.empty?
-  usage if columns.any? { |col| col.to_i < 1 }
+  usage if not statistics and columns.empty?
+  usage if not statistics and columns.any? { |col| col.to_i < 1 }
 
   table = parse($stdin)
+
+  if statistics
+    print_statistics(table)
+    exit(0)
+  end
 
   if sort_table
     table = sort(table)
@@ -144,5 +194,3 @@ if $0 == __FILE__
   generate($stdout, reorder(table, columns))
 
 end
-
-
