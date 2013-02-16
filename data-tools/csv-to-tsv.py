@@ -16,8 +16,32 @@ def stripper(row):
     return [field.translate(None, STRIPPER_CHARS) for field in row]
 
 
+def escape(field):
+
+    str_builder = []
+
+    for ch in field:
+        if ch == '\\':
+            str_builder.append('\\')
+            str_builder.append('\\')
+        elif ch == '\n':
+            str_builder.append('\\')
+            str_builder.append('n')
+        elif ch == '\r':
+            str_builder.append('\\')
+            str_builder.append('r')
+        elif ch == '\t':
+            str_builder.append('\\')
+            str_builder.append('t')
+        else:
+            str_builder.append(ch)
+
+
+    return ''.join(str_builder)
+
+
 def escaper(row):
-    return [PROHIBITED_REGEX.sub('\\\1', field) for field in row]
+    return [escape(field) for field in row]
 
 
 def replacer(row):

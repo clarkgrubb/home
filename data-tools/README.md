@@ -1,4 +1,14 @@
 
+# OVERVIEW
+
+Tools for converting files containing relational data from one format to another.  The formats are:
+
+* TSV
+* CSV
+* one JSON object per line
+* HTML table
+* Wikidot markup table
+
 # TODO
 
 * man pages
