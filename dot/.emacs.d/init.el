@@ -140,14 +140,6 @@
 
 (autoload 'markdown-mode "markdown-mode" "Markdown Mode." t)
 
-;; Bind C-c i  to 'ido-menu
-;;
-;; 'ido-menu can be used to navigate the top level
-;; definitions of source code.
-;;
-(require 'ido-imenu)
-(global-set-key "\C-ci" 'ido-imenu)
-
 ;; Makes the latex input method available.  Use C-\
 ;; to turn it on.
 ;;
