@@ -7,11 +7,11 @@
 #
 # Here are a couple of examples:
 #
-#   curl www.google.com | nokogiri.rb \
+#   curl www.google.com | dom-awk.rb \
 #     '$_.xpath("//a").each {|o| puts o["href"] }'
 #
 #
-#   echo '<xml><foo>bar</foo></xml>' | nokogiri.rb \
+#   echo '<xml><foo>bar</foo></xml>' | dom-awk.rb \
 #     '$_.xpath("//foo").each { |o| puts o.content }'
 #
 

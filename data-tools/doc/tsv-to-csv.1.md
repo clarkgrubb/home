@@ -1,15 +1,15 @@
-% TSV_TO_CSV.PY(1)
+% TSV-TO-CSV(1)
 % Clark Grubb
 % February 16, 2013
 
 
 # NAME
 
-tsv_to_csv.py - convert TSV to CSV
+tsv-to-csv - convert TSV to CSV
 
 # SYNOPSIS
 
-tsv_to_csv.py OPTIONS 
+tsv-to-csv OPTIONS 
 
 # DESCRIPTION
 
@@ -17,7 +17,7 @@ Read a TSV file from standard input and write the corresponding CSV file to stan
 
 In the TSV format fields are delimited by tabs and records are terminated by an end-of-line marker.
 
-There is no mechanism for quoting tabs or newlines, and by default `csv_to_tsv.py` will fail if they occur in the fields of the CSV file.  
+There is no mechanism for quoting tabs or newlines, and by default `csv-to-tsv` will fail if they occur in the fields of the CSV file.  
 
 # OPTIONS
 
@@ -33,7 +33,7 @@ There is no mechanism for quoting tabs or newlines, and by default `csv_to_tsv.p
 
 # SEE ALSO
 
-`csv_to_tsv.py` (1)
+`csv-to-tsv` (1)
 
 http://www.ietf.org/rfc/rfc4180.txt
 

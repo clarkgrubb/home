@@ -1,16 +1,15 @@
 # OVERVIEW
 
-Makefiles for small projects written in a few select languages.
+Makefiles to get you started.
 
-Take one and copy it to the root of your project directory, renaming
-it to Makefile.  Then start adding to it as needed.
-
-The targets are:
+Some standard targets:
 
  * all - build the project
- * check - run the unit tests
+ * check,test - run the unit tests
  * cov - compute code coveage
  * html - build documentation in HTML
- * install - install the code
+ * install - install the code and man pages
  * man - build the man pages
- * tags - create a TAGS file for Emacs
+ * TAGS - create a TAGS file for Emacs
+
+[Standard GNU targets](http://www.gnu.org/prep/standards/html_node/Standard-Targets.html)
