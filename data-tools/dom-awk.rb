@@ -47,8 +47,6 @@ opts.each do |opt, arg|
   end
 end
 
-print ARGV.size
-
 if not script
   if ARGV.size > 0
     script = ARGV[0]

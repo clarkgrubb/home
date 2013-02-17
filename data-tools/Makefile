@@ -24,10 +24,10 @@ clean:
 	-rm TAGS
 
 install: install-man
-	sudo ln -sf csv_to_tsv.py $(LOCAL_INSTALL_DIR)/csv-to-tsv
-	sudo ln -sf tsv_to_csv.py $(LOCAL_INSTALL_DIR)/tsv-to-csv
-	sudo ln -sf json-awk.rb $(LOCAL_INSTALL_DIR)/json-awk
-	sudo ln -sf nokogiri.rb $(LOCAL_INSTALL_DIR)/nokogiri
+	sudo ln -sf $(PWD)/csv_to_tsv.py $(LOCAL_INSTALL_DIR)/csv-to-tsv
+	sudo ln -sf $(PWD)/tsv_to_csv.py $(LOCAL_INSTALL_DIR)/tsv-to-csv
+	sudo ln -sf $(PWD)/json-awk.rb $(LOCAL_INSTALL_DIR)/json-awk
+	sudo ln -sf $(PWD)/dom-awk.rb $(LOCAL_INSTALL_DIR)/dom-awk
 
 install-man: man
 	if [ ! -d $(LOCAL_MAN_DIR)/man1 ]; then \
