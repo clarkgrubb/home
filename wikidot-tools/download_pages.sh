@@ -7,5 +7,5 @@ echo downloading pages to $download_dir
 
 for page in $PAGES
 do
-    PYTHONIOENCODING=utf-8 ./page_content.py $page > ${download_dir}/${page}.txt
+    PYTHONIOENCODING=utf-8 ./page_content.py $page > ${download_dir}/${page}
 done
