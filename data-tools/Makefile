@@ -9,7 +9,7 @@ LOCAL_MAN_DIR = /usr/local/share/man
 
 .PHONY: all TAGS check clean test man install install-man
 
-all: build
+all: man
 
 TAGS:
 	find . -name '*.py' | xargs etags
@@ -23,13 +23,13 @@ clean:
 	-find . -name '*.html' | xargs rm
 	-rm TAGS
 
-install: install-man
-	sudo ln -sf $(PWD)/csv_to_tsv.py $(LOCAL_INSTALL_DIR)/csv-to-tsv
-	sudo ln -sf $(PWD)/tsv_to_csv.py $(LOCAL_INSTALL_DIR)/tsv-to-csv
-	sudo ln -sf $(PWD)/json-awk.rb $(LOCAL_INSTALL_DIR)/json-awk
-	sudo ln -sf $(PWD)/dom-awk.rb $(LOCAL_INSTALL_DIR)/dom-awk
+sudo.install: sudo.install-man
+	ln -sf $(PWD)/csv_to_tsv.py $(LOCAL_INSTALL_DIR)/csv-to-tsv
+	ln -sf $(PWD)/tsv_to_csv.py $(LOCAL_INSTALL_DIR)/tsv-to-csv
+	ln -sf $(PWD)/json-awk.rb $(LOCAL_INSTALL_DIR)/json-awk
+	ln -sf $(PWD)/dom-awk.rb $(LOCAL_INSTALL_DIR)/dom-awk
 
-install-man: man
+sudo.install-man: man
 	if [ ! -d $(LOCAL_MAN_DIR)/man1 ]; then \
 	echo directory does not exist: $(LOCAL_MAN_DIR)/man1; \
 	return 1; \

@@ -1,8 +1,12 @@
 # INSTALL
 
-To install dot-files and data-files:
+To install dot-files:
 
     $ make
+
+To install data-tools:
+
+    $ sudo make sudo.install
 
 # OVERVIEW
 

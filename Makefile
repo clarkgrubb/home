@@ -1,3 +1,5 @@
 install:
 	make -C dot-files
-	make -C data-tools install
+
+sudo.install:
+	make -C data-tools sudo.install
