@@ -2,7 +2,7 @@
 #
 
 export OS_TYPE=`uname -s`
-if [[ $OS_TYPE[0,6] == CYGWIN ]]
+if [[ ${OS_TYPE:0:6} == CYGWIN ]]
 then
     export OS_TYPE='Cygwin'
 fi
@@ -34,9 +34,6 @@ function tabname() {
     echo -n "\033]0;$*\007"
 }
 
-#
-# Macintosh personalizations
-#
 if [[ $OS_TYPE == 'Darwin' ]]
 then
 
@@ -51,21 +48,15 @@ then
     . ~/.zsh_itunes
 
 
-#
-# Linux personalizations
-#
 elif [[ $OS_TYPE == 'Linux' ]]
 then
+    # Linux specific definitions here
 
 
-#
-# Windows personalizations
-#
 elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
 then
+    # Windows specific definitions here
 
-    alias powershell=C:/Windows/SysWOW64/WindowsPowerShell/v1.0/powershell.exe
-    alias cmd=C:/Windows/System32/cmd.exe
 
 else
 
