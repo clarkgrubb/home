@@ -13,8 +13,7 @@ export HISTSIZE=2000
 export HISTFILE=~/.zsh_history
 export SAVEHIST=2000
 
-# Needed to put version control info
-# in the prompt
+# So we can have version control info in the prompt
 #
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' actionformats '%s:%b|%a '
@@ -53,8 +52,7 @@ elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
 then
 
     export HOSTNAME=`hostname`
-    export OS_PATH='/cygdrive/c/Program Files/ghc-7.0.4/bin'
-    export PATH=$PATH:$COMMON_PATH:$OS_PATH
+    export PATH=$PATH:$COMMON_PATH
 
     cd $HOME
 
