@@ -93,6 +93,7 @@
 (edit-server-start)
 
 ;; For use with Firefox "It's All Text" extension
+;; which has a hotkey which I've set to ⌘E.
 ;;
 ;; Use C-x # to send buffer back to Firefox.
 ;;
