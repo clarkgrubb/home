@@ -87,10 +87,16 @@
 
 ;; For use with Chrome "Edit with Emacs" extension
 ;;
-;; Use C-c C-c to send buffer  back to Chrome and quit.
+;; Use C-c C-c to send buffer back to Chrome.
 ;;
 (require 'edit-server)
 (edit-server-start)
+
+;; For use with Firefox "It's All Text" extension
+;;
+;; Use C-x # to send buffer back to Firefox.
+;;
+(server-start)
 
 ;; Put twiddle files in ~/.emacs-backups
 ;;
