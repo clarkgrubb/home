@@ -20,6 +20,12 @@ zstyle ':vcs_info:*' actionformats '%s:%b|%a '
 zstyle ':vcs_info:*' formats '%s:%b '
 precmd () { vcs_info }
 
+#  C-x C-e to edit command line with $EDITOR
+#
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^X^e' edit-command-line
+
 # Set prompt
 #
 setopt PROMPT_SUBST
