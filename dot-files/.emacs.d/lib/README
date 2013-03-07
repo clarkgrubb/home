@@ -18,6 +18,10 @@ To get markdown-mode.el
 
   wget http://jblevins.org/projects/markdown-mode/markdown-mode.el
 
+To get go-mode.el
+
+  curl 'http://golang.org/misc/emacs/go-mode.el?m=text' > go-mode.el
+
 To get latex.el
 
   wget https://raw.github.com/clarkgrubb/latex-input/master/latex.el

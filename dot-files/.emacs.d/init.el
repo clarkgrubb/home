@@ -136,14 +136,17 @@
 
 ;; More programming language modes.
 ;;
-(autoload 'php-mode "php-mode" "PHP Mode." t)
-(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+(autoload 'erlang-mode "erlang" "Erlang Mode." t)
+(add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
+
+(autoload 'go-mode "go-mode" "Go Mode." t)
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 
 (autoload 'lua-mode "lua-mode" "Lua Mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
 
-(autoload 'erlang-mode "erlang" "Erlang Mode." t)
-(add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
+(autoload 'php-mode "php-mode" "PHP Mode." t)
+(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 
 (autoload 'markdown-mode "markdown-mode" "Markdown Mode." t)
 
