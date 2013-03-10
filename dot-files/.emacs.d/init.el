@@ -130,7 +130,9 @@
 (setq whitespace-line-column 79)
 (add-hook 'prog-mode-hook (lambda () (whitespace-mode t)))
 
-;; Replace tabs with spaces.
+;; Replace tabs with spaces.  To insert a tab use
+;;
+;;   C-q TAB
 ;;
 (setq-default indent-tabs-mode nil)
 
