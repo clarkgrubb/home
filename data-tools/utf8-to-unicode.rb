@@ -120,7 +120,7 @@ if $0 == __FILE__
     puts
     puts "   use 0b, 0, <none>, and 0x prefixes, respectively"
     puts
-    puts "   with -n|--name flag, lookup up Unicode character name."
+    puts "   with -n|--name flag, look up Unicode character name."
     puts "   This requires internet access."
     puts
 
