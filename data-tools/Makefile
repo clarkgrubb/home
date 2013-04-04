@@ -33,6 +33,7 @@ sudo.install: sudo.install-man
 	ln -sf $(PWD)/tsv_to_csv.py $(LOCAL_INSTALL_DIR)/tsv-to-csv
 	ln -sf $(PWD)/json-awk.rb $(LOCAL_INSTALL_DIR)/json-awk
 	ln -sf $(PWD)/dom-awk.rb $(LOCAL_INSTALL_DIR)/dom-awk
+	ln -sf $(PWD)/utf8-to-unicode.rb $(LOCAL_INSTALL_DIR)/utf8-to-unicode
 
 sudo.install-man: man
 	if [ ! -d $(LOCAL_MAN_DIR)/man1 ]; then \
