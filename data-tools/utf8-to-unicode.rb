@@ -49,7 +49,8 @@ def to_hex(cp)
 end
 
 def lookup_code_point(code_point)
-  `curl #{UNIDATA_URL} 2> /dev/null | grep '^#{to_hex(code_point)};'`
+  unidata = `curl #{UNIDATA_URL} 2> /dev/null | grep '^#{to_hex(code_point)};'`
+  unidata.split(';')[1]
 end
 
 def check_prefixes(bytes)
@@ -104,13 +105,23 @@ end
 
 if $0 == __FILE__
 
+  lookup_name = false
+
+  if ARGV[0] == '-n' or ARGV[0] == '--name'
+    lookup_name = true
+    ARGV.shift
+  end
+
   if ARGV.size == 0
     puts
-    puts "USAGE: utf8-to-unicode.rb BYTE ..."
+    puts "USAGE: utf8-to-unicode.rb [-n|--name] BYTE ..."
     puts
     puts "   format of BYTEs can be binary, octal, decimal, or hex"
     puts
     puts "   use 0b, 0, <none>, and 0x prefixes, respectively"
+    puts
+    puts "   with -n|--name flag, lookup up Unicode character name."
+    puts "   This requires internet access."
     puts
 
     exit 1
@@ -122,5 +133,7 @@ if $0 == __FILE__
 
   cp = code_point(bytes)
   puts "U+" + to_hex(cp)
-  puts lookup_code_point(cp)
+  if lookup_name
+    puts lookup_code_point(cp)
+  end
 end

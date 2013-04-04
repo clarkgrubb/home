@@ -9,7 +9,7 @@ utf8-to-unicode - convert UTF-8 bytes to Unicode code point
 
 # SYNOPSIS
 
-utf8-to-unicode BYTE ...
+utf8-to-unicode [-n|\--name] BYTE ...
 
 # DESCRIPTION
 
@@ -17,6 +17,11 @@ Convert UTF-8 to Unicode.  The UTF-8 is passed as individual
 bytes on the command line.  The format of the bytes can be binary,
 octal, decimal, or hex.  The prefixes '0b', '0x', and '0' must be
 used to indicate binary, hex, and octal bytes, respectively.
+
+# OPTIONS
+
+-n, \--name
+: use the Internet to lookup the character name for the Unicode code point.
 
 # EXAMPLES
 
