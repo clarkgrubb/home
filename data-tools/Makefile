@@ -14,8 +14,13 @@ all: man
 TAGS:
 	find . -name '*.py' | xargs etags
 
-check:
+check_python:
 	find . -name 'test*.py' | xargs python
+
+check_ruby:
+	find . -name 'test*.rb' | xargs ruby
+
+check: check_python check_ruby
 
 clean:
 	-find . -name '*.pyc' | xargs rm
