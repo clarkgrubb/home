@@ -44,8 +44,12 @@ SHIFTS = {
   4 => [18, 12, 6, 0],
 }
 
+def to_hex(cp)
+  sprintf("%04X", cp)
+end
+
 def lookup_code_point(code_point)
-  `curl #{UNIDATA_URL} 2> /dev/null | grep '^#{code_point.to_s(16)};'`
+  `curl #{UNIDATA_URL} 2> /dev/null | grep '^#{to_hex(code_point)};'`
 end
 
 def check_prefixes(bytes)
@@ -117,6 +121,6 @@ if $0 == __FILE__
   check_prefixes(bytes)
 
   cp = code_point(bytes)
-  puts "U+" + cp.to_s(16)
+  puts "U+" + to_hex(cp)
   puts lookup_code_point(cp)
 end
