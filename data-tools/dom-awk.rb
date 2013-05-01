@@ -58,6 +58,9 @@ end
 cmd = ['ruby']
 
 cmd << '-e'
+cmd << 'require "rubygems"'
+
+cmd << '-e'
 cmd << 'require "nokogiri"'
 
 cmd << '-e'
