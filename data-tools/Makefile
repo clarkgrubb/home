@@ -6,6 +6,8 @@ LOCAL_INSTALL_DIR = /usr/local/bin
 
 LOCAL_MAN_DIR = /usr/local/share/man
 
+PWD := $(shell pwd)
+
 
 .PHONY: all TAGS check clean test man install install-man
 
@@ -34,6 +36,7 @@ sudo.install: sudo.install-man
 	ln -sf $(PWD)/json-awk.rb $(LOCAL_INSTALL_DIR)/json-awk
 	ln -sf $(PWD)/dom-awk.rb $(LOCAL_INSTALL_DIR)/dom-awk
 	ln -sf $(PWD)/utf8-to-unicode.rb $(LOCAL_INSTALL_DIR)/utf8-to-unicode
+	ln -sf $(PWD)/file_count_split.py $(LOCAL_INSTALL_DIR)/file-count-split
 
 sudo.install-man: man
 	if [ ! -d $(LOCAL_MAN_DIR)/man1 ]; then \
