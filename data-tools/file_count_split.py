@@ -6,7 +6,7 @@ import sys
 
 def split(input_stream, prefix, cnt):
 
-    suffix_fmt = '%0{}d'.format(len(str(cnt)))
+    suffix_fmt = '%0{}d'.format(len(str(cnt - 1)))
 
     filehandles = [open('{}{}'.format(prefix, suffix_fmt % i), 'w')
                    for i
@@ -22,11 +22,11 @@ def split(input_stream, prefix, cnt):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--count', '-c', dest='count', type=int,
+    parser.add_argument('--count', '-c', dest='count', type=int, required=True,
                         help='Number of output files to create.')
-    parser.add_argument('--file', '-f', dest='file',
+    parser.add_argument('--file', '-f', dest='file', required=True,
                         help='Path of the input file to split.')
-    parser.add_argument('--prefix', '-p', dest='prefix',
+    parser.add_argument('--prefix', '-p', dest='prefix', required=True,
                         help='Prefix for the output files.')
 
     args = parser.parse_args()
