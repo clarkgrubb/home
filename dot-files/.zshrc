@@ -52,6 +52,11 @@ elif [[ $OS_TYPE == 'Linux' ]]
 then
     # Linux specific definitions here
 
+    #
+    #
+    pman() {
+        man -t "$@"
+    }
 
 elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
 then
