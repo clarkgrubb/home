@@ -30,6 +30,18 @@ clean:
 	-find . -name '*.html' | xargs rm
 	-rm TAGS
 
+sudo.setup.ruby:
+	gem install nokogiri
+
+# On Mac OS X, might have to replace 'cpan' with 'cpan5.12':
+#
+sudo.setup.perl:
+	cpan -i Text::CSV
+	cpan -i Text::Iconv
+	cpan -i Spreadsheet::XLSX
+
+sudo.setup: sudo.setup.ruby sudo.setup.perl
+
 sudo.install: sudo.install-man
 	ln -sf $(PWD)/csv_to_tsv.py $(LOCAL_INSTALL_DIR)/csv-to-tsv
 	ln -sf $(PWD)/tsv_to_csv.py $(LOCAL_INSTALL_DIR)/tsv-to-csv
@@ -37,6 +49,7 @@ sudo.install: sudo.install-man
 	ln -sf $(PWD)/dom-awk.rb $(LOCAL_INSTALL_DIR)/dom-awk
 	ln -sf $(PWD)/utf8-to-unicode.rb $(LOCAL_INSTALL_DIR)/utf8-to-unicode
 	ln -sf $(PWD)/file_count_split.py $(LOCAL_INSTALL_DIR)/file-count-split
+	ln -sf $(PWD)/xlsx-to-csv.pl $(LOCAL_INSTALL_DIR)/xlsx-to-csv
 
 sudo.install-man: man
 	if [ ! -d $(LOCAL_MAN_DIR)/man1 ]; then \
