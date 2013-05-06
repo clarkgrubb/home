@@ -50,6 +50,8 @@ sudo.install: sudo.install-man
 	ln -sf $(PWD)/utf8-to-unicode.rb $(LOCAL_INSTALL_DIR)/utf8-to-unicode
 	ln -sf $(PWD)/file_count_split.py $(LOCAL_INSTALL_DIR)/file-count-split
 	ln -sf $(PWD)/xlsx-to-csv.pl $(LOCAL_INSTALL_DIR)/xlsx-to-csv
+	ln -sf $(PWD)/set-diff.sh $(LOCAL_INSTALL_DIR)/set-diff
+	ln -sf $(PWD)/set-intersect.sh $(LOCAL_INSTALL_DIR)/set-intersect
 
 sudo.install-man: man
 	if [ ! -d $(LOCAL_MAN_DIR)/man1 ]; then \
