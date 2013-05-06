@@ -52,6 +52,7 @@ sudo.install: sudo.install-man
 	ln -sf $(PWD)/xlsx-to-csv.pl $(LOCAL_INSTALL_DIR)/xlsx-to-csv
 	ln -sf $(PWD)/set-diff.sh $(LOCAL_INSTALL_DIR)/set-diff
 	ln -sf $(PWD)/set-intersect.sh $(LOCAL_INSTALL_DIR)/set-intersect
+	ln -sf $(PWD)/weekdays.sh $(LOCAL_INSTALL_DIR)/weekdays
 
 sudo.install-man: man
 	if [ ! -d $(LOCAL_MAN_DIR)/man1 ]; then \

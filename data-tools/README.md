@@ -19,6 +19,8 @@ File format conversion tools.
 
     tsv-to-csv
 
+    weekdays
+
     xlsx-to-csv
 
 TODO:
