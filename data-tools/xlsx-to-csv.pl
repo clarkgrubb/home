@@ -136,6 +136,8 @@ sub xlsx_to_csv {
 # only extract one sheet (option to specify it)
 # just list sheet names
 # change line ending
+# safe file name code can give two different sheets
+# the same name!  Code probably silently overwrites!
 
 if ($#ARGV != 1) {
   die "USAGE: xlsx-to-csv XLSX_FILE DIRECTORY";

@@ -8,6 +8,7 @@ date -d 20120101 +%a > /dev/null
 
 #  TODO: re-write this in Ruby or Python
 #  TODO: use named parameters
+#  TODO: throw error if 3rd or 4th arg not integer
 
 readonly WEEKDAYS='Mon Tue Wed Thu Fri Sat Sun'
 readonly FIRSTYEAR=2000
