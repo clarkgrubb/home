@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-SHELLFLAG :=  -o pipefail
+.SHELLFLAGS :=  -o pipefail
 
 .DELETE_ON_ERROR:
 .SUFFIXES:
