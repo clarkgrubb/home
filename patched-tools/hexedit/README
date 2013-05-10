@@ -10,3 +10,9 @@ Download `hexedit` and apply a patch which supports aligned search.
     $ make
 
     $ sudo make install
+
+On Cygwin:
+
+   $ make cygwin.build
+
+   $ make install

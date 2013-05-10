@@ -23,7 +23,15 @@ hexedit-search2a.diff:
 patch: hexedit-search2a.diff hexedit
 	patch -p0 < $<
 
+cygwin.patch: patch
+	patch hexedit/hexedit.h < hexedit.h.diff
+
 build: patch
+	(cd hexedit; \
+	./configure; \
+	make)
+
+cygwin.build: cygwin.patch
 	(cd hexedit; \
 	./configure; \
 	make)
@@ -31,7 +39,5 @@ build: patch
 clobber:
 	-rm -rf hexedit hexedit-1.2.13.src.tgz hexedit-search2a.diff
 
-#
-#
 install:
 	(cd hexedit; make install)
