@@ -2,7 +2,13 @@
 #
 
 export COMMON_PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
-export OS_TYPE=$(/usr/bin/uname -s)
+if [ -e /usr/bin/uname ]
+then
+    export OS_TYPE=$(/usr/bin/uname -s)
+else
+    export OS_TYPE=$(/bin/uname -s)
+fi
+
 if [[ $OS_TYPE[0,6] == CYGWIN ]]
 then
     export OS_TYPE='Cygwin'
