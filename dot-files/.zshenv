@@ -12,6 +12,7 @@ export EDITOR='emacs -q'
 export HISTSIZE=2000
 export HISTFILE=~/.zsh_history
 export SAVEHIST=2000
+export READNULLCMD=less
 
 # So we can have version control info in the prompt
 #
