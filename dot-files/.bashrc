@@ -17,6 +17,12 @@ export HISTFILE=~/.bash_history
 
 export PS1="\[\033[31m\]$OS_TYPE:bash \[\033[34m\]\w \[\033[30m\]\`if [ \$? == 0 ]; then echo \:\); else echo \:\(; fi\` "
 
+# awk with tab as FS
+#
+function tawk() {
+    awk -F $'\t' "$@"
+}
+
 if [[ $OS_TYPE == 'Darwin' ]]
 then
 
