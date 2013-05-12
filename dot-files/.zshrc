@@ -1,3 +1,5 @@
+. ~/.zshenv
+
 # Aliases and Shell Function Definitions
 #
 
