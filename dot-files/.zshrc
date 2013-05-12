@@ -1,7 +1,6 @@
 # Environment Variables
 #
 
-export COMMON_PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 if [ -e /usr/bin/uname ]
 then
     export OS_TYPE=$(/usr/bin/uname -s)
@@ -11,7 +10,7 @@ fi
 
 if [[ $OS_TYPE[0,6] == CYGWIN ]]
 then
-    export OS_TYPE='Cygwin'
+    export OS_TYPE=Cygwin
 fi
 
 export EDITOR='emacs -q'
@@ -41,10 +40,10 @@ PS1="%F{red}$OS_TYPE:zsh%f %F{blue}%3~ %F{green}\${vcs_info_msg_0_}%f%(?,:%),:()
 # Aliases and Shell Function Definitions
 #
 
-export OS_TYPE=`uname -s`
+export OS_TYPE=$(uname -s)
 if [[ ${OS_TYPE:0:6} == CYGWIN ]]
 then
-    export OS_TYPE='Cygwin'
+    export OS_TYPE=Cygwin
 fi
 
 # Instead of running the last command
@@ -80,11 +79,10 @@ function tawk() {
     awk -F $'\t' "$*"
 }
 
-if [[ $OS_TYPE == 'Darwin' ]]
+if [[ $OS_TYPE == Darwin ]]
 then
 
-    export HOSTNAME=`hostname -s`
-    export PATH=$COMMON_PATH
+    export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
     export JAVA_HOME=/Library/Java/Home
     export ITUNES_PLAYLIST=KGRB
 
@@ -99,12 +97,11 @@ then
     . ~/.zsh_itunes
 
 
-elif [[ $OS_TYPE == 'Linux' ]]
+elif [[ $OS_TYPE == Linux ]]
 then
     # Linux specific definitions here
 
-    export HOSTNAME=`hostname -s`
-    export PATH=$COMMON_PATH
+    export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 
     readonly jvm_dir=/usr/lib/jvm
     for jdk in java-6-openjdk java-6-openjdk-i386 java-6-sun
@@ -124,10 +121,7 @@ then
 elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
 then
     # Windows specific definitions here
-
-    export HOSTNAME=`hostname`
-    export PATH=$PATH:$COMMON_PATH
-
+    
     cd $HOME
 
 else
