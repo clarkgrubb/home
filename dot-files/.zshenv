@@ -74,3 +74,5 @@ else
     echo "unrecognized OS:" $OS_TYPE
 
 fi
+
+export _ZSHENV=1

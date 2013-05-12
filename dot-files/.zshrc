@@ -1,4 +1,7 @@
-. ~/.zshenv
+if [ ! $_ZSHENV ]
+then
+    . ~/.zshenv
+fi
 
 # Aliases and Shell Function Definitions
 #
