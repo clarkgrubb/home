@@ -154,6 +154,13 @@
 
 (defalias 'perl-mode 'cperl-mode)
 
+;; Display an image in a buffer.  If the buffer is saved
+;; to a file, the image is not persisted in any way.
+;;
+(defun insert-file-image (file)
+  (interactive "f")
+  (insert-image (create-image file)))
+
 ;; Makes the latex input method available.  Use C-\
 ;; to turn it on.
 ;;
@@ -162,5 +169,9 @@
 ;; More personal key bindings
 ;;
 (global-set-key "\C-cb" 'revert-buffer)
+(global-set-key "\C-cc" 'clipboard-yank)
 (global-set-key "\C-cd" 'ido-dired)
+(global-set-key "\C-ci" 'insert-file-image)
 (global-set-key "\C-cr" 'query-replace)
+(global-set-key "\C-cv" 'clipboard-kill-ring-save)
+(global-set-key "\C-cx" 'clipboard-kill-region)
