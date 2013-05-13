@@ -40,7 +40,7 @@ then
     export HOSTNAME=`hostname -s`
     export PATH=$COMMON_PATH
 
-    readonly jvm_dir=/usr/lib/jvm
+    jvm_dir=/usr/lib/jvm
     for jdk in java-6-openjdk java-6-openjdk-i386 java-6-sun
     do
         if [ -e ${jvm_dir}/${jdk} ]

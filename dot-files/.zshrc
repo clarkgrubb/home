@@ -103,7 +103,7 @@ then
 
     export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 
-    readonly jvm_dir=/usr/lib/jvm
+    jvm_dir=/usr/lib/jvm
     for jdk in java-6-openjdk java-6-openjdk-i386 java-6-sun
     do
         if [ -e ${jvm_dir}/${jdk} ]
@@ -121,7 +121,7 @@ then
 elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
 then
     # Windows specific definitions here
-    
+
     cd $HOME
 
 else
