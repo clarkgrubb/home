@@ -161,6 +161,12 @@
   (interactive "f")
   (insert-image (create-image file)))
 
+;; Show visited file path in the minibuffer.
+;;
+(defun display-buffer-file-name ()
+  (interactive)
+  (message buffer-file-name))
+
 ;; Makes the latex input method available.  Use C-\
 ;; to turn it on.
 ;;
@@ -171,6 +177,7 @@
 (global-set-key "\C-cb" 'revert-buffer)
 (global-set-key "\C-cc" 'clipboard-yank)
 (global-set-key "\C-cd" 'ido-dired)
+(global-set-key "\C-cf" 'display-buffer-file-name)
 (global-set-key "\C-ci" 'insert-file-image)
 (global-set-key "\C-cr" 'query-replace)
 (global-set-key "\C-cv" 'clipboard-kill-ring-save)
