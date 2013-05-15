@@ -12,6 +12,10 @@ if [[ $OS_TYPE[0,6] == CYGWIN ]]
 then
     export OS_TYPE=Cygwin
 fi
+if [[ $OS_TYPE[0,5] == MinGW ]]
+then
+    export OS_TYPE=MinGW
+fi
 
 export EDITOR='emacs -q'
 export HISTSIZE=2000
@@ -118,7 +122,7 @@ then
         man -t "$@"
     }
 
-elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
+elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'MinGW' ]]
 then
     # Windows specific definitions here
 

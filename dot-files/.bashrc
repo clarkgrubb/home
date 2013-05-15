@@ -5,7 +5,11 @@ export COMMON_PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 export OS_TYPE=`uname -s`
 if [[ ${OS_TYPE:0:6} == CYGWIN ]]
 then
-    export OS_TYPE='Cygwin'
+    export OS_TYPE=Cygwin
+fi
+if [[ ${OS_TYPE:0:5} == MINGW ]]
+then
+    export OS_TYPE=MinGW
 fi
 
 export EDITOR='emacs -q'
@@ -23,10 +27,9 @@ function tawk() {
     awk -F $'\t' "$@"
 }
 
-if [[ $OS_TYPE == 'Darwin' ]]
+if [[ $OS_TYPE == Darwin ]]
 then
 
-    export HOSTNAME=`hostname -s`
     export PATH=$COMMON_PATH
     export JAVA_HOME=/Library/Java/Home
 
@@ -34,10 +37,9 @@ then
         man -t "$@" | open -f -a /Applications/Preview.app
     }
 
-elif [[ $OS_TYPE == 'Linux' ]]
+elif [[ $OS_TYPE == Linux ]]
 then
 
-    export HOSTNAME=`hostname -s`
     export PATH=$COMMON_PATH
 
     jvm_dir=/usr/lib/jvm
@@ -49,10 +51,9 @@ then
         fi
     done
 
-elif [[ $OS_TYPE == 'Cygwin' || $OS_TYPE == 'Windows' ]]
+elif [[ $OS_TYPE == Cygwin || $OS_TYPE == MinGW ]]
 then
 
-    export HOSTNAME=`hostname`
     export PATH=$PATH:$COMMON_PATH
 
     cd $HOME
