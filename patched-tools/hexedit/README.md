@@ -13,6 +13,6 @@ Download `hexedit` and apply a patch which supports aligned search.
 
 On Cygwin:
 
-   $ make cygwin.build
+    $ make cygwin.build
 
-   $ make install
+    $ make install
