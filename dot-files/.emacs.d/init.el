@@ -136,6 +136,11 @@
 ;;
 (setq-default indent-tabs-mode nil)
 
+;; More text modes.
+;;
+(autoload 'markdown-mode "markdown-mode" "Markdown Mode." t)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
 ;; More programming language modes.
 ;;
 (autoload 'erlang-mode "erlang" "Erlang Mode." t)
@@ -149,8 +154,6 @@
 
 (autoload 'php-mode "php-mode" "PHP Mode." t)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
-
-(autoload 'markdown-mode "markdown-mode" "Markdown Mode." t)
 
 (defalias 'perl-mode 'cperl-mode)
 
