@@ -184,7 +184,7 @@
 ;; related functions and put in autoloaded library.
 ;;
 (defun show-tag-line (tagname &optional next-p regexp-p)
-  (interactive (find-tag-interactive "Find tag: "))
+  (interactive (find-tag-interactive "Show Tag: "))
   (let* ((buf (find-tag-noselect tagname next-p regexp-p))
          (pos (with-current-buffer buf (point)))
          (end (with-current-buffer buf (line-end-position))))
