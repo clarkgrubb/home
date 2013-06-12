@@ -1,6 +1,6 @@
 SCRIPTS_DIR := ~/Library/Scripts
 
-APPLESCRIPTS := ToggleCharacterViewer.scpt ToggleKeyboardViewer.scpt
+APPLESCRIPTS := ToggleCharacterViewer.scpt ToggleKeyboardViewer.scpt OpenSystemPreferences.scpt
 
 install: | scripts_dir
 	@echo copying dot files to HOME directory
