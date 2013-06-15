@@ -33,6 +33,11 @@ then
     export PATH=$COMMON_PATH
     export JAVA_HOME=/Library/Java/Home
 
+    # For rbenv and virtualenv
+    #
+    export PATH=~/.rbenv/shims:$PATH
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+
     pman() {
         man -t "$@" | open -f -a /Applications/Preview.app
     }
@@ -41,6 +46,11 @@ elif [[ $OS_TYPE == Linux ]]
 then
 
     export PATH=$COMMON_PATH
+
+    # For rbenv and virtualenv
+    #
+    export PATH=~/.rbenv/shims:$PATH
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
 
     jvm_dir=/usr/lib/jvm
     for jdk in java-6-openjdk java-6-openjdk-i386 java-6-sun

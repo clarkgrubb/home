@@ -90,6 +90,11 @@ then
     export JAVA_HOME=/Library/Java/Home
     export ITUNES_PLAYLIST=KGRB
 
+    # For rbenv and virtualenv
+    #
+    export PATH=~/.rbenv/shims:$PATH
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+
     # For reading man pages with Preview.app.
     #
     pman() {
@@ -106,6 +111,11 @@ then
     # Linux specific definitions here
 
     export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
+
+    # For rbenv and virtualenv
+    #
+    export PATH=~/.rbenv/shims:$PATH
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
 
     jvm_dir=/usr/lib/jvm
     for jdk in java-6-openjdk java-6-openjdk-i386 java-6-sun
