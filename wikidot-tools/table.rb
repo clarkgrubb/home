@@ -310,7 +310,7 @@ if $0 == __FILE__
                         [ '--sort', "-s", GetoptLong::NO_ARGUMENT ],
                         [ '--statistics', "-t", GetoptLong::NO_ARGUMENT ],
                         [ '--extract', "-x", GetoptLong::NO_ARGUMENT ],
-                        [ '--page', "-p", GetoptLong::REQUIRED_ARGUMENT ],
+                        [ '--page', "-p", GetoptLong::REQUIRED_ARGUMENT ]
                         )
 
   columns = []
