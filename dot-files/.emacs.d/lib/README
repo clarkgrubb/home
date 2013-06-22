@@ -30,3 +30,9 @@ To get scala-mode2
 
   git clone https://github.com/hvesalai/scala-mode2
   rm -rf scala-mode2/.git
+
+To get haskell-mode
+
+  wget http://projects.haskell.org/haskellmode-emacs/haskell-mode-2.8.0.tar.gz
+  tar xf haskell-mode-2.8.0.tar.gz 
+  mv haskell-mode-2.8.0 haskell-mode

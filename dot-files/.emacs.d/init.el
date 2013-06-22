@@ -158,8 +158,11 @@
 (add-to-list 'load-path (concat emacs-dir "lib/scala-mode2/"))
 (autoload 'scala-mode "scala-mode2" "Scala Mode." t)
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
-
 (require 'scala-mode2)
+
+(load (concat emacs-dir "lib/haskell-mode/haskell-site-file.el"))
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 (defalias 'perl-mode 'cperl-mode)
 
