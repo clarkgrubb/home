@@ -155,6 +155,12 @@
 (autoload 'php-mode "php-mode" "PHP Mode." t)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 
+(add-to-list 'load-path (concat emacs-dir "lib/scala-mode2/"))
+(autoload 'scala-mode "scala-mode2" "Scala Mode." t)
+(add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
+
+(require 'scala-mode2)
+
 (defalias 'perl-mode 'cperl-mode)
 
 ;; Display an image in a buffer.  If the buffer is saved

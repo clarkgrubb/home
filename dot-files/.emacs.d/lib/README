@@ -25,3 +25,8 @@ To get go-mode.el
 To get latex.el
 
   wget https://raw.github.com/clarkgrubb/latex-input/master/latex.el
+
+To get scala-mode2
+
+  git clone https://github.com/hvesalai/scala-mode2
+  rm -rf scala-mode2/.git
