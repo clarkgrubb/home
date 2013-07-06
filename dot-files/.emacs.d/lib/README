@@ -36,3 +36,10 @@ To get haskell-mode
   wget http://projects.haskell.org/haskellmode-emacs/haskell-mode-2.8.0.tar.gz
   tar xf haskell-mode-2.8.0.tar.gz 
   mv haskell-mode-2.8.0 haskell-mode
+
+To install tuareg-mode
+
+  wget https://forge.ocamlcore.org/frs/download.php/514/tuareg-2.0.4.tgz
+  tar xf tuareg-2.0.4.tgz
+  wget https://forge.ocamlcore.org/frs/download.php/516/tuareg-caml-mode.tar.gz 
+  tar xf tuareg-caml-mode.tar.gz

@@ -160,6 +160,12 @@
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
 (require 'scala-mode2)
 
+(add-to-list 'load-path (concat emacs-dir "lib/tuareg-caml-mode"))
+(add-to-list 'load-path (concat emacs-dir "lib/tuareg-2.0.4"))
+(setq auto-mode-alist (cons '("\\.ml\\w?" . tuareg-mode) auto-mode-alist))
+(autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
+(autoload 'camldebug "camldebug" "Run the Caml debugger" t)
+
 (load (concat emacs-dir "lib/haskell-mode/haskell-site-file.el"))
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
