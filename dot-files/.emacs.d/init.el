@@ -87,6 +87,8 @@
 
 ;; For use with Chrome "Edit with Emacs" extension
 ;;
+;; Listens on port 9292.
+;;
 ;; Use C-c C-c to send buffer back to Chrome.
 ;;
 (require 'edit-server)
