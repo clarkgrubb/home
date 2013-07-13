@@ -99,7 +99,8 @@
 ;;
 ;; Use C-x # to send buffer back to Firefox.
 ;;
-(server-start)
+(require 'server)
+(unless (server-running-p) (server-start))
 
 ;; Put twiddle files in ~/.emacs-backups
 ;;
