@@ -87,7 +87,9 @@ if [[ $OS_TYPE == Darwin ]]
 then
 
     export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
-    export JAVA_HOME=/Library/Java/Home
+    export JAVA7_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
+    export JAVA6_HOME=/Library/Java/Home
+    export JAVA_HOME=$JAVA6_HOME
     export ITUNES_PLAYLIST=KGRB
 
     # For rbenv and virtualenv
