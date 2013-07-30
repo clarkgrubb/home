@@ -55,13 +55,15 @@ then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
 
     jvm_dir=/usr/lib/jvm
+    JAVA7_HOME=/usr/lib/jvm/java-7-openjdk-amd64
     for jdk in java-6-openjdk java-6-openjdk-i386 java-6-sun
     do
         if [ -e ${jvm_dir}/${jdk} ]
         then
-            export JAVA_HOME=${jvm_dir}/${jdk}
+            export JAVA6_HOME=${jvm_dir}/${jdk}
         fi
     done
+    JAVA_HOME=$JAVA6_HOME
 
 elif [[ $OS_TYPE == Cygwin || $OS_TYPE == MinGW ]]
 then
