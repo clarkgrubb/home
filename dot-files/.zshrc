@@ -90,6 +90,8 @@ then
     export JAVA7_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
     export JAVA6_HOME=/Library/Java/Home
     export JAVA_HOME=$JAVA6_HOME
+    export PATH=$JAVA_HOME/bin:$PATH
+
     export ITUNES_PLAYLIST=KGRB
 
     # For rbenv and virtualenv
@@ -114,11 +116,6 @@ then
 
     export PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 
-    # For rbenv and virtualenv
-    #
-    export PATH=~/.rbenv/shims:$PATH
-    export VIRTUAL_ENV_DISABLE_PROMPT=1
-
     jvm_dir=/usr/lib/jvm
     JAVA7_HOME=/usr/lib/jvm/java-7-openjdk-amd64
     for jdk in java-6-openjdk java-6-openjdk-i386 java-6-sun
@@ -129,6 +126,12 @@ then
         fi
     done
     JAVA_HOME=$JAVA6_HOME
+    export PATH=$JAVA_HOME/bin:$PATH
+
+    # For rbenv and virtualenv
+    #
+    export PATH=~/.rbenv/shims:$PATH
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
 
     # send ps file to stdout
     #

@@ -49,11 +49,6 @@ then
 
     export PATH=$COMMON_PATH
 
-    # For rbenv and virtualenv
-    #
-    export PATH=~/.rbenv/shims:$PATH
-    export VIRTUAL_ENV_DISABLE_PROMPT=1
-
     jvm_dir=/usr/lib/jvm
     JAVA7_HOME=/usr/lib/jvm/java-7-openjdk-amd64
     for jdk in java-6-openjdk java-6-openjdk-i386 java-6-sun
@@ -64,6 +59,14 @@ then
         fi
     done
     JAVA_HOME=$JAVA6_HOME
+    export PATH=$JAVA_HOME/bin:$PATH
+
+    # For rbenv and virtualenv
+    #
+    export PATH=~/.rbenv/shims:$PATH
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+
 
 elif [[ $OS_TYPE == Cygwin || $OS_TYPE == MinGW ]]
 then
