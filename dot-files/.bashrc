@@ -1,7 +1,7 @@
 # Environment Variables, Aliases, and Shell Function Definitions
 #
 
-export COMMON_PATH=/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
+export COMMON_PATH=~/Bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 export OS_TYPE=`uname -s`
 if [[ ${OS_TYPE:0:6} == CYGWIN ]]
 then
@@ -34,6 +34,7 @@ then
     export JAVA7_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
     export JAVA6_HOME=/Library/Java/Home
     export JAVA_HOME=$JAVA6_HOME
+    export PATH=$JAVA_HOME/bin:$PATH
 
     # For rbenv and virtualenv
     #
