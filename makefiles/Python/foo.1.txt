@@ -1,9 +1,0 @@
-= FOO(1)
-
-== NAME
-
-foo - print "foo"
-
-== SYNOPSIS
-
-Print "foo".  Used for testing.
