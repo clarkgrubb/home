@@ -16,7 +16,7 @@ if [[ $OS_TYPE[0,5] == MinGW ]]
 then
     export OS_TYPE=MinGW
 fi
-export MANPATH=~/Man:$(manpath)
+export MANPATH=~/Man:$(MANPATH= manpath)
 export EDITOR='emacs -q'
 export HISTSIZE=2000
 export HISTFILE=~/.zsh_history
