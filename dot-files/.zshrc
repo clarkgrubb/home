@@ -77,12 +77,6 @@ function tabname() {
     echo -n "\033]0;$*\007"
 }
 
-# awk with tab as FS
-#
-function tawk() {
-    awk -F $'\t' "$*"
-}
-
 if [[ $OS_TYPE == Darwin ]]
 then
 
