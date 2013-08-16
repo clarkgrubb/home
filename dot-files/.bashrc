@@ -3,6 +3,7 @@
 
 export COMMON_PATH=~/Bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 export OS_TYPE=`uname -s`
+export MANPATH=~/Man:$(manpath)
 if [[ ${OS_TYPE:0:6} == CYGWIN ]]
 then
     export OS_TYPE=Cygwin
@@ -11,7 +12,6 @@ if [[ ${OS_TYPE:0:5} == MINGW ]]
 then
     export OS_TYPE=MinGW
 fi
-
 export EDITOR='emacs -q'
 export HISTSIZE=2000
 export HISTFILE=~/.bash_history
