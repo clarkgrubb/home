@@ -55,15 +55,6 @@ fi
 #
 alias r='command r'
 
-# Don't launch X Windows to run Emacs.
-#
-# Put the OS and Editor in tab.
-#
-# Unfortunately this does not revert the
-# tab name when exiting Emacs.
-#
-alias emacs='tabname $OS_TYPE \(Emacs\) && emacs -nw'
-
 # Makes git tab completion faster
 #
 __git_files () {
