@@ -145,6 +145,10 @@
 (autoload 'markdown-mode "markdown-mode" "Markdown Mode." t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+(autoload 'yaml-mode "yaml-mode" "YAML Mode." t)
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
 ;; More programming language modes.
 ;;
 (autoload 'erlang-mode "erlang" "Erlang Mode." t)
