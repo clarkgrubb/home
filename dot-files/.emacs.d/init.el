@@ -33,6 +33,13 @@
         "-*-*-*-*-*-fontset-mac")
        'keep)))
 
+;; Don't use the right option key as a meta key.
+;; This way it can be used to enter Latin accent characters.
+;;
+(if window-system
+    (when (eq system-type 'darwin)
+      (setq mac-right-option-modifier nil)))
+
 ;; Make names for ~ and ~/.emacs.d
 ;;
 (setq home-dir (getenv "HOME"))
