@@ -56,6 +56,10 @@
 ;;
 (require 'cl)
 
+;; No Lisp comment in the *scratch* buffer.
+;;
+(setq initial-scratch-message nil)
+
 ;; Set point to previous position when visiting a file.
 ;; Stores them in ~/.emacs-places
 ;;
@@ -205,22 +209,6 @@
 ;;
 (require 'latex)
 
-;; Get line a tag is defined on.  For function definitions
-;; this will often contain the signature.
-;;
-;; TODO: observe prog mode use knowledge to find end of signature
-;; also include nearby comment?  Possibly put in separate buffer
-;; if more than a certain number of lines long.  Define a suite of
-;; related functions and put in autoloaded library.
-;;
-(defun show-tag-line (tagname &optional next-p regexp-p)
-  (interactive (find-tag-interactive "Show Tag: "))
-  (let* ((buf (find-tag-noselect tagname next-p regexp-p))
-         (pos (with-current-buffer buf (point)))
-         (end (with-current-buffer buf (line-end-position))))
-    (message (with-current-buffer buf (buffer-substring pos end)))))
-
-
 ;; More personal key bindings
 ;;
 (global-set-key "\C-cb" 'revert-buffer)
@@ -229,6 +217,5 @@
 (global-set-key "\C-cf" 'display-buffer-file-name)
 (global-set-key "\C-ci" 'insert-file-image)
 (global-set-key "\C-cr" 'query-replace)
-(global-set-key "\C-ct" 'show-tag-line)
 (global-set-key "\C-cv" 'clipboard-kill-ring-save)
 (global-set-key "\C-cx" 'clipboard-kill-region)
