@@ -56,9 +56,10 @@
 ;;
 (require 'cl)
 
-;; No Lisp comment in the *scratch* buffer.
+;; Put a mode setting instruction in the *scratch* buffer, in case
+;; we save it.  
 ;;
-(setq initial-scratch-message nil)
+(setq initial-scratch-message ";; -*- mode: lisp-interaction -*-\n\n")
 
 ;; Set point to previous position when visiting a file.
 ;; Stores them in ~/.emacs-places
