@@ -213,10 +213,10 @@
 ;; More personal key bindings
 ;;
 (global-set-key "\C-cb" 'revert-buffer)
-(global-set-key "\C-cc" 'clipboard-yank)
+(global-set-key "\C-cc" 'clipboard-kill-ring-save)
 (global-set-key "\C-cd" 'ido-dired)
 (global-set-key "\C-cf" 'display-buffer-file-name)
 (global-set-key "\C-ci" 'insert-file-image)
 (global-set-key "\C-cr" 'query-replace)
-(global-set-key "\C-cv" 'clipboard-kill-ring-save)
+(global-set-key "\C-cv" 'clipboard-yank)
 (global-set-key "\C-cx" 'clipboard-kill-region)
