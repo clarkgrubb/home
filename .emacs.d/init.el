@@ -98,6 +98,14 @@
         (setq ispell-program-name path)
         (return))))
 
+;; Make shell-mode work with UTF-8.  This provides a way to use
+;; Emacs input-methods to enter Unicode characters at the shell.
+;;
+(add-hook 'shell-mode-hook
+          (lambda ()
+            (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)
+            ))
+
 ;; For use with Chrome "Edit with Emacs" extension
 ;;
 ;; Listens on port 9292.
