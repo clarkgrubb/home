@@ -188,6 +188,10 @@
 (add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
 (require 'scala-mode2)
 
+;; Instead of objc-mode
+;;
+(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
+
 (add-to-list 'load-path (concat emacs-dir "lib/tuareg-caml-mode"))
 (add-to-list 'load-path (concat emacs-dir "lib/tuareg-2.0.4"))
 (setq auto-mode-alist (cons '("\\.ml\\w?" . tuareg-mode) auto-mode-alist))
