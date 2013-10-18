@@ -4,7 +4,7 @@ HOME
 
 Dot files for Darwin, Linux, Cygwin, and MinGW.
 
-installation_ | location_ | username_ | subdirectories_ | hidden-files | temporary-files
+installation_ | home-directories_ | users_ | subdirectories_ | hidden-files_ | temporary-files_
 
 Installation
 ------------
@@ -13,8 +13,8 @@ Installation
 
     $ make
 
-Location
---------
+Home Directories
+----------------
 
 Early versions of Unix put user home directories in ``/usr``.  In Linux and BSD the user home directories are in ``/home``.
 
@@ -32,8 +32,8 @@ In Windows terminology, the home directory is called the user profile folder. Wi
 
 Windows sets the environment variable ``%UserProfile%`` to the path of the current user profile folder.
 
-Username
---------
+Users
+-----
 
 When an Ubuntu instance is created, the setup procedure prompts for the user's full name, login name, and password.  The ``adduser`` command can be used to create more users.
 
@@ -124,8 +124,8 @@ Temporary Files
 
 POSIX systems are supposed to set the ``$TMPDIR`` environment variable.  Mac OS X does.
 
-Linux, in my experience does not.  The Filesystem Hierarchy Standard guarantees that ``/tmp`` will exist, howver.
+Linux, in my experience does not.  `The Filesystem Hierarchy Standard <http://www.pathname.com/fhs/pub/fhs-2.3.html>`_ guarantees that ``/tmp`` will exist, howver.
 
-http://www.pathname.com/fhs/pub/fhs-2.3.html
+
 
 Windows sets the ``%TEMP%`` environment variable to the location of the temporary file directory.
