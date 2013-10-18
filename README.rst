@@ -2,9 +2,13 @@
 HOME
 ----
 
-Dot files for Darwin, Linux, Cygwin, and MinGW.
-
 installation_ | `home directories <#home-directories>`_ | users_ | subdirectories_ | `hidden files <#hidden-files>`_ | `temporary files <#temporary-files>`_
+
+Summary
+-------
+
+Dot files for Darwin, Linux, Cygwin, and MinGW.  Notes on home directory organization.
+
 
 Installation
 ------------
