@@ -7,7 +7,7 @@ _itunes() {
 }
 
 _itunes_playlist() {
-    playlist_scpt=~/.applescript/iTunesPlaylist.scpt
+    playlist_scpt=~/Library/Scripts/iTunesPlaylist.scpt
     file=/tmp/$$.$1.txt
 
     export LC_ALL=C
@@ -59,7 +59,7 @@ EOF
 
 itunes() {
 
-    local scptdir=~/.applescript
+    local scptdir=~/Library/Scripts
     local current_track_scpt=$scptdir/CurrentTrack.scpt
     local current_playlist_scpt=$scptdir/CurrentPlaylist.scpt
 

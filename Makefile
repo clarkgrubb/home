@@ -6,7 +6,7 @@ SHELL := /bin/bash
 .SUFFIXES:
 
 SCRIPTS_DIR := ~/Library/Scripts
-APPLESCRIPTS := ToggleCharacterViewer.scpt ToggleKeyboardViewer.scpt OpenSystemPreferences.scpt
+APPLESCRIPTS := $(wildcard applescript/*)
 
 .PHONY: install all
 
@@ -19,8 +19,8 @@ install: | scripts_dir
 	@echo copying dot files to HOME directory
 	./bin/install.sh ~
 	if [ $$OS_TYPE == Darwin ]; then \
-	for applescript in $(APPLESCRIPTS); do \
-	cp .applescript/$$applescript $(SCRIPTS_DIR); \
+	for as in $(APPLESCRIPTS); do \
+	cp $$as $(SCRIPTS_DIR); \
 	done; \
 	fi
 
