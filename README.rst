@@ -49,35 +49,47 @@ Windows some home directory subdirectories which break the no-space rule and the
     HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
 
 
-==============  =========  =================================================================================
-subdirectory    os         description
-==============  =========  =================================================================================
-Articles        all        PDFs; link to ~/Dropbox/Articles
-Bin             all        put it first in PATH; a place to install executables without admin privilege
-<Company>       all        work for <Company>
-Desktop         all        files here appear as icons on the desktop
-Documents       all        some applications keep their files here; including ~/Documents/Eclipse
-                           and ~/Documents/Notebooks for iPython; editor files go in ~/Dropbox/Documents
-Downloads       all        browsers should be configured to download files here; it is generally
-Dropbox         host       Articles, Documents, Elements, Pictures
-Env             all        virtualenv, rbenv environments
-Etc             all        ~/Etc/UnicodeData.txt
-Lang            all        subdirectories by programming language; if the code is put under version
-                           control it is in Src
-Library         mac        scripts run by Fastscripts must be in ~/Library/Scripts
-Man             all        put it first in MANPATH; a place to install man pages w/o admin privilege
-Movies          all        keep this empty
-Music           all        iTunes and Amazon Cloud Player
-Pictures        all        link to ~/Dropbox/Pictures; also Omnigraffle and image editor files;
-                           PDFs created by R
-Public                     If part of the home directory is made available on the local network,
-                           make it this directory. E.g on Mac
-                           ``System Preferences | Sharing | File Sharing``
-Shared          all        a directory which is shared with guest VMs
-Src             all        tarballs, git repos, isos for VM
-Trash           all        On Mac, symlink to .Trash
-Videos          win/linux  Windows/Ubuntu place for movies; keep this empty
-==============  =========  =================================================================================
+=================  =========  =================================================================================
+subdirectory       os         description
+=================  =========  =================================================================================
+AppData            win
+Application Data   win
+Articles           all        PDFs; link to ~/Dropbox/Articles
+Bin                all        put it first in PATH; a place to install executables without admin privilege
+<Company>          all        work for <Company>
+Desktop            all        files here appear as icons on the desktop
+Documents          all        some applications keep their files here; including ~/Documents/Eclipse
+                              and ~/Documents/Notebooks for iPython; editor files go in ~/Dropbox/Documents
+Downloads          all        browsers should be configured to download files here; it is generally
+Dropbox            host       Articles, Documents, Elements, Pictures
+Env                all        virtualenv, rbenv environments
+Etc                all        ~/Etc/UnicodeData.txt
+Favorits           win
+Lang               all        subdirectories by programming language; if the code is put under version
+                              control it is in Src
+Library            mac        scripts run by Fastscripts must be in ~/Library/Scripts
+Links              win
+Local Settings     win
+Man                all        put it first in MANPATH; a place to install man pages w/o admin privilege
+Movies             all        keep this empty
+Music              all        iTunes and Amazon Cloud Player
+NetHood            win
+Pictures           all        link to ~/Dropbox/Pictures; also Omnigraffle and image editor files;
+                              PDFs created by R
+Public             all        If part of the home directory is made available on the local network,
+                              make it this directory. E.g on Mac
+                              ``System Preferences | Sharing | File Sharing``
+PrintHood          win
+Recent             win
+Saved Games        win
+Searches           win
+Shared             all        a directory which is shared with guest VMs
+Src                all        tarballs, git repos, isos for VM
+Start Menu         win
+Templates          win/linux
+Trash              all        On Mac, symlink to .Trash
+Videos             win/linux  Windows/Ubuntu place for movies; keep this empty
+=================  =========  =================================================================================
 
 
 Hidden Files
@@ -93,14 +105,20 @@ To expose a file to the Finder:
 
     SetFile -a v foo.txt
 
-//Windows...//
+*Windows...*
 
 NTUSER.DAT* files
 
 Temporary Files
 ---------------
 
- In windows %TEMP%, in POSIX $TMPDIR or maybe /tmp.
+POSIX systems are supposed to set the ``$TMPDIR`` environment variable.  Mac OS X does.
+
+Linux, in my experience does not.  The Filesystem Hierarchy Standard guarantees that ``/tmp`` will exist, howver.
+
+http://www.pathname.com/fhs/pub/fhs-2.3.html
+
+Windows sets the ``%TEMP%`` environment variable to the location of the temporary file directory.
 
 Projects
 --------
