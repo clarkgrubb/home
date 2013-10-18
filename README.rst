@@ -28,7 +28,7 @@ Mac OS X puts the home directories in ``/User``. It sets the HOME environment va
 
 In Windows terminology, the home directory is called the *user profile folder*.
 
-DOS did not have a home directory, and Windows 95 had a single ``C:\My Documents directory``.
+DOS did not have a home directory, and Windows 95 had a single ``C:\My Documents`` directory.
 
 Windows NT was the first multiuser version of Windows. It put user profile folders in ``C:\WINNT\Profiles``. Windows XP put them in ``C:\Documents and Settings``.  Since Windows Vista they have been in ``C:\Users``.
 
