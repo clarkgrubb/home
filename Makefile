@@ -8,20 +8,22 @@ SHELL := /bin/bash
 SCRIPTS_DIR := ~/Library/Scripts
 APPLESCRIPTS := $(wildcard applescript/*)
 
-.PHONY: install all
+.PHONY: scripts_dir install-applescript install all
 
 scripts_dir:
 	if [ $$OS_TYPE == Darwin ]; then \
 	mkdir -p $(SCRIPTS_DIR); \
 	fi
 
-install: | scripts_dir
-	@echo copying dot files to HOME directory
-	./bin/install.sh ~
+install-applescript: | scripts_dir
 	if [ $$OS_TYPE == Darwin ]; then \
-	for as in $(APPLESCRIPTS); do \
-	cp $$as $(SCRIPTS_DIR); \
+	for script in $(APPLESCRIPTS); do \
+	cp $$script $(SCRIPTS_DIR); \
 	done; \
 	fi
+
+install: install-applescript
+	@echo copying dot files to HOME directory
+	./bin/install.sh ~
 
 all: install
