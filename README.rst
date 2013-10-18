@@ -4,7 +4,7 @@ HOME
 
 Dot files for Darwin, Linux, Cygwin, and MinGW.
 
-installation_ | `home directories <home-directories>`_ | users_ | subdirectories_ | hidden-files_ | temporary-files_
+installation_ | `home directories <#home-directories>`_ | users_ | subdirectories_ | hidden-files_ | temporary-files_
 
 Installation
 ------------
