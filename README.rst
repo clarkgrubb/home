@@ -56,11 +56,13 @@ On ``Mac OS X`` the setup procedure prompts for the user's full name, login name
 Subdirectories
 --------------
 
-I like a home directory which only contains subdirectories and hidden files.  Desktop operating systems create some subdirectories for you, and since they capitalize those subdirectory names, it is best to follow that convention.
+I like a home directory which only contains subdirectories and hidden files.  Desktop operating systems create some subdirectories for me, and since they capitalize those subdirectory names, it is best to follow that convention.
 
 The Mac filesystem (HFS+), incidentally, is not case sensitive, but it remembers the case that was used when a file is created and uses it for display.
 
-For the benefit of the command line, we discourage file names which contain spaces.  For the benefit of tab completion, try to choose names that are uniquely specified by their first two letters.  But note that desktops create two directories ``Documents`` and ``Downloads`` which require three letters to uniquely specify.
+To make it easier to work at the command line, I avoid file names which contain spaces.
+
+Since I use tab completion, I choose names that are uniquely specified by their first two letters.  But note that desktops create two directories ``Documents`` and ``Downloads`` which require three letters to uniquely specify.
 
 Windows some home directory subdirectories which break the no-space rule and the unique-two-letter-prefix rule, e.g. ``My Documents``, ``My Pictures``.  One can rename these directories, but to avoid problems does one have to fiddle with the registry?
 
@@ -112,6 +114,14 @@ Trash              all        On Mac, symlink to .Trash
 Videos             win/linux  Windows/Ubuntu place for movies; keep this empty
 =================  =========  =================================================================================
 
+To set up the home directory:
+
+::
+
+    mkdir ~/Bin ~/Env ~/Etc ~/Lang ~/Man ~/Src
+
+On hosts I make these links into ~/Dropbox: Articles, Pictures
+
 Finder, Explorer, Files
 -----------------------
 
@@ -148,3 +158,25 @@ Ubuntu Linux is usually configured to empty ``/tmp`` on boot.  See ``/etc/init/m
 
 Windows sets the ``%TEMP%`` environment variable to the location of the temporary file directory.  Windows never cleans out this directory.
 
+Trash
+-----
+
+Public
+------
+
+*a directory shared on the local network*
+
+Shared
+------
+
+*a host directory accessible to guest operating systems*
+
+Dropbox
+-------
+
+*notes about it*
+
+* Articles
+* Documents
+* Elements
+* Pictures
