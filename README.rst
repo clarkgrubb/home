@@ -4,7 +4,7 @@ HOME
 
 Dot files for Darwin, Linux, Cygwin, and MinGW.
 
-installation_ | home-directories_ | users_ | subdirectories_ | hidden-files_ | temporary-files_
+installation_ | `home directories <home-directories>`_ | users_ | subdirectories_ | hidden-files_ | temporary-files_
 
 Installation
 ------------
@@ -124,7 +124,7 @@ Temporary Files
 
 POSIX systems are supposed to set the ``$TMPDIR`` environment variable.  Mac OS X does.
 
-Linux, in my experience does not.  `The Filesystem Hierarchy Standard <http://www.pathname.com/fhs/pub/fhs-2.3.html>`_ guarantees that ``/tmp`` will exist, howver.
+Linux, in my experience does not.  The `Filesystem Hierarchy Standard <http://www.pathname.com/fhs/pub/fhs-2.3.html>`_ guarantees that ``/tmp`` will exist, howver.
 
 
 
