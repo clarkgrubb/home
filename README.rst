@@ -58,6 +58,7 @@ Windows some home directory subdirectories which break the no-space rule and the
 
     HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
 
+What follows is some home subdirectories which I create or which get created for me.
 
 =================  =========  =================================================================================
 subdirectory       os         description
@@ -122,10 +123,11 @@ NTUSER.DAT* files
 Temporary Files
 ---------------
 
-POSIX systems are supposed to set the ``$TMPDIR`` environment variable.  Mac OS X does.
+POSIX systems are supposed to set the ``$TMPDIR`` environment variable.  Mac OS X sets ``$TMPDIR`` to a randomly generated path in ``/var/folders``.  *When does Mac OS X clean out /tmp and $TMPDIR?*
 
 Linux, in my experience does not.  The `Filesystem Hierarchy Standard <http://www.pathname.com/fhs/pub/fhs-2.3.html>`_ guarantees that ``/tmp`` will exist, howver.
 
+Ubuntu Linux is usually configured to empty ``/tmp`` on boot.  See ``/etc/init/mounted-tmp.conf``.
 
+Windows sets the ``%TEMP%`` environment variable to the location of the temporary file directory.  Windows never cleans out this directory.
 
-Windows sets the ``%TEMP%`` environment variable to the location of the temporary file directory.
