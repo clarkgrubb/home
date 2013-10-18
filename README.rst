@@ -162,11 +162,11 @@ Windows sets the ``%TEMP%`` environment variable to the location of the temporar
 Trash
 -----
 
-The Mac OS X Trash folder is {{~/.Trash}}.
+The Mac OS X Trash folder is ``~/.Trash``.
 
-The Ubuntu Trash folder is {{~/.local/share/Trash}}.  It is not created until something is moved to the trash using Nautilus.
+The Ubuntu Trash folder is ``~/.local/share/Trash``.  It is not created until something is moved to the trash using Nautilus.
 
-The Windows recycle bin is at {{C:\$Recycle.Bin}}.
+The Windows recycle bin is at ``C:\$Recycle.Bin``.
 
 Public
 ------
