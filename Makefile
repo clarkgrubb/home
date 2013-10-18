@@ -11,12 +11,14 @@ APPLESCRIPTS := ToggleCharacterViewer.scpt ToggleKeyboardViewer.scpt OpenSystemP
 .PHONY: install all
 
 scripts_dir:
-	mkdir -p $(SCRIPTS_DIR)
+	if [ $$OS_TYPE == Darwin ]; then \
+	mkdir -p $(SCRIPTS_DIR); \
+	fi
 
 install: | scripts_dir
 	@echo copying dot files to HOME directory
 	./bin/install.sh ~
-	if [ -d ~/Library ]; then \
+	if [ $$OS_TYPE == Darwin ]; then \
 	for applescript in $(APPLESCRIPTS); do \
 	cp .applescript/$$applescript $(SCRIPTS_DIR); \
 	done; \
