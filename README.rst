@@ -1,18 +1,18 @@
-================
+----------------
 HOME DIRECTORIES
-================
+----------------
 
 Dot files for Darwin, Linux, Cygwin, and MinGW.
 
 Installation
-============
+------------
 
 ::
 
     $ make
 
 Location
-========
+--------
 
 Early versions of Unix put user home directories in ``/usr``. This directory became co-opted for common files which were not essential to run the system. In Linux and BSD the user home directories are in ``/home``.
 
@@ -31,7 +31,7 @@ In Windows terminology, the home directory is called the user profile folder. Wi
 Windows sets the environment variable ``%UserProfile%`` to the path of the current user profile folder.
 
 Subdirectories
-==============
+--------------
 
 ==============  =================================================================================
 subdirectory    description
