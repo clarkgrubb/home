@@ -4,7 +4,7 @@ HOME DIRECTORIES
 
 Dot files for Darwin, Linux, Cygwin, and MinGW.
 
-installation_ | location_ | username_ | subdirectories_ | hidden files_ | temporary files_ | projects_
+installation_ | location_ | username_ | subdirectories_ | hidden-files_ | temporary-files_
 
 Installation
 ------------
@@ -129,10 +129,3 @@ Linux, in my experience does not.  The Filesystem Hierarchy Standard guarantees 
 http://www.pathname.com/fhs/pub/fhs-2.3.html
 
 Windows sets the ``%TEMP%`` environment variable to the location of the temporary file directory.
-
-Projects
---------
-
-* README
-* Makefile
-* .git
