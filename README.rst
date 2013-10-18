@@ -7,11 +7,15 @@ installation_ | `home directories <#home-directories>`_ | users_ | subdirectorie
 Summary
 -------
 
-Dot files for Darwin, Linux, Cygwin, and MinGW.  Notes on home directory organization.
+Dot files for Darwin, Linux, Cygwin, and MinGW.
+
+Notes on home directory organization.
 
 
 Installation
 ------------
+
+To install the dot files:
 
 ::
 
