@@ -33,8 +33,6 @@ Windows sets the environment variable ``%UserProfile%`` to the path of the curre
 Subdirectories
 --------------
 
-a table
-
 ==============  =================================================================================
 subdirectory    description
 ==============  =================================================================================
@@ -60,7 +58,7 @@ Pictures        link to ~/Dropbox/Pictures; also Omnigraffle and image editor fi
                 PDFs created by R
 Public          If part of the home directory is made available on the local network,
                 make it this directory. E.g on Mac
-                System Preferences | Sharing | File Sharing
+                ``System Preferences | Sharing | File Sharing``
 Shared          a directory which is shared with guest VMs
 Src             tarballs, git repos, isos for VM
 Trash           On Mac, symlink to .Trash
