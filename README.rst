@@ -4,7 +4,7 @@ HOME DIRECTORIES
 
 Dot files for Darwin, Linux, Cygwin, and MinGW.
 
-installation_ | location_ | username_ | subdirectories_ | `hidden-files`_ | `temporary-files`_
+installation_ | location_ | username_ | subdirectories_ | hidden-files | temporary-files
 
 Installation
 ------------
