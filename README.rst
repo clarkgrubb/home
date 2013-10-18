@@ -36,6 +36,19 @@ Username
 Subdirectories
 --------------
 
+I like a home directory which only contains subdirectories and hidden files.  Desktop operating systems create some subdirectories for you, and since they capitalize those subdirectory names, it is best to follow that convention.
+
+The Mac filesystem (HFS+), incidentally, is not case sensitive, but it remembers the case that was used when a file is created and uses it for display.
+
+For the benefit of the command line, we discourage file names which contain spaces.  For the benefit of tab completion, try to choose names that are uniquely specified by their first two letters.  But note that desktops create two directories ``Documents`` and ``Downloads`` which require three letters to uniquely specify.
+
+Windows some home directory subdirectories which break the no-space rule and the unique-two-letter-prefix rule, e.g. ``My Documents``, ``My Pictures``.  One can rename these directories, but to avoid problems does one have to fiddle with the registry?
+
+::
+
+    HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
+
+
 ==============  =========  =================================================================================
 subdirectory    os         description
 ==============  =========  =================================================================================
@@ -65,3 +78,33 @@ Src             all        tarballs, git repos, isos for VM
 Trash           all        On Mac, symlink to .Trash
 Videos          win/linux  Windows/Ubuntu place for movies; keep this empty
 ==============  =========  =================================================================================
+
+
+Hidden Files
+------------
+
+Unix hidden files have names which start with a period.
+
+On Mac, the Finder does not display these files.  Other files can be hidden from the Finder:
+
+    SetFile -a V foo.txt
+
+To expose a file to the Finder:
+
+    SetFile -a v foo.txt
+
+//Windows...//
+
+NTUSER.DAT* files
+
+Temporary Files
+---------------
+
+ In windows %TEMP%, in POSIX $TMPDIR or maybe /tmp.
+
+Projects
+--------
+
+* README
+* Makefile
+* .git
