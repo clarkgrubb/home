@@ -47,6 +47,8 @@ Users
 
 When an Ubuntu instance is created, the setup procedure prompts for the user's full name, login name, and password.  The ``adduser`` command can be used to create more users.
 
+VMware Fusion has an Easy Install feature which collects the account information and provides it to the Ubuntu instance.
+
 On ``Mac OS X`` the setup procedure prompts for the user's full name, login name, and password.  User accounts are managed at ``System Preferences | Users & Groups``.
 
 *Windows...*
@@ -101,7 +103,6 @@ Pictures           all        link to ~/Dropbox/Pictures; also Omnigraffle and i
                               PDFs created by R
 Public             all        If part of the home directory is made available on the local network,
                               make it this directory. E.g on Mac
-                              ``System Preferences | Sharing | File Sharing``
 PrintHood          win
 Recent             win
 Saved Games        win
@@ -161,10 +162,20 @@ Windows sets the ``%TEMP%`` environment variable to the location of the temporar
 Trash
 -----
 
+The Mac OS X Trash folder is {{~/.Trash}}.
+
+The Ubuntu Trash folder is {{~/.local/share/Trash}}.  It is not created until something is moved to the trash using Nautilus.
+
+The Windows recycle bin is at {{C:\$Recycle.Bin}}.
+
 Public
 ------
 
-*a directory shared on the local network*
+On Mac OS X to expose a directory on the local netowrk, go to:
+
+::
+
+    System Preferences | Sharing | File Sharing
 
 Shared
 ------
@@ -174,7 +185,7 @@ Shared
 Dropbox
 -------
 
-*notes about it*
+Some ``~/Dropbox`` subdirectories:
 
 * Articles
 * Documents
