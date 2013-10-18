@@ -26,9 +26,11 @@ Mac OS X puts the home directories in ``/User``. It sets the HOME environment va
 
     dscl . -read /Users/$USER NFSHomeDirectory
 
+In Windows terminology, the home directory is called the *user profile folder*.
+
 DOS did not have a home directory, and Windows 95 had a single ``C:\My Documents directory``.
 
-In Windows terminology, the home directory is called the *user profile folder*. Windows NT was the first multiuser version of Windows. It put user profile folders in ``C:\WINNT\Profiles``. Windows XP put them in ``C:\Documents and Settings``.  Since Windows Vista they have been in ``C:\Users``.
+Windows NT was the first multiuser version of Windows. It put user profile folders in ``C:\WINNT\Profiles``. Windows XP put them in ``C:\Documents and Settings``.  Since Windows Vista they have been in ``C:\Users``.
 
 Windows sets the environment variable ``%UserProfile%`` to the path of the current user profile folder.
 
@@ -125,7 +127,7 @@ Temporary Files
 
 POSIX systems are supposed to set the ``$TMPDIR`` environment variable.  Mac OS X sets ``$TMPDIR`` to a randomly generated path in ``/var/folders``.  *When does Mac OS X clean out /tmp and $TMPDIR?*
 
-Linux, in my experience does not.  The `Filesystem Hierarchy Standard <http://www.pathname.com/fhs/pub/fhs-2.3.html>`_ guarantees that ``/tmp`` will exist, howver.
+Linux does not set ``$TMPDIR`` in my experience.  The `Filesystem Hierarchy Standard <http://www.pathname.com/fhs/pub/fhs-2.3.html>`_ guarantees that ``/tmp`` will exist, howver.
 
 Ubuntu Linux is usually configured to empty ``/tmp`` on boot.  See ``/etc/init/mounted-tmp.conf``.
 
