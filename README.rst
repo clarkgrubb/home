@@ -4,6 +4,8 @@ HOME DIRECTORIES
 
 Dot files for Darwin, Linux, Cygwin, and MinGW.
 
+installation_ | location_ | username_ | subdirectories_ | hidden files_ | temporary files_ | projects_
+
 Installation
 ------------
 
@@ -72,7 +74,7 @@ Downloads          all        browsers should be configured to download files he
 Dropbox            host       Articles, Documents, Elements, Pictures
 Env                all        virtualenv, rbenv environments
 Etc                all        ~/Etc/UnicodeData.txt
-Favorits           win
+Favorites          win
 Lang               all        subdirectories by programming language; if the code is put under version
                               control it is in Src
 Library            mac        scripts run by Fastscripts must be in ~/Library/Scripts
