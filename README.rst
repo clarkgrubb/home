@@ -2,7 +2,7 @@
 HOME
 ----
 
-installation_ | `home directories <#home-directories>`_ | users_ | subdirectories_ | `hidden files <#hidden-files>`_ | `temporary files <#temporary-files>`_
+installation_ | `home directories <#home-directories>`_ | users_ | subdirectories_ | `finder, explorer, files<#finder-explorer-files>`_ | `hidden files <#hidden-files>`_ | `temporary files <#temporary-files>`_
 
 Summary
 -------
@@ -111,6 +111,13 @@ Templates          win/linux
 Trash              all        On Mac, symlink to .Trash
 Videos             win/linux  Windows/Ubuntu place for movies; keep this empty
 =================  =========  =================================================================================
+
+Finder, Explorer, Files
+-----------------------
+
+*notes on the Finder sidebar*
+
+The GUI file system browser in Ubuntu used to be called Nautilus, but as of Ubuntu 13 it is just called *Files*?
 
 
 Hidden Files
