@@ -1,6 +1,6 @@
-----------------
-HOME DIRECTORIES
-----------------
+----
+HOME
+----
 
 Dot files for Darwin, Linux, Cygwin, and MinGW.
 
