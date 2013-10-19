@@ -25,24 +25,22 @@ Home Directories
 
 Early versions of Unix put user home directories in ``/usr``.  In Linux and BSD the user home directories are in ``/home``.
 
-A Unix user's home directory is specified in ``/etc/passwd``. When the user logs in it is used to set the working directory and the environment variable ``HOME``. The C shell introduced tilde expansion as shortcut for the home directory in paths.  Mac OS X puts the home directories in ``/User``. It sets the HOME environment variable, but does not store user information in ``/etc/passwd``. The information is stored in the Directory Service which can be queried with the dscl command:
+A Unix user's home directory is specified in ``/etc/passwd``. When the user logs in it is used to set the working directory and the environment variable ``HOME``. The C shell introduced tilde expansion as shortcut for the home directory in paths.  Mac OS X puts home directories in ``/User``. It sets the HOME environment variable, but does not store user information in ``/etc/passwd``. Instead the information is stored in a *Directory Service* which can be queried with the dscl command:
 
 ::
 
     dscl . -read /Users/$USER NFSHomeDirectory
 
-In Windows terminology, the home directory is called the *user profile folder*.
+Windows calls the home directory the *user profile folder*.
 
-DOS did not have a home directory, and Windows 95 had a single ``C:\My Documents`` directory.  Windows NT was the first multiuser version of Windows. It put user profile folders in ``C:\WINNT\Profiles``. Windows XP put them in ``C:\Documents and Settings``.  Since Windows Vista they have been in ``C:\Users``.
+DOS did not have a home directory and Windows 95 had a single ``C:\My Documents`` directory at the file system root.  Windows NT was the first multiuser version of Windows. It put user profile folders in ``C:\WINNT\Profiles``. Windows XP put them in ``C:\Documents and Settings``.  Since Windows Vista they have been in ``C:\Users``.
 
 Windows sets the environment variable ``%USERPROFILE%`` to the path of the current user profile folder.
 
 Users
 -----
 
-When an Ubuntu instance is created, the setup procedure prompts for the user's full name, login name, and password.  The ``adduser`` command can be used to create more users.
-
-VMware Fusion has an Easy Install feature which collects the account information and provides it to the Ubuntu instance.
+When an Ubuntu instance is created, the setup procedure prompts for the user's full name, login name, and password.  The ``adduser`` command can be used to create more users.  VMware Fusion has an Easy Install feature which collects the account information and provides it to the Ubuntu instance.
 
 On ``Mac OS X`` the setup procedure prompts for the user's full name, login name, and password.  User accounts are managed at ``System Preferences | Users & Groups``.
 
@@ -55,7 +53,7 @@ To set the Windows avatar, go to ``Control Panel | User Accounts | Change your p
 Subdirectories
 --------------
 
-Capitalize the names of subdirectories in the home directory.  Regular files in the home directory should be hidden.
+I'm of the opinion that subdirectories in the home directory should be capitalized and regular files in the home directory should be hidden.
 
 The Mac filesystem (HFS+), incidentally, is not case sensitive, but it remembers the case that was used when a file is created and uses it for display.
 
