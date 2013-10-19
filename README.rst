@@ -78,6 +78,15 @@ Also, the Explorer may keep separate names for these files, so one may need to c
 
 **renamed windows home subdirectories:**
 
+=============  ==========
+old            new
+=============  ==========
+My Documents   Documents
+My Music       Music
+My Pictures    Pictures
+My Videos      Videos
+Saved Games    Games
+=============  ==========
 
 **standard home subdirectories:**
 
@@ -114,7 +123,7 @@ Saved Games         win        Minesweeper and Solitaire store games in ``~\Save
                                must be launchable from the command line and accept a file path as an argument.
 Searches            win        If in Windows Search you click on ``See more results``, you'll get a window
                                of results.  The window has a ``Save search`` option which will create an XML
-file in this directory.
+                               file in this directory.
 Start Menu          win        Hidden; ``~\Start Menu\Programs`` is one way to add programs to the
                                ``All Programs`` section of the Start Menu; put a shortcut in
                                ``~\Start Menu\Programs\Startup``
@@ -141,19 +150,6 @@ Shared             all        Share with guest virtual machines.
 Src                all        Tarballs, git repos, ISOs for virtual machines.
 Trash              all        Symlink to Trash or Recyle Bin.
 =================  =========  =================================================================================
-
-
-=============  ==========
-old            new
-=============  ==========
-My Documents   Documents
-My Music       Music
-My Pictures    Pictures
-My Videos      Videos
-Saved Games    Games
-=============  ==========
-
-
 
 To set up the home directory:
 
