@@ -74,7 +74,7 @@ Windows some home directory subdirectories which break the no-space rule and the
 
 Also, the Explorer may keep separate names for these files, so one may need to change the file names at both the command line and in the Explorer.
 
-**renamed windows home subdirectories:**
+**windows home subdirectories to rename:**
 
 ::
 
