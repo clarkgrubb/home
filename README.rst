@@ -74,34 +74,26 @@ Windows some home directory subdirectories which break the no-space rule and the
 
 Also, the Explorer may keep separate names for these files, so one may need to change the file names at both the command line and in the Explorer.
 
-What follows is some home subdirectories which I create or which get created for me.
+Standard home subdirectories:
 
 =================  =========  =================================================================================
 subdirectory       os         description
 =================  =========  =================================================================================
 AppData            win
 Application Data   win
-Articles           all        PDFs; link to ~/Dropbox/Articles
-Bin                all        put it first in PATH; a place to install executables without admin privilege
-<Company>          all        work for <Company>
 Desktop            all        files here appear as icons on the desktop
 Documents          all        some applications keep their files here; including ~/Documents/Eclipse
                               and ~/Documents/Notebooks for iPython; editor files go in ~/Dropbox/Documents
 Downloads          all        browsers should be configured to download files here; it is generally
 Dropbox            host       Articles, Documents, Elements, Pictures
-Env                all        virtualenv, rbenv environments
-Etc                all        ~/Etc/UnicodeData.txt
 Favorites          win        browser bookmarks; probably not used by Firefox or Chrome
-Lang               all        subdirectories by programming language; if the code is put under version
-                              control it is in Src
 Library            mac        scripts run by Fastscripts must be in ~/Library/Scripts
 Links              win        used by the Explorer sidebar?
 Local Settings     win        hidden; 
-Man                all        put it first in MANPATH; a place to install man pages w/o admin privilege
-Movies             all        keep this empty
+Movies             mac        keep this empty
 Music              all        iTunes and Amazon Cloud Player
 NetHood            win        hidden; 
-Pictures           all        link to ~/Dropbox/Pictures; also Omnigraffle and image editor files;
+Pictures           all        delete and link to ~/Dropbox/Pictures; also Omnigraffle and image editor files;
                               PDFs created by R
 Public             all        If part of the home directory is made available on the local network,
                               make it this directory. E.g on Mac
@@ -109,12 +101,27 @@ PrintHood          win
 Recent             win        hidden; full of Windows Shell shortcuts (.lnk suffix).
 Saved Games        win
 Searches           win
-Shared             all        a directory which is shared with guest VMs
-Src                all        tarballs, git repos, isos for VM
 Start Menu         win
 Templates          win/linux
-Trash              all        On Mac, symlink to .Trash
 Videos             win/linux  Windows/Ubuntu place for movies; keep this empty
+=================  =========  =================================================================================
+
+Subdirectories I create:
+
+=================  =========  =================================================================================
+subdirectory       os         description
+=================  =========  =================================================================================
+Articles           all        PDFs; link to ~/Dropbox/Articles
+Bin                all        put it first in PATH; a place to install executables without admin privilege
+<Company>          all        work for <Company>
+Env                all        virtualenv, rbenv environments
+Etc                all        ~/Etc/UnicodeData.txt
+Lang               all        subdirectories by programming language; if the code is put under version
+                              control it is in Src
+Man                all        put it first in MANPATH; a place to install man pages w/o admin privilege
+Shared             all        shared with guest VMs
+Src                all        tarballs, git repos, isos for VM
+Trash              all        symlink to Trash or Recyle Bin
 =================  =========  =================================================================================
 
 To set up the home directory:
@@ -123,7 +130,9 @@ To set up the home directory:
 
     mkdir ~/Bin ~/Env ~/Etc ~/Lang ~/Man ~/Src
 
-On hosts I make these links into ~/Dropbox: Articles, Pictures
+Make these links into ~/Dropbox: Articles, Pictures
+
+*links on Windows*
 
 Finder, Explorer, Files
 -----------------------
