@@ -26,7 +26,7 @@ Home Directories
 
 Early versions of Unix put user home directories in ``/usr``.  In Linux and BSD the user home directories are in ``/home``.
 
-A Unix user's home directory is specified in ``/etc/passwd``. This is the working directory when the user logs in, and the system sets the environment variable ``HOME`` to this value. The C shell introduced tilde expansion as shortcut for the home directory in paths.
+A Unix user's home directory is specified in ``/etc/passwd``. This is the working directory when the user logs in and the system sets the environment variable ``HOME`` to this value. The C shell introduced tilde expansion as shortcut for the home directory in paths.
 
 Mac OS X puts the home directories in ``/User``. It sets the HOME environment variable, but does not store user information in ``/etc/passwd``. The information is stored in the Directory Service which can be queried with the dscl command:
 
@@ -81,7 +81,9 @@ subdirectory        os         description
 ==================  =========  ==================================================================================
 *AppData*           win        Hidden; items pinned to the Start Menu are shortcuts at
                                ``AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/StartMenu``
-*Application Data*  win        Hidden; just a link to ``~\AppData\Roaming``?
+*Application Data*  win        Hidden; link to ``~\AppData\Roaming``.
+*Contacts*          win        Used by Outlook?
+*Cookies*           win        Hidden; link to ``~\AppData\Roaming\Microsoft\Windows\Cookies``.
 Desktop             all        Files here appear as icons on the desktop.
 Documents           all        Some applications keep their files here; including ``~/Documents/Eclipse``
                                and ``~/Documents/Notebooks`` for iPython;
@@ -91,7 +93,7 @@ Dropbox             host       Articles, Documents, Elements, Pictures
 Favorites           win        Browser bookmarks; probably not used by Firefox or Chrome.
 Library             mac        Put AppleScript in ``~/Library/Scripts``.
 Links               win        The Favorites section of the Explorer sidebar.
-*Local Settings*    win        Hidden; just a link to ``~\AppData\Local``?
+*Local Settings*    win        Hidden; link to ``~\AppData\Local``.
 Movies              mac        Stream video and keep this empty.
 Music               all        E.g. iTunes and Amazon Cloud Player.
 *NetHood*           win        Hidden
