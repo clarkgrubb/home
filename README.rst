@@ -74,8 +74,6 @@ Windows some home directory subdirectories which break the no-space rule and the
 
 Also, the Explorer may keep separate names for these files, so one may need to change the file names at both the command line and in the Explorer.
 
-standard home subdirectories:
-
 =================  =========  =================================================================================
 subdirectory       os         description
 =================  =========  =================================================================================
@@ -105,8 +103,6 @@ Start Menu         win
 Templates          win/linux
 Videos             win/linux  Windows/Ubuntu place for movies; keep this empty
 =================  =========  =================================================================================
-
-personal home subdirectories:
 
 ===============================================================================================================
 subdirectory       os         description
