@@ -40,7 +40,7 @@ DOS did not have a home directory, and Windows 95 had a single ``C:\My Documents
 
 Windows NT was the first multiuser version of Windows. It put user profile folders in ``C:\WINNT\Profiles``. Windows XP put them in ``C:\Documents and Settings``.  Since Windows Vista they have been in ``C:\Users``.
 
-Windows sets the environment variable ``%UserProfile%`` to the path of the current user profile folder.
+Windows sets the environment variable ``%USERPROFILE%`` to the path of the current user profile folder.
 
 Users
 -----
@@ -66,11 +66,13 @@ To make it easier to work at the command line, I avoid file names which contain 
 
 Since I use tab completion, I choose names that are uniquely specified by their first two letters.  But note that desktops create two directories ``Documents`` and ``Downloads`` which require three letters to uniquely specify.
 
-Windows some home directory subdirectories which break the no-space rule and the unique-two-letter-prefix rule, e.g. ``My Documents``, ``My Pictures``.  One can rename these directories, but to avoid problems does one have to fiddle with the registry?
+Windows some home directory subdirectories which break the no-space rule and the unique-two-letter-prefix rule, e.g. ``My Documents``, ``My Pictures``.  One can rename these directories, but since they are `Special Folders <http://en.wikipedia.org/wiki/Special_folder>`_, one should also update the registry for the benefit of applications using the Special Folder API to get the paths.  
 
 ::
 
     HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
+
+Also, the Explorer may keep separate names for these files, so one may need to change the file names at both the command line and in the Explorer.
 
 What follows is some home subdirectories which I create or which get created for me.
 
@@ -89,22 +91,22 @@ Downloads          all        browsers should be configured to download files he
 Dropbox            host       Articles, Documents, Elements, Pictures
 Env                all        virtualenv, rbenv environments
 Etc                all        ~/Etc/UnicodeData.txt
-Favorites          win
+Favorites          win        browser bookmarks; probably not used by Firefox or Chrome
 Lang               all        subdirectories by programming language; if the code is put under version
                               control it is in Src
 Library            mac        scripts run by Fastscripts must be in ~/Library/Scripts
-Links              win
-Local Settings     win
+Links              win        used by the Explorer sidebar?
+Local Settings     win        hidden; 
 Man                all        put it first in MANPATH; a place to install man pages w/o admin privilege
 Movies             all        keep this empty
 Music              all        iTunes and Amazon Cloud Player
-NetHood            win
+NetHood            win        hidden; 
 Pictures           all        link to ~/Dropbox/Pictures; also Omnigraffle and image editor files;
                               PDFs created by R
 Public             all        If part of the home directory is made available on the local network,
                               make it this directory. E.g on Mac
 PrintHood          win
-Recent             win
+Recent             win        hidden; full of Windows Shell shortcuts (.lnk suffix).
 Saved Games        win
 Searches           win
 Shared             all        a directory which is shared with guest VMs
@@ -144,7 +146,15 @@ To expose a file to the Finder:
 
     SetFile -a v foo.txt
 
-*Windows...*
+On Windows, files can be hidden from the Explorer by checking ``Properties | General | Hidden`` or at the command line using ``ATTRIB +H``.  To expose a hidden file to Explorer at the command line use ``ATTRIB -H``.
+
+To make hidden files visible in the Explorer:
+
+::
+
+    Organize | Folder and search options | View | Hidden files and folders | Show hidden files, folders, and drives
+
+Files are always visible at the command line.
 
 NTUSER.DAT* files
 
