@@ -26,9 +26,7 @@ Home Directories
 
 Early versions of Unix put user home directories in ``/usr``.  In Linux and BSD the user home directories are in ``/home``.
 
-A Unix user's home directory is specified in ``/etc/passwd``. This is the working directory when the user logs in and the system sets the environment variable ``HOME`` to this value. The C shell introduced tilde expansion as shortcut for the home directory in paths.
-
-Mac OS X puts the home directories in ``/User``. It sets the HOME environment variable, but does not store user information in ``/etc/passwd``. The information is stored in the Directory Service which can be queried with the dscl command:
+A Unix user's home directory is specified in ``/etc/passwd``. This is the working directory when the user logs in and the system sets the environment variable ``HOME`` to this value. The C shell introduced tilde expansion as shortcut for the home directory in paths.  Mac OS X puts the home directories in ``/User``. It sets the HOME environment variable, but does not store user information in ``/etc/passwd``. The information is stored in the Directory Service which can be queried with the dscl command:
 
 ::
 
@@ -78,20 +76,13 @@ Also, the Explorer may keep separate names for these files, so one may need to c
 
 **renamed windows home subdirectories:**
 
+::
 
- +--------------+----------+
- |old           | new      |
- +==============+==========+
- |My Documents  | Documents|
- +--------------+----------+
- |My Music      | Music    |
- +--------------+----------+
- |My Pictures   | Pictures |
- +--------------+----------+
- |My Videos     | Videos   |
- +--------------+----------+
- |Saved Games   | Games    |
- +--------------+----------+
+    My Documents     Documents
+    My Music         Music
+    My Pictures      Pictures
+    My Videos        Videos
+    Saved Games      Games
 
 **standard home subdirectories:**
 
