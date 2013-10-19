@@ -86,7 +86,7 @@ Also, the Explorer may keep separate names for these files, so one may need to c
 ==================  =========  ==================================================================================
 subdirectory        os         description
 ==================  =========  ==================================================================================
-*AppData*           win        Hidden; items pinned to the Start Menu are shortcuts at
+*AppData*           win        Hidden; I like to unhide it; items pinned to the Start Menu are shortcuts at
                                ``AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/StartMenu``
 *Application Data*  win        Hidden; link to ``~\AppData\Roaming``.
 Contacts            win        Used by Outlook?
@@ -117,7 +117,8 @@ Recent              win        Hidden; full of Windows Shell shortcuts (``.lnk``
 Searches            win        If in Windows Search you click on ``See more results``, you'll get a window
                                of results.  The window has a ``Save search`` option which will create an XML
                                file in this directory.
-Start Menu          win        Hidden; ``~\Start Menu\Programs`` is one way to add programs to the
+Start Menu          win        Hidden; link to ``~\AppData\Roaming\Microsoft\Windows\Start Menu``.
+                               ``~\Start Menu\Programs`` is one way to add programs to the
                                ``All Programs`` section of the Start Menu; put a shortcut in
                                ``~\Start Menu\Programs\Startup``
                                to launch an application at login.
