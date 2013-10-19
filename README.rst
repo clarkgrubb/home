@@ -104,7 +104,7 @@ Searches            win
 Start Menu          win
 Templates           win/linux
 Videos              win/linux  Windows/Ubuntu place for movies; keep this empty
-=================   =========  =================================================================================
+==================  =========  =================================================================================
 
 **personal home subdirectories:**
 
