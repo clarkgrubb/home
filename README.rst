@@ -81,11 +81,15 @@ Also, the Explorer may keep separate names for these files, so one may need to c
 
 +--------------+----------+
 |old           | new      |
-+--------------+----------+
++==============+==========+
 |My Documents  | Documents|
++--------------+----------+
 |My Music      | Music    |
++--------------+----------+
 |My Pictures   | Pictures |
++--------------+----------+
 |My Videos     | Videos   |
++--------------+----------+
 |Saved Games   | Games    |
 +--------------+----------+
 
