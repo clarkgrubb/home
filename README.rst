@@ -103,8 +103,9 @@ Links               win        The Favorites section of the Explorer sidebar.
 Movies              mac        Stream video and keep this empty.
 Music               all        E.g. iTunes and Amazon Cloud Player.
 *NetHood*           win        Hidden
-Pictures            all        Omnigraffle and image editor files; PDFs created by R.
-Public              all        A directory to make available on the local network.
+Pictures            all        Image editor files; Visio and Omnigraffle; PDFs created by R.
+Public              linux/mac  A directory to make available on the local network.
+                               Windows has a directory at ``C:\Users\Public``.
 *PrintHood*         win        Hidden
 Recent              win        Hidden; full of Windows Shell shortcuts (``.lnk`` suffix).  Implements
                                the ``Recent Places`` folder.
@@ -222,11 +223,11 @@ The Mac OS X Trash folder is ``~/.Trash``.
 
 The Ubuntu Trash folder is ``~/.local/share/Trash``.  It is not created until something is moved to the trash using Nautilus.
 
-The Windows recycle bin is at ``C:\$Recycle.Bin``.  Actually, each NTFS file system has a recycle bin.  The Recycle Bin on the Desktop is a union of all of them.
+The Windows Recycle Bin is at ``C:\$Recycle.Bin``.  Actually, each NTFS file system has a Recycle Bin.  The Recycle Bin on the Desktop is a union.
 
-Files are sent to the Mac OS X trash by selecting them in the Finder and ``⌘Delete``.  ``⇧⌘Delete`` empties the Trash.
+Files are sent to the Mac OS X trash by selecting them in the Finder and ``⌘Delete``.  When the Finder is active, ``⇧⌘Delete`` empties the Trash.
 
-Files are sent to the Recyle bin by right clicking in the explorer and selecting ``Delete`` or selecting the file and pressing the delete key (fn delete in Bootcamp).  Right click the Recycle Bin in Explorer to empty it.
+Files are sent to the Recyle Bin by right clicking in the Explorer and selecting ``Delete`` or selecting the file and pressing the delete key (fn delete in Bootcamp).  Right click the Recycle Bin in Explorer to empty it.
 
 Command line tools such as ``rm`` and ``del`` on all operating systems remove files without putting them in the Trash directory or Recycle Bin folder.
 
@@ -241,4 +242,13 @@ On Mac OS X to expose a directory on the local network, go to:
 
 There is an option for enabling SMB so that Windows can access the directory, but it requires storing the Windows password on the Mac.
 
-//public dir on windows//
+The name of a Mac is generated from the initial account.  It can be changed at ``System Preferences... | Sharing``.  It uses a DNS name of the form ``<MAC-NAME>.local``.  Such a DNS name is only visible if both computers are on the same network.  Lookups are performed by broadcasting and the machine with the name responding.
+
+
+Windows has a directory at ``C:\Users\Public`` which can be made public.  Navigate to it in the Explorer and select ``Share with | Advanced sharing settings | Public`` to get a list of checkboxes.  If the choices are permissive enough, a Mac will on the local network will automatically detect and be able to access the files.
+
+Windows requests a computer name during installation.  It can be changed later at 
+
+::
+
+    Control Panel | System | Computer name, domain, and workgroup settings
