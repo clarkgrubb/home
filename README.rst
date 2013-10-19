@@ -59,9 +59,9 @@ The Mac filesystem (HFS+), incidentally, is not case sensitive, but it remembers
 
 To make it easier to work at the command line, avoid file names which contain spaces.
 
-Tab completion works well when the contents of a directory are uniquely specified by their first two letters.  Unfortunately the desktop operating systems create directories, namely ``Documents`` and ``Downloads``, which require three letters to uniquely specify.
+Tab completion works well when the contents of a directory are uniquely specified by a short prefix.  Two letter prefixes are often possible, though the desktop operating systems create directories, namely ``Documents`` and ``Downloads``, which require three letters to uniquely specify.
 
-Windows creates home subdirectories which break both the no-space rule and the unique-two-letter-prefix rule, e.g. ``My Documents``, ``My Pictures``.  One can rename these directories.  Since they are `Special Folders <http://en.wikipedia.org/wiki/Special_folder>`_, one should also update the registry for the benefit of applications using the Special Folder API to get the paths.  The registry key is:
+Windows creates home subdirectories which break both the no-space rule and the unique-two-letter-prefix rule, e.g. ``My Documents``, ``My Music``, ``My Pictures``, ``My Videos``.  One can rename these directories.  Since they are `Special Folders <http://en.wikipedia.org/wiki/Special_folder>`_, one should also update the registry for the benefit of applications using the Special Folder API to get the paths.  The registry key is:
 
 ::
 
