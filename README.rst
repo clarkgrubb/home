@@ -51,9 +51,11 @@ VMware Fusion has an Easy Install feature which collects the account information
 
 On ``Mac OS X`` the setup procedure prompts for the user's full name, login name, and password.  User accounts are managed at ``System Preferences | Users & Groups``.
 
-*Windows...*
+As I recall, Windows asks for account information when it is installed.  To add a new account, go to ``Control Panel | User Accounts | Manage another account``.
 
-*Avatars*
+To set the Mac avatar, go to ``System Preferences | Users & Groups`` and click on the image.
+
+To set the Windows avatar, go to ``Control Panel | User Accounts | Change your picture``.
 
 Subdirectories
 --------------
