@@ -63,7 +63,7 @@ Windows creates home subdirectories which break both the no-space rule and the u
 
     HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
 
-Also, the Explorer keeps separate names for these files, so one must cahnge the file names at both the command line and in Explorer.
+Also, the Explorer keeps separate names for these files, so one must change the file names at both the command line and in Explorer.
 
 **windows home subdirectories to rename:**
 
