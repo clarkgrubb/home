@@ -2,7 +2,7 @@
 HOME
 ----
 
-installation_ | `home directories <#home-directories>`_ | users_ | subdirectories_ | `finder and explorer <#finder-and-explorer>`_ | `hidden files <#hidden-files>`_ | `temporary files <#temporary-files>`_ | trash_ | public_ | shared_ | dropbox_
+installation_ | `home directories <#home-directories>`_ | users_ | subdirectories_ | `finder and explorer <#finder-and-explorer>`_ | `hidden files <#hidden-files>`_ | `temporary files <#temporary-files>`_ | trash_ | public_
 
 Summary
 -------
@@ -40,16 +40,16 @@ Windows sets the environment variable ``%USERPROFILE%`` to the path of the curre
 Users
 -----
 
-On ``Mac OS X`` the setup procedure prompts for the user's full name, login name, and password.  User accounts are managed at ``System Preferences | Users & Groups``.  To set the Mac avatar, go to ``System Preferences | Users & Groups`` and click on the image.
+On ``Mac OS X`` user accounts are managed at ``System Preferences | Users & Groups``.  To set the Mac avatar, go to ``System Preferences | Users & Groups`` and click on the image.
 
-As I recall, Windows asks for account information when it is installed.  To add a new account, go to ``Control Panel | User Accounts | Manage another account``.  To set the Windows avatar, go to ``Control Panel | User Accounts | Change your picture``.
+On Windows, to add a new account, go to ``Control Panel | User Accounts | Manage another account``.  To set the Windows avatar, go to ``Control Panel | User Accounts | Change your picture``.
 
-When an Ubuntu instance is created, the setup procedure prompts for the user's full name, login name, and password.  The ``adduser`` command can be used to create more users.  VMware Fusion has an Easy Install feature which collects the account information and provides it to the Ubuntu instance.
+On Linux the ``adduser`` command creates a user.
 
 Subdirectories
 --------------
 
-I'm of the opinion that subdirectories in the home directory should be capitalized and regular files in the home directory should be hidden.
+It seems that subdirectories in the home directory should be capitalized and regular files in the home directory should be hidden.
 
 The Mac filesystem (HFS+), incidentally, is not case sensitive, but it remembers the case that was used when a file is created and uses it for display.
 
@@ -90,7 +90,7 @@ Documents           all        Some applications keep their files here; includin
                                and ``~/Documents/Notebooks`` for iPython;
                                editor files go in ``~/Dropbox/Documents``
 Downloads           all        Configure browsers to download files here without asking.
-Dropbox             host       
+Dropbox             host       Synchronization and cloud backup.
 Favorites           win        Browser bookmarks; probably not used by Firefox or Chrome.
 Games               win        Minesweeper and Solitaire store games in ``Saved Games\Microsoft Games``
 Library             mac        Put AppleScript in ``~/Library/Scripts``.
@@ -237,17 +237,4 @@ On Mac OS X to expose a directory on the local network, go to:
 
 There is an option for enabling SMB so that Windows can access the directory, but it requires storing the Windows password on the Mac.
 
-Shared
-------
-
-*a host directory accessible to guest operating systems*
-
-Dropbox
--------
-
-Some of the ``~/Dropbox`` subdirectories I create:
-
-* Articles
-* Documents
-* Elements
-* Pictures
+//public dir on windows//
