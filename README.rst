@@ -107,7 +107,8 @@ Searches            win        If in Windows Search you click on ``See more resu
                                file in this directory.
 Start Menu          win        hidden; ``~\Start Menu\Programs`` is one way to add programs to the
                                ``All Programs`` section of the Start Menu; put a shortcut in
-                                ``~\Start Menu\Programs\Startup`` to launch an application at login.
+                               ``~\Start Menu\Programs\Startup``
+                               to launch an application at login.
 Templates           win/linux  if you create a template in Word it will be stored here
 Videos              win/linux  stream video and keep this empty
 ==================  =========  ==================================================================================
