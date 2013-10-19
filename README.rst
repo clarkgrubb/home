@@ -25,7 +25,7 @@ Home Directories
 
 Early versions of Unix put user home directories in ``/usr``.  In Linux and BSD the user home directories are in ``/home``.
 
-A Unix user's home directory is specified in ``/etc/passwd``. When the user logs in it is used to set the working directory and the environment variable ``HOME``. The C shell introduced tilde expansion as shortcut for the home directory in paths.  Mac OS X puts home directories in ``/User``. It sets the HOME environment variable, but does not store user information in ``/etc/passwd``. Instead the information is stored in a *Directory Service* which can be queried with the dscl command:
+A Unix user's home directory is specified in ``/etc/passwd``. When the user logs in it is used to set the working directory and the environment variable ``HOME``. The C shell introduced tilde expansion as a shortcut for the home directory in paths.  Mac OS X puts home directories in ``/User``. It sets the ``HOME`` environment variable, but does not store user information in ``/etc/passwd``. Instead the information is stored in a *Directory Service* which can be queried with the dscl command:
 
 ::
 
@@ -40,15 +40,11 @@ Windows sets the environment variable ``%USERPROFILE%`` to the path of the curre
 Users
 -----
 
+On ``Mac OS X`` the setup procedure prompts for the user's full name, login name, and password.  User accounts are managed at ``System Preferences | Users & Groups``.  To set the Mac avatar, go to ``System Preferences | Users & Groups`` and click on the image.
+
+As I recall, Windows asks for account information when it is installed.  To add a new account, go to ``Control Panel | User Accounts | Manage another account``.  To set the Windows avatar, go to ``Control Panel | User Accounts | Change your picture``.
+
 When an Ubuntu instance is created, the setup procedure prompts for the user's full name, login name, and password.  The ``adduser`` command can be used to create more users.  VMware Fusion has an Easy Install feature which collects the account information and provides it to the Ubuntu instance.
-
-On ``Mac OS X`` the setup procedure prompts for the user's full name, login name, and password.  User accounts are managed at ``System Preferences | Users & Groups``.
-
-As I recall, Windows asks for account information when it is installed.  To add a new account, go to ``Control Panel | User Accounts | Manage another account``.
-
-To set the Mac avatar, go to ``System Preferences | Users & Groups`` and click on the image.
-
-To set the Windows avatar, go to ``Control Panel | User Accounts | Change your picture``.
 
 Subdirectories
 --------------
@@ -57,17 +53,17 @@ I'm of the opinion that subdirectories in the home directory should be capitaliz
 
 The Mac filesystem (HFS+), incidentally, is not case sensitive, but it remembers the case that was used when a file is created and uses it for display.
 
-To make it easier to work at the command line, I avoid file names which contain spaces.
+To make it easier to work at the command line, avoid file names which contain spaces.
 
-Since I use tab completion, I choose names that are uniquely specified by their first two letters.  But note that desktops create two directories ``Documents`` and ``Downloads`` which require three letters to uniquely specify.
+Tab completion works well when the contents of a directory are uniquely specified by their first two letters.  Unfortunately the desktop operating systems create directories, namely ``Documents`` and ``Downloads``, which require three letters to uniquely specify.
 
-Windows creates home subdirectories which break both the no-space rule and the unique-two-letter-prefix rule, e.g. ``My Documents``, ``My Pictures``.  One can rename these directories.  Since they are `Special Folders <http://en.wikipedia.org/wiki/Special_folder>`_, one should also update the registry for the benefit of applications using the Special Folder API to get the paths:
+Windows creates home subdirectories which break both the no-space rule and the unique-two-letter-prefix rule, e.g. ``My Documents``, ``My Pictures``.  One can rename these directories.  Since they are `Special Folders <http://en.wikipedia.org/wiki/Special_folder>`_, one should also update the registry for the benefit of applications using the Special Folder API to get the paths.  The registry key is:
 
 ::
 
     HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
 
-Also, the Explorer may keep separate names for these files, so one may need to change the file names at both the command line and in the Explorer.
+Also, the Explorer keeps separate names for these files, so one must cahnge the file names at both the command line and in Explorer.
 
 **windows home subdirectories to rename:**
 
@@ -94,7 +90,7 @@ Documents           all        Some applications keep their files here; includin
                                and ``~/Documents/Notebooks`` for iPython;
                                editor files go in ``~/Dropbox/Documents``
 Downloads           all        Configure browsers to download files here without asking.
-Dropbox             host       Articles, Documents, Elements, Pictures
+Dropbox             host       
 Favorites           win        Browser bookmarks; probably not used by Firefox or Chrome.
 Games               win        Minesweeper and Solitaire store games in ``Saved Games\Microsoft Games``
 Library             mac        Put AppleScript in ``~/Library/Scripts``.
@@ -130,12 +126,12 @@ Videos              win/linux  Stream video and keep this empty.
 subdirectory       os         description
 =================  =========  =================================================================================
 Articles           all        PDFs; link to ``~/Dropbox/Articles``.
-Bin                all        Put first in PATH; a place to install executables without admin privilege.
+Bin                all        Put first in ``PATH``; a place to install executables without admin privilege.
 <Company>          all        Work
 Env                all        ``virtualenv`` and ``rbenv`` environments.
 Etc                all        ``~/Etc/UnicodeData.txt``
 Lang               all        Subdirectories by programming language; code under version control is in ``Src``.
-Man                all        Put first in MANPATH; a place to install man pages w/o admin privilege
+Man                all        Put first in ``MANPATH``; a place to install man pages w/o admin privilege
 Pictures           mac/win    Delete and link to ``~/Dropbox/Pictures``.  On Windows make
                               ``~/Pictures/Pictures`` a shortcut to ``~/Dropbox/Pictures``.
 Shared             all        Share with guest virtual machines.
