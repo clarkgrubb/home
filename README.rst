@@ -240,12 +240,12 @@ On Mac OS X to expose a directory on the local network, go to:
 
     System Preferences | Sharing | File Sharing
 
-There is an option for enabling SMB so that Windows can access the directory, but it requires storing the Windows password on the Mac.
+This is good enough for sharing with Macs.  There is an option for enabling SMB so that Windows can access the directory, but it requires storing the Windows account password on the Mac.
 
-The name of a Mac is generated from the initial account.  It can be changed at ``System Preferences... | Sharing``.  It uses a DNS name of the form ``<MAC-NAME>.local``.  Such a DNS name is only visible if both computers are on the same network.  Lookups are performed by broadcasting and the machine with the name responding.
+The name of a Mac is generated from the initial account.  It can be changed at ``System Preferences... | Sharing``.  Macs use fully qualified DNS names of the form ``<MAC-NAME>.local``.  Such a DNS name is only visible if both computers are on the same network.  Lookups are performed by broadcasting.  Each machine is the DNS server for its own name.
 
 
-Windows has a directory at ``C:\Users\Public`` which can be made public.  Navigate to it in the Explorer and select ``Share with | Advanced sharing settings | Public`` to get a list of checkboxes.  If the choices are permissive enough, a Mac will on the local network will automatically detect and be able to access the files.
+Windows has a directory at ``C:\Users\Public`` which can be made public.  Navigate to it in the Explorer and select ``Share with | Advanced sharing settings | Public`` to get a list of checkboxes.  If the choices are permissive enough, a Mac will on the local network will automatically detect and be able to access the files.  I believe other parts of the file system on a Windows machine can also be made public.
 
 Windows requests a computer name during installation.  It can be changed later at 
 
