@@ -101,6 +101,7 @@ Documents           all        Some applications keep their files here; includin
 Downloads           all        Configure browsers to download files here without asking.
 Dropbox             host       Articles, Documents, Elements, Pictures
 Favorites           win        Browser bookmarks; probably not used by Firefox or Chrome.
+Games               win        Minesweeper and Solitaire store games in ``~\Saved Games\Microsoft Games``
 Library             mac        Put AppleScript in ``~/Library/Scripts``.
 Links               win        The Favorites section of the Explorer sidebar.
 *Local Settings*    win        Hidden; link to ``~\AppData\Local``.
@@ -112,7 +113,6 @@ Public              all        A directory to make available on the local networ
 *PrintHood*         win        Hidden
 Recent              win        Hidden; full of Windows Shell shortcuts (``.lnk`` suffix).  Implements
                                the ``Recent Places`` folder.
-Saved Games         win        Minesweeper and Solitaire store games in ``~\Saved Games\Microsoft Games``
 *SendTo*            win        Hidden; link to ``~\AppData\Roaming\Microsoft\Windows\SendTo``.
                                There is is ``Send to`` item in the Explorer context menu.  More target
                                applications can be added by putting shortcuts in the folder.  The applications
