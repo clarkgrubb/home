@@ -141,7 +141,6 @@ Finder, Explorer, Files
 
 The GUI file system browser in Ubuntu used to be called Nautilus, but as of Ubuntu 13 it is just called *Files*?
 
-
 Hidden Files
 ------------
 
@@ -163,7 +162,11 @@ To make hidden files visible in the Explorer:
 
     Organize | Folder and search options | View | Hidden files and folders | Show hidden files, folders, and drives
 
-Files are always visible at the command line.
+Files which are hidden by attribute are always visible at the command line.  If Unix tools are installed by MinGW or Cygwin, these observe the convention that files that start with a period are hidden.  Unix dot files are visible in Explorer, which is unaesthetic.  They can be manually hidden with this command:
+
+::
+
+    ATTRIB +H /S /D C:\.*
 
 NTUSER.DAT* files
 
@@ -185,16 +188,24 @@ The Mac OS X Trash folder is ``~/.Trash``.
 
 The Ubuntu Trash folder is ``~/.local/share/Trash``.  It is not created until something is moved to the trash using Nautilus.
 
-The Windows recycle bin is at ``C:\$Recycle.Bin``.
+The Windows recycle bin is at ``C:\$Recycle.Bin``.  Actually, each NTFS file system has a recycle bin.  The Recycle Bin on the Desktop is a union of all of them.
+
+Files are sent to the Recyle bin by right clicking in the explorer and selecting ``Delete``.  Or selecting the file and pressing the delete key (fn delete in Bootcamp).
+
+*emptying the recycle bin*
+
+*deleting at the command line*
 
 Public
 ------
 
-On Mac OS X to expose a directory on the local netowrk, go to:
+On Mac OS X to expose a directory on the local network, go to:
 
 ::
 
     System Preferences | Sharing | File Sharing
+
+There is an option for enabling SMB so that Windows can access the directory, but it requires storing the Windows password on the Mac.
 
 Shared
 ------
