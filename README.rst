@@ -212,7 +212,7 @@ Temporary Files
 
 POSIX systems are supposed to set the ``$TMPDIR`` environment variable.  Mac OS X sets ``$TMPDIR`` to a path in ``/var/folders``.  Mac OS X checks for and deletes files that are older than 3 days in ``/tmp`` on a daily schedule.  See ``/etc/periodic/daily/110.clean-tmps`` and ``/etc/defaults/periodic.conf``.  Older files may survive because of open file handles.  *How are files in /var/folders cleaned up?*
 
-Linux does not set ``$TMPDIR`` in my experience.  The `Filesystem Hierarchy Standard <http://www.pathname.com/fhs/pub/fhs-2.3.html>`_ guarantees that ``/tmp`` will exist, howver.  Ubuntu Linux is usually configured to empty ``/tmp`` on boot.  See ``/etc/init/mounted-tmp.conf``.
+Linux does not set ``$TMPDIR`` in my experience.  The `Filesystem Hierarchy Standard <http://www.pathname.com/fhs/pub/fhs-2.3.html>`_ guarantees that ``/tmp`` will exist, howver.  Ubuntu is usually configured to empty ``/tmp`` on boot.  See ``/etc/init/mounted-tmp.conf``.
 
 Windows sets the ``%TEMP%`` environment variable to the location of the temporary file directory.  Windows never cleans out this directory.
 
