@@ -2,7 +2,7 @@
 HOME
 ----
 
-installation_ | `home directories <#home-directories>`_ | users_ | subdirectories_ | `finder, explorer, and files <#finder-explorer-files>`_ | `hidden files <#hidden-files>`_ | `temporary files <#temporary-files>`_ | trash_ | public_ | shared_ | dropbox_
+installation_ | `home directories <#home-directories>`_ | users_ | subdirectories_ | `finder and explorer <#finder-and-explorer>`_ | `hidden files <#hidden-files>`_ | `temporary files <#temporary-files>`_ | trash_ | public_ | shared_ | dropbox_
 
 Summary
 -------
@@ -166,16 +166,16 @@ On Mac OS X:
 On Windows I link ``~\Pictures\Pictures`` to ``~\Dropbox\Pictures`` because I didn't want Windows
 applications creating directories on my Dropbox.  By *link* I mean both a symlink and an Explorer shortcut.
 
-Finder, Explorer, Files
------------------------
+Finder and Explorer
+-------------------
 
 Drag directories to the Finder sidebar to add them.
-
-To add directories to the Ubuntu file system browser, open the directory, click on the cog icon in the upper right, and select ``Bookmark this Location``.
 
 Drag directories to the Explorer sidebar to add them.
 
 The ``Favorites`` section of the Explorer sidebar is implemented with shortcuts in the ``~/Links`` directory.   Because shortcuts can have a different name from their target, the shortcut to the home directory can be ``Home`` instead of the current user name.
+
+To add directories to the Ubuntu file system browser, open the directory, click on the cog icon in the upper right, and select ``Bookmark this Location``.
 
 Hidden Files
 ------------
