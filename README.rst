@@ -76,11 +76,12 @@ Also, the Explorer may keep separate names for these files, so one may need to c
 
 **standard home subdirectories:**
 
-==================  =========  =================================================================================
+==================  =========  ==================================================================================
 subdirectory        os         description
-==================  =========  =================================================================================
-*AppData*           win        hidden
-*Application Data*  win        hidden
+==================  =========  ==================================================================================
+*AppData*           win        hidden; items pinned to the Start Menu are shortcuts at
+                               ``AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/StartMenu``
+*Application Data*  win        hidden; just a link to ``~\AppData\Roaming``?
 Desktop             all        files here appear as icons on the desktop
 Documents           all        some applications keep their files here; including ``~/Documents/Eclipse``
                                and ``~/Documents/Notebooks`` for iPython;
@@ -89,9 +90,9 @@ Downloads           all        browsers should be configured to download files h
 Dropbox             host       Articles, Documents, Elements, Pictures
 Favorites           win        browser bookmarks; probably not used by Firefox or Chrome
 Library             mac        scripts run by Fastscripts must be in ~/Library/Scripts
-Links               win        used by the Explorer sidebar?
-*Local Settings*    win        hidden
-Movies              mac        keep this empty
+Links               win        the Favorites section of the Explorer sidebar
+*Local Settings*    win        hidden; just a link to ``~\AppData\Local``?
+Movies              mac        stream video and keep this empty
 Music               all        iTunes and Amazon Cloud Player
 *NetHood*           win        hidden
 Pictures            all        Omnigraffle and image editor files; PDFs created by R
@@ -99,14 +100,17 @@ Public              all        a directory to make available on the local networ
 *PrintHood*         win        hidden
 Recent              win        hidden; full of Windows Shell shortcuts (``.lnk`` suffix).  Implements
                                the ``Recent Places`` folder.
-Saved Games         win        Minesweeper and Solitaire store games in ``~/Saved Games/Microsoft Games``
+Saved Games         win        Minesweeper and Solitaire store games in ``~\Saved Games\Microsoft Games``
+*SendTo*            win        hidden
 Searches            win        If in Windows Search you click on ``See more results``, you'll get a window
                                of results.  The window has a ``Save search`` option which will create an XML
                                file in this directory.
-Start Menu          win
-Templates           win/linux
-Videos              win/linux  Windows/Ubuntu place for movies; keep this empty
-==================  =========  =================================================================================
+Start Menu          win        hidden; ``~\Start Menu\Programs`` is one way to add programs to the
+                               ``All Programs`` section of the Start Menu; put a shortcut in
+                                ``~\Start Menu\Programs\Startup`` to launch an application at login.
+Templates           win/linux  if you create a template in Word it will be stored here
+Videos              win/linux  stream video and keep this empty
+==================  =========  ==================================================================================
 
 **personal home subdirectories:**
 
@@ -175,7 +179,7 @@ Files which are hidden by attribute are always visible at the command line.  If 
 
     ATTRIB +H /S /D C:\.*
 
-The hidden files in the Windows home directory of the form NTUSER.DAT* are caches of the registry.
+The hidden files in the Windows home directory of the form NTUSER.DAT* are caches of the registry.  Hard to miss these files at the command line because of their long names.
 
 Temporary Files
 ---------------
@@ -222,7 +226,7 @@ Shared
 Dropbox
 -------
 
-Some ``~/Dropbox`` subdirectories:
+Some of the ``~/Dropbox`` subdirectories I create:
 
 * Articles
 * Documents
