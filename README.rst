@@ -176,7 +176,7 @@ To add directories to the Ubuntu file system browser, open the directory, click 
 Hidden Files
 ------------
 
-Unix hidden files have names which start with a period.
+Unix hidden files have names which start with a period.  The file globbing characters ``*`` and ``?`` do not match an initial period.  Use ``ls -a`` to see hidden files in a listing.
 
 On Mac, the Finder does not display these files.  Other files can be hidden from the Finder:
 
