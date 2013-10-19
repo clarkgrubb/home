@@ -25,7 +25,7 @@ Home Directories
 
 Early versions of Unix put user home directories in ``/usr``.  In Linux and BSD the user home directories are in ``/home``.
 
-A Unix user's home directory is specified in ``/etc/passwd``. This is the working directory when the user logs in and the system sets the environment variable ``HOME`` to this value. The C shell introduced tilde expansion as shortcut for the home directory in paths.  Mac OS X puts the home directories in ``/User``. It sets the HOME environment variable, but does not store user information in ``/etc/passwd``. The information is stored in the Directory Service which can be queried with the dscl command:
+A Unix user's home directory is specified in ``/etc/passwd``. hen the user logs in the working directory and the environment variable ``HOME`` are set accordingly. The C shell introduced tilde expansion as shortcut for the home directory in paths.  Mac OS X puts the home directories in ``/User``. It sets the HOME environment variable, but does not store user information in ``/etc/passwd``. The information is stored in the Directory Service which can be queried with the dscl command:
 
 ::
 
@@ -88,9 +88,9 @@ subdirectory        os         description
 ==================  =========  ==================================================================================
 *AppData*           win        Hidden; I like to unhide it; items pinned to the Start Menu are shortcuts at
                                ``AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/StartMenu``
-*Application Data*  win        Hidden; link to ``~\AppData\Roaming``.
+*Application Data*  win        Hidden; link to ``AppData\Roaming``.
 Contacts            win        Used by Outlook?
-*Cookies*           win        Hidden; link to ``~\AppData\Roaming\Microsoft\Windows\Cookies``.
+*Cookies*           win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\Cookies``.
 Desktop             all        Files here appear as icons on the desktop.
 Documents           all        Some applications keep their files here; including ``~/Documents/Eclipse``
                                and ``~/Documents/Notebooks`` for iPython;
@@ -98,10 +98,10 @@ Documents           all        Some applications keep their files here; includin
 Downloads           all        Configure browsers to download files here without asking.
 Dropbox             host       Articles, Documents, Elements, Pictures
 Favorites           win        Browser bookmarks; probably not used by Firefox or Chrome.
-Games               win        Minesweeper and Solitaire store games in ``~\Saved Games\Microsoft Games``
+Games               win        Minesweeper and Solitaire store games in ``Saved Games\Microsoft Games``
 Library             mac        Put AppleScript in ``~/Library/Scripts``.
 Links               win        The Favorites section of the Explorer sidebar.
-*Local Settings*    win        Hidden; link to ``~\AppData\Local``.
+*Local Settings*    win        Hidden; link to ``AppData\Local``.
 Movies              mac        Stream video and keep this empty.
 Music               all        E.g. iTunes and Amazon Cloud Player.
 *NetHood*           win        Hidden
@@ -110,17 +110,17 @@ Public              all        A directory to make available on the local networ
 *PrintHood*         win        Hidden
 Recent              win        Hidden; full of Windows Shell shortcuts (``.lnk`` suffix).  Implements
                                the ``Recent Places`` folder.
-*SendTo*            win        Hidden; link to ``~\AppData\Roaming\Microsoft\Windows\SendTo``.
+*SendTo*            win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\SendTo``.
                                There is is ``Send to`` item in the Explorer context menu.  More target
                                applications can be added by putting shortcuts in the folder.  The applications
                                must be launchable from the command line and accept a file path as an argument.
 Searches            win        If in Windows Search you click on ``See more results``, you'll get a window
                                of results.  The window has a ``Save search`` option which will create an XML
                                file in this directory.
-Start Menu          win        Hidden; link to ``~\AppData\Roaming\Microsoft\Windows\Start Menu``.
-                               ``~\Start Menu\Programs`` is one way to add programs to the
+Start Menu          win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\Start Menu``.
+                               ``Start Menu\Programs`` is one way to add programs to the
                                ``All Programs`` section of the Start Menu; put a shortcut in
-                               ``~\Start Menu\Programs\Startup``
+                               ``Start Menu\Programs\Startup``
                                to launch an application at login.
 Templates           win/linux  If you create a template in Word it will be stored here.
 Videos              win/linux  Stream video and keep this empty.
@@ -161,7 +161,7 @@ On Mac OS X:
     ln -s Dropbox/Articles Articles
     ln -s Dropbox/Pictures Pictures
 
-On Windows I link ``~\Pictures\Pictures`` to ``~\Dropbox\Pictures`` because I didn't want Windows
+On Windows I link ``Pictures\Pictures`` to ``Dropbox\Pictures`` because I didn't want Windows
 applications creating directories on my Dropbox.  By *link* I mean both a symlink and an Explorer shortcut.
 
 Finder and Explorer
