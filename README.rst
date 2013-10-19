@@ -159,8 +159,8 @@ On Mac OS X:
     ln -s Dropbox/Articles Articles
     ln -s Dropbox/Pictures Pictures
 
-On Windows I link ``Pictures\Pictures`` to ``Dropbox\Pictures`` because I didn't want Windows
-applications creating directories on my Dropbox.  By *link* I mean both a symlink and an Explorer shortcut.
+On Windows I link ``Pictures\Pictures`` to ``Dropbox\Pictures`` because I'm not sure I want Windows
+applications creating directories on my Dropbox.  I create two links: a symlink and an Explorer shortcut.
 
 Finder and Explorer
 -------------------
