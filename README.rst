@@ -82,8 +82,9 @@ subdirectory        os         description
 *AppData*           win        hidden
 *Application Data*  win        hidden
 Desktop             all        files here appear as icons on the desktop
-Documents           all        some applications keep their files here; including ~/Documents/Eclipse
-                               and ~/Documents/Notebooks for iPython; editor files go in ~/Dropbox/Documents
+Documents           all        some applications keep their files here; including ``~/Documents/Eclipse``
+                               and ``~/Documents/Notebooks`` for iPython;
+                               editor files go in ``~/Dropbox/Documents``
 Downloads           all        browsers should be configured to download files here; it is generally
 Dropbox             host       Articles, Documents, Elements, Pictures
 Favorites           win        browser bookmarks; probably not used by Firefox or Chrome
@@ -94,13 +95,14 @@ Movies              mac        keep this empty
 Music               all        iTunes and Amazon Cloud Player
 *NetHood*           win        hidden
 Pictures            all        Omnigraffle and image editor files; PDFs created by R
-Public              all        If part of the home directory is made available on the local network,
-                               make it this directory. E.g on Mac
-*PrintHood*         win
-Recent              win        hidden; full of Windows Shell shortcuts (.lnk suffix).  Implements
+Public              all        a directory to make available on the local network
+*PrintHood*         win        hidden
+Recent              win        hidden; full of Windows Shell shortcuts (``.lnk`` suffix).  Implements
                                the ``Recent Places`` folder.
-Saved Games         win
-Searches            win
+Saved Games         win        Minesweeper and Solitaire store games in ``~/Saved Games/Microsoft Games``
+Searches            win        If in Windows Search you click on ``See more results``, you'll get a window
+                               of results.  The window has a ``Save search`` option which will create an XML
+                               file in this directory.
 Start Menu          win
 Templates           win/linux
 Videos              win/linux  Windows/Ubuntu place for movies; keep this empty
