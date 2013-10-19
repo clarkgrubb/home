@@ -102,11 +102,11 @@ Links               win        The Favorites section of the Explorer sidebar.
 *Local Settings*    win        Hidden; link to ``AppData\Local``.
 Movies              mac        Stream video and keep this empty.
 Music               all        E.g. iTunes and Amazon Cloud Player.
-*NetHood*           win        Hidden
+*NetHood*           win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\Network Shortcuts``
 Pictures            all        Image editor files; Visio and Omnigraffle; PDFs created by R.
 Public              linux/mac  A directory to make available on the local network.
                                Windows has a directory at ``C:\Users\Public``.
-*PrintHood*         win        Hidden
+*PrintHood*         win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\Printer Shortcuts``
 Recent              win        Hidden; full of Windows Shell shortcuts (``.lnk`` suffix).  Implements
                                the ``Recent Places`` folder.
 *SendTo*            win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\SendTo``.
