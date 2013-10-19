@@ -76,35 +76,35 @@ Also, the Explorer may keep separate names for these files, so one may need to c
 
 **standard home subdirectories:**
 
-=================  =========  =================================================================================
-subdirectory       os         description
-=================  =========  =================================================================================
-*AppData*          win        hidden
-*Application Data* win        hidden
-Desktop            all        files here appear as icons on the desktop
-Documents          all        some applications keep their files here; including ~/Documents/Eclipse
-                              and ~/Documents/Notebooks for iPython; editor files go in ~/Dropbox/Documents
-Downloads          all        browsers should be configured to download files here; it is generally
-Dropbox            host       Articles, Documents, Elements, Pictures
-Favorites          win        browser bookmarks; probably not used by Firefox or Chrome
-Library            mac        scripts run by Fastscripts must be in ~/Library/Scripts
-Links              win        used by the Explorer sidebar?
-*Local Settings*   win        hidden
-Movies             mac        keep this empty
-Music              all        iTunes and Amazon Cloud Player
-*NetHood*          win        hidden
-Pictures           all        Omnigraffle and image editor files; PDFs created by R
-Public             all        If part of the home directory is made available on the local network,
-                              make it this directory. E.g on Mac
-*PrintHood*        win
-Recent             win        hidden; full of Windows Shell shortcuts (.lnk suffix).  Implements
-                              the ``Recent Places`` folder.
-Saved Games        win
-Searches           win
-Start Menu         win
-Templates          win/linux
-Videos             win/linux  Windows/Ubuntu place for movies; keep this empty
-=================  =========  =================================================================================
+==================  =========  =================================================================================
+subdirectory        os         description
+==================  =========  =================================================================================
+*AppData*           win        hidden
+*Application Data*  win        hidden
+Desktop             all        files here appear as icons on the desktop
+Documents           all        some applications keep their files here; including ~/Documents/Eclipse
+                               and ~/Documents/Notebooks for iPython; editor files go in ~/Dropbox/Documents
+Downloads           all        browsers should be configured to download files here; it is generally
+Dropbox             host       Articles, Documents, Elements, Pictures
+Favorites           win        browser bookmarks; probably not used by Firefox or Chrome
+Library             mac        scripts run by Fastscripts must be in ~/Library/Scripts
+Links               win        used by the Explorer sidebar?
+*Local Settings*    win        hidden
+Movies              mac        keep this empty
+Music               all        iTunes and Amazon Cloud Player
+*NetHood*           win        hidden
+Pictures            all        Omnigraffle and image editor files; PDFs created by R
+Public              all        If part of the home directory is made available on the local network,
+                               make it this directory. E.g on Mac
+*PrintHood*         win
+Recent              win        hidden; full of Windows Shell shortcuts (.lnk suffix).  Implements
+                               the ``Recent Places`` folder.
+Saved Games         win
+Searches            win
+Start Menu          win
+Templates           win/linux
+Videos              win/linux  Windows/Ubuntu place for movies; keep this empty
+=================   =========  =================================================================================
 
 **personal home subdirectories:**
 
