@@ -137,8 +137,7 @@ Env                all        ``virtualenv`` and ``rbenv`` environments.
 Etc                all        ``~/Etc/UnicodeData.txt``
 Lang               all        Subdirectories by programming language; code under version control is in ``Src``.
 Man                all        Put first in ``MANPATH``; a place to install man pages w/o admin privilege
-Pictures           mac/win    Delete and link to ``~/Dropbox/Pictures``.  On Windows make
-                              ``~/Pictures/Pictures`` a shortcut to ``~/Dropbox/Pictures``.
+Pictures           mac/win    Make ``~/Pictures/Pictures`` a link to ``~/Dropbox/Pictures``.
 Shared             all        Share with guest virtual machines.
 Src                all        Tarballs, git repos, ISOs for virtual machines.
 Trash              all        Symlink to Trash or Recyle Bin.
@@ -158,10 +157,9 @@ On Mac OS X:
     cd
     rm -rf Pictures
     ln -s Dropbox/Articles Articles
-    ln -s Dropbox/Pictures Pictures
+    ln -s Dropbox/Pictures Pictures/Pictures
 
-On Windows I link ``Pictures\Pictures`` to ``Dropbox\Pictures`` because I'm not sure I want Windows
-applications creating directories on my Dropbox.  I create two links: a symlink and an Explorer shortcut.
+On Windows create two links: a symlink and an Explorer shortcut.
 
 Finder and Explorer
 -------------------
