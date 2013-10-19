@@ -78,16 +78,6 @@ Also, the Explorer may keep separate names for these files, so one may need to c
 
 **renamed windows home subdirectories:**
 
-=============  ==========
-old            new
-=============  ==========
-My Documents   Documents
-My Music       Music
-My Pictures    Pictures
-My Videos      Videos
-Saved Games    Games
-=============  ==========
-
 
 **standard home subdirectories:**
 
@@ -151,6 +141,19 @@ Shared             all        Share with guest virtual machines.
 Src                all        Tarballs, git repos, ISOs for virtual machines.
 Trash              all        Symlink to Trash or Recyle Bin.
 =================  =========  =================================================================================
+
+
+=============  ==========
+old            new
+=============  ==========
+My Documents   Documents
+My Music       Music
+My Pictures    Pictures
+My Videos      Videos
+Saved Games    Games
+=============  ==========
+
+
 
 To set up the home directory:
 
