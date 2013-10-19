@@ -76,6 +76,19 @@ Windows some home directory subdirectories which break the no-space rule and the
 
 Also, the Explorer may keep separate names for these files, so one may need to change the file names at both the command line and in the Explorer.
 
+**renamed windows home subdirectories:
+
+=============  ==========
+old            new
+=============  ==========
+My Documents   Documents
+My Music       Music
+My Pictures    Pictures
+My Videos      Videos
+Saved Games    Games
+=============  ==========
+
+
 **standard home subdirectories:**
 
 ==================  =========  ==================================================================================
@@ -84,7 +97,7 @@ subdirectory        os         description
 *AppData*           win        Hidden; items pinned to the Start Menu are shortcuts at
                                ``AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/StartMenu``
 *Application Data*  win        Hidden; link to ``~\AppData\Roaming``.
-*Contacts*          win        Used by Outlook?
+Contacts            win        Used by Outlook?
 *Cookies*           win        Hidden; link to ``~\AppData\Roaming\Microsoft\Windows\Cookies``.
 Desktop             all        Files here appear as icons on the desktop.
 Documents           all        Some applications keep their files here; including ``~/Documents/Eclipse``
@@ -111,7 +124,7 @@ Saved Games         win        Minesweeper and Solitaire store games in ``~\Save
                                must be launchable from the command line and accept a file path as an argument.
 Searches            win        If in Windows Search you click on ``See more results``, you'll get a window
                                of results.  The window has a ``Save search`` option which will create an XML
-                               file in this directory.
+file in this directory.
 Start Menu          win        Hidden; ``~\Start Menu\Programs`` is one way to add programs to the
                                ``All Programs`` section of the Start Menu; put a shortcut in
                                ``~\Start Menu\Programs\Startup``
@@ -132,7 +145,8 @@ Env                all        ``virtualenv`` and ``rbenv`` environments.
 Etc                all        ``~/Etc/UnicodeData.txt``
 Lang               all        Subdirectories by programming language; code under version control is in ``Src``.
 Man                all        Put first in MANPATH; a place to install man pages w/o admin privilege
-Pictures           mac/win    Delete and link to ``~/Dropbox/Pictures``.
+Pictures           mac/win    Delete and link to ``~/Dropbox/Pictures``.  On Windows make
+                              ``~/Pictures/Pictures`` a shortcut to ``~/Dropbox/Pictures``.
 Shared             all        Share with guest virtual machines.
 Src                all        Tarballs, git repos, ISOs for virtual machines.
 Trash              all        Symlink to Trash or Recyle Bin.
@@ -142,11 +156,22 @@ To set up the home directory:
 
 ::
 
-    mkdir ~/Bin ~/Env ~/Etc ~/Lang ~/Man ~/Src
+    cd
+    mkdir Bin Env Etc Lang Man Src
 
-Make these links into ~/Dropbox: Articles, Pictures
+On Mac OS X:
 
-*links on Windows*
+::
+   
+    cd
+    rm -rf Pictures
+    ln -s Dropbox/Articles Articles
+    ln -s Dropbox/Pictures Pictures
+
+On Windows I link ``~\Pictures\Pictures`` to ``~\Dropbox\Pictures`` because I didn't want Windows
+applications creating directories on my Dropbox.
+
+By *link* I mean both a symlink and an Explorer shortcut.
 
 Finder, Explorer, Files
 -----------------------
@@ -174,11 +199,13 @@ To expose a file to the Finder:
 
 On Windows, files can be hidden from the Explorer by checking ``Properties | General | Hidden`` or at the command line using ``ATTRIB +H``.  To expose a hidden file to Explorer at the command line use ``ATTRIB -H``.
 
-To make hidden files visible in the Explorer:
+To make hidden files visible in the Explorer go to:
 
 ::
 
-    Organize | Folder and search options | View | Hidden files and folders | Show hidden files, folders, and drives
+    Organize | Folder and search options | View | Hidden files and folders
+
+and select ``Show hidden files, folders, and drives``.
 
 Files which are hidden by attribute are always visible at the command line.  If Unix tools are installed by MinGW or Cygwin, these observe the convention that files that start with a period are hidden.  Unix dot files are visible in Explorer, which is unaesthetic.  They can be manually hidden with this command:
 
