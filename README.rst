@@ -40,6 +40,10 @@ Windows sets the environment variable ``%USERPROFILE%`` to the path of the curre
 Users
 -----
 
+The name of home directory is the login name of the user.  A user (login name, password, maybe a full name) must be specified when the operating system is installed.
+
+To change the name, it is probably best to create a new account, copy over files, and delete the old account.  On Windows a login name can be changed, but this does not change the home directory name.
+
 On ``Mac OS X`` user accounts are managed at ``System Preferences | Users & Groups``.  To set the Mac avatar, go to ``System Preferences | Users & Groups`` and click on the image.
 
 On Windows, to add a new account, go to ``Control Panel | User Accounts | Manage another account``.  To set the Windows avatar, go to ``Control Panel | User Accounts | Change your picture``.
@@ -49,7 +53,7 @@ On Linux the ``adduser`` command creates a user.
 Subdirectories
 --------------
 
-It seems that subdirectories in the home directory should be capitalized and regular files in the home directory should be hidden.
+It would seem that subdirectories in the home directory should be capitalized and regular files in the home directory should be hidden.
 
 The Mac filesystem (HFS+), incidentally, is not case sensitive, but it remembers the case that was used when a file is created and uses it for display.
 
