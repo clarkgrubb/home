@@ -25,7 +25,7 @@ Home Directories
 
 Early versions of Unix put user home directories in ``/usr``.  In Linux and BSD the user home directories are in ``/home``.
 
-A Unix user's home directory is specified in ``/etc/passwd``. When the user logs in it is used to set the working directory and the environment variable ``HOME``. The C shell introduced tilde expansion as a shortcut for the home directory in paths.  Mac OS X puts home directories in ``/User``. It sets the ``HOME`` environment variable, but does not store user information in ``/etc/passwd``. Instead the information is stored in a *Directory Service* which can be queried with the dscl command:
+A Unix user's home directory is specified in ``/etc/passwd``. When the user logs in it is used to set the working directory and the environment variable ``HOME``. The C shell introduced tilde expansion as a shortcut for the home directory in paths.  Mac OS X puts home directories in ``/User``. It sets the ``HOME`` environment variable, but does not store user information in ``/etc/passwd``. Instead the information is stored in a *Directory Service* which can be queried with the ``dscl`` command:
 
 ::
 
@@ -67,7 +67,7 @@ Windows creates home subdirectories which break both the no-space rule and the u
 
     HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders
 
-Also, the Explorer keeps separate names for these files, so one must change the file names at both the command line and in Explorer.
+Also, the Explorer keeps separate names for these files, so one must change the file names both at the command line and in Explorer.
 
 **windows home subdirectories to rename:**
 
