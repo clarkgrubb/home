@@ -164,16 +164,14 @@ On Mac OS X:
     ln -s Dropbox/Pictures Pictures
 
 On Windows I link ``~\Pictures\Pictures`` to ``~\Dropbox\Pictures`` because I didn't want Windows
-applications creating directories on my Dropbox.
-
-By *link* I mean both a symlink and an Explorer shortcut.
+applications creating directories on my Dropbox.  By *link* I mean both a symlink and an Explorer shortcut.
 
 Finder, Explorer, Files
 -----------------------
 
 Drag directories to the Finder sidebar to add them.
 
-The GUI file system browser in Ubuntu used to be called Nautilus, but as of Ubuntu 13 it is just called *Files*?
+To add directories to the Ubuntu file system browser, open the directory, click on the cog icon in the upper right, and select ``Bookmark this Location``.
 
 Drag directories to the Explorer sidebar to add them.
 
@@ -192,9 +190,11 @@ To expose a file to the Finder:
 
     SetFile -a v foo.txt
 
-On Windows, files can be hidden from the Explorer by checking ``Properties | General | Hidden`` or at the command line using ``ATTRIB +H``.  To expose a hidden file to Explorer at the command line use ``ATTRIB -H``.
+On Windows, files can be hidden from the Explorer by checking ``Properties | General | Hidden``.
 
-To make hidden files visible in the Explorer go to:
+Files can be hidden from the Explorer at the command line using ``ATTRIB +H``.  To expose a hidden file to Explorer at the command line use ``ATTRIB -H``.
+
+To make all hidden files visible in the Explorer go to:
 
 ::
 
@@ -202,22 +202,20 @@ To make hidden files visible in the Explorer go to:
 
 and select ``Show hidden files, folders, and drives``.
 
-Files which are hidden by attribute are always visible at the command line.  If Unix tools are installed by MinGW or Cygwin, these observe the convention that files that start with a period are hidden.  Unix dot files are visible in Explorer, which is unaesthetic.  They can be manually hidden with this command:
+Windows files which are hidden by attribute are always visible at the command line.  If Unix tools are installed by MinGW or Cygwin, these observe the convention that files that start with a period are hidden.  Unix dot files are visible in Explorer, which is unaesthetic.  They can be manually hidden with this command:
 
 ::
 
     ATTRIB +H /S /D C:\.*
 
-The hidden files in the Windows home directory of the form NTUSER.DAT* are caches of the registry.  Hard to miss these files at the command line because of their long names.
+The files in the Windows home directory of the form ``NTUSER.DAT*`` are hard to miss because of their long names.  They are caches of the registry.  
 
 Temporary Files
 ---------------
 
-POSIX systems are supposed to set the ``$TMPDIR`` environment variable.  Mac OS X sets ``$TMPDIR`` to a randomly generated path in ``/var/folders``.  *When does Mac OS X clean out /tmp and $TMPDIR?*
+POSIX systems are supposed to set the ``$TMPDIR`` environment variable.  Mac OS X sets ``$TMPDIR`` to a path in ``/var/folders``.  Mac OS X checks for and deletes files that are older than 3 days in ``/tmp`` on a daily schedule.  See ``/etc/periodic/daily/110.clean-tmps`` and ``/etc/defaults/periodic.conf``.  Older files may survive because of open file handles.  *How are files in /var/folders cleaned up?*
 
-Linux does not set ``$TMPDIR`` in my experience.  The `Filesystem Hierarchy Standard <http://www.pathname.com/fhs/pub/fhs-2.3.html>`_ guarantees that ``/tmp`` will exist, howver.
-
-Ubuntu Linux is usually configured to empty ``/tmp`` on boot.  See ``/etc/init/mounted-tmp.conf``.
+Linux does not set ``$TMPDIR`` in my experience.  The `Filesystem Hierarchy Standard <http://www.pathname.com/fhs/pub/fhs-2.3.html>`_ guarantees that ``/tmp`` will exist, howver.  Ubuntu Linux is usually configured to empty ``/tmp`` on boot.  See ``/etc/init/mounted-tmp.conf``.
 
 Windows sets the ``%TEMP%`` environment variable to the location of the temporary file directory.  Windows never cleans out this directory.
 
@@ -230,11 +228,11 @@ The Ubuntu Trash folder is ``~/.local/share/Trash``.  It is not created until so
 
 The Windows recycle bin is at ``C:\$Recycle.Bin``.  Actually, each NTFS file system has a recycle bin.  The Recycle Bin on the Desktop is a union of all of them.
 
-Files are sent to the Recyle bin by right clicking in the explorer and selecting ``Delete``.  Or selecting the file and pressing the delete key (fn delete in Bootcamp).
+Files are sent to the Mac OS X trash by selecting them in the Finder and ``⌘Delete``.  ``⇧⌘Delete`` empties the Trash.
 
-*emptying the recycle bin*
+Files are sent to the Recyle bin by right clicking in the explorer and selecting ``Delete`` or selecting the file and pressing the delete key (fn delete in Bootcamp).  Right click the Recycle Bin in Explorer to empty it.
 
-*deleting at the command line*
+Command line tools such as ``rm`` and ``del`` on all operating systems remove files without putting them in the Trash directory or Recycle Bin folder.
 
 Public
 ------
