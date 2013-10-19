@@ -78,15 +78,16 @@ Also, the Explorer may keep separate names for these files, so one may need to c
 
 **renamed windows home subdirectories:**
 
-=============  ==========
-old            new
-=============  ==========
-My Documents   Documents
-My Music       Music
-My Pictures    Pictures
-My Videos      Videos
-Saved Games    Games
-=============  ==========
+
++--------------+----------+
+|old           | new      |
++--------------+----------+
+|My Documents  | Documents|
+|My Music      | Music    |
+|My Pictures   | Pictures |
+|My Videos     | Videos   |
+|Saved Games   | Games    |
++--------------+----------+
 
 **standard home subdirectories:**
 
