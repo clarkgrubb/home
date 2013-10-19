@@ -105,7 +105,10 @@ Public              all        A directory to make available on the local networ
 Recent              win        Hidden; full of Windows Shell shortcuts (``.lnk`` suffix).  Implements
                                the ``Recent Places`` folder.
 Saved Games         win        Minesweeper and Solitaire store games in ``~\Saved Games\Microsoft Games``
-*SendTo*            win        Hidden
+*SendTo*            win        Hidden; link to ``~\AppData\Roaming\Microsoft\Windows\SendTo``.
+                               There is is ``Send to`` item in the Explorer context menu.  More target
+                               applications can be added by putting shortcuts in the folder.  The applications
+                               must be launchable from the command line and accept a file path as an argument.
 Searches            win        If in Windows Search you click on ``See more results``, you'll get a window
                                of results.  The window has a ``Save search`` option which will create an XML
                                file in this directory.
