@@ -79,8 +79,8 @@ Also, the Explorer may keep separate names for these files, so one may need to c
 =================  =========  =================================================================================
 subdirectory       os         description
 =================  =========  =================================================================================
-AppData            win
-Application Data   win
+*AppData*          win        hidden
+*Application Data* win        hidden
 Desktop            all        files here appear as icons on the desktop
 Documents          all        some applications keep their files here; including ~/Documents/Eclipse
                               and ~/Documents/Notebooks for iPython; editor files go in ~/Dropbox/Documents
@@ -89,16 +89,16 @@ Dropbox            host       Articles, Documents, Elements, Pictures
 Favorites          win        browser bookmarks; probably not used by Firefox or Chrome
 Library            mac        scripts run by Fastscripts must be in ~/Library/Scripts
 Links              win        used by the Explorer sidebar?
-Local Settings     win        hidden; 
+*Local Settings*   win        hidden
 Movies             mac        keep this empty
 Music              all        iTunes and Amazon Cloud Player
-NetHood            win        hidden; 
-Pictures           all        delete and link to ~/Dropbox/Pictures; also Omnigraffle and image editor files;
-                              PDFs created by R
+*NetHood*          win        hidden
+Pictures           all        Omnigraffle and image editor files; PDFs created by R
 Public             all        If part of the home directory is made available on the local network,
                               make it this directory. E.g on Mac
-PrintHood          win
-Recent             win        hidden; full of Windows Shell shortcuts (.lnk suffix).
+*PrintHood*        win
+Recent             win        hidden; full of Windows Shell shortcuts (.lnk suffix).  Implements
+                              the ``Recent Places`` folder.
 Saved Games        win
 Searches           win
 Start Menu         win
@@ -119,6 +119,7 @@ Etc                all        ~/Etc/UnicodeData.txt
 Lang               all        subdirectories by programming language; if the code is put under version
                               control it is in Src
 Man                all        put it first in MANPATH; a place to install man pages w/o admin privilege
+Pictures           mac/win    delete and link to ``~/Dropbox/Pictures``
 Shared             all        shared with guest VMs
 Src                all        tarballs, git repos, isos for VM
 Trash              all        symlink to Trash or Recyle Bin
@@ -137,9 +138,13 @@ Make these links into ~/Dropbox: Articles, Pictures
 Finder, Explorer, Files
 -----------------------
 
-*notes on the Finder sidebar*
+Drag directories to the Finder sidebar to add them.
 
 The GUI file system browser in Ubuntu used to be called Nautilus, but as of Ubuntu 13 it is just called *Files*?
+
+Drag directories to the Explorer sidebar to add them.
+
+The ``Favorites`` section of the Explorer sidebar is implemented with shortcuts in the ``~/Links`` directory.   Because shortcuts can have a different name from their target, the shortcut to the home directory can be ``Home`` instead of the current user name.
 
 Hidden Files
 ------------
@@ -168,7 +173,7 @@ Files which are hidden by attribute are always visible at the command line.  If 
 
     ATTRIB +H /S /D C:\.*
 
-NTUSER.DAT* files
+The hidden files in the Windows home directory of the form NTUSER.DAT* are caches of the registry.
 
 Temporary Files
 ---------------
