@@ -79,38 +79,38 @@ Also, the Explorer may keep separate names for these files, so one may need to c
 ==================  =========  ==================================================================================
 subdirectory        os         description
 ==================  =========  ==================================================================================
-*AppData*           win        hidden; items pinned to the Start Menu are shortcuts at
+*AppData*           win        Hidden; items pinned to the Start Menu are shortcuts at
                                ``AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/StartMenu``
-*Application Data*  win        hidden; just a link to ``~\AppData\Roaming``?
-Desktop             all        files here appear as icons on the desktop
-Documents           all        some applications keep their files here; including ``~/Documents/Eclipse``
+*Application Data*  win        Hidden; just a link to ``~\AppData\Roaming``?
+Desktop             all        Files here appear as icons on the desktop.
+Documents           all        Some applications keep their files here; including ``~/Documents/Eclipse``
                                and ``~/Documents/Notebooks`` for iPython;
                                editor files go in ``~/Dropbox/Documents``
-Downloads           all        browsers should be configured to download files here; it is generally
+Downloads           all        Configure browsers to download files here without asking.
 Dropbox             host       Articles, Documents, Elements, Pictures
-Favorites           win        browser bookmarks; probably not used by Firefox or Chrome
-Library             mac        scripts run by Fastscripts must be in ~/Library/Scripts
-Links               win        the Favorites section of the Explorer sidebar
-*Local Settings*    win        hidden; just a link to ``~\AppData\Local``?
-Movies              mac        stream video and keep this empty
-Music               all        iTunes and Amazon Cloud Player
-*NetHood*           win        hidden
-Pictures            all        Omnigraffle and image editor files; PDFs created by R
-Public              all        a directory to make available on the local network
-*PrintHood*         win        hidden
-Recent              win        hidden; full of Windows Shell shortcuts (``.lnk`` suffix).  Implements
+Favorites           win        Browser bookmarks; probably not used by Firefox or Chrome.
+Library             mac        Put AppleScript in ``~/Library/Scripts``.
+Links               win        The Favorites section of the Explorer sidebar.
+*Local Settings*    win        Hidden; just a link to ``~\AppData\Local``?
+Movies              mac        Stream video and keep this empty.
+Music               all        E.g. iTunes and Amazon Cloud Player.
+*NetHood*           win        Hidden
+Pictures            all        Omnigraffle and image editor files; PDFs created by R.
+Public              all        A directory to make available on the local network.
+*PrintHood*         win        Hidden
+Recent              win        Hidden; full of Windows Shell shortcuts (``.lnk`` suffix).  Implements
                                the ``Recent Places`` folder.
 Saved Games         win        Minesweeper and Solitaire store games in ``~\Saved Games\Microsoft Games``
-*SendTo*            win        hidden
+*SendTo*            win        Hidden
 Searches            win        If in Windows Search you click on ``See more results``, you'll get a window
                                of results.  The window has a ``Save search`` option which will create an XML
                                file in this directory.
-Start Menu          win        hidden; ``~\Start Menu\Programs`` is one way to add programs to the
+Start Menu          win        Hidden; ``~\Start Menu\Programs`` is one way to add programs to the
                                ``All Programs`` section of the Start Menu; put a shortcut in
                                ``~\Start Menu\Programs\Startup``
                                to launch an application at login.
-Templates           win/linux  if you create a template in Word it will be stored here
-Videos              win/linux  stream video and keep this empty
+Templates           win/linux  If you create a template in Word it will be stored here.
+Videos              win/linux  Stream video and keep this empty.
 ==================  =========  ==================================================================================
 
 **personal home subdirectories:**
@@ -118,18 +118,17 @@ Videos              win/linux  stream video and keep this empty
 =================  =========  =================================================================================
 subdirectory       os         description
 =================  =========  =================================================================================
-Articles           all        PDFs; link to ~/Dropbox/Articles
-Bin                all        put it first in PATH; a place to install executables without admin privilege
-<Company>          all        work for <Company>
-Env                all        virtualenv, rbenv environments
-Etc                all        ~/Etc/UnicodeData.txt
-Lang               all        subdirectories by programming language; if the code is put under version
-                              control it is in Src
-Man                all        put it first in MANPATH; a place to install man pages w/o admin privilege
-Pictures           mac/win    delete and link to ``~/Dropbox/Pictures``
-Shared             all        shared with guest VMs
-Src                all        tarballs, git repos, isos for VM
-Trash              all        symlink to Trash or Recyle Bin
+Articles           all        PDFs; link to ``~/Dropbox/Articles``.
+Bin                all        Put first in PATH; a place to install executables without admin privilege.
+<Company>          all        Work
+Env                all        ``virtualenv`` and ``rbenv`` environments.
+Etc                all        ``~/Etc/UnicodeData.txt``
+Lang               all        Subdirectories by programming language; code under version control is in ``Src``.
+Man                all        Put first in MANPATH; a place to install man pages w/o admin privilege
+Pictures           mac/win    Delete and link to ``~/Dropbox/Pictures``.
+Shared             all        Share with guest virtual machines.
+Src                all        Tarballs, git repos, ISOs for virtual machines.
+Trash              all        Symlink to Trash or Recyle Bin.
 =================  =========  =================================================================================
 
 To set up the home directory:
