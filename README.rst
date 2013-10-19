@@ -58,7 +58,7 @@ To set the Windows avatar, go to ``Control Panel | User Accounts | Change your p
 Subdirectories
 --------------
 
-I like a home directory which only contains subdirectories and hidden files.  Desktop operating systems create some subdirectories for me, and since they capitalize those subdirectory names, it is best to follow that convention.
+Capitalize the names of subdirectories in the home directory.  Regular files in the home directory should be hidden.
 
 The Mac filesystem (HFS+), incidentally, is not case sensitive, but it remembers the case that was used when a file is created and uses it for display.
 
