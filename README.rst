@@ -7,7 +7,7 @@ installation_ | `home directories <#home-directories>`_ | users_ | subdirectorie
 Summary
 -------
 
-My dot files, which see use on Darwin, Linux, Cygwin, and MinGW.
+Dot files which see use on Darwin, Linux, Cygwin, and MinGW.
 
 Observations about home directory organization.  Personal practice.
 
