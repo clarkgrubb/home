@@ -220,7 +220,7 @@ Windows sets the ``%TEMP%`` environment variable to the location of the temporar
 Trash
 -----
 
-The Mac OS X Trash folder is ``~/.Trash``.  Files are sent to the Mac OS X trash by selecting them in the Finder and ``⌘Delete``ing them.  When the Finder is active, ``⇧⌘Delete`` empties the Trash.
+The Mac OS X Trash folder is ``~/.Trash``.  Files are sent to the Mac OS X trash by selecting them in the Finder and typing ``⌘Delete``.  When the Finder is active, ``⇧⌘Delete`` empties the Trash.
 
 The Ubuntu Trash folder is ``~/.local/share/Trash``.  It is not created until something is moved to the trash using Nautilus.
 
