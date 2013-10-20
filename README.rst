@@ -197,7 +197,9 @@ To make all hidden files visible in the Explorer go to:
 
 and select ``Show hidden files, folders, and drives``.
 
-Windows files which are hidden by attribute are always visible at the command line.  If Unix tools are installed by MinGW or Cygwin, these observe the convention that files that start with a period are hidden.
+Windows files which are hidden by attribute are always visible at the command line.  The files in the Windows home directory of the form ``NTUSER.DAT*`` are hard to miss because of their long names.  They are caches of the registry.
+
+If Unix tools are installed by MinGW or Cygwin, these observe the convention that files that start with a period are hidden.
 
 Conversely Unix dot files are visible in Explorer, which is unaesthetic.  They can be manually hidden with this command:
 
@@ -205,7 +207,6 @@ Conversely Unix dot files are visible in Explorer, which is unaesthetic.  They c
 
     ATTRIB +H /S /D C:\.*
 
-The files in the Windows home directory of the form ``NTUSER.DAT*`` are hard to miss because of their long names.  They are caches of the registry.  
 
 Temporary Files
 ---------------
