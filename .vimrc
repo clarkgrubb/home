@@ -1,17 +1,21 @@
-" This file is an expurgated version of:
+"
+" Add Emacs keybindings to Vim insert mode.
+"
+" This file is a modfiied version of:
 "
 "    http://algorithm.com.au/code/vimacs/download/
 "
 
-" What doesn't work:
+" Emacs bindings which aren't implemented:
 " 
-"    C-/            [but C-_ and C-x C-u do]
+"    C-/                    [but C-_ and C-x C-u do]
 "    C-x -C-s
 "    M-<num>
 "    C-u <num> 
-"    C-x (, C-x ), C-x e  [macros]
-"    C-q            [mapped to C-v but doesn't seem to work]
+"    C-x (, C-x ), C-x e    [macros]
+"    C-q                    [mapped to C-v but doesn't seem to work]
 "    M-r
+"
 
 if version < 600
   echoerr 'Emacs key bindings require Vim 6 to run :('
