@@ -48,7 +48,7 @@ To change the name, it is probably best to create a new account, copy over files
 
 On Mac OS X user accounts are managed at ``System Preferences | Users & Groups``.  To set the Mac avatar, go to ``System Preferences | Users & Groups`` and click on the image.  To use an image that is not one of the defaults, drag it from the Finder to the System Preferences pane.
 
-On Windows, to add a new account, go to ``Control Panel | User Accounts | Manage another account``.  To set the Windows avatar, go to ``Control Panel | User Accounts | Change your picture``.
+On Windows to add a new account go to ``Control Panel | User Accounts | Manage another account``.  To set the Windows avatar, go to ``Control Panel | User Accounts | Change your picture``.
 
 On Linux the ``adduser`` command creates a user.
 
