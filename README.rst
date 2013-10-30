@@ -50,7 +50,7 @@ On Mac OS X user accounts are managed at ``System Preferences | Users & Groups``
 
 On Windows to add a new account go to ``Control Panel | User Accounts | Manage another account``.  To set the Windows avatar, go to ``Control Panel | User Accounts | Change your picture``.
 
-On Linux the ``adduser`` command creates a user.
+On Linux the ``adduser`` command creates a user.  On Ubuntu the avatar can be set at ``System Settings | User Accounts``
 
 Subdirectories
 --------------
