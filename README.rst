@@ -46,7 +46,7 @@ The name of home directory is the login name of the user.  A user (login name, p
 
 To change the name, it is probably best to create a new account, copy over files, and delete the old account.  On Windows a login name can be changed, but this does not change the home directory name.
 
-On ``Mac OS X`` user accounts are managed at ``System Preferences | Users & Groups``.  To set the Mac avatar, go to ``System Preferences | Users & Groups`` and click on the image.  To use an image that is not one of the defaults, drag it from the Finder to the System Preferences pane.
+On Mac OS X user accounts are managed at ``System Preferences | Users & Groups``.  To set the Mac avatar, go to ``System Preferences | Users & Groups`` and click on the image.  To use an image that is not one of the defaults, drag it from the Finder to the System Preferences pane.
 
 On Windows, to add a new account, go to ``Control Panel | User Accounts | Manage another account``.  To set the Windows avatar, go to ``Control Panel | User Accounts | Change your picture``.
 
