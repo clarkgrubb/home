@@ -57,7 +57,7 @@
 (require 'cl)
 
 ;; Put a mode setting instruction in the *scratch* buffer, in case
-;; we save it.  
+;; we save it.
 ;;
 (setq initial-scratch-message ";; -*- mode: lisp-interaction -*-\n\n")
 
@@ -103,8 +103,7 @@
 ;;
 (add-hook 'shell-mode-hook
           (lambda ()
-            (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)
-            ))
+            (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))
 
 ;; For use with Chrome "Edit with Emacs" extension
 ;;
