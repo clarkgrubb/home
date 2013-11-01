@@ -138,6 +138,7 @@ Bin                all        Put first in ``PATH``; a place to install executab
 Env                all        ``virtualenv`` and ``rbenv`` environments.
 Etc                all        ``~/Etc/UnicodeData.txt``
 Lang               all        Subdirectories by programming language; code under version control is in ``Src``.
+Local              all        Place to install headers and libraries
 Man                all        Put first in ``MANPATH``; a place to install man pages w/o admin privilege
 Pictures           mac/win    Make ``~/Pictures/Pictures`` a link to ``~/Dropbox/Pictures``.
 Shared             all        Share with guest virtual machines.
@@ -253,3 +254,18 @@ Windows requests a computer name during installation.  It can be changed later a
 ::
 
     Control Panel | System | Computer name, domain, and workgroup settings
+
+Local
+-----
+
+The ``~/Local`` directory is an aid when building source code without root privilege.  If the source code depends on headers and libraries that aren't installed, download them, build them, and install them in ``~/Local``. 
+
+To make ``autoconf`` aware of ``~/Local``, create the file ``${HOME}/Local/shared/config.site`` with these contents::
+
+    CPPFLAGS=-I$HOME/Local/include
+    LDFLAGS=-L$HOME/Local/lib
+
+Then configure the source code with::
+
+    ./configure --prefix=$HOME/Local
+
