@@ -2,7 +2,7 @@
 HOME
 ----
 
-installation_ | `home directories <#home-directories>`_ | users_ | subdirectories_ | `finder and explorer <#finder-and-explorer>`_ | `hidden files <#hidden-files>`_ | `temporary files <#temporary-files>`_ | trash_ | public_
+installation_ | `home directories <#home-directories>`_ | users_ | subdirectories_ | `finder and explorer <#finder-and-explorer>`_ | `hidden files <#hidden-files>`_ | `temporary files <#temporary-files>`_ | trash_ | public_ | local_
 
 Summary
 -------
