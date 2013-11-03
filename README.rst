@@ -2,7 +2,7 @@
 HOME
 ----
 
-installation_ | `home directories <#home-directories>`_ | users_ | subdirectories_ | `finder and explorer <#finder-and-explorer>`_ | `hidden files <#hidden-files>`_ | `temporary files <#temporary-files>`_ | trash_ | public_
+installation_ | `home directories <#home-directories>`_ | users_ | subdirectories_ | `finder and explorer <#finder-and-explorer>`_ | `hidden files <#hidden-files>`_ | `temporary files <#temporary-files>`_ | trash_ | public_ | local_
 
 Summary
 -------
@@ -25,7 +25,9 @@ Home Directories
 
 Early versions of Unix put user home directories in ``/usr``.  In Linux and BSD the user home directories are in ``/home``.
 
-A Unix user's home directory is specified in ``/etc/passwd``. When the user logs in it is used to set the working directory and the environment variable ``HOME``. The C shell introduced tilde expansion as a shortcut for the home directory in paths.  Mac OS X puts home directories in ``/Users``. It sets the ``HOME`` environment variable, but does not store user information in ``/etc/passwd``. Instead the information is stored in a *Directory Service* which can be queried with the ``dscl`` command:
+A Unix user's home directory is specified in ``/etc/passwd``. When the user logs in, the home directory in ``/etc/passwd`` is used to set the working directory and the environment variable ``HOME``. The C shell introduced tilde expansion as a shortcut for the home directory in paths.
+
+Mac OS X puts home directories in ``/Users``. It sets the ``HOME`` environment variable, but does not store user information in ``/etc/passwd``. Instead the information is stored in a *Directory Service* which can be queried with the ``dscl`` command:
 
 ::
 
@@ -44,11 +46,11 @@ The name of home directory is the login name of the user.  A user (login name, p
 
 To change the name, it is probably best to create a new account, copy over files, and delete the old account.  On Windows a login name can be changed, but this does not change the home directory name.
 
-On ``Mac OS X`` user accounts are managed at ``System Preferences | Users & Groups``.  To set the Mac avatar, go to ``System Preferences | Users & Groups`` and click on the image.  To use an image that is not one of the defaults, drag it from the Finder to the System Preferences pane.
+On Mac OS X user accounts are managed at ``System Preferences | Users & Groups``.  To set the Mac avatar, go to ``System Preferences | Users & Groups`` and click on the image.  To use an image that is not one of the defaults, drag it from the Finder to the System Preferences pane.
 
-On Windows, to add a new account, go to ``Control Panel | User Accounts | Manage another account``.  To set the Windows avatar, go to ``Control Panel | User Accounts | Change your picture``.
+On Windows to add a new account go to ``Control Panel | User Accounts | Manage another account``.  To set the Windows avatar, go to ``Control Panel | User Accounts | Change your picture``.
 
-On Linux the ``adduser`` command creates a user.
+On Linux the ``adduser`` command creates a user.  On Ubuntu the avatar can be set at ``System Settings | User Accounts``
 
 Subdirectories
 --------------
@@ -136,6 +138,7 @@ Bin                all        Put first in ``PATH``; a place to install executab
 Env                all        ``virtualenv`` and ``rbenv`` environments.
 Etc                all        ``~/Etc/UnicodeData.txt``
 Lang               all        Subdirectories by programming language; code under version control is in ``Src``.
+Local              all        Place to install headers and libraries
 Man                all        Put first in ``MANPATH``; a place to install man pages w/o admin privilege
 Pictures           mac/win    Make ``~/Pictures/Pictures`` a link to ``~/Dropbox/Pictures``.
 Shared             all        Share with guest virtual machines.
@@ -251,3 +254,18 @@ Windows requests a computer name during installation.  It can be changed later a
 ::
 
     Control Panel | System | Computer name, domain, and workgroup settings
+
+Local
+-----
+
+The ``~/Local`` directory is an aid when building source code without root privilege.  If the source code depends on headers and libraries that aren't installed, download them, build them, and install them in ``~/Local``. 
+
+To make ``autoconf`` aware of ``~/Local``, create the file ``${HOME}/Local/shared/config.site`` with these contents::
+
+    CPPFLAGS=-I$HOME/Local/include
+    LDFLAGS=-L$HOME/Local/lib
+
+Then configure the source code with::
+
+    ./configure --prefix=$HOME/Local
+
