@@ -33,12 +33,15 @@
         "-*-*-*-*-*-fontset-mac")
        'keep)))
 
-;; Don't use the right option key as a meta key.
-;; This way it can be used to enter Latin accent characters.
+;; Prevent scrolling from causing beeping.
 ;;
-(if window-system
-    (when (eq system-type 'darwin)
-      (setq mac-right-option-modifier nil)))
+(defun my-bell-function ()
+  (unless (memq this-command
+    	'(isearch-abort abort-recursive-edit exit-minibuffer
+              keyboard-quit mwheel-scroll down up next-line previous-line
+              backward-char forward-char))
+    (ding)))
+(setq ring-bell-function 'my-bell-function)
 
 ;; Make names for ~ and ~/.emacs.d
 ;;
@@ -231,3 +234,12 @@
 (global-set-key "\C-cr" 'query-replace)
 (global-set-key "\C-cv" 'clipboard-yank)
 (global-set-key "\C-cx" 'clipboard-kill-region)
+
+;; Don't use the right option key as a meta key.
+;; This way it can be used to enter Latin accent characters.
+;;
+(if window-system
+    (when (eq system-type 'darwin)
+      (global-set-key (kbd "s-=") 'text-scale-adjust)
+      (global-set-key (kbd "s--") 'text-scale-adjust)
+      (setq mac-right-option-modifier nil)))
