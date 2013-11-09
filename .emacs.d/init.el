@@ -235,6 +235,11 @@
 (global-set-key "\C-cv" 'clipboard-yank)
 (global-set-key "\C-cx" 'clipboard-kill-region)
 
+;; Mac key binding customizations.
+;;
+;; Make ⌘-= and ⌘-- alternatives for C-x C-= and
+;; and C-x C--.
+;;
 ;; Don't use the right option key as a meta key.
 ;; This way it can be used to enter Latin accent characters.
 ;;
