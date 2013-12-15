@@ -108,22 +108,6 @@
           (lambda ()
             (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))
 
-;; For use with Chrome "Edit with Emacs" extension
-;;
-;; Listens on port 9292.
-;;
-;; Use C-c C-c to send buffer back to Chrome.
-;;
-(require 'edit-server)
-(edit-server-start)
-
-;; For use with Firefox "It's All Text" extension
-;; which has a hotkey which I've set to ⌘E.
-;;
-;; Use C-x # to send buffer back to Firefox.
-;;
-(require 'server)
-(unless (server-running-p) (server-start))
 
 ;; Put twiddle files in ~/.emacs-backups
 ;;
@@ -206,13 +190,6 @@
 
 (defalias 'perl-mode 'cperl-mode)
 
-;; Display an image in a buffer.  If the buffer is saved
-;; to a file, the image is not persisted in any way.
-;;
-(defun insert-file-image (file)
-  (interactive "f")
-  (insert-image (create-image file)))
-
 ;; Show visited file path in the minibuffer.
 ;;
 (defun display-buffer-file-name ()
@@ -230,7 +207,6 @@
 (global-set-key "\C-cc" 'clipboard-kill-ring-save)
 (global-set-key "\C-cd" 'ido-dired)
 (global-set-key "\C-cf" 'display-buffer-file-name)
-(global-set-key "\C-ci" 'insert-file-image)
 (global-set-key "\C-cr" 'query-replace)
 (global-set-key "\C-cv" 'clipboard-yank)
 (global-set-key "\C-cx" 'clipboard-kill-region)

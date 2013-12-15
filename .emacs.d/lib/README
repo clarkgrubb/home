@@ -1,7 +1,3 @@
-How to get edit-server.el
-
-  wget https://raw.github.com/stsquad/emacs_chrome/master/servers/edit-server.el
-
 How to get lua-mode.el
 
   wget https://raw.github.com/immerrr/lua-mode/master/lua-mode.el
