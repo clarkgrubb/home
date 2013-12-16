@@ -23,7 +23,9 @@ export HISTFILE=~/.bash_history
 # No version control info in prompt :(
 #
 
-export PS1="\[\033[31m\]$OS_TYPE:bash \[\033[34m\]\w \[\033[30m\]\`if [ \$? == 0 ]; then echo \:\); else echo \:\(; fi\` "
+. ~/.git-prompt.sh
+
+export PS1="\[\033[31m\]$OS_TYPE:bash \[\033[34m\]\w \[\033[32m\]"'$(__git_ps1 "git:%s " )'"\[\033[30m\]\`if [ \$? == 0 ]; then echo \:\); else echo \:\(; fi\` "
 
 if [[ $OS_TYPE == Darwin ]]
 then
