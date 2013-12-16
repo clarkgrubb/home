@@ -3,7 +3,7 @@
 #
 
 _itunes() {
-    osascript -e 'tell application "iTunes"' -e ${*} -e "end tell"
+    osascript -e 'tell application "iTunes"' -e "${*}" -e "end tell"
 }
 
 _itunes_playlist() {

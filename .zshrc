@@ -92,7 +92,7 @@ then
 
     # Defines function 'itunes'
     #
-    . ~/.zsh_itunes
+    . ~/.itunes.sh
 
 
 elif [[ $OS_TYPE == Linux ]]

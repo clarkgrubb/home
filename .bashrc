@@ -43,6 +43,10 @@ then
         man -t "$@" | open -f -a /Applications/Preview.app
     }
 
+    # Defines function 'itunes'
+    #
+    . ~/.itunes.sh
+
 elif [[ $OS_TYPE == Linux ]]
 then
 
