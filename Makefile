@@ -6,7 +6,7 @@ SHELL := /bin/bash
 .SUFFIXES:
 
 SCRIPTS_DIR := ~/Library/Scripts
-APPLESCRIPTS := $(wildcard applescript/*)
+APPLESCRIPTS := $(wildcard mac/applescript/*)
 
 .PHONY: scripts_dir install-applescript install all
 
@@ -24,6 +24,6 @@ install-applescript: | scripts_dir
 
 install: install-applescript
 	@echo copying dot files to HOME directory
-	./bin/install.sh ~
+	./install.sh ~
 
 all: install
