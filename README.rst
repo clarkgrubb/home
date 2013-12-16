@@ -9,7 +9,7 @@ Summary
 
 My dot files.  Darwin, Linux, Cygwin, and MinGW.
 
-Observations about home directory organization and personal practice.
+Home directory organization and personal practice.
 
 Installation
 ------------
