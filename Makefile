@@ -6,7 +6,7 @@ SHELL := /bin/bash
 .SUFFIXES:
 
 SCRIPTS_DIR := ~/Library/Scripts
-APPLESCRIPTS := $(wildcard mac/applescript/*)
+APPLESCRIPTS := $(wildcard darwin/applescript/*)
 
 .PHONY: scripts_dir install-applescript install all
 
