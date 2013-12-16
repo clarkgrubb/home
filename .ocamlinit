@@ -1,4 +1,0 @@
-#use "topfind";;
-# thread;;
-#require "core";;
-open Core.Std;;
