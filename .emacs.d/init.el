@@ -104,12 +104,12 @@
 ;; A replacement for M-x grep and M-x find-grep. Adds
 ;; these commands:
 ;;
-;;    ag
-;;    ag-files
-;;    ag-regexp
-;;    ag-project
-;;    ag-project-files
-;;    ag-project-regexp
+;;    M-x ag
+;;    M-x ag-files
+;;    M-x ag-regexp
+;;    M-x ag-project
+;;    M-x ag-project-files
+;;    M-x ag-project-regexp
 ;;
 ;; Uses an external executable called 'ag'.  To install
 ;;
@@ -117,6 +117,14 @@
 ;;    Linux $ sudo apt-get install silversearcher-ag
 ;;
 (require 'ag)
+
+;; Git interface:
+;;
+;;  M-x magit-status
+;;
+(add-to-list 'load-path (concat emacs-dir "lib/git-modes/"))
+(add-to-list 'load-path (concat emacs-dir "lib/magit/"))
+(require 'magit)
 
 
 ;; Make shell-mode work with UTF-8.  This provides a way to use
