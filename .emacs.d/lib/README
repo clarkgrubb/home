@@ -1,3 +1,7 @@
+To get smex.el
+
+  wget https://raw.github.com/nonsequitur/smex/master/smex.el
+
 To get ag.el
 
   wget https://raw.github.com/Wilfred/ag.el/master/ag.el
