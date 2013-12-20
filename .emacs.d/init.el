@@ -224,6 +224,10 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
+(autoload 'groovy-mode "groovy-mode" "Groovy Mode." t)
+(add-to-list 'auto-mode-alist '("\\.groovy\\'" . groovy-mode))
+
+
 (defalias 'perl-mode 'cperl-mode)
 
 ;; Show visited file path in the minibuffer.
