@@ -102,7 +102,6 @@
 ;; Old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-
 ;; Make M-x ispell use aspell
 ;;
 (dolist (path '("/usr/bin/aspell" "/usr/local/bin/aspell"))
@@ -143,7 +142,6 @@
 (add-hook 'shell-mode-hook
           (lambda ()
             (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))
-
 
 ;; Put twiddle files in ~/.emacs-backups
 ;;
@@ -226,7 +224,6 @@
 
 (autoload 'groovy-mode "groovy-mode" "Groovy Mode." t)
 (add-to-list 'auto-mode-alist '("\\.groovy\\'" . groovy-mode))
-
 
 (defalias 'perl-mode 'cperl-mode)
 
