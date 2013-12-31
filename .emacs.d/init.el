@@ -229,6 +229,12 @@
 
 (defalias 'perl-mode 'cperl-mode)
 
+;; Turn off electric mode for shell here documents:
+;;
+(add-hook 'sh-mode-hook
+          (lambda ()
+            (sh-electric-here-document-mode -1)))
+
 ;; Show visited file path in the minibuffer.
 ;;
 (defun display-buffer-file-name ()
