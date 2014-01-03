@@ -110,32 +110,6 @@
         (setq ispell-program-name path)
         (return))))
 
-;; A replacement for M-x grep and M-x find-grep. Adds
-;; these commands:
-;;
-;;    M-x ag
-;;    M-x ag-files
-;;    M-x ag-regexp
-;;    M-x ag-project
-;;    M-x ag-project-files
-;;    M-x ag-project-regexp
-;;
-;; Uses an external executable called 'ag'.  To install
-;;
-;;    Darwin $ brew install ag
-;;    Linux $ sudo apt-get install silversearcher-ag
-;;
-(require 'ag)
-
-;; Git interface:
-;;
-;;  M-x magit-status
-;;
-(add-to-list 'load-path (concat emacs-dir "lib/git-modes/"))
-(add-to-list 'load-path (concat emacs-dir "lib/magit/"))
-(require 'magit)
-
-
 ;; Make shell-mode work with UTF-8.  This provides a way to use
 ;; Emacs input-methods to enter Unicode characters at the shell.
 ;;
