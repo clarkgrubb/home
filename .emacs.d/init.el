@@ -127,6 +127,17 @@
 ;;
 (require 'ag)
 
+;; Adds a replacement for M-x term:
+;;
+;;   M-x multi-term
+;;
+;; When using M-x multi-term, M-x and C-x behave normally, so
+;; it is easy to switch buffers.  With M-x term one must preface
+;; each keystroke with C-c to send it to Emacs.
+;;
+(require 'multi-term)
+ (setq multi-term-program "/bin/bash")
+
 ;; Git interface:
 ;;
 ;;  M-x magit-status
