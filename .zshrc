@@ -99,7 +99,7 @@ elif [[ $OS_TYPE == Linux ]]
 then
     # Linux specific definitions here
 
-    export PATH=~/Bin:~/Local/Bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
+    export PATH=~/Local/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 
     jvm_dir=/usr/lib/jvm
     export JAVA7_HOME=/usr/lib/jvm/java-7-openjdk-amd64
