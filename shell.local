@@ -11,9 +11,9 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 # Python
 #
-if [ -e ~/Local/venv/bin/activate ]
+if [ -e ~/Local/env/venv/bin/activate ]
 then
-    . ~/Local/venv/bin/activate
+    . ~/Local/env/venv/bin/activate
 fi
 
 # Ruby

@@ -55,7 +55,7 @@ On Linux the ``adduser`` command creates a user.  On Ubuntu the avatar can be se
 Subdirectories
 --------------
 
-It would seem that subdirectories in the home directory should be capitalized and regular files in the home directory should be hidden.
+Subdirectories in the home directory should be capitalized and regular files in the home directory should be hidden.
 
 The Mac filesystem (HFS+), incidentally, is not case sensitive, but it remembers the case that was used when a file is created and uses it for display.
 
@@ -133,16 +133,16 @@ Videos              win/linux  Stream video and keep this empty.
 subdirectory       os         description
 =================  =========  =================================================================================
 Articles           all        PDFs; link to ``~/Dropbox/Articles``.
-Bin                all        Put first in ``PATH``; a place to install executables without admin privilege.
 <Company>          all        Work
-Env                all        ``virtualenv`` and ``rbenv`` environments.
-Etc                all        ``~/Etc/UnicodeData.txt``
-Lang               all        Subdirectories by programming language; code under version control is in ``Src``.
 Local              all        Place to install headers and libraries
-Man                all        Put first in ``MANPATH``; a place to install man pages w/o admin privilege
+Local/bin          all        Put first in ``PATH``; a place to install executables without admin privilege.
+Local/env          all        ``virtualenv`` environments.
+Local/etc          all        ``~/Etc/UnicodeData.txt``
+Local/man          all        Put first in ``MANPATH``; a place to install man pages w/o admin privilege
+Local/src          all        Tarballs, git repos, ISOs for virtual machines, Java SDKs.
+Lang               all        Subdirectories by programming language; code under version control is in ``Src``.
 Pictures           mac/win    Make ``~/Pictures/Pictures`` a link to ``~/Dropbox/Pictures``.
 Shared             all        Share with guest virtual machines.
-Src                all        Tarballs, git repos, ISOs for virtual machines.
 Trash              all        Symlink to Trash or Recyle Bin.
 =================  =========  =================================================================================
 
@@ -151,7 +151,9 @@ To set up the home directory:
 ::
 
     cd
-    mkdir Bin Env Etc Lang Man Src
+    mkdir Local Lang
+    cd Local
+    mkdir bin env etc man src
 
 On Mac OS X:
 
