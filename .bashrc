@@ -1,7 +1,7 @@
 # Environment Variables, Aliases, and Shell Function Definitions
 #
 
-export COMMON_PATH=~/Bin:~/Local/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
+export COMMON_PATH=~/Local/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 export OS_TYPE=`uname -s`
 if [[ ${OS_TYPE:0:6} == CYGWIN ]]
 then
@@ -13,7 +13,7 @@ then
 fi
 if [[ $OS_TYPE != MinGW ]]
 then
-    export MANPATH=~/Man:$(MANPATH= manpath)
+    export MANPATH=~/Local/man:$(MANPATH= manpath)
 fi
 
 export EDITOR='emacs -q'
@@ -61,10 +61,13 @@ then
         if [ -e ${jvm_dir}/${jdk} ]
         then
             export JAVA6_HOME=${jvm_dir}/${jdk}
+            export JAVA_HOME=$JAVA6_HOME
         fi
     done
-    export JAVA_HOME=$JAVA6_HOME
-    export PATH=$JAVA_HOME/bin:$PATH
+    if [ $JAVA_HOME ]
+    then
+        export PATH=$JAVA_HOME/bin:$PATH
+    fi
 
     # For rbenv and virtualenv
     #

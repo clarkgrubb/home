@@ -16,7 +16,7 @@ if [[ $OS_TYPE[0,5] == MinGW ]]
 then
     export OS_TYPE=MinGW
 fi
-export MANPATH=~/Man:$(MANPATH= manpath)
+export MANPATH=~/Local/man:$(MANPATH= manpath)
 export EDITOR='emacs -q'
 export HISTSIZE=2000
 export HISTFILE=~/.zsh_history
@@ -71,7 +71,7 @@ function tabname() {
 if [[ $OS_TYPE == Darwin ]]
 then
 
-    export PATH=~/Bin:~/Local/Bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
+    export PATH=~/Local/Bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
     export JAVA7_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
     export JAVA6_HOME=/Library/Java/Home
     export JAVA_HOME=$JAVA6_HOME
@@ -108,10 +108,13 @@ then
         if [ -e ${jvm_dir}/${jdk} ]
         then
             export JAVA6_HOME=${jvm_dir}/${jdk}
+            export JAVA_HOME=$JAVA6_HOME
         fi
     done
-    export JAVA_HOME=$JAVA6_HOME
-    export PATH=$JAVA_HOME/bin:$PATH
+    if [ $JAVA_HOME ]
+    then
+        export PATH=$JAVA_HOME/bin:$PATH
+    fi
 
     # For rbenv and virtualenv
     #
