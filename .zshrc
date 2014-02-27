@@ -120,6 +120,10 @@ then
     #
     export PATH=~/.rbenv/shims:$PATH
     export VIRTUAL_ENV_DISABLE_PROMPT=1
+    if [ -e ~/Local/env/venv/bin/activate ]
+    then
+        . ~/Local/env/venv/bin/activate
+    fi
 
     # send ps file to stdout
     #
