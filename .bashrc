@@ -1,7 +1,7 @@
 # Environment Variables, Aliases, and Shell Function Definitions
 #
 
-export COMMON_PATH=~/Bin:~/Local/Bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
+export COMMON_PATH=~/Bin:~/Local/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 export OS_TYPE=`uname -s`
 if [[ ${OS_TYPE:0:6} == CYGWIN ]]
 then
