@@ -72,17 +72,7 @@ if [[ $OS_TYPE == Darwin ]]
 then
 
     export PATH=~/Local/Bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
-    export JAVA7_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
-    export JAVA6_HOME=/Library/Java/Home
-    export JAVA_HOME=$JAVA6_HOME
-    export PATH=$JAVA_HOME/bin:$PATH
-
     export ITUNES_PLAYLIST=KGRB
-
-    # For rbenv and virtualenv
-    #
-    export PATH=~/.rbenv/shims:$PATH
-    export VIRTUAL_ENV_DISABLE_PROMPT=1
 
     # For reading man pages with Preview.app.
     #
@@ -118,12 +108,8 @@ then
 
     # For rbenv and virtualenv
     #
-    export PATH=~/.rbenv/shims:$PATH
+    export PATH=~/.rbenv/bin:$PATH
     export VIRTUAL_ENV_DISABLE_PROMPT=1
-    if [ -e ~/Local/env/venv/bin/activate ]
-    then
-        . ~/Local/env/venv/bin/activate
-    fi
 
     # send ps file to stdout
     #
@@ -141,4 +127,9 @@ else
 
     echo "unrecognized OS:" $OS_TYPE
 
+fi
+
+if [ -e ~/.shell.local ]
+then
+    . ~/.shell.local
 fi

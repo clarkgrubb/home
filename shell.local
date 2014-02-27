@@ -1,0 +1,22 @@
+# Edit these values and put this file at ~/.shell.local
+#
+java_ver=jdk1.7.0_51
+java_dir=~/Local/src/${java_ver}
+ruby_ver=2.0.0-p451
+
+# Java
+#
+export JAVA_HOME=$java_dir
+export PATH=$JAVA_HOME/bin:$PATH
+
+# Python
+#
+if [ -e ~/Local/venv/bin/activate ]
+then
+    . ~/Local/venv/bin/activate
+fi
+
+# Ruby
+#
+rbenv global ${ruby_ver}
+eval "$(rbenv init -)"

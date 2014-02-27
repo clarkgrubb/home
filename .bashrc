@@ -71,7 +71,7 @@ then
 
     # For rbenv and virtualenv
     #
-    export PATH=~/.rbenv/shims:$PATH
+    export PATH=~/.rbenv/bin:$PATH
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     if [ -e ~/Local/env/venv/bin/activate ]
     then
@@ -91,4 +91,11 @@ else
 
     echo "unrecognized OS:" $OS_TYPE
 
+fi
+
+# A place for host specific settings:
+#
+if [ -e ~/.shell.local ]
+then
+    . ~/.shell.local
 fi
