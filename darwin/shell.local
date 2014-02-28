@@ -1,0 +1,19 @@
+# Edit these values and put this file at ~/.shell.local
+#
+java_ver=jdk1.7.0_45.jdk
+java_dir=/Library/Java/JavaVirtualMachines/${java_ver}/Contents/Home
+
+
+# Java
+#
+export JAVA_HOME=$java_dir
+export PATH=$JAVA_HOME/bin:$PATH
+
+# Python
+#
+# (not using virtualenv)
+
+# Ruby
+#
+# (not using rbenv)
+
