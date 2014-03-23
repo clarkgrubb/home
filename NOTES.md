@@ -1,4 +1,5 @@
 * The `install.sh` script installs everything that starts with a period in the home directory.  This includes directories; directories are installed with `cp -R`.
+* The `install.sh` script creates the files ~/.gitconfig and ~/.hgrc if they don't already exist.  Prompts for username and email.
 * Dot files are for shells, editors, and multiplexers
 * Dot files should work on these systems: Darwin, Linux, Windows (Cygwin or MinGW)
 * Put code which is only installed on type of system in a subdirectory; e.g `darwin`, `linux`.  Write special makefile tasks to install it.
