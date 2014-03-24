@@ -1,13 +1,14 @@
 function fish_prompt
   if test $status -eq 0
-    set prompt ' :) '
+    set face ' :) '
   else
-    set prompt ' :( '
+    set face ' :( '
   end
   set_color red
-  echo -n 'Darwin:fish '
+  echo -n (uname -s)
+  echo -n ':fish '
   set_color blue
-  echo -n (pwd)
+  echo -n (prompt_pwd)
   set_color black
-  echo -n $prompt
+  echo -n $face
 end
