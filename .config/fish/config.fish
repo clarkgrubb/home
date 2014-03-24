@@ -1,3 +1,11 @@
+if [ -e /usr/bin/uname ]
+  set OS_TYPE (/usr/bin/uname -s)
+else
+  set OS_TYPE (/bin/uname -s)
+end
+set MANPATH ~/Local/man:(manpath)
+set EDITOR 'emacs -q'
+
 function fish_prompt
   if [ $status -eq 0 ]
     set face ' :) '
@@ -6,7 +14,7 @@ function fish_prompt
   end
 
   set_color red
-  echo -n (uname -s)
+  echo -n $OS_TYPE
   echo -n ':fish '
 
   set_color blue
