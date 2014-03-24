@@ -6,6 +6,10 @@ end
 set MANPATH ~/Local/man:(manpath)
 set EDITOR 'emacs -q'
 
+function fish_title
+  echo $OS_TYPE
+end
+
 function fish_prompt
   if [ $status -eq 0 ]
     set face ' :) '
