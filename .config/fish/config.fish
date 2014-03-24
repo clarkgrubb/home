@@ -19,6 +19,13 @@ function fish_prompt
       echo -n (git branch | grep '^*' | cut -c 3-)
     end
   end
+  if test -d .hg
+    if test ! -z (which hg)
+      echo -n ' hg:'
+      echo -n (hg branch)
+    end
+  end
+
   set_color black
   echo -n $face
 end
