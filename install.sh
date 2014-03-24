@@ -58,7 +58,10 @@ for dot_file in $(echo .[a-zA-Z]*)
 do
     if [ \( $dot_file != .git \) -a \( $dot_file != .gitignore \) ]
     then
-        if [ -d $dot_file ]
+        if [ $dot_file = .config ]
+        then
+            :
+        elif [ -d $dot_file ]
         then
             rm -rf $home_dir/$dot_file
             cp -R $dot_file $home_dir
@@ -66,6 +69,11 @@ do
             cp $dot_file $home_dir
         fi
     fi
+done
+
+for file in $(echo .config/fish/*)
+do
+    cp $file $home_dir/.config/fish
 done
 
 create_gitconfig
