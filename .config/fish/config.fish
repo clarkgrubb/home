@@ -1,5 +1,5 @@
 function fish_prompt
-  if test $status -eq 0
+  if [ $status -eq 0 ]
     set face ' :) '
   else
     set face ' :( '
@@ -13,14 +13,14 @@ function fish_prompt
   echo -n (prompt_pwd)
 
   set_color green
-  if test -d .git
-    if test ! -z (which git)
+  if [ -d .git ]
+    if [ ! -z (which git) ]
       echo -n ' git:'
       echo -n (git branch | grep '^*' | cut -c 3-)
     end
   end
-  if test -d .hg
-    if test ! -z (which hg)
+  if [ -d .hg ]
+    if [ ! -z (which hg) ]
       echo -n ' hg:'
       echo -n (hg branch)
     end
