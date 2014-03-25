@@ -71,7 +71,7 @@ function tabname() {
 if [[ $OS_TYPE == Darwin ]]
 then
 
-    export PATH=~/Local/Bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
+    export PATH=~/Local/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
     export ITUNES_PLAYLIST=KGRB
 
     # For reading man pages with Preview.app.
