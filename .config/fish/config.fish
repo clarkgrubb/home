@@ -6,6 +6,24 @@ end
 set MANPATH ~/Local/man:(manpath)
 set EDITOR 'emacs -q'
 
+if [ $OS_TYPE = Darwin ]
+
+  set PATH ~/Local/bin /usr/local/bin /usr/bin /bin /sbin /usr/sbin /usr/X11/bin
+
+  function pman
+    man -t $argv | open -f -a /Applications/Preview.app
+  end
+
+else if [ $OS_TYPE = Linux ]
+
+  set PATH ~/Local/bin /usr/local/bin /usr/bin /bin /sbin /usr/sbin /usr/X11/bin
+
+else
+
+  echo "unrecognized OS: " $OS_TYPE
+
+end
+
 function fish_title
   echo $OS_TYPE
 end
