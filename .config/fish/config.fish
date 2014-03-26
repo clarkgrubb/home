@@ -24,6 +24,8 @@ else
 
 end
 
+set fish_greeting ""
+
 function fish_title
   echo $OS_TYPE
 end
