@@ -37,7 +37,6 @@ end
 
 function _itunes_help
 
-    # TODO: fixme no here doc
     echo "
 TO LAUNCH ITUNES AND PLAY $ITUNES_PLAYLIST:
 
