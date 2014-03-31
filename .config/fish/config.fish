@@ -1,15 +1,15 @@
 if [ -e /usr/bin/uname ]
-  set OS_TYPE (/usr/bin/uname -s)
+  set -gx OS_TYPE (/usr/bin/uname -s)
 else
-  set OS_TYPE (/bin/uname -s)
+  set -gx OS_TYPE (/bin/uname -s)
 end
-set MANPATH ~/Local/man:(manpath)
-set EDITOR 'emacs -q'
+set -gx MANPATH ~/Local/man:(manpath)
+set -gx EDITOR 'emacs -q'
 
 if [ $OS_TYPE = Darwin ]
 
-  set PATH ~/Local/bin /usr/local/bin /usr/bin /bin /sbin /usr/sbin /usr/X11/bin
-  set ITUNES_PLAYLIST KGRB
+  set -gx PATH ~/Local/bin /usr/local/bin /usr/bin /bin /sbin /usr/sbin /usr/X11/bin
+  set -gx ITUNES_PLAYLIST KGRB
 
   function pman
     man -t $argv | open -f -a /Applications/Preview.app
@@ -19,7 +19,7 @@ if [ $OS_TYPE = Darwin ]
 
 else if [ $OS_TYPE = Linux ]
 
-  set PATH ~/Local/bin /usr/local/bin /usr/bin /bin /sbin /usr/sbin /usr/X11/bin
+  set -gx PATH ~/Local/bin /usr/local/bin /usr/bin /bin /sbin /usr/sbin /usr/X11/bin
 
 else
 
