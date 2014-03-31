@@ -9,10 +9,13 @@ set EDITOR 'emacs -q'
 if [ $OS_TYPE = Darwin ]
 
   set PATH ~/Local/bin /usr/local/bin /usr/bin /bin /sbin /usr/sbin /usr/X11/bin
+  set ITUNES_PLAYLIST KGRB
 
   function pman
     man -t $argv | open -f -a /Applications/Preview.app
   end
+
+  . ~/.config/fish/itunes.fish
 
 else if [ $OS_TYPE = Linux ]
 

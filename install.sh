@@ -71,6 +71,7 @@ do
     fi
 done
 
+mkdir -p $home_dir/.config/fish
 for file in $(echo .config/fish/*)
 do
     cp $file $home_dir/.config/fish
