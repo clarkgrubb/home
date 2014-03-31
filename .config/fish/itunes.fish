@@ -76,7 +76,7 @@ function itunes
     set arg $argv
 
     if [ (count $argv) -eq 0 ]
-        arg='play playlist "'$ITUNES_PLAYLIST'"'
+        set arg 'play playlist "'$ITUNES_PLAYLIST'"'
     else if [ (count $argv) -eq 1 ]
         switch $argv[1]
             case list
