@@ -141,11 +141,18 @@
 ;; Git interface:
 ;;
 ;;  M-x magit-status
+;;  M-x magit-log
+;;  M-x magit-ediff
 ;;
 (add-to-list 'load-path (concat emacs-dir "lib/git-modes/"))
 (add-to-list 'load-path (concat emacs-dir "lib/magit/"))
 (require 'magit)
 
+;; Ediff: don't open a separate navigation window;
+;; open windows side-by-side instead of stacked on top of each other.
+;;
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+(setq ediff-split-window-function 'split-window-horizontally)
 
 ;; Make shell-mode work with UTF-8.  This provides a way to use
 ;; Emacs input-methods to enter Unicode characters at the shell.
