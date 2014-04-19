@@ -127,8 +127,8 @@
 ;;
 ;; Uses an external executable called 'ag'.  To install
 ;;
-;;    Darwin $ brew install ag
-;;    Linux $ sudo apt-get install silversearcher-ag
+;;    $ brew install the_silver_searcher
+;;    $ sudo apt-get install silversearcher-ag
 ;;
 (require 'ag)
 
