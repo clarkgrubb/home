@@ -1,3 +1,17 @@
+;; Make names for ~ and ~/.emacs.d; add ~/.emacs.d/lib
+;; to library path:
+;;
+(setq home-dir (getenv "HOME"))
+(setq emacs-dir (file-name-directory
+                 (or (buffer-file-name) load-file-name)))
+(add-to-list 'load-path (concat emacs-dir "lib"))
+
+;; Add Common Lisp extensions
+;;
+;;  http://www.gnu.org/software/emacs/manual/html_mono/cl.html
+;;
+(require 'cl)
+
 ;; Turn off menu bar, tool bar, scroll bar, splash screen
 ;;
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -43,26 +57,21 @@
     (ding)))
 (setq ring-bell-function 'my-bell-function)
 
-;; Make names for ~ and ~/.emacs.d
-;;
-(setq home-dir (getenv "HOME"))
-(setq emacs-dir (file-name-directory
-                 (or (buffer-file-name) load-file-name)))
-
-;; Add ~/.emacs.d/lib to library path
-;;
-(add-to-list 'load-path (concat emacs-dir "lib"))
-
-;; Add Common Lisp extensions
-;;
-;;  http://www.gnu.org/software/emacs/manual/html_mono/cl.html
-;;
-(require 'cl)
-
 ;; Put a mode setting instruction in the *scratch* buffer, in case
 ;; we save it.
 ;;
 (setq initial-scratch-message ";; -*- mode: lisp-interaction -*-\n\n")
+
+;; Put twiddle files in ~/.emacs-backups
+;;
+(setq backup-directory-alist `(("." . ,(expand-file-name
+                                        (concat home-dir "/.emacs-backups")))))
+
+;; Display line and column number in mode line as
+;;
+;;     (LINE,COL)
+;;
+(column-number-mode t)
 
 ;; Set point to previous position when visiting a file.
 ;; Stores them in ~/.emacs-places
@@ -115,8 +124,7 @@
 (setq grep-command "grep -nH ")
 (setq grep-find-command "find . -name '*' | xargs grep -nH ")
 
-;; A replacement for M-x grep and M-x find-grep. Adds
-;; these commands:
+;; Add these commands:
 ;;
 ;;    M-x ag
 ;;    M-x ag-files
@@ -132,70 +140,48 @@
 ;;
 (require 'ag)
 
-;; Function which finds project root using version control directories;
-;; prompts for glob pattern of files to index; calls 'etags';
-;; and visits the resulting table:
+;; Add this command:
 ;;
 ;;   M-x make-tags
 ;;
+;; It finds project root using version control directories;
+;; prompts for glob pattern of files to index; calls 'etags';
+;; and visits the resulting table.
+;;
 (require 'make-tags)
 
-;; Set the shell used by M-x shell:
+;; Set the shell used by M-x shell; make shell-mode work w/ UTF-8.
 ;;
 (setq explicit-shell-file-name "bash")
+(add-hook 'shell-mode-hook
+          (lambda ()
+            (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))
 
-;; Adds a replacement for M-x term:
+;; Add a replacement for M-x term:
 ;;
 ;;   M-x multi-term
 ;;
-;; When using M-x multi-term, M-x and C-x behave normally, so
-;; it is easy to switch buffers.  With M-x term one must preface
+;; When using multi-term.el, M-x and C-x behave normally, so
+;; it is easy to switch buffers.  Without it one must preface
 ;; each keystroke with C-c to send it to Emacs.
 ;;
 (require 'multi-term)
  (setq multi-term-program "/bin/bash")
 
-;; Git interface:
+;; Add command to interact w/ git:
 ;;
 ;;  M-x magit-status
-;;  M-x magit-log
-;;  M-x magit-ediff
 ;;
 (add-to-list 'load-path (concat emacs-dir "lib/git-modes/"))
 (add-to-list 'load-path (concat emacs-dir "lib/magit/"))
 (require 'magit)
 
-;; Ediff: don't open a separate navigation window;
-;; open windows side-by-side instead of stacked on top of each other.
+;; Prevent ediff from opening a separate navigation window;
+;; have ediff open windows side-by-side instead of stacked on
+;; top of each other.
 ;;
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 (setq ediff-split-window-function 'split-window-horizontally)
-
-;; Make shell-mode work with UTF-8.  This provides a way to use
-;; Emacs input-methods to enter Unicode characters at the shell.
-;;
-(add-hook 'shell-mode-hook
-          (lambda ()
-            (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))
-
-;; Put twiddle files in ~/.emacs-backups
-;;
-(setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat home-dir "/.emacs-backups")))))
-
-;; Display line and column number in mode line as
-;;
-;;     (LINE,COL)
-;;
-(column-number-mode t)
-
-;; Enable functions which are disabled by
-;; default.  Keybindings for first two
-;; are C-x C-u and C-x C-l
-;;
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-(put 'capitalize-region 'disabled nil)
 
 ;; Highlight these in prog mode:
 ;;
@@ -215,7 +201,7 @@
 ;;
 (setq-default indent-tabs-mode nil)
 
-;; More text modes.
+;; Add more text modes:
 ;;
 (autoload 'markdown-mode "markdown-mode" "Markdown Mode." t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
@@ -226,7 +212,12 @@
 
 (add-to-list 'auto-mode-alist '("\\.xslt\\'" . xml-mode))
 
-;; More programming language modes.
+;; Make latex input method available.  Use C-\
+;; to turn it on.
+;;
+(require 'latex)
+
+;; Add nore programming language modes:
 ;;
 (autoload 'erlang-mode "erlang" "Erlang Mode." t)
 (add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
@@ -270,23 +261,23 @@
           (lambda ()
             (sh-electric-here-document-mode -1)))
 
-;; Show visited file path in the minibuffer.
+;; Enable functions which are disabled by
+;; default.  Keybindings for first two
+;; are C-x C-u and C-x C-l
 ;;
-(defun display-buffer-file-name ()
-  (interactive)
-  (message buffer-file-name))
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'capitalize-region 'disabled nil)
 
-;; Makes the latex input method available.  Use C-\
-;; to turn it on.
-;;
-(require 'latex)
-
-;; More personal key bindings
+;; Add personal key bindings
 ;;
 (global-set-key "\C-ca" 'ag-project)
 (global-set-key "\C-cb" 'revert-buffer)
 (global-set-key "\C-cc" 'clipboard-kill-ring-save)
 (global-set-key "\C-cd" 'ido-dired)
+(defun display-buffer-file-name ()
+  (interactive)
+  (message buffer-file-name))
 (global-set-key "\C-cf" 'display-buffer-file-name)
 (global-set-key "\C-cg" 'find-grep)
 (global-set-key "\C-cm" 'compile)
@@ -296,7 +287,7 @@
 (global-set-key "\C-cv" 'clipboard-yank)
 (global-set-key "\C-cx" 'clipboard-kill-region)
 
-;; Mac key binding customizations.
+;; Customize  Mac key binding:
 ;;
 ;; Make ⌘-= and ⌘-- alternatives for C-x C-= and
 ;; and C-x C--.
