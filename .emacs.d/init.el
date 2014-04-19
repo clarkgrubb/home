@@ -142,7 +142,7 @@
 
 ;; Set the shell used by M-x shell:
 ;;
-(setq shell-file-name "/bin/bash")
+(setq explicit-shell-file-name "bash")
 
 ;; Adds a replacement for M-x term:
 ;;
