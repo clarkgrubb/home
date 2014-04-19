@@ -132,6 +132,14 @@
 ;;
 (require 'ag)
 
+;; Function which finds project root using version control directories;
+;; prompts for glob pattern of files to index; calls 'etags';
+;; and visits the resulting table:
+;;
+;;   M-x make-tags
+;;
+(require 'make-tags)
+
 ;; Set the shell used by M-x shell:
 ;;
 (setq shell-file-name "/bin/bash")
@@ -275,11 +283,16 @@
 
 ;; More personal key bindings
 ;;
+(global-set-key "\C-ca" 'ag-project)
 (global-set-key "\C-cb" 'revert-buffer)
 (global-set-key "\C-cc" 'clipboard-kill-ring-save)
 (global-set-key "\C-cd" 'ido-dired)
 (global-set-key "\C-cf" 'display-buffer-file-name)
+(global-set-key "\C-cg" 'find-grep)
+(global-set-key "\C-cm" 'compile)
 (global-set-key "\C-cr" 'query-replace)
+(global-set-key "\C-cs" 'magit-status)
+(global-set-key "\C-ct" 'make-tags)
 (global-set-key "\C-cv" 'clipboard-yank)
 (global-set-key "\C-cx" 'clipboard-kill-region)
 
