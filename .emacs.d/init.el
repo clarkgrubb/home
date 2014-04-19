@@ -1,3 +1,10 @@
+;; Turn off menu bar, tool bar, scroll bar, splash screen
+;;
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(setq inhibit-splash-screen t)
+
 ;; Make names for ~ and ~/.emacs.d; add ~/.emacs.d/lib
 ;; to library path:
 ;;
@@ -11,41 +18,6 @@
 ;;  http://www.gnu.org/software/emacs/manual/html_mono/cl.html
 ;;
 (require 'cl)
-
-;; Turn off menu bar, tool bar, scroll bar, splash screen
-;;
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(setq inhibit-splash-screen t)
-
-;; Set font on Mac
-;;
-(setq mac-font-size "12")
-
-(if window-system
-    (when (eq system-type 'darwin)
-      (create-fontset-from-fontset-spec
-       (concat "-apple-consolas-medium-r-normal--"
-               mac-font-size
-               "-*-*-*-*-*-fontset-mac, "
-               "ascii:-apple-consolas-medium-r-normal--"
-               mac-font-size
-               "-*-*-*-m-*-mac-roman, "
-               "latin-iso8859-1:"
-               "-apple-consolas-medium-r-normal--"
-               mac-font-size
-               "-*-*-*-m-*-mac-roman, "
-               "mule-unicode-0100-24ff:"
-               "-apple-consolas-medium-r-normal--"
-               mac-font-size
-               "-*-*-*-m-*-mac-roman"))
-      (set-frame-font
-       (concat
-        "-apple-consolas-medium-r-normal--"
-        mac-font-size
-        "-*-*-*-*-*-fontset-mac")
-       'keep)))
 
 ;; Prevent scrolling from causing beeping.
 ;;
@@ -300,3 +272,31 @@
       (global-set-key (kbd "s-=") 'text-scale-adjust)
       (global-set-key (kbd "s--") 'text-scale-adjust)
       (setq mac-right-option-modifier nil)))
+
+;; Set font on Mac
+;;
+(setq mac-font-size "12")
+
+(if window-system
+    (when (eq system-type 'darwin)
+      (create-fontset-from-fontset-spec
+       (concat "-apple-consolas-medium-r-normal--"
+               mac-font-size
+               "-*-*-*-*-*-fontset-mac, "
+               "ascii:-apple-consolas-medium-r-normal--"
+               mac-font-size
+               "-*-*-*-m-*-mac-roman, "
+               "latin-iso8859-1:"
+               "-apple-consolas-medium-r-normal--"
+               mac-font-size
+               "-*-*-*-m-*-mac-roman, "
+               "mule-unicode-0100-24ff:"
+               "-apple-consolas-medium-r-normal--"
+               mac-font-size
+               "-*-*-*-m-*-mac-roman"))
+      (set-frame-font
+       (concat
+        "-apple-consolas-medium-r-normal--"
+        mac-font-size
+        "-*-*-*-*-*-fontset-mac")
+       'keep)))
