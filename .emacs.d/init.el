@@ -132,6 +132,10 @@
 ;;
 (require 'ag)
 
+;; Set the shell used by M-x shell:
+;;
+(setq shell-file-name "/bin/bash")
+
 ;; Adds a replacement for M-x term:
 ;;
 ;;   M-x multi-term
