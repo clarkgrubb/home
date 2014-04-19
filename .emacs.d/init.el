@@ -110,6 +110,11 @@
         (setq ispell-program-name path)
         (return))))
 
+;; Set defaults for M-x grep and M-x find-grep
+;;
+(setq grep-command "grep -nH ")
+(setq grep-find-command "find . -name '*' | xargs grep -nH ")
+
 ;; A replacement for M-x grep and M-x find-grep. Adds
 ;; these commands:
 ;;
