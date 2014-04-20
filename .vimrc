@@ -1,2 +1,2 @@
-" runtime vimacs.vim
+runtime vimacs.vim
 runtime fugitive.vim
