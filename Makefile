@@ -5,25 +5,26 @@ SHELL := /bin/bash
 .DELETE_ON_ERROR:
 .SUFFIXES:
 
-SCRIPTS_DIR := ~/Library/Scripts
-APPLESCRIPTS := $(wildcard darwin/applescript/*)
+scripts_dir := ~/Library/Scripts
+applescripts := $(wildcard darwin/applescript/*)
 
-.PHONY: scripts_dir install-applescript install all
-
-scripts_dir:
+$(scripts_dir):
 	if [ $$OS_TYPE == Darwin ]; then \
-	mkdir -p $(SCRIPTS_DIR); \
+	mkdir -p $@; \
 	fi
 
-install-applescript: | scripts_dir
+.PHONY: install-applescript
+install-applescript: | $(scripts_dir)
 	if [ $$OS_TYPE == Darwin ]; then \
-	for script in $(APPLESCRIPTS); do \
-	cp $$script $(SCRIPTS_DIR); \
+	for script in $(applescripts); do \
+	cp $$script $(scripts_dir); \
 	done; \
 	fi
 
+.PHONY: install
 install: install-applescript
 	@echo copying dot files to HOME directory
 	./install.sh ~
 
+.PHONY: all
 all: install
