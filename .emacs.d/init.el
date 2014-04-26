@@ -5,8 +5,8 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (setq inhibit-splash-screen t)
 
-;; Make names for ~ and ~/.emacs.d; add ~/.emacs.d/lib
-;; to library path:
+;; Make names for ~ and ~/.emacs.d;
+;; add ~/.emacs.d/lib to library path:
 ;;
 (setq home-dir (getenv "HOME"))
 (setq emacs-dir (file-name-directory
@@ -273,7 +273,7 @@
       (global-set-key (kbd "s--") 'text-scale-adjust)
       (setq mac-right-option-modifier nil)))
 
-;; Set font on Mac
+;; Set font on Mac:
 ;;
 (setq mac-font-size "12")
 
