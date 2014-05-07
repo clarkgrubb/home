@@ -194,7 +194,7 @@ inoremap <C-h> <C-o>:help
 " Undo
 " 
 inoremap <C-_> <C-o>u
-inoremap <C-x><C-u> <C-o>u
+inoremap <C-x>u <C-o>u
 inoremap <C-/> <C-o>u
 
 " Incremental Searching and Query Replace
