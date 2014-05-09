@@ -257,6 +257,7 @@
 (global-set-key "\C-cs" 'magit-status)
 (global-set-key "\C-ct" 'make-tags)
 (global-set-key "\C-cv" 'clipboard-yank)
+(global-set-key "\C-cw" 'whitespace-mode)
 (global-set-key "\C-cx" 'clipboard-kill-region)
 
 ;; Customize  Mac key binding:
