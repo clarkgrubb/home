@@ -48,13 +48,12 @@ function fish_prompt
   echo -n (prompt_pwd)
 
   set_color green
-  if [ -d .git ]
-    if [ ! -z (which git) ]
-      echo -n ' git:'
-      echo -n (git branch | grep '^*' | cut -c 3-)
-    end
-  end
-  if [ -d .hg ]
+  set git_branch (git branch 2> /dev/null | grep '^*' | cut -c 3-)
+  if [ ! -z "$git_branch" ]
+    echo -n ' git:'
+    echo -n $git_branch
+  # TODO: only displays info when at hg repo root
+  else if [ -d .hg ]
     if [ ! -z (which hg) ]
       echo -n ' hg:'
       echo -n (hg branch)
