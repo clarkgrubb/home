@@ -173,6 +173,12 @@
 ;;
 (setq-default indent-tabs-mode nil)
 
+;; Custom syntax highlight colors:
+;;
+(custom-set-faces
+ '(font-lock-comment-face ((t (:foreground "gray51")))))
+
+
 ;; Add more text modes:
 ;;
 (autoload 'markdown-mode "markdown-mode" "Markdown Mode." t)
