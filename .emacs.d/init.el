@@ -173,10 +173,24 @@
 ;;
 (setq-default indent-tabs-mode nil)
 
-;; Custom syntax highlight colors:
+;; Set syntax highlight colors:
 ;;
 (custom-set-faces
- '(font-lock-comment-face ((t (:foreground "gray51")))))
+ '(font-lock-comment-face ((t (:foreground "gray51"))))
+ '(font-lock-comment-delimiter-face ((t (:foreground "gray51"))))
+ '(font-lock-doc-face ((t (:foreground "gray51"))))
+ '(font-lock-variable-name-face ((t (:foreground "chocolate"))))
+ '(font-lock-regexp-grouping-backslash ((t (:foreground "firebrick"))))
+ '(font-lock-regexp-grouping-construct ((t (:foreground "firebrick"))))
+ '(font-lock-string-face ((t (:foreground "firebrick"))))
+ '(font-lock-keyword-face ((t (:foreground "purple"))))
+ '(font-lock-preprocessor-face ((t (:foreground "light slate blue"))))
+ '(font-lock-function-name-face ((t (:foreground "medium blue"))))
+ '(font-lock-constant-face ((t (:foreground "olive drab"))))
+ '(font-lock-builtin-face ((t (:foreground "olive drab"))))
+ '(font-lock-type-face ((t (:foreground "dark green"))))
+ '(font-lock-negation-char-face ((t (:foreground "black"))))
+ '(sh-quoted-exec ((t (:foreground "black")))))
 
 
 ;; Add more text modes:
