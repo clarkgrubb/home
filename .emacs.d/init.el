@@ -247,6 +247,14 @@
 
 (defalias 'perl-mode 'cperl-mode)
 
+;; We use tabs to indent PHP code at work:
+;;
+(add-hook 'php-mode-hook
+          (lambda ()
+            (progn (setq tab-width 4)
+                   (setq c-basic-offset 4)
+                   (setq indent-tabs-mode t))))
+
 ;; Turn off electric mode for shell here documents:
 ;;
 (add-hook 'sh-mode-hook
