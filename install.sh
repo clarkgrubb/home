@@ -80,7 +80,7 @@ done
 mkdir -p $home_dir/Local/share
 for file in Local/share/*
 do
-    cp $file $home_dir/Local/share
+    sed "s:HOME_DIR:${HOME}:" < $file > $home_dir/$file
 done
 
 create_gitconfig
