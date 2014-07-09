@@ -226,10 +226,12 @@
 (autoload 'swift-mode "swift-mode" "Swift Mode." t)
 (add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode))
 
-(add-to-list 'load-path (concat emacs-dir "lib/scala-mode2/"))
-(autoload 'scala-mode "scala-mode2" "Scala Mode." t)
-(add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
-(require 'scala-mode2)
+;; doesn't work with emacs 23
+;;
+;;(add-to-list 'load-path (concat emacs-dir "lib/scala-mode2/"))
+;;(autoload 'scala-mode "scala-mode2" "Scala Mode." t)
+;;(add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
+;;(require 'scala-mode2)
 
 ;; Instead of objc-mode
 ;;
