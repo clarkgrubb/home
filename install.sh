@@ -54,7 +54,7 @@ then
     exit 1
 fi
 
-for dot_file in $(echo .[a-zA-Z]*)
+for dot_file in .[a-zA-Z]*
 do
     if [ \( $dot_file != .git \) -a \( $dot_file != .gitignore \) ]
     then
@@ -72,9 +72,15 @@ do
 done
 
 mkdir -p $home_dir/.config/fish
-for file in $(echo .config/fish/*)
+for file in .config/fish/*
 do
     cp $file $home_dir/.config/fish
+done
+
+mkdir -p $home_dir/Local/share
+for file in Local/share/*
+do
+    cp $file $home_dir/Local/share
 done
 
 create_gitconfig

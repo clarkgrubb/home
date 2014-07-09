@@ -265,7 +265,7 @@ The ``~/Local`` directory is an aid when building source code without root privi
 To make ``autoconf`` aware of ``~/Local``, create the file ``${HOME}/Local/shared/config.site`` with these contents::
 
     CPPFLAGS=-I$HOME/Local/include
-    LDFLAGS=-L$HOME/Local/lib
+    LDFLAGS=-static -L$HOME/Local/lib
 
 Then configure the source code with::
 
