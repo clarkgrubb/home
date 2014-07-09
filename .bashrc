@@ -22,6 +22,10 @@ export HISTFILE=~/.bash_history
 
 . ~/.git-prompt.sh
 
+function tabname {
+    echo -n "$(echo -n $'\033]0;')$*$(echo -n $'\007')"
+}
+
 export PS1="\[\033[31m\]$OS_TYPE:bash \[\033[34m\]\w \[\033[32m\]"'$(__git_ps1 "git:%s " )'"\[\033[30m\]\`if [ \$? == 0 ]; then echo \:\); else echo \:\(; fi\` "
 
 if [[ $OS_TYPE == Darwin ]]
