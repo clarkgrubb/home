@@ -1,3 +1,7 @@
+To get ggtags.el
+
+  wget https://raw.githubusercontent.com/leoliu/ggtags/master/ggtags.el
+
 To get cl-lib.el
 
   curl http://elpa.gnu.org/packages/cl-lib-0.5.el > cl-lib.el
