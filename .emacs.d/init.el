@@ -140,6 +140,8 @@
           (lambda ()
             (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'php-mode)
               (ggtags-mode 1))))
+(eval-after-load 'ggtags
+  '(defalias 'ggtags-navigation-mode 'ignore))
 
 ;; Set the shell used by M-x shell; make shell-mode work w/ UTF-8.
 ;;
