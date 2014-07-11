@@ -37,4 +37,17 @@
     (shell-command cmd)
     (visit-tags-table root)))
 
+(defun make-gtags ()
+  "Find project root; prompt for suffixes; run gtags."
+  (interactive ())
+  (let*
+      ((root (make-tags/project-root
+              (or load-file-name buffer-file-name default-directory)))
+       (glob (read-from-minibuffer
+              "Files to index: "
+              "*.[ch]"))
+       (cmd (concat "cd " root " && find . -name '" glob "' | gtags -f -")))
+    (shell-command cmd)))
+
+
 (provide 'make-tags)
