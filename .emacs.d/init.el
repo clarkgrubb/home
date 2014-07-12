@@ -92,12 +92,12 @@
         (return))))
 
 ;; C-c p C-h   list projectile key bindings
-;; C-c p a     search project with ag
+;; C-c p a     search project with ag [customized in projectile.el]
 ;; C-c p b     switch to buffer in project
 ;; C-c p d     find directory in project by searching on full path
 ;; C-c p D     open project root in dired
 ;; C-c p f     find file in project by searching on full path
-;; C-c p m     compile in root
+;; C-c p m     compile in root [customized in projectile.el]
 ;; C-c p o     search project buffers
 ;; C-c p r     query and replace in project
 ;; C-c p s     switch project
@@ -107,8 +107,6 @@
 ;;
 (require 'projectile)
 (projectile-global-mode)
-(global-set-key "\C-cpa" 'projectile-ag)
-(global-set-key "\C-cpm" 'projectile-compile-project)
 
 ;; Set defaults for M-x grep and M-x find-grep
 ;;
@@ -316,7 +314,9 @@
 
 ;; Add personal key bindings
 ;;
-(global-set-key "\C-ca" 'ag-project)
+(global-set-key "\C-caa" 'ag)
+(global-set-key "\C-caf" 'ag-files)
+(global-set-key "\C-car" 'ag-regexp)
 (global-set-key "\C-cb" 'revert-buffer)
 (global-set-key "\C-cc" 'clipboard-kill-ring-save)
 (global-set-key "\C-cd" 'ido-dired)
@@ -324,7 +324,7 @@
   (interactive)
   (message buffer-file-name))
 (global-set-key "\C-cf" 'display-buffer-file-name)
-(global-set-key "\C-cg" 'find-grep)
+(global-set-key "\C-cg" 'grep)
 (global-set-key "\C-cm" 'compile)
 (global-set-key "\C-cr" 'query-replace)
 (global-set-key "\C-cs" 'magit-status)
