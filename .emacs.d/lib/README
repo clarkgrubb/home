@@ -1,3 +1,15 @@
+To get projectile.el [(require 'pkg-info) and (defun projectile-version ...) were removed
+
+  wget https://raw.githubusercontent.com/bbatsov/projectile/master/projectile.el
+
+To get dash.el
+
+  wget https://raw.githubusercontent.com/magnars/dash.el/master/dash.el
+
+To get s.el
+
+  wget https://raw.githubusercontent.com/magnars/s.el/master/s.el
+
 To get ggtags.el
 
   wget https://raw.githubusercontent.com/leoliu/ggtags/master/ggtags.el
