@@ -1,14 +1,14 @@
 ;;; ag.el --- A front-end for ag ('the silver searcher'), the C ack replacement.
 
-;; Copyright (C) 2013 Wilfred Hughes <me@wilfred.me.uk>
+;; Copyright (C) 2013-2014 Wilfred Hughes <me@wilfred.me.uk>
 ;;
 ;; Author: Wilfred Hughes <me@wilfred.me.uk>
 ;; Created: 11 January 2013
-;; Version: 0.36
+;; Version: 0.43
 
 ;;; Commentary:
 
-;; Please see README.md for documentation, or read in online at
+;; Please see README.md for documentation, or read it online at
 ;; https://github.com/Wilfred/ag.el/#agel
 
 ;;; License:
@@ -33,10 +33,20 @@
 
 ;;; Code:
 (eval-when-compile (require 'cl)) ;; dolist, defun*, flet
+(require 'dired) ;; dired-sort-inhibit
+
+(defcustom ag-executable
+  "ag"
+  "Name of the ag executable to use."
+  :type 'string
+  :group 'ag)
 
 (defcustom ag-arguments
   (list "--smart-case" "--nogroup" "--column" "--")
-  "Default arguments passed to ag."
+  "Default arguments passed to ag.
+
+Ag.el requires --nogroup and --column, so we recommend you add any
+additional arguments to the start of this list."
   :type '(repeat (string))
   :group 'ag)
 
@@ -48,8 +58,9 @@ This requires the ag command to support --color-match, which is only in v0.14+"
   :group 'ag)
 
 (defcustom ag-reuse-buffers nil
-  "Non-nil means we reuse the existing search results buffer, rather than
-creating one buffer per unique search."
+  "Non-nil means we reuse the existing search results buffer or
+dired results buffer, rather than creating one buffer per unique
+search."
   :type 'boolean
   :group 'ag)
 
@@ -114,20 +125,21 @@ different window, according to `ag-open-in-other-window'."
 (define-key ag-mode-map (kbd "n") 'compilation-next-error)
 
 (defun ag/buffer-name (search-string directory regexp)
+  "Return a buffer name formatted according to ag.el conventions."
   (cond
-   (ag-reuse-buffers "*ag*")
-   (regexp (format "*ag regexp:%s dir:%s*" search-string directory))
-   (:else (format "*ag text:%s dir:%s*" search-string directory))))
+   (ag-reuse-buffers "*ag search*")
+   (regexp (format "*ag search regexp:%s dir:%s*" search-string directory))
+   (:else (format "*ag search text:%s dir:%s*" search-string directory))))
 
 (defun* ag/search (string directory
                           &key (regexp nil) (file-regex nil))
   "Run ag searching for the STRING given in DIRECTORY.
 If REGEXP is non-nil, treat STRING as a regular expression."
   (let ((default-directory (file-name-as-directory directory))
-        (arguments (if regexp
-                       ag-arguments
-                     (cons "--literal" ag-arguments)))
+        (arguments ag-arguments)
         (shell-command-switch "-c"))
+    (unless regexp
+        (setq arguments (cons "--literal" arguments)))
     (if ag-highlight-search
         (setq arguments (append '("--color" "--color-match" "30;43") arguments))
       (setq arguments (append '("--nocolor") arguments)))
@@ -135,16 +147,29 @@ If REGEXP is non-nil, treat STRING as a regular expression."
       (setq arguments (append `("--file-search-regex" ,file-regex) arguments)))
     (unless (file-exists-p default-directory)
       (error "No such directory %s" default-directory))
-    (compilation-start
-     (mapconcat 'shell-quote-argument
-                (append '("ag") arguments (list string "."))
-                " ")
-     'ag-mode
-     `(lambda (mode-name) ,(ag/buffer-name string directory regexp)))))
+    (let ((command-string
+           (mapconcat 'shell-quote-argument
+                      (append (list ag-executable) arguments (list string "."))
+                      " ")))
+      ;; If we're called with a prefix, let the user modify the command before
+      ;; running it. Typically this means they want to pass additional arguments.
+      (when current-prefix-arg
+        ;; Make a space in the command-string for the user to enter more arguments.
+        (setq command-string (ag/replace-first command-string " -- " "  -- "))
+        ;; Prompt for the command.
+        (let ((adjusted-point (- (length command-string) (length string) 5)))
+          (setq command-string
+                (read-from-minibuffer "ag command: "
+                                      (cons command-string adjusted-point)))))
+      ;; Call ag.
+      (compilation-start
+       command-string
+       'ag-mode
+       `(lambda (mode-name) ,(ag/buffer-name string directory regexp))))))
 
 (defun ag/dwim-at-point ()
   "If there's an active selection, return that.
-Otherwise, get the symbol at point."
+Otherwise, get the symbol at point, as a string."
   (cond ((use-region-p)
          (buffer-substring-no-properties (region-beginning) (region-end)))
         ((symbol-at-point)
@@ -172,8 +197,21 @@ Returns an empty string otherwise."
                (setq longest-string string)))))
     longest-string))
 
+(defun ag/replace-first (string before after)
+  "Replace the first occurrence of BEFORE in STRING with AFTER."
+  (replace-regexp-in-string
+   (concat "\\(" (regexp-quote before) "\\)" ".*\\'")
+   after string
+   nil nil 1))
+
 (autoload 'vc-git-root "vc-git")
-(autoload 'vc-svn-root "vc-svn")
+
+(require 'vc-svn)
+;; Emacs 23.4 doesn't provide vc-svn-root.
+(unless (functionp 'vc-svn-root)
+  (defun vc-svn-root (file)
+    (vc-find-root file vc-svn-admin-directory)))
+
 (autoload 'vc-hg-root "vc-hg")
 
 (defun ag/project-root (file-path)
@@ -189,10 +227,108 @@ roots."
        (vc-hg-root file-path))
       file-path)))
 
+(defun ag/dired-align-size-column ()
+  (beginning-of-line)
+  (when (looking-at "^  ")
+    (forward-char 2)
+    (search-forward " " nil t 4)
+    (let* ((size-start (point))
+           (size-end (search-forward " " nil t))
+           (width (and size-end (- size-end size-start))))
+      (when (and size-end
+                 (< width 12)
+                 (> width 1))
+        (goto-char size-start)
+        (insert (make-string (- 12 width) ? ))))))
+
+(defun ag/dired-filter (proc string)
+  "Filter the output of ag to make it suitable for `dired-mode'."
+  (let ((buf (process-buffer proc))
+        (inhibit-read-only t))
+    (if (buffer-name buf)
+        (with-current-buffer buf
+          (save-excursion
+            (save-restriction
+              (widen)
+              (let ((beg (point-max)))
+                (goto-char beg)
+                (insert string)
+                (goto-char beg)
+                (or (looking-at "^")
+                    (progn
+                      (ag/dired-align-size-column)
+                      (forward-line 1)))
+                (while (looking-at "^")
+                  (insert "  ")
+                  (ag/dired-align-size-column)
+                  (forward-line 1))
+                (goto-char beg)
+                (beginning-of-line)
+
+                ;; Remove occurrences of default-directory.
+                (while (search-forward default-directory nil t)
+                  (replace-match "" nil t))
+
+                (goto-char (point-max))
+                (if (search-backward "\n" (process-mark proc) t)
+                    (progn
+                      (dired-insert-set-properties (process-mark proc)
+                                                   (1+ (point)))
+                      (move-marker (process-mark proc) (1+ (point)))))))))
+      (delete-process proc))))
+
+(defun ag/dired-sentinel (proc state)
+  "Update the status/modeline after the process finishes."
+  (let ((buf (process-buffer proc))
+        (inhibit-read-only t))
+    (if (buffer-name buf)
+        (with-current-buffer buf
+          (let ((buffer-read-only nil))
+            (save-excursion
+              (goto-char (point-max))
+              (insert "\n  ag " state)
+              (forward-char -1)     ;Back up before \n at end of STATE.
+              (insert " at " (substring (current-time-string) 0 19))
+              (forward-char 1)
+              (setq mode-line-process
+                    (concat ":" (symbol-name (process-status proc))))
+              ;; Since the buffer and mode line will show that the
+              ;; process is dead, we can delete it now.  Otherwise it
+              ;; will stay around until M-x list-processes.
+              (delete-process proc)
+              (force-mode-line-update)))
+          (run-hooks 'dired-after-readin-hook)
+          (message "%s finished." (current-buffer))))))
+
+(defun ag/kill-process ()
+  "Kill the `ag' process running in the current buffer."
+  (interactive)
+  (let ((ag (get-buffer-process (current-buffer))))
+    (and ag (eq (process-status ag) 'run)
+         (eq (process-filter ag) (function find-dired-filter))
+         (condition-case nil
+             (delete-process ag)
+           (error nil)))))
+
+(defun ag/escape-pcre (regexp)
+  "Escape the PCRE-special characters in REGEXP so that it is
+matched literally."
+  (let ((alphanum "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"))
+    (apply 'concat
+            (mapcar
+             (lambda (c)
+               (cond
+                ((not (string-match-p (regexp-quote c) alphanum))
+                 (concat "\\" c))
+                (t c)))
+             (mapcar 'char-to-string (string-to-list regexp))))))
+
 ;;;###autoload
 (defun ag (string directory)
   "Search using ag in a given DIRECTORY for a given search STRING,
-with STRING defaulting to the symbol under point."
+with STRING defaulting to the symbol under point.
+
+If called with a prefix, prompts for flags to pass to ag."
    (interactive (list (read-from-minibuffer "Search string: " (ag/dwim-at-point))
                       (read-directory-name "Directory: ")))
    (ag/search string directory))
@@ -200,7 +336,9 @@ with STRING defaulting to the symbol under point."
 ;;;###autoload
 (defun ag-files (string file-regex directory)
   "Search using ag in a given DIRECTORY and file type regex FILE-REGEX
-for a given search STRING, with STRING defaulting to the symbol under point."
+for a given search STRING, with STRING defaulting to the symbol under point.
+
+If called with a prefix, prompts for flags to pass to ag."
   (interactive (list (read-from-minibuffer "Search string: " (ag/dwim-at-point))
                      (read-from-minibuffer "In filenames matching PCRE: " (ag/buffer-extension-regex))
                      (read-directory-name "Directory: ")))
@@ -208,21 +346,28 @@ for a given search STRING, with STRING defaulting to the symbol under point."
 
 ;;;###autoload
 (defun ag-regexp (string directory)
-  "Search using ag in a given directory for a given regexp."
+  "Search using ag in a given directory for a given regexp.
+The regexp should be in PCRE syntax, not Emacs regexp syntax.
+
+If called with a prefix, prompts for flags to pass to ag."
   (interactive "sSearch regexp: \nDDirectory: ")
   (ag/search string directory :regexp t))
 
 ;;;###autoload
 (defun ag-project (string)
   "Guess the root of the current project and search it with ag
-for the given string."
+for the given string.
+
+If called with a prefix, prompts for flags to pass to ag."
   (interactive (list (read-from-minibuffer "Search string: " (ag/dwim-at-point))))
   (ag/search string (ag/project-root default-directory)))
 
 ;;;###autoload
 (defun ag-project-files (string file-regex)
   "Search using ag in a given DIRECTORY and file type regex FILE-REGEX
-for a given search STRING, with STRING defaulting to the symbol under point."
+for a given search STRING, with STRING defaulting to the symbol under point.
+
+If called with a prefix, prompts for flags to pass to ag."
   (interactive (list (read-from-minibuffer "Search string: " (ag/dwim-at-point))
                      (read-from-minibuffer "In filenames matching PCRE: " (ag/buffer-extension-regex))))
   (ag/search string (ag/project-root default-directory) :file-regex file-regex))
@@ -230,26 +375,109 @@ for a given search STRING, with STRING defaulting to the symbol under point."
 ;;;###autoload
 (defun ag-project-regexp (regexp)
   "Guess the root of the current project and search it with ag
-for the given regexp."
-  (interactive "sSearch regexp: ")
+for the given regexp. The regexp should be in PCRE syntax, not
+Emacs regexp syntax.
+
+If called with a prefix, prompts for flags to pass to ag."
+  (interactive (list (read-from-minibuffer "Search regexp: "
+                                           (ag/escape-pcre (ag/dwim-at-point)))))
   (ag/search regexp (ag/project-root default-directory) :regexp t))
 
 (autoload 'symbol-at-point "thingatpt")
 
 ;;;###autoload
 (defalias 'ag-project-at-point 'ag-project)
+(make-obsolete 'ag-project-at-point 'ag-project "0.19")
 
 ;;;###autoload
-(defun ag-regexp-project-at-point (regexp)
-  "Same as ``ag-regexp-project'', but with the search regexp defaulting
-to the symbol under point."
-   (interactive (list (read-from-minibuffer "Search regexp: " (ag/dwim-at-point))))
+(defalias 'ag-regexp-project-at-point 'ag-project-regexp) ; TODO: mark as obsolete
 
-   (ag/search regexp (ag/project-root default-directory) :regexp t))
+;;;###autoload
+(defun ag-dired (dir pattern)
+  "Recursively find files in DIR matching PATTERN.
+
+The PATTERN is matched against the full path to the file, not
+only against the file name.
+
+The results are presented as a `dired-mode' buffer with
+`default-directory' being DIR.
+
+See also `ag-dired-regexp'."
+  (interactive "DDirectory: \nsFile pattern: ")
+  (ag-dired-regexp dir (ag/escape-pcre pattern)))
+
+;;;###autoload
+(defun ag-dired-regexp (dir regexp)
+  "Recursively find files in DIR matching REGEXP.
+REGEXP should be in PCRE syntax, not Emacs regexp syntax.
+
+The REGEXP is matched against the full path to the file, not
+only against the file name.
+
+Results are presented as a `dired-mode' buffer with
+`default-directory' being DIR.
+
+See also `find-dired'."
+  (interactive "DDirectory: \nsFile regexp: ")
+  (let* ((dired-buffers dired-buffers) ;; do not mess with regular dired buffers
+         (orig-dir dir)
+         (dir (file-name-as-directory (expand-file-name dir)))
+         (buffer-name (if ag-reuse-buffers
+                          "*ag dired*"
+                        (format "*ag dired pattern:%s dir:%s*" regexp dir)))
+         (cmd (concat ag-executable " --nocolor -g '" regexp "' " dir " | grep -v '^$' | xargs -I {} ls " dired-listing-switches " {} &")))
+    (with-current-buffer (get-buffer-create buffer-name)
+      (switch-to-buffer (current-buffer))
+      (widen)
+      (kill-all-local-variables)
+      (if (fboundp 'read-only-mode)
+          (read-only-mode -1)
+        (setq buffer-read-only nil))
+      (let ((inhibit-read-only t)) (erase-buffer))
+      (setq default-directory dir)
+      (run-hooks 'dired-before-readin-hook)
+      (shell-command cmd (current-buffer))
+      (insert "  " dir ":\n")
+      (insert "  " cmd "\n")
+      (dired-mode dir)
+      (let ((map (make-sparse-keymap)))
+        (set-keymap-parent map (current-local-map))
+        (define-key map "\C-c\C-k" 'ag/kill-process)
+        (use-local-map map))
+      (set (make-local-variable 'dired-sort-inhibit) t)
+      (set (make-local-variable 'revert-buffer-function)
+           `(lambda (ignore-auto noconfirm)
+              (ag-dired ,orig-dir ,regexp)))
+      (if (fboundp 'dired-simple-subdir-alist)
+          (dired-simple-subdir-alist)
+        (set (make-local-variable 'dired-subdir-alist)
+             (list (cons default-directory (point-min-marker)))))
+      (let ((proc (get-buffer-process (current-buffer))))
+        (set-process-filter proc #'ag/dired-filter)
+        (set-process-sentinel proc #'ag/dired-sentinel)
+        ;; Initialize the process marker; it is used by the filter.
+        (move-marker (process-mark proc) 1 (current-buffer)))
+      (setq mode-line-process '(":%s")))))
+
+;;;###autoload
+(defun ag-project-dired (pattern)
+  "Recursively find files in current project matching PATTERN.
+
+See also `ag-dired'."
+  (interactive "sFile pattern: ")
+  (ag-dired-regexp (ag/project-root default-directory) (ag/escape-pcre pattern)))
+
+;;;###autoload
+(defun ag-project-dired-regexp (regexp)
+  "Recursively find files in current project matching REGEXP.
+
+See also `ag-dired-regexp'."
+  (interactive "sFile regexp: ")
+  (ag-dired-regexp (ag/project-root default-directory) regexp))
 
 ;;;###autoload
 (defun ag-kill-buffers ()
-  "Kill all ag-mode buffers."
+  "Kill all `ag-mode' buffers."
   (interactive)
   (dolist (buffer (buffer-list))
     (when (eq (buffer-local-value 'major-mode buffer) 'ag-mode)
@@ -257,7 +485,7 @@ to the symbol under point."
 
 ;;;###autoload
 (defun ag-kill-other-buffers ()
-  "Kill all ag-mode buffers other than the current buffer."
+  "Kill all `ag-mode' buffers other than the current buffer."
   (interactive)
   (let ((current-buffer (current-buffer)))
     (dolist (buffer (buffer-list))
