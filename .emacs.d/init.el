@@ -116,6 +116,7 @@
 ;; Add these commands:
 ;;
 ;;    M-x ag
+;;    C-u M-x ag
 ;;    M-x ag-files
 ;;    M-x ag-regexp
 ;;    M-x ag-project
@@ -314,9 +315,7 @@
 
 ;; Add personal key bindings
 ;;
-(global-set-key "\C-caa" 'ag)
-(global-set-key "\C-caf" 'ag-files)
-(global-set-key "\C-car" 'ag-regexp)
+(global-set-key "\C-ca" 'ag)
 (global-set-key "\C-cb" 'revert-buffer)
 (global-set-key "\C-cc" 'clipboard-kill-ring-save)
 (global-set-key "\C-cd" 'ido-dired)
