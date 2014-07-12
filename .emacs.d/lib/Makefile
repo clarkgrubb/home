@@ -5,6 +5,8 @@ SHELL := /bin/bash
 .DELETE_ON_ERROR:
 .SUFFIXES:
 
+# TODO: clean task, because wget won't overwrite a file
+
 .PHONY: download.magit
 download.magit:
 	git clone https://github.com/magit/git-modes.git
@@ -43,6 +45,7 @@ download.lang.modes:
 .PHONY: download.projectile
 download.projectile:
 	wget https://raw.githubusercontent.com/bbatsov/projectile/master/projectile.el
+	patch < projectile.el.patch
 	wget https://raw.githubusercontent.com/magnars/dash.el/master/dash.el
 	wget https://raw.githubusercontent.com/magnars/s.el/master/s.el
 
