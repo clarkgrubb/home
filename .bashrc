@@ -54,6 +54,9 @@ then
 elif [[ $OS_TYPE == Linux ]]
 then
 
+    # disable apt pkg command-not-found
+    unset command_not_found_handle
+
     export PATH=$COMMON_PATH
 
     jvm_dir=/usr/lib/jvm
