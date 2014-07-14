@@ -282,7 +282,9 @@
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
 
-(load (concat emacs-dir "lib/haskell-mode/haskell-site-file.el"))
+(add-to-list 'load-path (concat emacs-dir "lib/haskell-mode"))
+(setq auto-mode-alist (cons '("\\.hs" . haskell-mode) auto-mode-alist))
+(autoload 'haskell-mode "haskell-site-file" "Haskell Mode" t)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
