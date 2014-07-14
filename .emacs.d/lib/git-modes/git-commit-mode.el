@@ -2,11 +2,12 @@
 
 ;; Copyright (c) 2010-2012  Florian Ragwitz
 ;; Copyright (c) 2012-2013  Sebastian Wiesner
+;; Copyright (C) 2010-2014  The Magit Project Developers
 
-;; Authors: Sebastian Wiesner <lunaryorn@gmail.com>
+;; Authors: Jonas Bernoulli <jonas@bernoul.li>
+;;	Sebastian Wiesner <lunaryorn@gmail.com>
 ;;	Florian Ragwitz <rafl@debian.org>
 ;; Maintainer: Jonas Bernoulli <jonas@bernoul.li>
-;; Version: 0.14.0
 ;; Homepage: https://github.com/magit/git-modes
 ;; Keywords: convenience vc git
 
@@ -69,7 +70,7 @@
 ;;;; Variables
 
 (defgroup git-commit nil
-  "Mode for editing git commit messages"
+  "Edit Git commit messages."
   :prefix "git-commit-"
   :group 'tools)
 
@@ -117,7 +118,7 @@ and `git-commit-abort'."
 ;;;; Faces
 
 (defgroup git-commit-faces nil
-  "Faces for highlighting git commit messages"
+  "Faces for highlighting Git commit messages."
   :prefix "git-commit-"
   :group 'git-commit
   :group 'faces)
@@ -290,17 +291,27 @@ Return t, if the commit was successful, or nil otherwise."
   "Abort the commit.
 The commit message is saved to the kill ring."
   (interactive)
+  (when (< emacs-major-version 24)
+    ;; Emacsclient doesn't exit with non-zero when -error is used.
+    ;; Instead cause Git to error out by feeding it an empty file.
+    (erase-buffer))
   (save-buffer)
   (run-hooks 'git-commit-kill-buffer-hook)
   (remove-hook 'kill-buffer-hook 'server-kill-buffer t)
   (remove-hook 'kill-buffer-query-functions 'git-commit-kill-buffer-noop t)
   (git-commit-restore-previous-winconf
-    (let ((clients (git-commit-buffer-clients)))
+    (let ((buffer  (current-buffer))
+          (clients (git-commit-buffer-clients)))
       (if clients
-          (dolist (client clients)
-            (server-send-string client "-error Commit aborted by user")
-            (delete-process client))
+          (progn
+            (dolist (client clients)
+              (ignore-errors
+                (server-send-string client "-error Commit aborted by user"))
+              (delete-process client))
+            (when (buffer-live-p buffer)
+              (kill-buffer buffer)))
         (kill-buffer))))
+  (accept-process-output nil 0.1)
   (message (concat "Commit aborted."
                    (when (memq 'git-commit-save-message
                                git-commit-kill-buffer-hook)
@@ -322,6 +333,9 @@ The commit message is saved to the kill ring."
     (when (and (string-match "^\\s-*\\sw" message)
                (or (ring-empty-p log-edit-comment-ring)
                    (not (ring-member log-edit-comment-ring message))))
+      ;; if index is nil, we end up cycling back to message we just saved!
+      (unless log-edit-comment-ring-index
+        (setq log-edit-comment-ring-index 0))
       (ring-insert log-edit-comment-ring message))))
 
 (defun git-commit-prev-message (arg)

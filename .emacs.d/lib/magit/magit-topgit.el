@@ -1,6 +1,6 @@
 ;;; magit-topgit.el --- topgit plug-in for Magit
 
-;; Copyright (C) 2010-2013  The Magit Project Developers.
+;; Copyright (C) 2010-2014  The Magit Project Developers
 ;;
 ;; For a full list of contributors, see the AUTHORS.md file
 ;; at the top-level directory of this distribution and at
@@ -34,26 +34,53 @@
 (require 'magit)
 (eval-when-compile (require 'cl-lib))
 
+;;; Options
+;;;; Variables
+
+(defgroup magit-topgit nil
+  "Topgit support for Magit."
+  :group 'magit-extensions)
+
 (defcustom magit-topgit-executable "tg"
   "The name of the TopGit executable."
-  :group 'magit
+  :group 'magit-topgit
   :type 'string)
 
 (defcustom magit-topgit-branch-prefix "t/"
   "Convention prefix for topic branch creation."
-  :group 'magit
+  :group 'magit-topgit
   :type 'string)
+
+;;;; Faces
+
+(defgroup magit-topgit-faces nil
+  "Faces used by Magit-Topgit."
+  :group 'magit-topgit
+  :group 'magit-faces)
 
 (defface magit-topgit-current
   '((t :weight bold :inherit magit-branch))
   "Face for section titles."
-  :group 'magit-faces)
+  :group 'magit-topgit-faces)
 
+;;; Processes
 
-(defun magit-run-topgit (nowait &rest args)
-  (magit-with-refresh
-    (magit-run* (cons magit-topgit-executable args)
-                nil nil nil nowait)))
+(defun magit-run-topgit (&rest args)
+  (apply #'magit-call-topgit args)
+  (magit-refresh))
+
+(defun magit-call-topgit (&rest args)
+  (apply #'magit-call-process magit-topgit-executable args))
+
+(defun magit-run-topgit-async (&rest args)
+  (message "Running %s %s" magit-topgit-executable
+           (mapconcat 'identity args " "))
+  (apply #'magit-start-topgit nil args))
+
+(defun magit-start-topgit (&optional input &rest args)
+  (apply #'magit-start-process magit-topgit-executable input args))
+
+;;; (rest)
 
 (defun magit-topgit-in-topic-p ()
   (and (file-exists-p ".topdeps")
@@ -61,16 +88,23 @@
 
 (defun magit-topgit-create-branch (branch parent)
   (when (zerop (or (string-match magit-topgit-branch-prefix branch) -1))
-    (magit-run-topgit t "create" branch parent)))
+    (magit-run-topgit-async "create" branch parent)))
+
+(defun magit-topgit-checkout (topic)
+  (magit-checkout topic))
+
+(defun magit-topgit-discard (topic)
+  (when (yes-or-no-p "Discard topic? ")
+    (magit-run-topgit-async "delete" "-f" topic)))
 
 (defun magit-topgit-pull ()
   (when (magit-topgit-in-topic-p)
-    (magit-run-topgit t "update")))
+    (magit-run-topgit-async "update")))
 
-(defun magit-topgit-push ()
+(defun magit-topgit-push (arg)
   (when (magit-topgit-in-topic-p)
     (let* ((branch (or (magit-get-current-branch)
-                       (error "Don't push a detached head.  That's gross")))
+                       (user-error "Don't push a detached head.  That's gross")))
            (remote (magit-get "topgit" "remote"))
            (push-remote (if (or current-prefix-arg (not remote))
                             (magit-read-remote (format "Push %s to" branch))
@@ -78,7 +112,8 @@
       (when (and (not remote)
                  (not current-prefix-arg))
         (magit-set push-remote "topgit" "remote"))
-      (magit-run-topgit nil "push" "-r" push-remote))))
+      (magit-run-topgit "push" "-r" push-remote))
+    t))
 
 (defun magit-topgit-remote-update (&optional remote)
   (when (magit-topgit-in-topic-p)
@@ -89,8 +124,8 @@
       (when (and (not remote)
                  (not current-prefix-arg))
         (magit-set remote-update "topgit" "remote")
-        (magit-run-topgit nil "remote" "--populate" remote-update))
-      (magit-run-topgit nil "remote" remote-update)))
+        (magit-call-topgit "remote" "--populate" remote-update))
+      (magit-run-topgit "remote" remote-update)))
   ;; We always return nil, as we also want
   ;; regular "git remote update" to happen.
   nil)
@@ -110,7 +145,7 @@
           (delete-char 8)
           (insert "\t")
           (goto-char (line-beginning-position))
-          (magit-with-section (section topic topic)
+          (magit-with-section (section topgit-topic topic)
             (setf (magit-section-info section) topic)
             (let ((beg (1+ (line-beginning-position)))
                   (end (line-end-position)))
@@ -127,32 +162,15 @@
 (defun magit-topgit-wash-topics ()
   (magit-wash-sequence #'magit-topgit-wash-topic))
 
-(defun magit-topgit-section (section title washer &rest args)
-  (when (executable-find magit-topgit-executable)
-    (let ((magit-git-executable magit-topgit-executable)
-          (magit-git-standard-options nil))
-      (apply #'magit-git-section section title washer args))))
-
 (defun magit-insert-topgit-topics ()
-  (magit-topgit-section 'topgit-topics
-                        "Topics:" 'magit-topgit-wash-topics
-                        "summary"))
-
-(magit-add-action-clauses (item info "discard")
-  ((topic)
-   (when (yes-or-no-p "Discard topic? ")
-     (magit-run* (list magit-topgit-executable "delete" "-f" info)
-                 nil nil nil t))))
-
-(magit-add-action-clauses (item info "visit")
-  ((topic)
-   (magit-checkout info)))
+  (magit-cmd-insert-section ('topgit-topics "Topics:")
+      'magit-topgit-wash-topics magit-topgit-executable "summary"))
 
 ;;;###autoload
 (define-minor-mode magit-topgit-mode "Topgit support for Magit"
   :lighter " Topgit" :require 'magit-topgit
   (or (derived-mode-p 'magit-mode)
-      (error "This mode only makes sense with magit"))
+      (user-error "This mode only makes sense with magit"))
   (cond
    (magit-topgit-mode
     (magit-add-section-hook 'magit-status-sections-hook
@@ -160,16 +178,23 @@
                             'magit-insert-stashes t t)
     (add-hook 'magit-create-branch-hook 'magit-topgit-create-branch nil t)
     (add-hook 'magit-remote-update-hook 'magit-topgit-remote-update nil t)
-    (add-hook 'magit-pull-hook 'magit-topgit-pull nil t)
-    (add-hook 'magit-push-hook 'magit-topgit-push nil t))
+    (add-hook 'magit-pull-hook    'magit-topgit-pull nil t)
+    (add-hook 'magit-push-hook    'magit-topgit-push nil t)
+    (add-hook 'magit-visit-hook   'magit-topgit-checkout nil t)
+    (add-hook 'magit-discard-hook 'magit-topgit-discard nil t))
    (t
     (remove-hook 'magit-status-sections-hook 'magit-insert-topgit-topics t)
-    (remove-hook 'magit-create-branch-hook 'magit-topgit-create-branch t)
-    (remove-hook 'magit-remote-update-hook 'magit-topgit-remote-update t)
-    (remove-hook 'magit-pull-hook 'magit-topgit-pull t)
-    (remove-hook 'magit-push-hook 'magit-topgit-push t)))
+    (remove-hook 'magit-create-branch-hook   'magit-topgit-create-branch t)
+    (remove-hook 'magit-remote-update-hook   'magit-topgit-remote-update t)
+    (remove-hook 'magit-pull-hook    'magit-topgit-pull t)
+    (remove-hook 'magit-push-hook    'magit-topgit-push t)
+    (remove-hook 'magit-visit-hook   'magit-topgit-checkout t)
+    (remove-hook 'magit-discard-hook 'magit-topgit-discard t)))
   (when (called-interactively-p 'any)
     (magit-refresh)))
+
+(put 'magit-topgit-checkout 'magit-section-action-context 'topgit-topic)
+(put 'magit-topgit-discard   'magit-section-action-context 'topgit-topic)
 
 ;;;###autoload
 (defun turn-on-magit-topgit ()

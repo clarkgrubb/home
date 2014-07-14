@@ -1,6 +1,6 @@
 ;;; magit-svn.el --- git-svn plug-in for Magit
 
-;; Copyright (C) 2010-2013  The Magit Project Developers.
+;; Copyright (C) 2010-2014  The Magit Project Developers
 ;;
 ;; For a full list of contributors, see the AUTHORS.md file
 ;; at the top-level directory of this distribution and at
@@ -39,12 +39,18 @@
 
 (declare-function find-lisp-find-files-internal 'find-lisp)
 
+;;; Options
+
+(defgroup magit-svn nil
+  "Git-Svn support for Magit."
+  :group 'magit-extensions)
+
 (defcustom magit-svn-externals-dir ".git_externals"
   "Directory from repository root that stores cloned SVN externals."
-  :group 'magit
+  :group 'magit-svn
   :type 'string)
 
-;; git svn commands
+;;; Commands
 
 ;;;###autoload
 (defun magit-svn-find-rev (rev &optional branch)
@@ -59,37 +65,32 @@
                        ,(concat "r" rev)
                        ,@(when branch (list branch))))))
     (if sha
-        (magit-show-commit
-         (magit-with-section (section commit sha)
-           (setf (magit-section-info section) sha)
-           sha))
-      (error "Revision %s could not be mapped to a commit" rev))))
+        (magit-show-commit sha)
+      (user-error "Revision %s could not be mapped to a commit" rev))))
 
 ;;;###autoload
 (defun magit-svn-create-branch (name)
   "Create svn branch NAME."
   (interactive "sBranch name: ")
-  (apply 'magit-run-git "svn" "branch"
-         (append magit-custom-options (list name))))
+  (magit-run-git "svn" "branch" magit-custom-options name))
 
 ;;;###autoload
 (defun magit-svn-create-tag (name)
   "Create svn tag NAME."
   (interactive "sTag name: ")
-  (apply 'magit-run-git "svn" "tag"
-         (append magit-custom-options (list name))))
+  (magit-run-git "svn" "tag" magit-custom-options name))
 
 ;;;###autoload
 (defun magit-svn-rebase ()
   "Run git-svn rebase."
   (interactive)
-  (apply 'magit-run-git-async "svn" "rebase" magit-custom-options))
+  (magit-run-git-async "svn" "rebase" magit-custom-options))
 
 ;;;###autoload
 (defun magit-svn-dcommit ()
   "Run git-svn dcommit."
   (interactive)
-  (apply 'magit-run-git-async "svn" "dcommit" magit-custom-options))
+  (magit-run-git-async "svn" "dcommit" magit-custom-options))
 
 ;;;###autoload
 (defun magit-svn-remote-update ()
@@ -97,6 +98,8 @@
   (interactive)
   (when (magit-svn-enabled)
     (magit-run-git-async "svn" "fetch")))
+
+;;; Utilities
 
 (defun magit-svn-enabled ()
   (not (null (magit-svn-get-ref-info t))))
@@ -188,14 +191,14 @@ If USE-CACHE is non nil, use the cached information."
   (when (magit-svn-enabled)
     (magit-git-insert-section (svn-unpulled "Unpulled commits (SVN):")
         (apply-partially 'magit-wash-log 'unique)
-      "log" "--format=format:* %h %s" (magit-diff-abbrev-arg)
+      "log" "--format=format:%h %s"
       (format "HEAD..%s" (magit-svn-get-ref t)))))
 
 (defun magit-insert-svn-unpushed ()
   (when (magit-svn-enabled)
     (magit-git-insert-section (svn-unpushed "Unpushed commits (SVN):")
         (apply-partially 'magit-wash-log 'unique)
-      "log" "--format=format:* %h %s" (magit-diff-abbrev-arg)
+      "log" "--format=format:%h %s"
       (format "%s..HEAD" (magit-svn-get-ref t)))))
 
 (magit-define-section-jumper svn-unpushed  "Unpushed commits (SVN)")
@@ -229,6 +232,8 @@ If USE-CACHE is non nil, use the cached information."
                                  '(lambda(file dir)
                                     (string-equal file ".git"))
                                  'find-lisp-default-directory-predicate))
+
+;;; Keymaps
 
 (easy-menu-define magit-svn-extension-menu
   nil
@@ -266,11 +271,13 @@ If USE-CACHE is non nil, use the cached information."
     (define-key map (kbd "N") 'magit-key-mode-popup-svn)
     map))
 
+;;; Mode
+
 ;;;###autoload
 (define-minor-mode magit-svn-mode "SVN support for Magit"
   :lighter " SVN" :require 'magit-svn :keymap 'magit-svn-mode-map
   (or (derived-mode-p 'magit-mode)
-      (error "This mode only makes sense with magit"))
+      (user-error "This mode only makes sense with magit"))
   (cond
    (magit-svn-mode
     (magit-add-section-hook 'magit-status-sections-hook

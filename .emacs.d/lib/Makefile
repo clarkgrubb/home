@@ -12,7 +12,7 @@ download.magit:
 	git clone https://github.com/magit/git-modes.git
 	rm -rf git-modes/.git
 	git clone https://github.com/magit/magit.git
-	rm -tf magit/.git
+	rm -rf magit/.git
 
 .PHONY: download.scala-mode2
 download.scala-mode2:

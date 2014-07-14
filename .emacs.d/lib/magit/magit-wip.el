@@ -1,6 +1,6 @@
 ;;; magit-wip.el --- git-wip plug-in for Magit
 
-;; Copyright (C) 2012-2013  The Magit Project Developers.
+;; Copyright (C) 2012-2014  The Magit Project Developers
 ;;
 ;; For a full list of contributors, see the AUTHORS.md file
 ;; at the top-level directory of this distribution and at
@@ -32,8 +32,7 @@
 
 ;; To enable `magit-wip-save-mode' enable `global-magit-wip-save-mode'
 ;; and use the Magit extension mechanism to select the repositories in
-;; which you want to use a work-in-progress ref.  Usually you also want
-;; to enable `magit-wip-mode'.
+;; which you want to use a work-in-progress ref.
 ;;
 ;;   (global-magit-wip-save-mode 1)
 ;;
@@ -53,7 +52,11 @@
   (message "magit-wip-mode is obsolete and doesn't do anything"))
 (make-obsolete 'magit-wip-mode "This mode is a noop now" "2.0.0")
 
-;;; Magit Wip Save Mode.
+;;; Options
+
+(defgroup magit-wip nil
+  "Git-Wip support for Magit."
+  :group 'magit-extensions)
 
 (defcustom magit-wip-commit-message "WIP %r"
   "Commit message for git-wip commits.
@@ -63,7 +66,7 @@ The following `format'-like specs are supported:
 %g the root of the git repository
 %r the name of the file being saved,
    relative to the repository root."
-  :group 'magit
+  :group 'magit-wip
   :type 'string)
 
 (defcustom magit-wip-echo-area-message "Wrote %f (wip)"
@@ -74,10 +77,12 @@ The following `format'-like specs are supported:
 %g the root of the git repository
 %r the name of the file being saved,
    relative to the repository root."
-  :group 'magit
+  :group 'magit-wip
   :type '(choice (const :tag "No message" nil) string))
 
 (defvar magit-wip-save-mode-lighter " Wip")
+
+;;; Mode
 
 ;;;###autoload
 (define-minor-mode magit-wip-save-mode
@@ -94,7 +99,7 @@ work-in-progress ref."
 ;;;###autoload
 (define-globalized-minor-mode global-magit-wip-save-mode
   magit-wip-save-mode turn-on-magit-wip-save
-  :group 'magit)
+  :group 'magit-wip)
 
 (defun turn-on-magit-wip-save ()
   "Conditionally turn on magit-wip-save-mode.

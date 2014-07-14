@@ -1,6 +1,6 @@
 ;;; magit-stgit.el --- StGit plug-in for Magit
 
-;; Copyright (C) 2011-2013  The Magit Project Developers.
+;; Copyright (C) 2011-2014  The Magit Project Developers
 ;;
 ;; For a full list of contributors, see the AUTHORS.md file
 ;; at the top-level directory of this distribution and at
@@ -41,43 +41,58 @@
 (require 'magit)
 
 ;;; Options
+;;;; Variables
+
+(defgroup magit-stgit nil
+  "StGit support for Magit."
+  :group 'magit-extensions)
 
 (defcustom magit-stgit-executable "stg"
   "The name of the StGit executable."
-  :group 'magit
+  :group 'magit-stgit
   :type 'string)
 
-;;; Faces
+(defcustom magit-stgit-show-patch-name t
+  "Whether to prefix patch messages with the patch name, in patch series."
+  :group 'magit-stgit
+  :type 'boolean)
+
+;;;; Faces
+
+(defgroup magit-stgit-faces nil
+  "Faces used by Magit-StGit."
+  :group 'magit-stgit
+  :group 'magit-faces)
 
 (defface magit-stgit-patch
   '((t :inherit magit-log-sha1))
   "Face for name of a stgit patch."
-  :group 'magit-faces)
+  :group 'magit-stgit-faces)
 
 (defface magit-stgit-current
   '((t :inherit magit-log-sha1))
   "Face for the current stgit patch."
-  :group 'magit-faces)
+  :group 'magit-stgit-faces)
 
 (defface magit-stgit-applied
   '((t :inherit magit-cherry-equivalent))
   "Face for an applied stgit patch."
-  :group 'magit-faces)
+  :group 'magit-stgit-faces)
 
 (defface magit-stgit-unapplied
   '((t :inherit magit-cherry-unmatched))
   "Face for an unapplied stgit patch."
-  :group 'magit-faces)
+  :group 'magit-stgit-faces)
 
 (defface magit-stgit-empty
   '((t :inherit magit-diff-del))
   "Face for an empty stgit patch."
-  :group 'magit-faces)
+  :group 'magit-stgit-faces)
 
 (defface magit-stgit-hidden
   '((t :inherit magit-diff-empty))
   "Face for an hidden stgit patch."
-  :group 'magit-faces)
+  :group 'magit-stgit-faces)
 
 ;;; Variables
 
@@ -90,8 +105,8 @@
 ;;; Utilities
 
 (defun magit-run-stgit (&rest args)
-  (magit-with-refresh
-    (magit-run* (cons magit-stgit-executable args))))
+  (apply #'magit-call-process magit-stgit-executable args)
+  (magit-refresh))
 
 (defun magit-stgit-lines (&rest args)
   (with-temp-buffer
@@ -131,7 +146,7 @@ into the series."
   (let ((remote (magit-get-current-remote))
         (branch (magit-get-current-branch)))
     (if (not (and remote branch))
-        (error "Branch has no upstream")
+        (user-error "Branch has no upstream")
       (when (y-or-n-p "Update remote first? ")
         (message "Updating remote...")
         (magit-run-git-async "remote" "update" remote)
@@ -142,7 +157,13 @@ into the series."
 (defun magit-stgit-discard (patch)
   "Discard a StGit patch."
   (interactive (list (magit-stgit-read-patch "Discard patch" t)))
-  (magit-run-stgit "delete" patch))
+  (when (yes-or-no-p (format "Discard patch `%s'? " patch))
+    (magit-run-stgit "delete" patch)))
+
+;;;###autoload
+(defun magit-stgit-goto (patch)
+  "Set PATCH as target of StGit push and pop operations."
+  (magit-run-stgit "goto" patch))
 
 ;;;###autoload
 (defun magit-stgit-show (patch)
@@ -157,7 +178,10 @@ into the series."
 (defun magit-stgit-refresh-patch-buffer (patch)
   (magit-cmd-insert-section (stgit-patch)
       #'magit-wash-commit
-    magit-stgit-executable "show" patch))
+    magit-stgit-executable "show"
+    "--diff-opts=--decorate=full"
+    (and magit-show-diffstat "--diff-opts=--patch-with-stat")
+    patch))
 
 ;;; Mode
 
@@ -169,32 +193,31 @@ into the series."
   :lighter magit-stgit-mode-lighter
   :require 'magit-stgit
   (or (derived-mode-p 'magit-mode)
-      (error "This mode only makes sense with magit"))
-  (if magit-stgit-mode
-      (magit-add-section-hook 'magit-status-sections-hook
-                              'magit-insert-stgit-series
-                              'magit-insert-stashes t t)
+      (user-error "This mode only makes sense with magit"))
+  (cond
+   (magit-stgit-mode
+    (magit-add-section-hook 'magit-status-sections-hook
+			    'magit-insert-stgit-series
+			    'magit-insert-stashes t t)
+    (add-hook 'magit-visit-hook   'magit-stgit-show nil t)
+    (add-hook 'magit-apply-hook   'magit-stgit-goto nil t)
+    (add-hook 'magit-discard-hook 'magit-stgit-discard nil t))
+   (t
+    (remove-hook 'magit-visit-hook   'magit-stgit-show t)
+    (remove-hook 'magit-apply-hook   'magit-stgit-goto t)
+    (remove-hook 'magit-discard-hook 'magit-stgit-discard t))
     (remove-hook 'magit-status-sections-hook 'magit-insert-stgit-series t))
   (when (called-interactively-p 'any)
     (magit-refresh)))
+
+(put 'magit-stgit-show    'magit-section-action-context 'stgit-patch)
+(put 'magit-stgit-goto    'magit-section-action-context 'stgit-patch)
+(put 'magit-stgit-discard 'magit-section-action-context 'stgit-patch)
 
 ;;;###autoload
 (defun turn-on-magit-stgit ()
   "Unconditionally turn on `magit-stgit-mode'."
   (magit-stgit-mode 1))
-
-(magit-add-action-clauses (item info "visit")
-  ((stgit-patch)
-   (magit-stgit-show info)))
-
-(magit-add-action-clauses (item info "apply")
-  ((stgit-patch)
-   (magit-run-stgit "goto" info)))
-
-(magit-add-action-clauses (item info "discard")
-  ((stgit-patch)
-   (when (yes-or-no-p (format "Discard patch `%s'? " info))
-     (magit-stgit-discard info))))
 
 (easy-menu-define magit-stgit-extension-menu nil
   "StGit extension menu"
@@ -212,7 +235,7 @@ into the series."
 ;;; Series Section
 
 (defconst magit-stgit-patch-re
-  "^\\(.\\)\\([-+>!]\\) \\([^ ]+\\) +# \\(.+\\)$")
+  "^\\(.\\)\\([-+>!]\\) \\([^ ]+\\) +# \\(.*\\)$")
 
 (defun magit-insert-stgit-series ()
   (when magit-stgit-mode
@@ -231,11 +254,12 @@ into the series."
                                 ((equal state "+") 'magit-stgit-applied)
                                 ((equal state "-") 'magit-stgit-unapplied)
                                 ((equal state "!") 'magit-stgit-hidden)
-                                (t (error "Unknown stgit patch state: %s"
-                                          state))))
-              (propertize empty 'face 'magit-stgit-empty) " "
-              (propertize patch 'face 'magit-stgit-patch) " "
-              (propertize msg   'face 'magit-stgit))
+                                (t (user-error "Unknown stgit patch state: %s"
+                                               state))))
+              (propertize empty 'face 'magit-stgit-empty) " ")
+      (when magit-stgit-show-patch-name
+        (insert (propertize patch 'face 'magit-stgit-patch) " "))
+      (insert msg)
       (forward-line))))
 
 (provide 'magit-stgit)
