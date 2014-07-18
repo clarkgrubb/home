@@ -96,7 +96,8 @@
 ;; C-c p b     switch to buffer in project
 ;; C-c p d     find directory in project by searching on full path
 ;; C-c p D     open project root in dired
-;; C-c p f     find file in project by searching on full path
+;; C-c p f     find file in project by searching path relative to working dir
+;; C-c p k     kill all project buffers
 ;; C-c p m     compile in root [customized in projectile.el]
 ;; C-c p o     search project buffers
 ;; C-c p r     query and replace in project
