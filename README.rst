@@ -7,9 +7,9 @@ installation_ | `home directories <#home-directories>`_ | users_ | subdirectorie
 Summary
 -------
 
-My dot files.  Darwin, Linux, Cygwin, and MinGW.
+Dot files which are used on Darwin, Linux, Cygwin, and MinGW.
 
-Home directory organization and personal practice.
+Also notes on how the home directory is organized.
 
 Installation
 ------------
@@ -86,28 +86,37 @@ Also, the Explorer keeps separate names for these files, so one must change the 
 ==================  =========  ==================================================================================
 subdirectory        os         description
 ==================  =========  ==================================================================================
-*AppData*           win        Hidden; I like to unhide it; items pinned to the Start Menu are shortcuts at
-                               ``AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/StartMenu``
-*Application Data*  win        Hidden; link to ``AppData\Roaming``.
-Contacts            win        Used by Outlook?
-*Cookies*           win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\Cookies``.
 Desktop             all        Files here appear as icons on the desktop.
 Documents           all        Some applications keep their files here; including ``~/Documents/Eclipse``
                                and ``~/Documents/Notebooks`` for iPython;
                                editor files go in ``~/Dropbox/Documents``
 Downloads           all        Configure browsers to download files here without asking.
 Dropbox             host       Synchronization and cloud backup.
-Favorites           win        Browser bookmarks; probably not used by Firefox or Chrome.
-Games               win        Minesweeper and Solitaire store games in ``Saved Games\Microsoft Games``
 Library             mac        Put AppleScript in ``~/Library/Scripts``.
-Links               win        The Favorites section of the Explorer sidebar.
-*Local Settings*    win        Hidden; link to ``AppData\Local``.
 Movies              mac        Stream video and keep this empty.
 Music               all        E.g. iTunes and Amazon Cloud Player.
-*NetHood*           win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\Network Shortcuts``
 Pictures            all        Image editor files; Visio and Omnigraffle; PDFs created by R.
 Public              linux/mac  A directory to make available on the local network.
                                Windows has a directory at ``C:\Users\Public``.
+Templates           win/linux  If you create a template in Word it will be stored here.
+Videos              win/linux  Stream video and keep this empty.
+==================  =========  ==================================================================================
+
+**windows specific home subdirectories**
+
+==================  =========  ==================================================================================
+subdirectory        os         description
+==================  =========  ==================================================================================
+*AppData*           win        Hidden; I like to unhide it; items pinned to the Start Menu are shortcuts at
+                               ``AppData/Roaming/Microsoft/Internet Explorer/Quick Launch/User Pinned/StartMenu``
+*Application Data*  win        Hidden; link to ``AppData\Roaming``.
+Contacts            win        Used by Outlook?
+*Cookies*           win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\Cookies``.
+Favorites           win        Browser bookmarks; probably not used by Firefox or Chrome.
+Games               win        Minesweeper and Solitaire store games in ``Saved Games\Microsoft Games``
+Links               win        The Favorites section of the Explorer sidebar.
+*Local Settings*    win        Hidden; link to ``AppData\Local``.
+*NetHood*           win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\Network Shortcuts``
 *PrintHood*         win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\Printer Shortcuts``
 Recent              win        Hidden; full of Windows Shell shortcuts (``.lnk`` suffix).  Implements
                                the ``Recent Places`` folder.
@@ -123,9 +132,8 @@ Start Menu          win        Hidden; link to ``AppData\Roaming\Microsoft\Windo
                                ``All Programs`` section of the Start Menu; put a shortcut in
                                ``Start Menu\Programs\Startup``
                                to launch an application at login.
-Templates           win/linux  If you create a template in Word it will be stored here.
-Videos              win/linux  Stream video and keep this empty.
 ==================  =========  ==================================================================================
+
 
 **personal home subdirectories:**
 
@@ -141,7 +149,6 @@ Local/etc          all        ``~/Etc/UnicodeData.txt``
 Local/man          all        Put first in ``MANPATH``; a place to install man pages w/o admin privilege
 Local/src          all        Tarballs, git repos, ISOs for virtual machines, Java SDKs.
 Lang               all        Subdirectories by programming language; code under version control is in ``Src``.
-Pictures           mac/win    Make ``~/Pictures/Pictures`` a link to ``~/Dropbox/Pictures``.
 Shared             all        Share with guest virtual machines.
 Trash              all        Symlink to Trash or Recyle Bin.
 =================  =========  =================================================================================
