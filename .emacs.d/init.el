@@ -188,6 +188,12 @@
 (add-to-list 'load-path (concat emacs-dir "lib/magit/"))
 (require 'magit)
 
+;; Other useful version control commands:
+;;
+;;  C-x v =   diff current buffer with what is in version control
+;;  C-x v u   revert file to what is in version control
+;;  C-x v g   git blame
+
 ;; Prevent ediff from opening a separate navigation window;
 ;; have ediff open windows side-by-side instead of stacked on
 ;; top of each other.
