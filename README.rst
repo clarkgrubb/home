@@ -87,8 +87,8 @@ Also, the Explorer keeps separate names for these files, so one must change the 
 subdirectory        os         description
 ==================  =========  ==================================================================================
 Desktop             all        Files here appear as icons on the desktop.
-Documents           all        Some applications keep their files here; including ``~/Documents/Eclipse``
-                               and ``~/Documents/Notebooks`` for iPython;
+Documents           all        Some applications keep their files here; including ``~/Documents/IntelliJ``,
+                               ``~/Documents/Excel``, and ``~/Documents/Notebooks`` for iPython;
                                editor files go in ``~/Dropbox/Documents``
 Downloads           all        Configure browsers to download files here without asking.
 Dropbox             host       Synchronization and cloud backup.
@@ -142,6 +142,11 @@ subdirectory       os         description
 =================  =========  =================================================================================
 Articles           all        PDFs; link to ``~/Dropbox/Articles``.
 <Company>          all        Work
+<Company>/Doc      all        Work Spreadsheets, Slideshows
+<Company>/HR       all        Documents from HR
+<Company>/Pic      all        Work Pngs, Jpgs, Svg, Omnigraffle files
+<Company>/Src      all        Work Source code
+<Company>/Web      all        Work HTML, generated from Markdown with a Makefile
 Local              all        Place to install headers and libraries
 Local/bin          all        Put first in ``PATH``; a place to install executables without admin privilege.
 Local/env          all        ``virtualenv`` environments.
