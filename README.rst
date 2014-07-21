@@ -92,6 +92,7 @@ Documents           all        Some applications keep their files here; includin
                                editor files go in ``~/Dropbox/Documents``
 Downloads           all        Configure browsers to download files here without asking.
 Dropbox             host       Synchronization and cloud backup.
+Games               win        Minesweeper and Solitaire store games in ``Saved Games\Microsoft Games``
 Library             mac        Put AppleScript in ``~/Library/Scripts``.
 Movies              mac        Stream video and keep this empty.
 Music               all        E.g. iTunes and Amazon Cloud Player.
@@ -113,7 +114,6 @@ subdirectory        os         description
 Contacts            win        Used by Outlook?
 *Cookies*           win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\Cookies``.
 Favorites           win        Browser bookmarks; probably not used by Firefox or Chrome.
-Games               win        Minesweeper and Solitaire store games in ``Saved Games\Microsoft Games``
 Links               win        The Favorites section of the Explorer sidebar.
 *Local Settings*    win        Hidden; link to ``AppData\Local``.
 *NetHood*           win        Hidden; link to ``AppData\Roaming\Microsoft\Windows\Network Shortcuts``
