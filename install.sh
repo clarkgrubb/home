@@ -27,6 +27,9 @@ function create_gitconfig() {
         echo $'[user]' >> $gitconfig
         echo $'\tname = '$username >> $gitconfig
         echo $'\temail = '$email >> $gitconfig
+        echo $'\n' >> $gitconfig
+        echo $'[merge]' >> $gitconfig
+        echo $'\tconflictstyle = diff3' >> $gitconfig
     fi
 }
 
