@@ -1,0 +1,5 @@
+# Necessary to type C-v twice for some reason:
+bind generic <Ctrl-v> move-page-down
+bind generic <Esc>v move-page-up
+bind generic <Esc>< move-first-line
+bind generic <Esc>> move-last-line
