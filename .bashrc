@@ -20,6 +20,7 @@ export EDITOR='emacs -q'
 export HISTSIZE=2000
 export HISTFILE=~/.bash_history
 export TERM=xterm-256color
+export GIT_CONFIG_NOSYSTEM=1
 
 . ~/.git-prompt.sh
 

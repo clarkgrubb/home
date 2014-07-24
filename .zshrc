@@ -23,6 +23,7 @@ export HISTFILE=~/.zsh_history
 export SAVEHIST=2000
 export READNULLCMD=less
 export TERM=xterm-256color
+export GIT_CONFIG_NOSYSTEM=1
 
 # So we can have version control info in the prompt
 #
