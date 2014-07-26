@@ -283,7 +283,7 @@ Then configure the source code with::
 
     ./configure --prefix=$HOME/Local
 
-To use locally installed command-line tools and man pages:
+To use locally installed command-line tools and man pages::
 
     export PATH=~/Local/bin:$PATH
     export MANPATH=~/Local/man:$(MANPATH= manpath)
