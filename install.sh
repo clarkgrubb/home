@@ -2,45 +2,56 @@
 
 readonly src_dir=$(dirname $(dirname $0))
 readonly home_dir=$1
+readonly local_rb=${home_dir}/.local.rb
 readonly gitconfig=${home_dir}/.gitconfig
 readonly hgrc=${home_dir}/.hgrc
 
-function prompt_for_username() {
+function prompt_for_username {
     if [ -z "$username" ]
     then
         read -p "username: " username
     fi
 }
 
-function prompt_for_email() {
+function prompt_for_email {
     if [ -z "$email" ]
     then
         read -p "email: " email
     fi
 }
 
-function create_gitconfig() {
-    if [ ! -e $gitconfig ]
+function create_local_rb {
+    if [ ! -e $local_rb ]
     then
         prompt_for_username
         prompt_for_email
-        echo $'[user]' >> $gitconfig
-        echo $'\tname = '$username >> $gitconfig
-        echo $'\temail = '$email >> $gitconfig
-        echo $'\n' >> $gitconfig
-        echo $'[merge]' >> $gitconfig
-        echo $'\tconflictstyle = diff3' >> $gitconfig
+
+        # ' or \ in input will cause problems
+        echo -n $'$username = ' >> $local_rb
+        echo -n "'" >> $local_rb
+        echo -n $username >> $local_rb
+        echo -n "'" >> $local_rb
+        echo >> $local_rb
+
+        echo -n $'$email = ' >> $local_rb
+        echo -n "'" >> $local_rb
+        echo -n $email >> $local_rb
+        echo -n "'" >> $local_rb
+        echo >> $local_rb
     fi
 }
 
-function create_hgrc() {
-    if [ ! -e $hgrc ]
-    then
-        prompt_for_username
-        prompt_for_email
-        echo $'[ui]' >> $hgrc
-        echo $'username='$username'<'$email'>' >> $hgrc
-    fi
+function install_templates {
+    (
+        cd templates
+        for f in .*.erb
+        do
+            echo $f
+            echo ${home_dir}
+            echo erb -r $local_rb $f  ${home_dir}/${f%.erb}
+            erb -r $local_rb $f > ${home_dir}/${f%.erb}
+        done
+    )
 }
 
 cd $src_dir
@@ -86,5 +97,5 @@ do
     sed "s:HOME_DIR:${HOME}:" < $file > $home_dir/$file
 done
 
-create_gitconfig
-create_hgrc
+create_local_rb
+install_templates
