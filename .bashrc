@@ -53,6 +53,9 @@ function _root_test {
     fi
 }
 
+# Move up one directory at-a-time until we are in a project, the
+# home directory, or the root directory.
+#
 function up {
     while ! _project_test && ! _home_test && ! _root_test
     do
