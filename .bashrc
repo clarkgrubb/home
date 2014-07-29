@@ -24,6 +24,42 @@ export GIT_CONFIG_NOSYSTEM=1
 
 . ~/.git-prompt.sh
 
+function _project_test {
+    for dir in .git .hg .bzr
+    do
+        if [ -e $dir ]
+        then
+            return 0
+        fi
+    done
+    return 1
+}
+
+function _home_test {
+    if [ $(pwd) = ~ ]
+    then
+        return 0
+    else
+        return 1
+    fi
+}
+
+function _root_test {
+    if [ $(pwd) = / ]
+    then
+        return 0
+    else
+        return 1
+    fi
+}
+
+function up {
+    while ! _project_test && ! _home_test && ! _root_test
+    do
+        cd ..
+    done
+}
+
 function tabname {
     echo -n "$(echo -n $'\033]0;')$*$(echo -n $'\007')"
 }
