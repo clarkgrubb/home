@@ -14,6 +14,11 @@ download.magit:
 	git clone https://github.com/magit/magit.git
 	rm -rf magit/.git
 
+.PHONY: download.ag
+download.ag:
+	rm ag.el
+	wget https://raw.githubusercontent.com/Wilfred/ag.el/master/ag.el
+
 .PHONY: download.scala-mode2
 download.scala-mode2:
 	git clone https://github.com/hvesalai/scala-mode2
@@ -32,10 +37,14 @@ download.tuareg.caml.mode:
 	wget https://forge.ocamlcore.org/frs/download.php/516/tuareg-caml-mode.tar.gz 
 	tar xf tuareg-caml-mode.tar.gz
 
-.PHONY: download.lang.modes download
-download.lang.modes:
-	wget https://raw.githubusercontent.com/russel/Emacs-Groovy-Mode/master/groovy-mode.el
+.PHONY: download.lua.mode
+download.lua.mode:
+	rm lua-mode.el
 	wget https://raw.githubusercontent.com/immerrr/lua-mode/master/lua-mode.el
+
+.PHONY: download.lang.modes
+download.lang.modes: download.lua.mode
+	wget https://raw.githubusercontent.com/russel/Emacs-Groovy-Mode/master/groovy-mode.el
 	wget http://php-mode.svn.sourceforge.net/svnroot/php-mode/tags/php-mode-1.5.0/php-mode.el
 	wget http://www.erlang.org/download/contrib/erlang.el
 	wget http://jblevins.org/projects/markdown-mode/markdown-mode.el
@@ -55,7 +64,6 @@ download: download.magit download.lang.modes download.projectile
 	wget https://raw.githubusercontent.com/sigma/tabulated-list.el/master/tabulated-list.el
 	curl http://elpa.gnu.org/packages/cl-lib-0.5.el > cl-lib.el
 	wget https://raw.githubusercontent.com/nonsequitur/smex/master/smex.el
-	wget https://raw.githubusercontent.com/Wilfred/ag.el/master/ag.el
 	wget http://www.emacswiki.org/emacs/download/multi-term.el
 
 all: download
