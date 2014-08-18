@@ -85,6 +85,7 @@ do
     fi
 done
 
+(cd ~/.emacs.d/lib && make lisp)
 (cd ~/.emacs.d/lib/magit && make lisp)
 
 mkdir -p $home_dir/.config/fish

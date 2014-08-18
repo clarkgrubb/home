@@ -7,6 +7,14 @@ SHELL := /bin/bash
 
 # TODO: clean task, because wget won't overwrite a file
 
+compiled_lisp := projectile.elc
+
+%.elc: %.el
+	emacs -batch -Q -L . -f batch-byte-compile $<
+
+.PHONY: lisp
+lisp: $(compiled_lisp)
+
 .PHONY: download.magit
 download.magit:
 	git clone https://github.com/magit/git-modes.git
