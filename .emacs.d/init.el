@@ -1,3 +1,9 @@
+(setq init-start (float-time))
+(defun init-bench (msg)
+  (message (concat (format "%.3f" (- (float-time) init-start)) ": " msg)))
+
+(init-bench "START")
+
 ;; Turn off menu bar, tool bar, scroll bar, splash screen
 ;;
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -18,6 +24,7 @@
 ;;  http://www.gnu.org/software/emacs/manual/html_mono/cl.html
 ;;
 (require 'cl)
+(init-bench "require 'cl")
 
 ;; Prevent scrolling from causing beeping.
 ;;
@@ -50,6 +57,7 @@
 ;;
 (require 'saveplace)
 (setq-default save-place t)
+(init-bench "require 'saveplace")
 
 ;; Use part of full path instead of suffixes <1>, <2>, ...
 ;; to distinguish buffers when visiting files with the
@@ -57,6 +65,7 @@
 ;;
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+(init-bench "require 'uniquify")
 
 ;; Bind C-x b   to ido-switch-buffer
 ;;      C-x C-b to ibuffer (instead of list-buffers)
@@ -73,6 +82,7 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t)
 (global-set-key "\C-x\C-b" 'ibuffer)
+(init-bench "require 'ido")
 
 ;; Add ido to M-x
 ;;
@@ -108,6 +118,7 @@
 ;;
 (require 'projectile)
 (projectile-global-mode)
+(init-bench "require 'projectile")
 
 ;; Set defaults for M-x grep and M-x find-grep
 ;;
@@ -161,6 +172,7 @@
               (ggtags-mode 1))))
 (eval-after-load 'ggtags
   '(defalias 'ggtags-navigation-mode 'ignore))
+(init-bench "require 'ggtags")
 
 ;; Set the shell used by M-x shell; make shell-mode work w/ UTF-8.
 ;;
@@ -179,6 +191,7 @@
 ;;
 (require 'multi-term)
  (setq multi-term-program "/bin/bash")
+(init-bench "require 'multi-term")
 
 ;; Add command to interact w/ git:
 ;;
@@ -187,6 +200,7 @@
 (add-to-list 'load-path (concat emacs-dir "lib/git-modes/"))
 (add-to-list 'load-path (concat emacs-dir "lib/magit/"))
 (require 'magit)
+(init-bench "require 'magit")
 
 ;; Other useful version control commands:
 ;;
@@ -212,6 +226,7 @@
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (setq whitespace-line-column 79)
 (add-hook 'prog-mode-hook (lambda () (whitespace-mode t)))
+(init-bench "require 'whitespace")
 
 ;; Replace tabs with spaces.  To insert a tab use
 ;;
@@ -254,6 +269,7 @@
 ;; to turn it on.
 ;;
 (require 'latex)
+(init-bench "require 'latex")
 
 ;; Add nore programming language modes:
 ;;
@@ -382,3 +398,5 @@
         mac-font-size
         "-*-*-*-*-*-fontset-mac")
        'keep)))
+
+(init-bench "END")
