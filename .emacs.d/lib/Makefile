@@ -7,7 +7,8 @@ SHELL := /bin/bash
 
 # TODO: clean task, because wget won't overwrite a file
 
-compiled_lisp := projectile.elc
+uncompiled_lisp := $(wildcard *.el)
+compiled_lisp := $(patsubst %.el,%.elc,$(uncompiled_lisp))
 
 %.elc: %.el
 	emacs -batch -Q -L . -f batch-byte-compile $<

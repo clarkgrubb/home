@@ -86,6 +86,7 @@ do
 done
 
 (cd ~/.emacs.d/lib && make lisp)
+(cd ~/.emacs.d/lib/git-modes && make lisp)
 (cd ~/.emacs.d/lib/magit && make lisp)
 
 mkdir -p $home_dir/.config/fish
