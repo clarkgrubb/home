@@ -92,6 +92,7 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;; Old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+(init-bench "require 'smex")
 
 ;; Make M-x ispell use aspell
 ;;
@@ -141,6 +142,7 @@
 ;;    $ sudo apt-get install silversearcher-ag
 ;;
 (require 'ag)
+(init-bench "require 'ag")
 
 ;; Add this command:
 ;;
@@ -181,28 +183,7 @@
           (lambda ()
             (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)))
 
-;; Add a replacement for M-x term:
-;;
-;;   M-x multi-term
-;;
-;; When using multi-term.el, M-x and C-x behave normally, so
-;; it is easy to switch buffers.  Without it one must preface
-;; each keystroke with C-c to send it to Emacs.
-;;
-(require 'multi-term)
- (setq multi-term-program "/bin/bash")
-(init-bench "require 'multi-term")
-
-;; Add command to interact w/ git:
-;;
-;;  M-x magit-status
-;;
-(add-to-list 'load-path (concat emacs-dir "lib/git-modes/"))
-(add-to-list 'load-path (concat emacs-dir "lib/magit/"))
-(require 'magit)
-(init-bench "require 'magit")
-
-;; Other useful version control commands:
+;; Useful version control commands:
 ;;
 ;;  C-x v =   diff current buffer with what is in version control
 ;;  C-x v u   revert file to what is in version control
@@ -265,12 +246,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.xslt\\'" . xml-mode))
 
-;; Make latex input method available.  Use C-\
-;; to turn it on.
-;;
-(require 'latex)
-(init-bench "require 'latex")
-
 ;; Add nore programming language modes:
 ;;
 (autoload 'erlang-mode "erlang" "Erlang Mode." t)
@@ -287,13 +262,6 @@
 
 (autoload 'swift-mode "swift-mode" "Swift Mode." t)
 (add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode))
-
-;; doesn't work with emacs 23
-;;
-;;(add-to-list 'load-path (concat emacs-dir "lib/scala-mode2/"))
-;;(autoload 'scala-mode "scala-mode2" "Scala Mode." t)
-;;(add-to-list 'auto-mode-alist '("\\.scala\\'" . scala-mode))
-;;(require 'scala-mode2)
 
 ;; Instead of objc-mode
 ;;
@@ -351,7 +319,6 @@
 (global-set-key "\C-cg" 'grep)
 (global-set-key "\C-cm" 'compile)
 (global-set-key "\C-cr" 'query-replace)
-(global-set-key "\C-cs" 'magit-status)
 (global-set-key "\C-ct" 'make-tags)
 (global-set-key "\C-cv" 'clipboard-yank)
 (global-set-key "\C-cw" 'whitespace-mode)
