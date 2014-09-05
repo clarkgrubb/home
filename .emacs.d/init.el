@@ -103,7 +103,6 @@
         (return))))
 
 ;; C-c p C-h   list projectile key bindings
-;; C-c p a     search project with ag [customized in projectile.el]
 ;; C-c p b     switch to buffer in project
 ;; C-c p d     find directory in project by searching on full path
 ;; C-c p D     open project root in dired
@@ -126,6 +125,8 @@
 (setq grep-command "grep -nH ")
 (setq grep-find-command "find . -name '*' | xargs grep -nH ")
 
+;; Define M-x ag
+;;
 (defun ag (command-args)
   (interactive
    (progn
