@@ -126,23 +126,18 @@
 (setq grep-command "grep -nH ")
 (setq grep-find-command "find . -name '*' | xargs grep -nH ")
 
-;; Add these commands:
-;;
-;;    M-x ag
-;;    C-u M-x ag
-;;    M-x ag-files
-;;    M-x ag-regexp
-;;    M-x ag-project
-;;    M-x ag-project-files
-;;    M-x ag-project-regexp
-;;
-;; Uses an external executable called 'ag'.  To install
-;;
-;;    $ brew install the_silver_searcher
-;;    $ sudo apt-get install silversearcher-ag
-;;
-(require 'ag)
-(init-bench "require 'ag")
+(defun ag (command-args)
+  (interactive
+   (progn
+     (let ((default "ag --nocolor --literal --smart-case --nogroup --column -- "))
+       (list (read-shell-command "Run ag (like this): "
+                                 default
+                                 'grep-history
+                                 default)))))
+
+  ;; Setting process-setup-function makes exit-message-function work
+  ;; even when async processes aren't supported.
+  (compilation-start command-args 'grep-mode))
 
 ;; Add this command:
 ;;
