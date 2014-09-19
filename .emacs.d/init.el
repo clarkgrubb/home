@@ -130,25 +130,15 @@
 (defun ag (command-args)
   (interactive
    (progn
-     (let ((default "ag --nocolor --literal --smart-case --nogroup --column -- "))
-       (list (read-shell-command "Run ag (like this): "
-                                 default
-                                 'grep-history
-                                 default)))))
+     (let ((ag-cmd "ag --nocolor --literal --smart-case --nogroup --column -- "))
+       (list (read-shell-command "Run: "
+                                 ag-cmd
+                                 'ag-history
+                                 ag-cmd)))))
 
   ;; Setting process-setup-function makes exit-message-function work
   ;; even when async processes aren't supported.
   (compilation-start command-args 'grep-mode))
-
-;; Add this command:
-;;
-;;   M-x make-tags
-;;
-;; It finds project root using version control directories;
-;; prompts for glob pattern of files to index; calls 'etags';
-;; and visits the resulting table.
-;;
-(require 'make-tags)
 
 ;; Interface to these commands:
 ;;
