@@ -26,15 +26,9 @@
 (require 'cl)
 (init-bench "require 'cl")
 
-;; Prevent scrolling from causing beeping.
+;; No beeping.
 ;;
-(defun my-bell-function ()
-  (unless (memq this-command
-                '(isearch-abort abort-recursive-edit exit-minibuffer
-                                keyboard-quit mwheel-scroll down up next-line
-                                previous-line backward-char forward-char))
-    (ding)))
-(setq ring-bell-function 'my-bell-function)
+(setq ring-bell-function #'ignore)
 
 ;; Put a mode setting instruction in the *scratch* buffer, in case
 ;; we save it.
