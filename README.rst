@@ -7,7 +7,7 @@ installation_ | `home directories <#home-directories>`_ | users_ | subdirectorie
 Summary
 -------
 
-Dot files which are used on Darwin, Linux, Cygwin, and MinGW.
+Dot files which are used on Darwin, Linux, and MinGW.
 
 Also notes on how the home directory is organized.
 
@@ -216,7 +216,7 @@ and select ``Show hidden files, folders, and drives``.
 
 Windows files which are hidden by attribute are always visible at the command line.  The files in the Windows home directory of the form ``NTUSER.DAT*`` are hard to miss because of their long names.  They are caches of the registry.
 
-If Unix tools are installed by MinGW or Cygwin, these observe the convention that files that start with a period are hidden.
+If Unix tools are installed by MinGW, these observe the convention that files that start with a period are hidden.
 
 Conversely Unix dot files are visible in Explorer, which is unaesthetic.  They can be manually hidden with this command:
 
