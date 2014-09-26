@@ -1,32 +1,23 @@
 MAKEFLAGS += --warn-undefined-variables
-SHELL := /bin/bash
+SHELL := bash
 .SHELLFLAGS := -eu -o pipefail
 .DEFAULT_GOAL := all
 .DELETE_ON_ERROR:
 .SUFFIXES:
 
 # TODO: clean task, because wget won't overwrite a file
+# TODO: what if no command line emacs for compiling?
+# TODO: separate task for each download?
+# TODO: occasional remove compilation.log?
 
 uncompiled_lisp := $(wildcard *.el)
 compiled_lisp := $(patsubst %.el,%.elc,$(uncompiled_lisp))
 
 %.elc: %.el
-	emacs -batch -Q -L . -f batch-byte-compile $<
+	emacs -batch -Q -L . -f batch-byte-compile $< 2>> compilation.log
 
 .PHONY: lisp
 lisp: $(compiled_lisp)
-
-.PHONY: download.magit
-download.magit:
-	git clone https://github.com/magit/git-modes.git
-	rm -rf git-modes/.git
-	git clone https://github.com/magit/magit.git
-	rm -rf magit/.git
-
-.PHONY: download.ag
-download.ag:
-	rm ag.el
-	wget https://raw.githubusercontent.com/Wilfred/ag.el/master/ag.el
 
 .PHONY: download.scala-mode2
 download.scala-mode2:
@@ -68,7 +59,7 @@ download.projectile:
 	wget https://raw.githubusercontent.com/magnars/s.el/master/s.el
 
 .PHONY: download
-download: download.magit download.lang.modes download.projectile
+download: download.lang.modes download.projectile
 	wget https://raw.githubusercontent.com/leoliu/ggtags/master/ggtags.el
 	wget https://raw.githubusercontent.com/sigma/tabulated-list.el/master/tabulated-list.el
 	curl http://elpa.gnu.org/packages/cl-lib-0.5.el > cl-lib.el

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: what if no ruby?
+
 readonly src_dir=$(dirname $(dirname $0))
 readonly home_dir=$1
 readonly local_rb=${home_dir}/.local.rb
@@ -86,8 +88,12 @@ do
 done
 
 (cd ~/.emacs.d/lib && make lisp)
-(cd ~/.emacs.d/lib/git-modes && make lisp)
-(cd ~/.emacs.d/lib/magit && make lisp)
+
+mkdir -p $home_dir/.config/shell
+for file in .config/shell/*
+do
+    cp $file $home_dir/.config/shell
+done
 
 mkdir -p $home_dir/.config/fish
 for file in .config/fish/*
