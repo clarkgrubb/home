@@ -1,3 +1,4 @@
+* ruby (erb) and emacs must be installed
 * The `install.sh` script installs everything that starts with a period in the home directory.  This includes directories; directories are installed with `cp -R`.
 * The `install.sh` script creates the files ~/.gitconfig and ~/.hgrc if they don't already exist.  Prompts for username and email.
 * Dot files are for shells, editors, multiplexers, and version control.  Also .pylintrc
