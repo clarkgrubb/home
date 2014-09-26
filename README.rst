@@ -14,7 +14,7 @@ Also notes on how the home directory is organized.
 Installation
 ------------
 
-To install the dot files:
+Requires Ruby and Emacs.  To install the dot files:
 
 ::
 
