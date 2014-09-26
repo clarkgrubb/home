@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+mingw_root=/c/MinGW
+mingw_data=$mingw_root/var/lib/mingw-get/data
+
+( cd $mingw_data && ls *.xml | grep -v '^manifest' | grep -v '^sysroot' \
+    | sed 's/\.xml$//' )
