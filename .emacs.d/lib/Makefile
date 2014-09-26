@@ -1,6 +1,6 @@
 MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
-.SHELLFLAGS := -eu -o pipefail
+# .SHELLFLAGS := -eu -o pipefail
 .DEFAULT_GOAL := all
 .DELETE_ON_ERROR:
 .SUFFIXES:
@@ -66,4 +66,4 @@ download: download.lang.modes download.projectile
 	wget https://raw.githubusercontent.com/nonsequitur/smex/master/smex.el
 	wget http://www.emacswiki.org/emacs/download/multi-term.el
 
-all: download
+all: lisp
