@@ -1,0 +1,24 @@
+# Modify this file and copy it to ~/.shell.local.
+
+# Java
+#
+java_ver=jdk1.7.0_51.jdk
+java_dir=/Library/Java/JavaVirtualMachines/${java_ver}/Contents/Home
+export JAVA_HOME=$java_dir
+export PATH=$JAVA_HOME/bin:$PATH
+
+# Python
+#
+if [ -e ~/Local/env/venv/bin/activate ]
+then
+  . ~/Local/env/venv/bin/activate
+fi
+
+# Ruby
+#
+if [ -e ~/.rbenv/shims ]
+then
+  PATH=~/.rbenv/shims:$PATH
+fi
+
+
