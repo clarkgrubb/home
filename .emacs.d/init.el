@@ -195,6 +195,14 @@
 ;;
 (setq-default indent-tabs-mode nil)
 
+;; LaTeX input method.  To activate and deactivate:
+;;
+;;   C-x RET C-\ latex
+;;   C-\
+;;
+(require 'latex)
+(init-bench "require 'latex")
+
 ;; Set syntax highlight colors:
 ;;
 (custom-set-faces
