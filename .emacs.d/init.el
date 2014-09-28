@@ -354,4 +354,8 @@
         "-*-*-*-*-*-fontset-mac")
        'keep)))
 
+(if window-system
+    (when (eq system-type 'windows-nt)
+      (set-face-attribute 'default nil :height 115 :family "Consolas")))
+
 (init-bench "END")
