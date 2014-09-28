@@ -57,6 +57,8 @@ then
 
     cd $HOME
 
+    export TERM=msys
+
 else
 
     echo "unrecognized OS:" $OS_TYPE
