@@ -21,4 +21,11 @@ then
   PATH=~/.rbenv/shims:$PATH
 fi
 
+# Dart
+#
+if [ -d /Users/clark/Local/src/dart/dart-sdk/bin ]
+then
+    PATH=/Users/clark/Local/src/dart/dart-sdk/bin:$PATH
+fi
+
 
