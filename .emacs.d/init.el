@@ -242,6 +242,9 @@
 (autoload 'go-mode "go-mode" "Go Mode." t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 
+(autoload 'rust-mode "rust-mode" "Rust Mode." t)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+
 (autoload 'lua-mode "lua-mode" "Lua Mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
 
