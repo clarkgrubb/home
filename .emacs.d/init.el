@@ -245,6 +245,9 @@
 (autoload 'rust-mode "rust-mode" "Rust Mode." t)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
+(autoload 'dart-mode "dart-mode" "Dart Mode." t)
+(add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
+
 (autoload 'lua-mode "lua-mode" "Lua Mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
 
