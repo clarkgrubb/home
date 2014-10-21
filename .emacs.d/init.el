@@ -53,14 +53,6 @@
 (setq-default save-place t)
 (init-bench "require 'saveplace")
 
-;; Use part of full path instead of suffixes <1>, <2>, ...
-;; to distinguish buffers when visiting files with the
-;; same basename.
-;;
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-(init-bench "require 'uniquify")
-
 ;; Bind C-x b   to ido-switch-buffer
 ;;      C-x C-b to ibuffer (instead of list-buffers)
 ;;      C-x C-f to ido-find-file
