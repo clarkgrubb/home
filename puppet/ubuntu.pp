@@ -133,7 +133,6 @@ file { "/home/${user}/Local/etc":
      mode => 755,
 }
 
-
 file { "/home/${user}/Local/lib":
      ensure => 'directory',
      owner => $user,
