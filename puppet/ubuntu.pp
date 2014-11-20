@@ -103,7 +103,11 @@ package { 'gimp':
 $user = 'clark'
 $group = 'clark'
 
-# home directory
+ssh_authorized_key { 'clark.grubb@demandmedia.com':
+  user => 'clark',
+  type => 'ssh-rsa',
+  key => 'AAAAB3NzaC1yc2EAAAABIwAAAQEAsVXZkmmn1b3PLx3EAUCPjUgZnt7eG9CEaCX6k3f+pWol42B9zHAYMEu6WSwet0S6fgheq8YlSmHNwdLcZ1Nh+zUDziz6DQ7Jfo5+1d3pZGNlEFWjhHnWLL6ee2BhATuP2Pc69UqdwtZvrHTqmHthTowbQVjtoRAH2eIiOMgKAYC2F3uJq3aQfwpdFJV/SsQZjVehna0lzQi4I4NpQPbZZNw//eDlXI6v/s30cyIr+SzcY1gAHcXErdSu+QM7ULjTnD5ZESY9Ux+1T61Ra3glScjy0qE4uXED6toDIQihy+j6jmoKyqTmdaTNY+ggnzdggvXFbGN1O0WJ/n9sPYkgYQ==',
+}
 
 file { "/home/${user}/Local":
      ensure => 'directory',
