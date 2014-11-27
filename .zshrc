@@ -21,6 +21,8 @@ export TERM=xterm-256color
 export GIT_CONFIG_NOSYSTEM=1
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
+alias ksh ksh -E
+
 #  C-x C-e to edit command line with $EDITOR
 #
 autoload edit-command-line
