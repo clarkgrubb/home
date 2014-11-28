@@ -9,6 +9,7 @@ fi
 export EDITOR='emacs'
 export HISTSIZE=2000
 export HISTFILE=~/.bash_history
+export HISTTIMEFORMAT=%s
 export TERM=xterm-256color
 export GIT_CONFIG_NOSYSTEM=1
 export VIRTUAL_ENV_DISABLE_PROMPT=1
