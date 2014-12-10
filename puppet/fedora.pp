@@ -66,6 +66,10 @@ package { 'gimp':
 	ensure => installed,
 }
 
+package { 'gnome-tweak-tool':
+	ensure => installed,
+}
+
 # user
 
 $user = 'clark'
