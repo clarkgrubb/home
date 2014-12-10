@@ -20,10 +20,6 @@ package { 'tmux':
 	ensure => installed,
 }
 
-package { 'ncurses5-devel':
-	ensure => installed,
-}
-
 package { 'readline-devel':
 	ensure => installed,
 }
@@ -37,10 +33,6 @@ package { 'gcc':
 }
 
 package { 'gdb':
-	ensure => installed,
-}
-
-package { 'nc':
 	ensure => installed,
 }
 
