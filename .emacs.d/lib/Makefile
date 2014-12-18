@@ -2,7 +2,7 @@ MAKEFLAGS += --warn-undefined-variables
 SHELL := bash
 # .SHELLFLAGS := -eu -o pipefail
 .DEFAULT_GOAL := all
-.DELETE_ON_ERROR:
+#.DELETE_ON_ERROR:
 .SUFFIXES:
 
 # TODO: clean task, because wget won't overwrite a file
@@ -10,13 +10,15 @@ SHELL := bash
 # TODO: separate task for each download?
 # TODO: occasional remove compilation.log?
 
-uncompiled_lisp := $(wildcard *.el)
+libs := git-modes magit
+uncompiled_lisp := $(wildcard *.el $(patsubst %,%/*.el,$(libs)))
 compiled_lisp := $(patsubst %.el,%.elc,$(uncompiled_lisp))
+includes := $(patsubst %,-L %,$(libs))
 
 %.elc: %.el
-	emacs -batch -Q -L . -f batch-byte-compile $< 2>> compilation.log
+	emacs -batch -Q -L . $(includes) -f batch-byte-compile $< 2>> compilation.log
 
-.PHONY: lisp
+..PHONY: lisp
 lisp: $(compiled_lisp)
 
 .PHONY: download.scala-mode2

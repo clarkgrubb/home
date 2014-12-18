@@ -87,6 +87,19 @@
       (progn
         (setq ispell-program-name path)
         (return))))
+(init-bench "find spelling checker")
+
+;; M-x magit-status
+;; C-c s
+;;
+(add-to-list 'load-path (concat emacs-dir "lib/git-modes"))
+(add-to-list 'load-path (concat emacs-dir "lib/magit"))
+(eval-after-load 'info
+  '(progn (info-initialize)
+          (add-to-list 'Info-directory-list (concat emacs-dir "lib/magit"))))
+(require 'magit)
+(init-bench "require 'magit")
+
 
 ;; C-c p C-h   list projectile key bindings
 ;; C-c p b     switch to buffer in project
@@ -305,6 +318,7 @@
 (global-set-key "\C-cg" 'grep)
 (global-set-key "\C-cm" 'compile)
 (global-set-key "\C-cr" 'query-replace)
+(global-set-key "\C-cs" 'magit-status)
 (global-set-key "\C-ct" 'make-tags)
 (global-set-key "\C-cv" 'clipboard-yank)
 (global-set-key "\C-cw" 'whitespace-mode)
