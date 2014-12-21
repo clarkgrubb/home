@@ -7,8 +7,8 @@ Metrics/BlockNesting:
 Metrics/ClassLength:
   Enabled: false
 
-#Metrics/CyclomaticComplexity:
-#  Eanbled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
 
 Metrics/MethodLength:
   Enabled: false
