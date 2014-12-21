@@ -21,3 +21,6 @@ Metrics/PerceivedComplexity:
 
 Style/Documentation:
   Enabled: false
+
+Style/FormatString:
+  Enabled: false
