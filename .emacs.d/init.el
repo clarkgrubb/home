@@ -192,6 +192,7 @@
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (setq whitespace-line-column 79)
 (add-hook 'prog-mode-hook (lambda () (whitespace-mode t)))
+(add-hook 'yaml-mode-hook (lambda () (whitespace-mode t)))
 (init-bench "require 'whitespace")
 
 ;; Replace tabs with spaces.  To insert a tab use
