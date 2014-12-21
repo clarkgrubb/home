@@ -19,6 +19,9 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Enabled: false
 
+Metrics/LineLength:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
