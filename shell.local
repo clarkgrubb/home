@@ -1,11 +1,32 @@
+# -*- mode: shell-script -*-
+#
 # Modify this file and copy it to ~/.shell.local.
 
 # Java
 #
-java_ver=jdk1.7.0_51.jdk
-java_dir=/Library/Java/JavaVirtualMachines/${java_ver}/Contents/Home
-export JAVA_HOME=$java_dir
-export PATH=$JAVA_HOME/bin:$PATH
+java7_ver=jdk1.7.0_71.jdk
+java7_dir=/Library/Java/JavaVirtualMachines/${java7_ver}/Contents/Home
+
+java8_ver=jdk1.8.0_25.jdk
+java8_dir=/Library/Java/JavaVirtualMachines/${java8_ver}/Contents/Home
+
+export JAVA7_HOME=$java7_dir
+export JAVA8_HOME=$java8_dir
+export JAVALESS_PATH=$PATH
+
+function set_java {
+    if [ \( -d $1 \) -a \( -e "$1/bin/java" \) ]
+    then
+        export JAVA_HOME=$1
+        export PATH=$JAVA_HOME/bin:$JAVALESS_PATH
+    else
+        echo "WARNING: failed to set JAVA_HOME"
+        echo
+        echo "USAGE: set_java <JAVA_HOME>"
+    fi
+}
+
+set_java $JAVA8_HOME
 
 # Python
 #
@@ -27,5 +48,3 @@ if [ -d /Users/clark/Local/src/dart/dart-sdk/bin ]
 then
     PATH=/Users/clark/Local/src/dart/dart-sdk/bin:$PATH
 fi
-
-
