@@ -98,6 +98,9 @@
   '(progn (info-initialize)
           (add-to-list 'Info-directory-list (concat emacs-dir "lib/magit"))))
 (require 'magit)
+(defun disable-magit-highlight-in-buffer ()
+  (face-remap-add-relative 'magit-item-highlight '()))
+(add-hook 'magit-diff-mode-hook 'disable-magit-highlight-in-buffer)
 (init-bench "require 'magit")
 
 
@@ -308,19 +311,15 @@
 
 ;; Add personal key bindings
 ;;
-(global-set-key "\C-ca" 'ag)
 (global-set-key "\C-cb" 'revert-buffer)
 (global-set-key "\C-cc" 'clipboard-kill-ring-save)
-(global-set-key "\C-cd" 'ido-dired)
 (defun display-buffer-file-name ()
   (interactive)
   (message buffer-file-name))
 (global-set-key "\C-cf" 'display-buffer-file-name)
-(global-set-key "\C-cg" 'grep)
 (global-set-key "\C-cm" 'compile)
 (global-set-key "\C-cr" 'query-replace)
 (global-set-key "\C-cs" 'magit-status)
-(global-set-key "\C-ct" 'make-tags)
 (global-set-key "\C-cv" 'clipboard-yank)
 (global-set-key "\C-cw" 'whitespace-mode)
 (global-set-key "\C-cx" 'clipboard-kill-region)
