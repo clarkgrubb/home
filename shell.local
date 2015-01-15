@@ -1,6 +1,28 @@
 # -*- mode: shell-script -*-
 #
 # Modify this file and copy it to ~/.shell.local.
+#
+# To switch java environment:
+#
+#   $ set_local_java $JAVA7_HOME
+#   $ set_local_java $JAVA8_HOME
+#
+
+export NO_LOCAL_PATH=$PATH
+
+function set_local_path {
+    export PATH=$NO_LOCAL_PATH
+
+    if [ \( -d $JAVA_HOME \) -a \( -e "$JAVA_HOME/bin/java" \) ]
+    then
+        export PATH=$JAVA_HOME/bin:$PATH
+    fi
+
+    if [ \( -d $DART_HOME \) -a \( -e "$DART_HOME/bin/dart" \) ]
+    then
+        export PATH=$DART_HOME/bin:$PATH
+    fi
+}
 
 # Java
 #
@@ -12,39 +34,39 @@ java8_dir=/Library/Java/JavaVirtualMachines/${java8_ver}/Contents/Home
 
 export JAVA7_HOME=$java7_dir
 export JAVA8_HOME=$java8_dir
-export JAVALESS_PATH=$PATH
+export JAVA_HOME=$JAVA8_HOME
 
-function set_java {
+function set_local_java {
     if [ \( -d $1 \) -a \( -e "$1/bin/java" \) ]
     then
         export JAVA_HOME=$1
-        export PATH=$JAVA_HOME/bin:$JAVALESS_PATH
     else
         echo "WARNING: failed to set JAVA_HOME"
         echo
         echo "USAGE: set_java <JAVA_HOME>"
     fi
-}
 
-set_java $JAVA8_HOME
+    set_local_path
+}
 
 # Python
 #
-if [ -e ~/Local/env/venv/bin/activate ]
-then
-  . ~/Local/env/venv/bin/activate
-fi
+# if [ -e ~/Local/env/venv/bin/activate ]
+# then
+#   . ~/Local/env/venv/bin/activate
+# fi
 
 # Ruby
 #
-if [ -e ~/.rbenv/shims ]
-then
-  PATH=~/.rbenv/shims:$PATH
-fi
+# if [ -e ~/.rbenv/shims ]
+# then
+#   PATH=~/.rbenv/shims:$PATH
+# fi
 
 # Dart
 #
-if [ -d /Users/clark/Local/src/dart/dart-sdk/bin ]
-then
-    PATH=/Users/clark/Local/src/dart/dart-sdk/bin:$PATH
-fi
+DART_HOME=/Applications/dart/dart-sdk
+
+#
+#
+set_local_path
