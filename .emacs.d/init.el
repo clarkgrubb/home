@@ -198,6 +198,10 @@
 (add-hook 'yaml-mode-hook (lambda () (whitespace-mode t)))
 (init-bench "require 'whitespace")
 
+;; Turn off electric-indent-mode
+;;
+(add-hook 'prog-mode-hook (lambda () (electric-indent-mode 0)))
+
 ;; Replace tabs with spaces.  To insert a tab use
 ;;
 ;;   C-q TAB
