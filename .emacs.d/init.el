@@ -11,6 +11,10 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (setq inhibit-splash-screen t)
 
+;; No beeping.
+;;
+(setq ring-bell-function #'ignore)
+
 ;; Make names for ~ and ~/.emacs.d;
 ;; add ~/.emacs.d/lib to library path:
 ;;
@@ -26,9 +30,14 @@
 (require 'cl)
 (init-bench "require 'cl")
 
-;; No beeping.
+;; Set PATH.  On Mac, when running as a GUI, it
+;; will be set to /usr/bin:/bin:/usr/sbin:/bin
+;; unless we do this
 ;;
-(setq ring-bell-function #'ignore)
+(require 'exec-path-from-shell)
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+(init-bench "require 'exec-path-from-shell")
 
 ;; Put a mode setting instruction in the *scratch* buffer, in case
 ;; we save it.
