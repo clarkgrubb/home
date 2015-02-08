@@ -31,5 +31,8 @@ Style/Documentation:
 Style/FormatString:
   Enabled: false
 
+Style/Next:
+  Enabled: false
+
 Style/SingleLineBlockParams:
   Enabled: false
