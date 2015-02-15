@@ -48,6 +48,7 @@ __git_files () {
     _wanted files expl 'local files' _files
 }
 
+. ~/.config/shell/last_agent.sh
 . ~/.config/shell/up.sh
 
 function tabname() {

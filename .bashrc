@@ -15,6 +15,7 @@ export GIT_CONFIG_NOSYSTEM=1
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 . ~/.config/shell/git-prompt.sh
+. ~/.config/shell/last_agent.sh
 . ~/.config/shell/up.sh
 
 function tabname {
