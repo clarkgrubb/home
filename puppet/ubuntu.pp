@@ -8,6 +8,10 @@ package { 'git':
 	ensure => installed,
 }
 
+package { 'make':
+        ensure => installed,
+}
+
 package { 'zsh':
 	ensure => installed,
 }
