@@ -276,9 +276,6 @@
 (autoload 'php-mode "php-mode" "PHP Mode." t)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
 
-(autoload 'pig-mode "pig-mode" "Pig Mode." t)
-(add-to-list 'auto-mode-alist '("\\.pig\\'" . pig-mode))
-
 (autoload 'swift-mode "swift-mode" "Swift Mode." t)
 (add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode))
 
@@ -300,13 +297,10 @@
 
 (defalias 'perl-mode 'cperl-mode)
 
-;; We use tabs to indent PHP code at work:
+;; use 2 spaces for indent
 ;;
-(add-hook 'php-mode-hook
-          (lambda ()
-            (progn (setq tab-width 4)
-                   (setq c-basic-offset 4)
-                   (setq indent-tabs-mode t))))
+(custom-set-variables
+ '(js-indent-level 2))
 
 ;; Turn off electric mode for shell here documents:
 ;;
