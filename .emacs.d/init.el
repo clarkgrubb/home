@@ -4,15 +4,12 @@
 
 (init-bench "START")
 
-;; Turn off menu bar, tool bar, scroll bar, splash screen
+;; Turn off menu bar, tool bar, scroll bar, splash screen, beeping
 ;;
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (setq inhibit-splash-screen t)
-
-;; No beeping.
-;;
 (setq ring-bell-function #'ignore)
 
 ;; Make names for ~ and ~/.emacs.d;
@@ -91,6 +88,9 @@
 
 ;; Make M-x ispell use aspell
 ;;
+;;   $ brew install aspell
+;;   $ sudo apt-get install aspell
+;;
 (dolist (path '("/usr/bin/aspell" "/usr/local/bin/aspell"))
   (if (file-exists-p path)
       (progn
@@ -111,7 +111,6 @@
   (face-remap-add-relative 'magit-item-highlight '()))
 (add-hook 'magit-diff-mode-hook 'disable-magit-highlight-in-buffer)
 (init-bench "require 'magit")
-
 
 ;; C-c p C-h   list projectile key bindings
 ;; C-c p b     switch to buffer in project
@@ -146,9 +145,6 @@
                                  ag-cmd
                                  'ag-history
                                  ag-cmd)))))
-
-  ;; Setting process-setup-function makes exit-message-function work
-  ;; even when async processes aren't supported.
   (compilation-start command-args 'grep-mode))
 
 ;; Interface to these commands:
