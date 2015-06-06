@@ -279,6 +279,10 @@
 ;;
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
 
+;; Use javascript-mode for TypeScript
+;;
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . javascript-mode))
+
 (add-to-list 'load-path (concat emacs-dir "lib/tuareg-caml-mode"))
 (add-to-list 'load-path (concat emacs-dir "lib/tuareg-2.0.4"))
 (setq auto-mode-alist (cons '("\\.ml\\w?" . tuareg-mode) auto-mode-alist))
