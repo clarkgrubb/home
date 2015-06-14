@@ -275,6 +275,8 @@
 (autoload 'swift-mode "swift-mode" "Swift Mode." t)
 (add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode))
 
+(add-to-list 'auto-mode-alist '("\\.rkt\\'" . scheme-mode))
+
 ;; Instead of objc-mode
 ;;
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
