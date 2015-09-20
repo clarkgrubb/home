@@ -1,0 +1,6 @@
+{
+  "preset": "google",
+  "requireCurlyBraces": false,
+  "disallowMultipleLineBreaks": true,
+  "disallowMultipleSpaces": true                               
+}
