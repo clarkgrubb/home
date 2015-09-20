@@ -297,10 +297,13 @@
 
 (defalias 'perl-mode 'cperl-mode)
 
-;; use 2 spaces for indent
+;; Use 2 spaces for indent;
+;; don't align nested functions with containing paren.
 ;;
 (custom-set-variables
  '(js-indent-level 2))
+(custom-set-variables
+ '(js-flat-functions t))
 
 ;; Turn off electric mode for shell here documents:
 ;;
