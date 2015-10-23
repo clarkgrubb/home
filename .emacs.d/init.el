@@ -198,7 +198,7 @@
 ;;
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
-(setq whitespace-line-column 79)
+(setq whitespace-line-column 99)
 ;; (add-hook 'prog-mode-hook (lambda () (whitespace-mode t)))
 ;; (add-hook 'yaml-mode-hook (lambda () (whitespace-mode t)))
 (init-bench "require 'whitespace")
