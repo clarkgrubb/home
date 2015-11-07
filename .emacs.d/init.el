@@ -277,6 +277,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.rkt\\'" . scheme-mode))
 
+(add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
+
 ;; Instead of objc-mode
 ;;
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
