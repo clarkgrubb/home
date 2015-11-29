@@ -76,6 +76,13 @@
 (global-set-key "\C-x\C-b" 'ibuffer)
 (init-bench "require 'ido")
 
+;; Ace Jump Mode:
+;;
+;;  C-c C-SPC
+;;
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c C-SPC" ) 'ace-jump-mode)
+
 ;; Add ido to M-x
 ;;
 (require 'smex)
