@@ -10,7 +10,7 @@ SHELL := bash
 # TODO: separate task for each download?
 # TODO: occasional remove compilation.log?
 
-libs := git-modes magit
+libs := git-modes magit scala-mode2
 uncompiled_lisp := $(wildcard *.el $(patsubst %,%/*.el,$(libs)))
 compiled_lisp := $(patsubst %.el,%.elc,$(uncompiled_lisp))
 includes := $(patsubst %,-L %,$(libs))

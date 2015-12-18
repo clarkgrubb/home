@@ -306,6 +306,10 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
+(add-to-list 'load-path (concat emacs-dir "lib/scala-mode2"))
+(setq auto-mode-alist (cons '("\\.scala" . scala-mode) auto-mode-alist))
+(autoload 'scala-mode "scala-mode2" "Scala Mode." t)
+
 (defalias 'perl-mode 'cperl-mode)
 
 ;; Use 2 spaces for indent;
