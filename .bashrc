@@ -36,7 +36,10 @@ then
     export MANPATH=~/Local/man:$(MANPATH= manpath)
 
     pman() {
-        man -t "$@" | open -f -a /Applications/Preview.app
+        psfile=$(mktemp)
+        man -t "$@" | pstopdf -i $psfile
+        open -a /Applications/Preview.app $psfile
+        rm $psfile
     }
 
     . ~/.config/shell/itunes.sh

@@ -61,7 +61,10 @@ then
     export PATH=~/Local/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 
     pman() {
-        man -t "$@" | open -f -a /Applications/Preview.app
+        psfile=$(mktemp)
+        man -t "$@" | pstopdf -i $psfile
+        open -a /Applications/Preview.app $psfile
+        rm $psfile
     }
 
     export ITUNES_PLAYLIST=KGRB
