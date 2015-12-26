@@ -3,22 +3,17 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.USER.ipython</string>
+  <string>com.USER.jupyter-notebook</string>
   <key>ProgramArguments</key>
   <array>
-      <string>/usr/local/bin/ipython</string>
-      <string>notebook</string>
-      <string>--pylab</string>
-      <string>inline</string>
+      <string>/usr/local/bin/jupyter-notebook</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
   <key>StandardOutPath</key>
-  <string>NOTEBOOK_DIR/ipython.log</string>
+  <string>NOTEBOOK_DIR/jupyter-notebook.log</string>
   <key>StandardErrorPath</key>
-  <string>NOTEBOOK_DIR/ipython.err.log</string>
-  <key>ServiceDescription</key>
-  <string>ipython notebook</string>
+  <string>NOTEBOOK_DIR/jupyter-notebook.err.log</string>
   <key>WorkingDirectory</key>
   <string>NOTEBOOK_DIR</string>
 </dict>
