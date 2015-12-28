@@ -62,9 +62,9 @@ then
 
     pman() {
         psfile=$(mktemp)
-        man -t "$@" | pstopdf -i $psfile
-        open -a /Applications/Preview.app $psfile
-        rm $psfile
+        man -t "$@" | pstopdf -i -o $psfile
+        mv $psfile ${psfile}.pdf
+        open -a /Applications/Preview.app ${psfile}.pdf
     }
 
     export ITUNES_PLAYLIST=KGRB
