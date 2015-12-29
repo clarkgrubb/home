@@ -258,6 +258,8 @@
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
 (add-to-list 'auto-mode-alist '("\\.xslt\\'" . xml-mode))
+;; MSBuild project file:
+(add-to-list 'auto-mode-alist '("\\.proj\\'" . xml-mode))
 
 ;; Add nore programming language modes:
 ;;
