@@ -109,15 +109,15 @@
 ;; C-c s
 ;;
 (add-to-list 'load-path (concat emacs-dir "lib/git-modes"))
-(add-to-list 'load-path (concat emacs-dir "lib/magit"))
-(eval-after-load 'info
-  '(progn (info-initialize)
-          (add-to-list 'Info-directory-list (concat emacs-dir "lib/magit"))))
-(require 'magit)
-(defun disable-magit-highlight-in-buffer ()
-  (face-remap-add-relative 'magit-item-highlight '()))
-(add-hook 'magit-diff-mode-hook 'disable-magit-highlight-in-buffer)
-(init-bench "require 'magit")
+;;(add-to-list 'load-path (concat emacs-dir "lib/magit"))
+;;(eval-after-load 'info
+;;  '(progn (info-initialize)
+;;          (add-to-list 'Info-directory-list (concat emacs-dir "lib/magit"))))
+;;(require 'magit)
+;;(defun disable-magit-highlight-in-buffer ()
+;;  (face-remap-add-relative 'magit-item-highlight '()))
+;;(add-hook 'magit-diff-mode-hook 'disable-magit-highlight-in-buffer)
+;;(init-bench "require 'magit")
 
 ;; C-c p C-h   list projectile key bindings
 ;; C-c p b     switch to buffer in project
