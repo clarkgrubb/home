@@ -127,6 +127,7 @@
 ;; C-c p k     kill all project buffers
 ;; C-c p m     compile in root [customized in projectile.el]
 ;; C-c p o     search project buffers
+;; C-c p p     switch between projects
 ;; C-c p r     query and replace in project
 ;; C-c p s     switch project
 ;; C-c p S     save all project buffers
