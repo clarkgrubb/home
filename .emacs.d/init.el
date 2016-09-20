@@ -370,29 +370,29 @@
 ;;
 (setq mac-font-size "12")
 
-(if window-system
-    (when (eq system-type 'darwin)
-      (create-fontset-from-fontset-spec
-       (concat "-apple-consolas-medium-r-normal--"
-               mac-font-size
-               "-*-*-*-*-*-fontset-mac, "
-               "ascii:-apple-consolas-medium-r-normal--"
-               mac-font-size
-               "-*-*-*-m-*-mac-roman, "
-               "latin-iso8859-1:"
-               "-apple-consolas-medium-r-normal--"
-               mac-font-size
-               "-*-*-*-m-*-mac-roman, "
-               "mule-unicode-0100-24ff:"
-               "-apple-consolas-medium-r-normal--"
-               mac-font-size
-               "-*-*-*-m-*-mac-roman"))
-      (set-frame-font
-       (concat
-        "-apple-consolas-medium-r-normal--"
-        mac-font-size
-        "-*-*-*-*-*-fontset-mac")
-       'keep)))
+;;(if window-system
+;;    (when (eq system-type 'darwin)
+;;      (create-fontset-from-fontset-spec
+;;       (concat "-apple-consolas-medium-r-normal--"
+;;               mac-font-size
+;;               "-*-*-*-*-*-fontset-mac, "
+;;               "ascii:-apple-consolas-medium-r-normal--"
+;;               mac-font-size
+;;               "-*-*-*-m-*-mac-roman, "
+;;               "latin-iso8859-1:"
+;;               "-apple-consolas-medium-r-normal--"
+;;               mac-font-size
+;;               "-*-*-*-m-*-mac-roman, "
+;;               "mule-unicode-0100-24ff:"
+;;               "-apple-consolas-medium-r-normal--"
+;;               mac-font-size
+;;               "-*-*-*-m-*-mac-roman"))
+;;      (set-frame-font
+;;       (concat
+;;        "-apple-consolas-medium-r-normal--"
+;;        mac-font-size
+;;        "-*-*-*-*-*-fontset-mac")
+;;       'keep)))
 
 (if window-system
     (when (eq system-type 'windows-nt)
