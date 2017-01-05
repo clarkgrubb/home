@@ -4,7 +4,7 @@
 
 ;;; Code:
 
-(require 'scala-mode2-syntax)
+(require 'scala-mode-syntax)
 
 ;; Make lambdas proper clousures (only in this file)
 (make-local-variable 'lexical-binding)
@@ -97,12 +97,13 @@
 
 (defun scala-imenu:nested-members ()
   (let ((start-point (point)))
-    (save-excursion (scala-syntax:end-of-definition)
-		    ;; This gets us inside of the class definition
-		    ;; It seems like there should be a better way
-		    ;; to do this.
-		    (backward-char)
-		    (scala-imenu:get-nested-members start-point))))
+    (save-excursion
+      (scala-syntax:end-of-definition)
+      ;; This gets us inside of the class definition
+      ;; It seems like there should be a better way
+      ;; to do this.
+      (backward-char)
+      (reverse (scala-imenu:get-nested-members start-point)))))
 
 (defvar scala-imenu:nested-definition-types '("class" "object" "trait"))
 
@@ -122,5 +123,5 @@
       `(,member-name ,definition-type ,(point-marker)))))
 
 
-(provide 'scala-mode2-imenu)
-;;; scala-mode2-imenu.el ends here
+(provide 'scala-mode-imenu)
+;;; scala-mode-imenu.el ends here

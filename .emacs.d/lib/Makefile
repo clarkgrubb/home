@@ -10,7 +10,7 @@ SHELL := bash
 # TODO: separate task for each download?
 # TODO: occasional remove compilation.log?
 
-libs := git-modes magit scala-mode2
+libs := git-modes magit emacs-scala-mode
 uncompiled_lisp := $(wildcard *.el $(patsubst %,%/*.el,$(libs)))
 compiled_lisp := $(patsubst %.el,%.elc,$(uncompiled_lisp))
 includes := $(patsubst %,-L %,$(libs))
@@ -21,10 +21,10 @@ includes := $(patsubst %,-L %,$(libs))
 ..PHONY: lisp
 lisp: $(compiled_lisp)
 
-.PHONY: download.scala-mode2
-download.scala-mode2:
-	git clone https://github.com/hvesalai/scala-mode2
-	rm -rf scala-mode2/.git
+.PHONY: download.emacs-scala-mode
+download.emacs.scala.mode:
+	git clone https://github.com/hvesalai/emacs-scala-mode
+	rm -rf emacs-scala-mode/.git
 
 .PHONY: download.haskell.mode
 download.haskell.mode:
@@ -38,11 +38,6 @@ download.tuareg.caml.mode:
 	tar xf tuareg-2.0.4.tgz
 	wget https://forge.ocamlcore.org/frs/download.php/516/tuareg-caml-mode.tar.gz 
 	tar xf tuareg-caml-mode.tar.gz
-
-.PHONY: download.lua.mode
-download.lua.mode:
-	rm lua-mode.el
-	wget https://raw.githubusercontent.com/immerrr/lua-mode/master/lua-mode.el
 
 .PHONY: download.lang.modes
 download.lang.modes: download.lua.mode

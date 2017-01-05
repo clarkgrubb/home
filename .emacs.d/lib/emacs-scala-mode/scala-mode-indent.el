@@ -2,8 +2,8 @@
 ;;; Copyright (c) 2012 Heikki Vesalainen
 ;;; For information on the License, see the LICENSE file
 
-(require 'scala-mode2-syntax)
-(require 'scala-mode2-lib)
+(require 'scala-mode-syntax)
+(require 'scala-mode-lib)
 
 (eval-when-compile
   (defvar scala-indent:effective-run-on-strategy)
@@ -13,6 +13,7 @@
   "The number of spaces an indentation step should be. The actual
 indentation will be one or two steps depending on context."
   :type 'integer
+  :safe #'integerp
   :group 'scala)
 
 (defcustom scala-indent:indent-value-expression nil
@@ -62,6 +63,7 @@ val x = foo(1, List(1, 2, 3) map (i =>
   ), 2)
 "
   :type 'boolean
+  :safe #'booleanp
   :group 'scala)
 
 (defcustom scala-indent:align-forms nil
@@ -120,6 +122,7 @@ are not ruled out by the language specification.
   "When non-nil, a space will be added after a scaladoc asterisk,
 when it is added to an empty line."
   :type 'boolean
+  :safe #'booleanp
   :group 'scala)
 
 (defcustom scala-indent:use-javadoc-style nil
@@ -127,6 +130,7 @@ when it is added to an empty line."
 style (i.e. indented to the first asterisk). This overrides the
 Scaladoc behavior of indenting comment lines to the second asterisk."
   :type 'boolean
+  :safe #'booleanp
   :group 'scala)
 
 (defun scala-indent:run-on-strategy ()
@@ -919,7 +923,7 @@ of a line inside a multi-line comment "
 
 
 (defun scala-indent:fixup-whitespace ()
-  "scala-mode2 version of `fixup-whitespace'"
+  "scala-mode version of `fixup-whitespace'"
   (interactive "*")
   (save-excursion
     (delete-horizontal-space)
@@ -933,7 +937,7 @@ of a line inside a multi-line comment "
       (insert ?\s))))
 
 (defun scala-indent:join-line (&optional arg)
-  "scala-mode2 version of `join-line', i.e. `delete-indentation'"
+  "scala-mode version of `join-line', i.e. `delete-indentation'"
   (interactive "*P")
   (beginning-of-line)
   (if arg (forward-line 1))
@@ -952,4 +956,4 @@ of a line inside a multi-line comment "
         (delete-forward-char 3))))
     (scala-indent:fixup-whitespace)))
 
-(provide 'scala-mode2-indent)
+(provide 'scala-mode-indent)

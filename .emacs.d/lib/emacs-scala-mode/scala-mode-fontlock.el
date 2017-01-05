@@ -2,7 +2,7 @@
 ;;; Copyright (c) 2012 Heikki Vesalainen
 ;;; For information on the License, see the LICENSE file
 
-(require 'scala-mode2-syntax)
+(require 'scala-mode-syntax)
 
 (defcustom scala-font-lock:constant-list '()
   "A list of strigs that should be fontified in constant
@@ -487,6 +487,8 @@ Does not continue past limit.
     (scala-font-lock:mark-floatingPointLiteral . font-lock-constant-face)
     (scala-font-lock:mark-integerLiteral . font-lock-constant-face)
 
+    (scala-syntax:interpolation-matcher 0 font-lock-variable-name-face t)
+
     ))
 
 (defun scala-font-lock:syntactic-face-function (state)
@@ -579,4 +581,4 @@ Does not continue past limit.
 (defvar scala-font-lock:var-keyword-face 'scala-font-lock:var-keyword-face
   "Face for the scala var keyword.")
 
-(provide 'scala-mode2-fontlock)
+(provide 'scala-mode-fontlock)

@@ -155,6 +155,29 @@
           "\\|" scala-syntax:symbolLiteral-re
           "\\|" "null" "\\)"))
 
+(defconst scala-syntax:interpolation-re
+  (concat "\\(" "\\$"  scala-syntax:id-re "\\|" "\\${[^}\n\\\\]*}" "\\)"))
+
+(defun scala-syntax:interpolation-matcher (end)
+  (let* ((pos nil)
+         (syntax nil)
+         (str-start nil)
+         (char-before-str nil))
+    (while (and
+            (setq pos (re-search-forward scala-syntax:interpolation-re end t))
+            (setq syntax (syntax-ppss pos))
+            (if (nth 3 syntax) ;; "is string"
+                (progn
+                  (setq str-start (nth 8 syntax))
+                  ;; s"foo"
+                  ;; ^-- `char-before-str', must be identifier
+                  (setq char-before-str (char-after (1- str-start)))
+                  ;; break if match
+                  (null (string-match-p
+                         scala-syntax:id-re (string char-before-str))))
+              t))) ;; keep going
+    pos))
+
 ;; Paths (Chapter 3.1)
 ;; emacs has a problem with these regex, don't use them
 ;; (defconst scala-syntax:classQualifier-re (concat "[[]" scala-syntax:id-re "[]]"))
@@ -922,7 +945,7 @@ not. A list must be either enclosed in parentheses or start with
 
 (defconst scala-syntax:all-definition-re
   (scala-syntax:build-definition-re
-   (concat "\\(?1:" scala-syntax:definition-words-re "\\)")))
+   (concat "\\(?1:" scala-syntax:definition-words-re "\\)\\b")))
 
 ;; Functions to help with beginning and end of definitions.
 
@@ -968,12 +991,14 @@ val a, b = (1, 2)
       (lambda () (condition-case ex (scala-syntax:forward-sexp-or-next-line) ('error nil)))))))
 
 (defun scala-syntax:handle-brace-equals-or-next ()
-  (cond ((looking-at "[[:space:]]*{") (forward-sexp))
-	((looking-at "[[:space:]]*=") (scala-syntax:forward-sexp-or-next-line)
-	 (scala-syntax:handle-brace-equals-or-next))
-	((looking-at scala-syntax:all-definition-re) nil)
-	(t (scala-syntax:forward-sexp-or-next-line)
-	   (scala-syntax:handle-brace-equals-or-next))))
+  (cond ((eobp) nil)
+        ((looking-at "[[:space:]]*{") (forward-sexp))
+        ((looking-at "[[:space:]]*=") (scala-syntax:forward-sexp-or-next-line)
+         (scala-syntax:handle-brace-equals-or-next))
+        ((looking-at scala-syntax:all-definition-re) nil)
+        ((looking-at "[[:space:]]*\n[[:space:]]*}") (skip-syntax-forward "[[:space:]]*\n[[:space:]]*}"))
+        (t (scala-syntax:forward-sexp-or-next-line)
+           (scala-syntax:handle-brace-equals-or-next))))
 
 (defun scala-syntax:movement-function-until-re (re movement-function)
   (save-excursion
@@ -990,4 +1015,4 @@ val a, b = (1, 2)
 
 (defun scala-syntax:go-to-pos (pos) (when pos (goto-char pos)))
 
-(provide 'scala-mode2-syntax)
+(provide 'scala-mode-syntax)
