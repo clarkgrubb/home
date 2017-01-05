@@ -76,6 +76,11 @@
 (global-set-key "\C-x\C-b" 'ibuffer)
 (init-bench "require 'ido")
 
+;; Disable compose-mail key bindging
+;;
+(global-unset-key (kbd "C-x m"))
+
+
 ;; Ace Jump Mode:
 ;;
 ;;  C-c C-SPC
