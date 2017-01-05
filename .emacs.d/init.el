@@ -224,7 +224,8 @@
 ;;
 ;;   C-q TAB
 ;;
-(setq-default indent-tabs-mode nil)
+;;(setq-default indent-tabs-mode nil)
+(setq tab-width 4)
 
 ;; LaTeX input method.  To activate and deactivate:
 ;;
