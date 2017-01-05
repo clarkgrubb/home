@@ -10,7 +10,7 @@ SHELL := bash
 # TODO: separate task for each download?
 # TODO: occasional remove compilation.log?
 
-libs := git-modes magit emacs-scala-mode
+libs := git-modes magit
 uncompiled_lisp := $(wildcard *.el $(patsubst %,%/*.el,$(libs)))
 compiled_lisp := $(patsubst %.el,%.elc,$(uncompiled_lisp))
 includes := $(patsubst %,-L %,$(libs))
@@ -20,11 +20,6 @@ includes := $(patsubst %,-L %,$(libs))
 
 ..PHONY: lisp
 lisp: $(compiled_lisp)
-
-.PHONY: download.emacs-scala-mode
-download.emacs.scala.mode:
-	git clone https://github.com/hvesalai/emacs-scala-mode
-	rm -rf emacs-scala-mode/.git
 
 .PHONY: download.haskell.mode
 download.haskell.mode:
