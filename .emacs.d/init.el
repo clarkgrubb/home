@@ -1,3 +1,7 @@
+
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
+
 (setq init-start (float-time))
 (defun init-bench (msg)
   (message (concat (format "%.3f" (- (float-time) init-start)) ": " msg)))
@@ -138,10 +142,10 @@
 ;; C-c p S     save all project buffers
 ;; C-c p !     run shell cmd at project root
 ;; C-c p ESC   switch to most recent project buffer
-;;
-(require 'projectile)
-(projectile-global-mode)
-(init-bench "require 'projectile")
+
+;;(require 'projectile)
+;;(projectile-mode)
+;;(init-bench "require 'projectile")
 
 ;; Set defaults for M-x grep and M-x find-grep
 ;;
@@ -173,14 +177,14 @@
 ;;  M-x ggtags-find-definition
 ;;  M-x ggtags-find-reference
 ;;
-(require 'ggtags)
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'php-mode)
-              (ggtags-mode 1))))
-(eval-after-load 'ggtags
-  '(defalias 'ggtags-navigation-mode 'ignore))
-(init-bench "require 'ggtags")
+;;(require 'ggtags)
+;;(add-hook 'c-mode-common-hook
+;;          (lambda ()
+;;            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'php-mode)
+;;              (ggtags-mode 1))))
+;;(eval-after-load 'ggtags
+;;  '(defalias 'ggtags-navigation-mode 'ignore))
+;;(init-bench "require 'ggtags")
 
 ;; Set the shell used by M-x shell; make shell-mode work w/ UTF-8.
 ;;
@@ -232,8 +236,8 @@
 ;;   C-x RET C-\ latex
 ;;   C-\
 ;;
-(require 'latex)
-(init-bench "require 'latex")
+;;(require 'latex)
+;;(init-bench "require 'latex")
 
 ;; Set syntax highlight colors:
 ;;
