@@ -128,6 +128,10 @@
 ;;(add-hook 'magit-diff-mode-hook 'disable-magit-highlight-in-buffer)
 ;;(init-bench "require 'magit")
 
+;; To install projectile:
+;;
+;;    M-x package-install RET projectile RET
+;;
 ;; C-c p C-h   list projectile key bindings
 ;; C-c p b     switch to buffer in project
 ;; C-c p d     find directory in project by searching on full path
@@ -142,10 +146,6 @@
 ;; C-c p S     save all project buffers
 ;; C-c p !     run shell cmd at project root
 ;; C-c p ESC   switch to most recent project buffer
-
-;;(require 'projectile)
-;;(projectile-mode)
-;;(init-bench "require 'projectile")
 
 ;; Set defaults for M-x grep and M-x find-grep
 ;;
