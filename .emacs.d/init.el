@@ -84,7 +84,6 @@
 ;;
 (global-unset-key (kbd "C-x m"))
 
-
 ;; Ace Jump Mode:
 ;;
 ;;  C-c C-SPC
@@ -163,28 +162,6 @@
                                  'ag-history
                                  ag-cmd)))))
   (compilation-start command-args 'grep-mode))
-
-;; Interface to these commands:
-;;
-;;   $ global
-;;   $ gtags
-;;
-;; To install them:
-;;
-;;   $ brew install global
-;;   $ sudo apt-get install global
-;;
-;;  M-x ggtags-find-definition
-;;  M-x ggtags-find-reference
-;;
-;;(require 'ggtags)
-;;(add-hook 'c-mode-common-hook
-;;          (lambda ()
-;;            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'php-mode)
-;;              (ggtags-mode 1))))
-;;(eval-after-load 'ggtags
-;;  '(defalias 'ggtags-navigation-mode 'ignore))
-;;(init-bench "require 'ggtags")
 
 ;; Set the shell used by M-x shell; make shell-mode work w/ UTF-8.
 ;;
