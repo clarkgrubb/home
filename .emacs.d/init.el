@@ -113,6 +113,11 @@
         (return))))
 (init-bench "find spelling checker")
 
+;; To install magit:
+;;
+;;    M-x package-refresh-contents RET
+;;    M-x package-install RET magit RET
+;;
 ;; M-x magit-status
 ;; C-c s
 ;;
