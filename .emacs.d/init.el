@@ -281,6 +281,10 @@
 
 (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
 
+;;    M-x package-install RET ensime RET
+;;    M-x package-install RET scala-mode RET
+;;    M-x package-install RET lua-mode RET
+
 ;; Instead of objc-mode
 ;;
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
