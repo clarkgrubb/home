@@ -213,6 +213,11 @@
 ;;(setq-default indent-tabs-mode nil)
 (setq tab-width 4)
 
+;;
+(add-hook 'html-mode-hook
+          (lambda()
+            (setq indent-tabs-mode nil)))
+
 ;; LaTeX input method.  To activate and deactivate:
 ;;
 ;;   C-x RET C-\ latex
