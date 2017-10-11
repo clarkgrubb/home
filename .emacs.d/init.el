@@ -213,6 +213,13 @@
 ;;(setq-default indent-tabs-mode nil)
 (setq tab-width 4)
 
+;; set javscript-mode indent to 4
+;;
+(add-hook 'js-mode-hook
+     (lambda()
+       (setq js-indent-level 4)))
+
+;; do not insert tabs into html
 ;;
 (add-hook 'html-mode-hook
           (lambda()
