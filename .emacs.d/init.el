@@ -293,6 +293,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
 
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
+
 ;;    M-x package-install RET ensime RET
 ;;    M-x package-install RET scala-mode RET
 ;;    M-x package-install RET lua-mode RET
