@@ -7,7 +7,7 @@ installation_ | `home directories <#home-directories>`_ | users_ | subdirectorie
 Summary
 -------
 
-Dot files which are used on Darwin, Linux, and MinGW.
+Dot files which are used on Darwin and Linux.
 
 Also notes on how the home directory is organized.
 

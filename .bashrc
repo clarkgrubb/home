@@ -59,13 +59,6 @@ then
         man -t "$@"
     }
 
-elif [[ $OS_TYPE == MinGW ]]
-then
-
-    cd $HOME
-
-    export TERM=msys
-
 else
 
     echo "unrecognized OS:" $OS_TYPE
