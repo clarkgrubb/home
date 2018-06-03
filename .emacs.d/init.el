@@ -289,6 +289,9 @@
 (autoload 'swift-mode "swift-mode" "Swift Mode." t)
 (add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode))
 
+(autoload 'csv-mode "csv-mode" "CSV Mode." t)
+(add-to-list 'auto-mode-alist '("\\.csv\\'" . csv-mode))
+
 (add-to-list 'auto-mode-alist '("\\.rkt\\'" . scheme-mode))
 
 (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
