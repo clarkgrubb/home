@@ -225,6 +225,13 @@
           (lambda()
             (setq indent-tabs-mode nil)))
 
+;; do not insert tabs into groovy source
+;;
+(add-hook 'groovy-mode-hook
+          (lambda()
+            (setq indent-tabs-mode nil)))
+
+
 ;; LaTeX input method.  To activate and deactivate:
 ;;
 ;;   C-x RET C-\ latex
@@ -279,6 +286,9 @@
 
 (autoload 'dart-mode "dart-mode" "Dart Mode." t)
 (add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
+
+(autoload 'groovy-mode "groovy-mode" "Groovy Mode." t)
+(add-to-list 'auto-mode-alist '("\\.groovy\\'" . groovy-mode))
 
 (autoload 'lua-mode "lua-mode" "Lua Mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
