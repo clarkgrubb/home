@@ -6,11 +6,6 @@ then
 else
     export OS_TYPE=$(/bin/uname -s)
 fi
-if [[ $OS_TYPE[0,5] == MinGW ]]
-then
-    export OS_TYPE=MinGW
-fi
-
 export MANPATH=~/Local/man:$(MANPATH= manpath)
 export EDITOR='emacs'
 export HISTSIZE=2000
@@ -20,8 +15,6 @@ export READNULLCMD=less
 export TERM=xterm-256color
 export GIT_CONFIG_NOSYSTEM=1
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-alias ksh ksh -E
 
 #  C-x C-e to edit command line with $EDITOR
 #
@@ -76,12 +69,6 @@ then
     pman() {
         man -t "$@"
     }
-
-elif [[ $OS_TYPE == 'MinGW' ]]
-then
-    # Has zsh even been ported to MinGW?
-
-    cd $HOME
 
 else
 

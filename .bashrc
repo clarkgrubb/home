@@ -1,11 +1,6 @@
 # UNIVERSAL
 #
 export OS_TYPE=$(uname -s)
-if [[ ${OS_TYPE:0:5} == MINGW ]]
-then
-    export OS_TYPE=MinGW
-fi
-
 export EDITOR='emacs'
 export HISTSIZE=2000
 export HISTFILE=~/.bash_history
@@ -16,13 +11,10 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 . ~/.config/shell/git-prompt.sh
 . ~/.config/shell/last_agent.sh
-. ~/.config/shell/up.sh
 
 function tabname {
     echo -n "$(echo -n $'\033]0;')$*$(echo -n $'\007')"
 }
-
-alias ksh='ksh -E'
 
 export PS1="\[\033[31m\]$OS_TYPE:bash \[\033[34m\]\w \[\033[32m\]"'$(__git_ps1 "git:%s " )'"\[\033[30m\]\`if [ \$? == 0 ]; then echo \:\); else echo \:\(; fi\` "
 
