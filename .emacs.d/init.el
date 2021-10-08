@@ -24,13 +24,6 @@
                  (or (buffer-file-name) load-file-name)))
 (add-to-list 'load-path (concat emacs-dir "lib"))
 
-;; Add Common Lisp extensions
-;;
-;;  http://www.gnu.org/software/emacs/manual/html_mono/cl.html
-;;
-(require 'cl)
-(init-bench "require 'cl")
-
 ;; Set PATH.  On Mac, when running as a GUI, it
 ;; will be set to /usr/bin:/bin:/usr/sbin:/bin
 ;; unless we do this
