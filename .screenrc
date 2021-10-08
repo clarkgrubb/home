@@ -1,3 +1,0 @@
-# Use C-b as prefix and C-b C-b to send
-# a C-b to the controlling process:
-escape ^B^B
