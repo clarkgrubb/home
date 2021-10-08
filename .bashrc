@@ -39,7 +39,7 @@ then
         psfile=$(mktemp)
         man -t "$@" | pstopdf -i -o $psfile
         mv $psfile ${psfile}.pdf
-        open -a /Applications/Preview.app ${psfile}.pdf
+        open -a /System/Applications/Preview.app ${psfile}.pdf
     }
 
     . ~/.config/shell/itunes.sh
