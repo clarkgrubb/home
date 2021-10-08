@@ -49,7 +49,6 @@ __git_files () {
 }
 
 . ~/.config/shell/last_agent.sh
-. ~/.config/shell/up.sh
 
 function tabname() {
     echo -n "\033]0;$*\007"
@@ -66,10 +65,6 @@ then
         mv $psfile ${psfile}.pdf
         open -a /Applications/Preview.app ${psfile}.pdf
     }
-
-    export ITUNES_PLAYLIST=KGRB
-    . ~/.config/shell/itunes.sh
-
 
 elif [[ $OS_TYPE == Linux ]]
 then
