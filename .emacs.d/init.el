@@ -77,13 +77,6 @@
 ;;
 (global-unset-key (kbd "C-x m"))
 
-;; Ace Jump Mode:
-;;
-;;  C-c C-SPC
-;;
-(require 'ace-jump-mode)
-(define-key global-map (kbd "C-c C-SPC" ) 'ace-jump-mode)
-
 ;; Add ido to M-x
 ;;
 (require 'smex)
@@ -99,12 +92,12 @@
 ;;   $ brew install aspell
 ;;   $ sudo apt-get install aspell
 ;;
-(dolist (path '("/usr/bin/aspell" "/usr/local/bin/aspell"))
-  (if (file-exists-p path)
-      (progn
-        (setq ispell-program-name path)
-        (return))))
-(init-bench "find spelling checker")
+;;(dolist (path '("/usr/bin/aspell" "/usr/local/bin/aspell"))
+;;  (if (file-exists-p path)
+;;      (progn
+;;        (setq ispell-program-name path)
+;;        (return))))
+;;(init-bench "find spelling checker")
 
 ;; To install magit:
 ;;
