@@ -261,17 +261,8 @@
 
 ;; Add nore programming language modes:
 ;;
-(autoload 'erlang-mode "erlang" "Erlang Mode." t)
-(add-to-list 'auto-mode-alist '("\\.erl\\'" . erlang-mode))
-
 (autoload 'go-mode "go-mode" "Go Mode." t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
-
-(autoload 'rust-mode "rust-mode" "Rust Mode." t)
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-
-(autoload 'dart-mode "dart-mode" "Dart Mode." t)
-(add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
 
 (autoload 'groovy-mode "groovy-mode" "Groovy Mode." t)
 (add-to-list 'auto-mode-alist '("\\.groovy\\'" . groovy-mode))
@@ -281,9 +272,6 @@
 
 (autoload 'php-mode "php-mode" "PHP Mode." t)
 (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
-
-(autoload 'swift-mode "swift-mode" "Swift Mode." t)
-(add-to-list 'auto-mode-alist '("\\.swift\\'" . swift-mode))
 
 (autoload 'csv-mode "csv-mode" "CSV Mode." t)
 (add-to-list 'auto-mode-alist '("\\.csv\\'" . csv-mode))
@@ -297,30 +285,6 @@
 ;;    M-x package-install RET ensime RET
 ;;    M-x package-install RET scala-mode RET
 ;;    M-x package-install RET lua-mode RET
-
-;; Instead of objc-mode
-;;
-(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode))
-
-;; Use javascript-mode for TypeScript
-;;
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . javascript-mode))
-
-(add-to-list 'load-path (concat emacs-dir "lib/tuareg-caml-mode"))
-(add-to-list 'load-path (concat emacs-dir "lib/tuareg-2.0.4"))
-(setq auto-mode-alist (cons '("\\.ml\\w?" . tuareg-mode) auto-mode-alist))
-(autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
-(autoload 'camldebug "camldebug" "Run the Caml debugger" t)
-
-(add-to-list 'load-path (concat emacs-dir "lib/haskell-mode"))
-(setq auto-mode-alist (cons '("\\.hs" . haskell-mode) auto-mode-alist))
-(autoload 'haskell-mode "haskell-site-file" "Haskell Mode" t)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
-(add-to-list 'load-path (concat emacs-dir "lib/scala-mode2"))
-(setq auto-mode-alist (cons '("\\.scala" . scala-mode) auto-mode-alist))
-(autoload 'scala-mode "scala-mode2" "Scala Mode." t)
 
 (defalias 'perl-mode 'cperl-mode)
 
