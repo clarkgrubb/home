@@ -6,7 +6,6 @@ readonly src_dir=$(dirname $(dirname $0))
 readonly home_dir=$1
 readonly local_rb=${home_dir}/.local.rb
 readonly gitconfig=${home_dir}/.gitconfig
-readonly hgrc=${home_dir}/.hgrc
 
 function prompt_for_username {
     if [ -z "$username" ]
@@ -91,14 +90,9 @@ done
 
 mkdir -p $home_dir/.config/shell
 for file in .config/shell/*
+
 do
     cp $file $home_dir/.config/shell
-done
-
-mkdir -p $home_dir/.config/fish
-for file in .config/fish/*
-do
-    cp $file $home_dir/.config/fish
 done
 
 mkdir -p $home_dir/Local/share
