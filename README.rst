@@ -57,7 +57,7 @@ Subdirectories
 
 Subdirectories in the home directory should be capitalized and regular files in the home directory should be hidden.
 
-The Mac filesystem (HFS+), incidentally, is not case sensitive, but it remembers the case that was used when a file is created and uses it for display.
+The Mac filesystem (APFS), incidentally, is not case sensitive, but it remembers the case that was used when a file is created and uses it for display.
 
 To make it easier to work at the command line, avoid file names which contain spaces.
 
