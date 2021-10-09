@@ -89,15 +89,13 @@ subdirectory        os         description
 Applications        mac        User specific apps. Apps that come with macos are in ``/System/Applications`` and
                                system-wide installed apps are in ``/Applications``.
 Desktop             all        Files here appear as icons on the desktop.
-Documents           all        Some applications keep their files here; including ``~/Documents/IntelliJ``,
-                               ``~/Documents/Excel``, and ``~/Documents/Notebooks`` for iPython;
-                               editor files go in ``~/Dropbox/Documents``
+Documents           all        Some applications keep their files here.
 Downloads           all        Configure browsers to download files here without asking.
 Games               win        Minesweeper and Solitaire store games in ``Saved Games\Microsoft Games``
 Library             mac        Put AppleScript in ``~/Library/Scripts``.
 Movies              mac        Stream video and keep this empty.
-Music               all        E.g. iTunes and Amazon Cloud Player.
-Pictures            all        Image editor files; Visio and Omnigraffle; PDFs created by R.
+Music               all
+Pictures            all
 Public              linux/mac  A directory to make available on the local network.
                                Windows has a directory at ``C:\Users\Public``.
 Sync                host       Synchronization and cloud backup.
