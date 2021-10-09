@@ -278,8 +278,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.rkt\\'" . scheme-mode))
 
-(add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
-
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
 
 ;;    M-x package-install RET ensime RET
