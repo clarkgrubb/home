@@ -86,12 +86,13 @@ Also, the Explorer keeps separate names for these files, so one must change the 
 ==================  =========  ==================================================================================
 subdirectory        os         description
 ==================  =========  ==================================================================================
+Applications        mac        User specific apps. Apps that come with macos are in ``/System/Applications`` and
+                               system-wide installed apps are in ``/Applications``.
 Desktop             all        Files here appear as icons on the desktop.
 Documents           all        Some applications keep their files here; including ``~/Documents/IntelliJ``,
                                ``~/Documents/Excel``, and ``~/Documents/Notebooks`` for iPython;
                                editor files go in ``~/Dropbox/Documents``
 Downloads           all        Configure browsers to download files here without asking.
-Dropbox             host       Synchronization and cloud backup.
 Games               win        Minesweeper and Solitaire store games in ``Saved Games\Microsoft Games``
 Library             mac        Put AppleScript in ``~/Library/Scripts``.
 Movies              mac        Stream video and keep this empty.
@@ -99,6 +100,7 @@ Music               all        E.g. iTunes and Amazon Cloud Player.
 Pictures            all        Image editor files; Visio and Omnigraffle; PDFs created by R.
 Public              linux/mac  A directory to make available on the local network.
                                Windows has a directory at ``C:\Users\Public``.
+Sync                host       Synchronization and cloud backup.
 Templates           win/linux  If you create a template in Word it will be stored here.
 Videos              win/linux  Stream video and keep this empty.
 ==================  =========  ==================================================================================
@@ -140,7 +142,6 @@ Start Menu          win        Hidden; link to ``AppData\Roaming\Microsoft\Windo
 =================  =========  =================================================================================
 subdirectory       os         description
 =================  =========  =================================================================================
-Articles           all        PDFs; link to ``~/Dropbox/Articles``.
 <Company>          all        Work
 <Company>/Doc      all        Work Spreadsheets, Slideshows
 <Company>/HR       all        Documents from HR
@@ -149,13 +150,9 @@ Articles           all        PDFs; link to ``~/Dropbox/Articles``.
 <Company>/Web      all        Work HTML, generated from Markdown with a Makefile
 Local              all        Place to install headers and libraries
 Local/bin          all        Put first in ``PATH``; a place to install executables without admin privilege.
-Local/env          all        ``virtualenv`` environments.
 Local/etc          all        ``~/Etc/UnicodeData.txt``
 Local/man          all        Put first in ``MANPATH``; a place to install man pages w/o admin privilege
 Local/src          all        Tarballs, git repos, ISOs for virtual machines, Java SDKs.
-Lang               all        Subdirectories by programming language; code under version control is in ``Src``.
-Shared             all        Share with guest virtual machines.
-Trash              all        Symlink to Trash or Recyle Bin.
 =================  =========  =================================================================================
 
 To set up the home directory:
@@ -165,16 +162,7 @@ To set up the home directory:
     cd
     mkdir Local Lang
     cd Local
-    mkdir bin env etc man src
-
-On Mac OS X:
-
-::
-   
-    cd
-    rm -rf Pictures
-    ln -s Dropbox/Articles Articles
-    ln -s Dropbox/Pictures Pictures/Pictures
+    mkdir bin etc man src
 
 On Windows create two links: a symlink and an Explorer shortcut.
 
