@@ -50,7 +50,7 @@ function tabname() {
 if [[ $OS_TYPE == Darwin ]]
 then
 
-    export PATH=~/Local/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
+    export PATH=~/Local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
 
     pman() {
         psfile=$(mktemp)

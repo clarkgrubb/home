@@ -24,7 +24,7 @@ export PS1="\[\033[31m\]$OS_TYPE:bash \[\033[34m\]\w \[\033[32m\]"'$(__git_ps1 "
 if [[ $OS_TYPE == Darwin ]]
 then
 
-    export PATH=~/Local/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
+    export PATH=~/Local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/X11/bin
     export MANPATH=~/Local/man:$(MANPATH= manpath)
 
     pman() {
@@ -33,8 +33,6 @@ then
         mv $psfile ${psfile}.pdf
         open -a /System/Applications/Preview.app ${psfile}.pdf
     }
-
-    . ~/.config/shell/itunes.sh
 
 elif [[ $OS_TYPE == Linux ]]
 then
