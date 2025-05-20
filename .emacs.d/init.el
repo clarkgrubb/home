@@ -276,6 +276,9 @@
 (autoload 'csv-mode "csv-mode" "CSV Mode." t)
 (add-to-list 'auto-mode-alist '("\\.csv\\'" . csv-mode))
 
+(autoload 'rust-mode "php-mode" "Rust Mode." t)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . php-mode))
+
 (add-to-list 'auto-mode-alist '("\\.rkt\\'" . scheme-mode))
 
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . js-mode))
