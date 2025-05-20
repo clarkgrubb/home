@@ -276,8 +276,9 @@
 (autoload 'csv-mode "csv-mode" "CSV Mode." t)
 (add-to-list 'auto-mode-alist '("\\.csv\\'" . csv-mode))
 
-(autoload 'rust-mode "php-mode" "Rust Mode." t)
-(add-to-list 'auto-mode-alist '("\\.rs\\'" . php-mode))
+(add-to-list 'load-path "/Users/clark/Source/home/.emacs.d/lib/rust-mode/")
+(autoload 'rust-mode "rust-mode" "Rust Mode." t)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
 (add-to-list 'auto-mode-alist '("\\.rkt\\'" . scheme-mode))
 
